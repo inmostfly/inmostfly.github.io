@@ -1186,7 +1186,6 @@ pre .javascript .function {
   margin: 0 auto;
   max-width: 96px;
   padding: 2px;
-  border-radius: 50%;
 }
 .site-author-image {
   transition: transform 1s ease-out;
@@ -1223,7 +1222,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #ffe0ff;
+  background: #452d46;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2520,7 +2519,7 @@ code {
   font-size: 18px;
 }
 .cc-license {
-  margin-top: 400px;
+  margin-top: 200px;
 }
 .site-author-name {
   color: #a6c840;
@@ -2540,18 +2539,19 @@ code {
 .site-description {
   color: #111010;
 }
-.links-of-author-item {
+.links-of-author {
   color: #0b0b0b;
   margin-top: 80px;
+}
+.site-state-item {
+  margin-top: 30px;
 }
 .site-state-item-count {
   color: #e7e3e3; /* 数字改成白色 */
   font-size: 28px;
   font-weight: 600;
-  margin-top: 80px;
 }
 .site-state-item-name {
   color: #0f0d0d; /* 文字改成深黑色 */
   font-size: 18px;
-  margin-top: 80px;
 }
