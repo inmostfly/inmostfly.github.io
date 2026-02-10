@@ -1223,7 +1223,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #4755c8;
+  background: #ffe0ff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2470,9 +2470,9 @@ body {
 }
 .post-block {
   background: rgba(255,255,255,0.9);
-  opacity: 0.4;
+  opacity: 0.3;
   border-radius: 10px;
-  margin-top: -20px;
+  margin-top: 20px;
   margin-bottom: 20px;
   padding: 40px;
   -webkit-box-shadow: 0 0 5px rgba(202,203,203,0.5);
@@ -2540,15 +2540,18 @@ code {
 .site-description {
   color: #111010;
 }
-.links-of-author {
+.links-of-author-item {
   color: #0b0b0b;
+  margin-top: 80px;
 }
 .site-state-item-count {
-  color: #f6f0f0; /* 数字改成白色 */
+  color: #e7e3e3; /* 数字改成白色 */
   font-size: 28px;
   font-weight: 600;
+  margin-top: 80px;
 }
 .site-state-item-name {
   color: #0f0d0d; /* 文字改成深黑色 */
   font-size: 18px;
+  margin-top: 80px;
 }
