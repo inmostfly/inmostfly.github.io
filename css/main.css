@@ -1222,7 +1222,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #1c61ba;
+  background: #6514cf;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2519,7 +2519,7 @@ code {
   font-size: 18px;
 }
 .cc-license {
-  margin-top: 200px;
+  margin-top: 100px;
 }
 .site-author-name {
   color: #a6c840;
@@ -2541,10 +2541,10 @@ code {
 }
 .links-of-author a {
   color: #0b0b0b;
-  margin-top: 80px;
+  margin-top: 0px;
 }
 .site-state {
-  margin-top: 30px;
+  margin-top: 100px;
 }
 .site-state-item-count {
   color: #e7e3e3; /* 数字改成白色 */
@@ -2554,4 +2554,7 @@ code {
 .site-state-item-name {
   color: #0f0d0d; /* 文字改成深黑色 */
   font-size: 18px;
+}
+.posts-expand {
+  margin-top: 20px; /* 或者用外边距，效果差不多 */
 }
