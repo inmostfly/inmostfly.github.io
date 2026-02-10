@@ -1222,7 +1222,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #d68883;
+  background: #ff1dff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2544,7 +2544,7 @@ code {
   margin-top: 0px;
 }
 .site-state {
-  margin-top: 250px;
+  margin-top: 350px;
 }
 .site-state-item-count {
   color: #e7e3e3; /* 数字改成白色 */
@@ -2558,6 +2558,6 @@ code {
 .posts-expand {
   margin-top: -20px; /* 或者用外边距，效果差不多 */
 }
-.main {
-  margin-top: -30px;
+.main-inner {
+  margin-top: -20px;
 }
