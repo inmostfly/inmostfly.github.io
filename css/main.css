@@ -1222,7 +1222,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #ad6aff;
+  background: #032617;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2469,9 +2469,9 @@ body {
 }
 .post-block {
   background: rgba(255,255,255,0.5);
-  opacity: 0.7;
+  opacity: 0.9;
   border-radius: 10px;
-  margin-top: 20px;
+  margin-top: 40px;
   margin-bottom: 20px;
   padding: 40px;
   -webkit-box-shadow: 0 0 5px rgba(202,203,203,0.5);
@@ -2557,4 +2557,7 @@ code {
 }
 .posts-expand {
   margin-top: -20px; /* 或者用外边距，效果差不多 */
+}
+.main {
+  margin-top: -30px;
 }
