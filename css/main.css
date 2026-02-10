@@ -1223,7 +1223,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #2a40ff;
+  background: #4755c8;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2525,8 +2525,8 @@ code {
 .site-author-name {
   color: #a6c840;
   font-family: 'Comic Sans MS', '楷体', sans-serif;
-  font-weight: 700;
-  font-size: 20px;
+  font-weight: 800;
+  font-size: 40px;
   font-style: italic;
 }
 .site-title {
@@ -2534,6 +2534,21 @@ code {
   font-size: 50px;
 }
 .brand {
-  background: rgba(77,137,172,0.384);
+  background: rgba(77,137,172,0);
   border-radius: 15px;
+}
+.site-description {
+  color: #111010;
+}
+.links-of-author {
+  color: #0b0b0b;
+}
+.site-state-item-count {
+  color: #f6f0f0; /* 数字改成白色 */
+  font-size: 28px;
+  font-weight: 600;
+}
+.site-state-item-name {
+  color: #0f0d0d; /* 文字改成深黑色 */
+  font-size: 18px;
 }
