@@ -1222,7 +1222,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #ff14a6;
+  background: #afffff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2544,10 +2544,6 @@ code {
   margin-bottom: 10px;
   width: 100%;
 }
-.site-title::after {
-  content: "\A";
-  white-space: pre;
-}
 .typed-cursor {
   font-size: 20px;
   color: #000;
@@ -2558,6 +2554,7 @@ code {
 .brand {
   background: rgba(77,137,172,0);
   border-radius: 15px;
+  display: block !important;
 }
 .site-description {
   color: #111010;
