@@ -1222,7 +1222,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #e91df1;
+  background: #ff4044;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2527,7 +2527,7 @@ code {
   font-size: 18px;
 }
 .cc-license {
-  margin-top: 100px;
+  margin-top: 50px;
 }
 .site-author-name {
   color: #a6c840;
@@ -2570,4 +2570,7 @@ code {
   color: #0f0f0f;
   font-size: 20px;
   font-weight: 700;
+}
+.post-eof {
+  display: none;
 }
