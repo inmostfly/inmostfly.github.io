@@ -1222,7 +1222,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #ff12ff;
+  background: #e91df1;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2565,9 +2565,6 @@ code {
 }
 .posts-expand {
   margin-top: -20px; /* 或者用外边距，效果差不多 */
-}
-.main-inner {
-  margin-top: -20px;
 }
 .site-subtitle {
   color: #0f0f0f;
