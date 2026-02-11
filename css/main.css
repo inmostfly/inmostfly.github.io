@@ -1222,7 +1222,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #676763;
+  background: #5bffff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2542,6 +2542,7 @@ code {
   display: block !important;
   vertical-align: top;
   margin-bottom: 10px;
+  width: 100%;
 }
 .typed-cursor {
   font-size: 20px;
