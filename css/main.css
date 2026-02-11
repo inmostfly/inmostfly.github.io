@@ -1222,7 +1222,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #ffff8a;
+  background: #c94daf;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2549,7 +2549,7 @@ code {
   color: #000;
   opacity: 1;
   animation: typedjsBlink 0.7s infinite;
-  vertical-align: baseline;
+  vertical-align: middle;
 }
 .brand {
   background: rgba(77,137,172,0);
@@ -2598,7 +2598,7 @@ code {
 }
 .site-meta {
   display: block !important;
-  height: 145;
+  height: 160;
 }
 @-moz-keyframes typedjsBlink {
   50% {
