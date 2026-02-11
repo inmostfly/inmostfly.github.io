@@ -518,22 +518,22 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    if (document.querySelector('.site-title')) {
-      var typed = new Typed('.site-title', {
-        // 这里读取你在 _config.yml 里配置的 title
-        strings: ['inmost's blog'], 
+    // 1. 修正选择器：改成 .site-subtitle (副标题)
+    if (document.querySelector('.site-subtitle')) {
+      var typed = new Typed('.site-subtitle', {
+        
+        // 2. 修正内容：读取 config.subtitle (副标题内容)
+        // 3. 安全引号：外层改用双引号 ""，防止标题里的单引号 ' 搞崩代码
+        strings: ["inmostsama"], 
 
-        typeSpeed: 100,
- 
-        loop: false, 
+        typeSpeed: 100, // 速度
+        backSpeed: 50,  // 回退速度
+        loop: false,    // 不循环
         
-        // 显示光标
         showCursor: true, 
-        
-        // 光标长什么样
         cursorChar: '|',
         
-
+        // 这里的 text 模式对 SEO 更友好
         contentType: 'text'
       });
     }
