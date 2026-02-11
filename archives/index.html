@@ -414,15 +414,18 @@
 
       var typed = new Typed('.site-subtitle', {
         // 读取配置中的副标题
-        strings: ["inmostsama"], 
+        strings: ["inmostsama","Life is too long to end at a grave","欢迎来到我的博客"],
         
-        typeSpeed: 400, // 打字速度
-        startDelay: 500, // 延迟 0.3秒 再开始，防止页面刚加载太突兀
+        typeSpeed: 300, // 打字速度
+        startDelay: 500, // 延迟 0.3秒 再开始
+        backSpeed: 50,
+        backDelay: 1000,
+
         
         // 【关键修复2】明确关闭循环
         loop: false, 
         
-        // 【关键修复3】不进行智能退格，只管打字
+        // 最后一次不退格
         smartBackspace: false, 
 
         showCursor: true,
