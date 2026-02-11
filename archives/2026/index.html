@@ -385,7 +385,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">1k</span>
+    <span title="站点总字数">0k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
@@ -399,7 +399,23 @@
 </div>
   <div class="powered-by">
     <!--由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动-->
-  </div>
+  </div><script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script>
+  // 等待页面加载完成
+  document.addEventListener('DOMContentLoaded', function() {
+    if (document.querySelector('.site-title')) {
+      var typed = new Typed('.site-title', {
+        // 【关键修改】这里直接插入 Hexo 的配置变量
+        strings: ['inmost's blog'], 
+        typeSpeed: 100,
+        backSpeed: 50,
+        loop: false, // 标题通常不需要反复循环，打完停住比较好
+        showCursor: true,
+        cursorChar: '|'
+      });
+    }
+  });
+</script>
 
 <!-- 网站运行时间的设置 -->
 <span id="timeDate">载入天数...</span>
