@@ -1222,7 +1222,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #ff4044;
+  background: #ff6bf5;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2539,6 +2539,13 @@ code {
 .site-title {
   color: #e3dada;
   font-size: 50px;
+  display: inline-block;
+  vertical-align: top;
+}
+.typed-cursor {
+  color: #000;
+  opacity: 1;
+  animation: typedjsBlink 0.5s infinite;
 }
 .brand {
   background: rgba(77,137,172,0);
@@ -2573,4 +2580,24 @@ code {
 }
 .post-eof {
   display: none;
+}
+@-moz-keyframes typedjsBlink {
+  50% {
+    opacity: 0;
+  }
+}
+@-webkit-keyframes typedjsBlink {
+  50% {
+    opacity: 0;
+  }
+}
+@-o-keyframes typedjsBlink {
+  50% {
+    opacity: 0;
+  }
+}
+@keyframes typedjsBlink {
+  50% {
+    opacity: 0;
+  }
 }

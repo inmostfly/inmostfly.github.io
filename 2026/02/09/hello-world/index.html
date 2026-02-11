@@ -455,7 +455,31 @@
 </div>
   <div class="powered-by">
     <!--由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动-->
-  </div>
+  </div><script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    if (document.querySelector('.site-title')) {
+      var typed = new Typed('.site-title', {
+        // 这里读取你在 _config.yml 里配置的 title
+        strings: ['inmost's blog'], 
+
+        typeSpeed: 100,
+ 
+        loop: false, 
+        
+        // 显示光标
+        showCursor: true, 
+        
+        // 光标长什么样
+        cursorChar: '|',
+        
+
+        contentType: 'text'
+      });
+    }
+  });
+</script>
 
 <!-- 网站运行时间的设置 -->
 <span id="timeDate">载入天数...</span>
