@@ -1222,7 +1222,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #4eb0de;
+  background: #a7bae9;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2527,7 +2527,7 @@ code {
   font-size: 18px;
 }
 .cc-license {
-  margin-top: 50px;
+  margin-top: 20px;
 }
 .site-author-name {
   color: #a6c840;
@@ -2539,14 +2539,15 @@ code {
 .site-title {
   color: #e3dada;
   font-size: 50px;
-  display: inline-block;
+  display: block !important;
   vertical-align: top;
+  margin-bottom: 10px;
 }
 .typed-cursor {
+  font-size: 20px;
   color: #000;
   opacity: 1;
-  animation: typedjsBlink 0.6s infinite;
-  display: inline-block;
+  animation: typedjsBlink 0.7s infinite;
   vertical-align: baseline;
 }
 .brand {
@@ -2579,8 +2580,8 @@ code {
   color: #0f0f0f;
   font-size: 20px;
   font-weight: 700;
-  min-height: 1.2em;
-  vertical-align: bottom;
+  display: inline-block !important;
+  min-height: 25px;
 }
 .post-eof {
   display: none;
