@@ -1222,7 +1222,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #ffadc9;
+  background: #94ffff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2320,6 +2320,13 @@ ul.breadcrumb li + li:last-child {
   color: #ccc;
   margin: auto;
 }
+mjx-container[jax="CHTML"][display="true"],
+.has-jax {
+  overflow: auto hidden;
+}
+mjx-container + br {
+  display: none;
+}
 @media (max-width: 767px) {
   .header-inner,
   .main-inner,
@@ -2600,6 +2607,20 @@ code {
 .site-meta {
   display: block !important;
   height: 160px;
+}
+/* --- 修复引用块 (Blockquote) 的显示问题 --- */
+blockquote {
+/* 1. 加深文字颜色，确保看得清 */
+  color: #333 !important;
+/* 2. 给引用块加一个半透明的白底，把字“托”起来 */
+  background-color: rgba(255,255,255,0.6);
+/* 3. 左边加一条装饰线，更有层次感 */
+  border-left: 4px solid #7b9ddb;
+/* 4. 调整一下内边距，不要贴着边 */
+  padding: 10px 20px;
+  margin: 20px 0;
+/* 5. 圆角 */
+  border-radius: 5px;
 }
 @-moz-keyframes typedjsBlink {
   50% {
