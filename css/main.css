@@ -1222,7 +1222,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #931330;
+  background: #e7ffd2;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2643,7 +2643,7 @@ blockquote {
   border-color: #7b9ddb;
   transform: scale(1.1); /* 稍微放大一点 */
 }
-.post-title-link {
+.post-title a {
   color: #030303;
 }
 @-moz-keyframes typedjsBlink {
