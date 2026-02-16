@@ -20,30 +20,35 @@
     var CONFIG = {"hostname":"inmostfly.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":true,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="技术分享与随笔">
-<meta property="og:type" content="website">
-<meta property="og:title" content="inmost&#39;s blog">
-<meta property="og:url" content="http://inmostfly.github.io/index.html">
+  <meta name="description" content="CF1079 题解A.Friendly Numbers数学题，有性质(本题数据范围极小，$[x,x+100]$)  任何整数 $y$ 减去它的各位数字之和 $d(y)$，结果一定是 9 的倍数。  故优先判断是否是9的倍数，如果不是则直接 return  A题代码如下  12345678910111213141516171819202122232425262728293031323334int g">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cf1079_div2">
+<meta property="og:url" content="http://inmostfly.github.io/2026/02/16/cf1079-div2/index.html">
 <meta property="og:site_name" content="inmost&#39;s blog">
-<meta property="og:description" content="技术分享与随笔">
+<meta property="og:description" content="CF1079 题解A.Friendly Numbers数学题，有性质(本题数据范围极小，$[x,x+100]$)  任何整数 $y$ 减去它的各位数字之和 $d(y)$，结果一定是 9 的倍数。  故优先判断是否是9的倍数，如果不是则直接 return  A题代码如下  12345678910111213141516171819202122232425262728293031323334int g">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://inmostfly.github.io/uploads/bingo.jpg">
+<meta property="article:published_time" content="2026-02-16T07:55:59.000Z">
+<meta property="article:modified_time" content="2026-02-16T09:26:04.669Z">
 <meta property="article:author" content="inmost">
+<meta property="article:tag" content="二分，模拟，排序，博弈论，数论，分冶">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://inmostfly.github.io/uploads/bingo.jpg">
 
-<link rel="canonical" href="http://inmostfly.github.io/">
+<link rel="canonical" href="http://inmostfly.github.io/2026/02/16/cf1079-div2/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>inmost's blog</title>
+  <title>cf1079_div2 | inmost's blog</title>
   
 
 
@@ -191,9 +196,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -209,10 +215,9 @@
       <meta itemprop="name" content="inmost's blog">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2026/02/16/cf1079-div2/" class="post-title-link" itemprop="url">cf1079_div2</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          cf1079_div2
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -234,7 +239,14 @@
                 </span>
             </span>
 
-          <br>
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
             <span class="post-meta-item" title="本文字数">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
@@ -259,7 +271,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="CF1079-题解"><a href="#CF1079-题解" class="headerlink" title="CF1079 题解"></a><a target="_blank" rel="noopener" href="https://codeforces.com/contest/2197">CF1079</a> 题解</h2><h3 id="A-Friendly-Numbers"><a href="#A-Friendly-Numbers" class="headerlink" title="A.Friendly Numbers"></a>A.Friendly Numbers</h3><p>数学题，有性质(本题数据范围极小，$[x,x+100]$)</p>
+        <h2 id="CF1079-题解"><a href="#CF1079-题解" class="headerlink" title="CF1079 题解"></a><a target="_blank" rel="noopener" href="https://codeforces.com/contest/2197">CF1079</a> 题解</h2><h3 id="A-Friendly-Numbers"><a href="#A-Friendly-Numbers" class="headerlink" title="A.Friendly Numbers"></a>A.Friendly Numbers</h3><p>数学题，有性质(本题数据范围极小，$[x,x+100]$)</p>
 <blockquote>
 <p>任何整数 $y$ 减去它的各位数字之和 $d(y)$，结果一定是 9 的倍数。</p>
 </blockquote>
@@ -296,197 +308,57 @@
 </ul>
 <p><img src="/uploads/bingo.jpg" alt="聂菲斯可爱捏"></p>
 
-      
     </div>
 
     
     
     
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+        
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://inmostfly.github.io/2026/02/11/%E6%96%B0%E7%9A%84%E5%BC%80%E5%A7%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="inmost">
-      <meta itemprop="description" content="技术分享与随笔">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="inmost's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2026/02/11/%E6%96%B0%E7%9A%84%E5%BC%80%E5%A7%8B/" class="post-title-link" itemprop="url">新的开始!!!</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2026-02-11 08:49:58 / 修改时间：16:50:04" itemprop="dateCreated datePublished" datetime="2026-02-11T08:49:58+08:00">2026-02-11</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E4%BD%93%E6%82%9F/" itemprop="url" rel="index"><span itemprop="name">体悟</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>296</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="谨以此贴，记录生活与工作"><a href="#谨以此贴，记录生活与工作" class="headerlink" title="谨以此贴，记录生活与工作"></a>谨以此贴，记录生活与工作</h2><h3 id="我为什么会想起来写博客"><a href="#我为什么会想起来写博客" class="headerlink" title="我为什么会想起来写博客"></a>我为什么会想起来写博客</h3><ul>
-<li>假期不需要在用大量时间去学不喜欢的课程，不需要为了绩点抽不开身，这就给我提供了自建网站的时间<br>（已经拖了很久了捏*^____^*）</li>
-<li>在读一些经典技术文章的过程中，总是读了忘，这就导致前面读了后面忘，一套<code>transformer</code>框架读了encoding忘了decoding，写博客也是对自己技术学习的阶段性总结</li>
-<li><code>八千代</code>是目标，趁当下无责一身轻，多多尝试，这也是对 <a target="_blank" rel="noopener" href="https://github.com/inmostfly/wechatbot-1.1">catgirl</a> 的二次尝试!</li>
-<li>最早源自一次偶然的网上冲浪，看到了亚琪学长的个人博客，有羡慕也有向往。通过友链，又偶然看到了园长的博客，值此假期闲暇时，得以搭建。</li>
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>inmost
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://inmostfly.github.io/2026/02/16/cf1079-div2/" title="cf1079_div2">http://inmostfly.github.io/2026/02/16/cf1079-div2/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
 </ul>
-<h2 id="inmost-的个人博客，自此启程"><a href="#inmost-的个人博客，自此启程" class="headerlink" title="inmost 的个人博客，自此启程"></a>inmost 的个人博客，自此启程</h2><ul>
-<li>后日谈</li>
-</ul>
+</div>
 
-      
-    </div>
 
-    
-    
-    
       <footer class="post-footer">
-        <div class="post-eof"></div>
+          <div class="post-tags">
+              <a href="/tags/%E4%BA%8C%E5%88%86%EF%BC%8C%E6%A8%A1%E6%8B%9F%EF%BC%8C%E6%8E%92%E5%BA%8F%EF%BC%8C%E5%8D%9A%E5%BC%88%E8%AE%BA%EF%BC%8C%E6%95%B0%E8%AE%BA%EF%BC%8C%E5%88%86%E5%86%B6/" rel="tag"># 二分，模拟，排序，博弈论，数论，分冶</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2026/02/11/%E6%96%B0%E7%9A%84%E5%BC%80%E5%A7%8B/" rel="prev" title="新的开始!!!">
+      <i class="fa fa-chevron-left"></i> 新的开始!!!
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
       </footer>
+    
   </article>
   
   
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://inmostfly.github.io/2026/02/09/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="inmost">
-      <meta itemprop="description" content="技术分享与随笔">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="inmost's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2026/02/09/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2026-02-09 16:57:29" itemprop="dateCreated datePublished" datetime="2026-02-09T16:57:29+08:00">2026-02-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2026-02-11 11:06:07" itemprop="dateModified" datetime="2026-02-11T11:06:07+08:00">2026-02-11</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>109</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Welcome to <a href="https://inmostfly.github.io/">Hexo</a>! This is my very first blog.</p>
-<h2 id="Maybe-you-can-see"><a href="#Maybe-you-can-see" class="headerlink" title="Maybe you can see"></a>Maybe you can see</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">c c++ python java javascript </span><br><span class="line">机器学习，transformer框架浅谈，深度学习 and so on.</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
   
 
 
 
           </div>
           
+    <div class="comments" id="gitalk-container"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -533,6 +405,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CF1079-%E9%A2%98%E8%A7%A3"><span class="nav-number">1.</span> <span class="nav-text">CF1079 题解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-Friendly-Numbers"><span class="nav-number">1.1.</span> <span class="nav-text">A.Friendly Numbers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-Array-and-Permutation"><span class="nav-number">1.2.</span> <span class="nav-text">B. Array and Permutation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-Game-with-a-Fraction"><span class="nav-number">1.3.</span> <span class="nav-text">C. Game with a Fraction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D-Another-Problem-about-Beautiful-Pairs"><span class="nav-number">1.4.</span> <span class="nav-text">D. Another Problem about Beautiful Pairs</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -755,6 +628,25 @@ setInterval("createtime()",250);
 
   
 
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : 'Ov23liEOyF3lswEdobx3',
+      clientSecret: '50ee8810c54be32d6639666bac22947e97badc9b',
+      repo        : 'inmostfly.github.io',
+      owner       : 'inmostfly',
+      admin       : ['inmostfly'],
+      id          : 'b6dfe1acd116586eea0d2a51b942f110',
+        language: 'zh-CN',
+      distractionFreeMode: false
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
 
 </body>
 </html>
