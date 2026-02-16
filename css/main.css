@@ -1222,7 +1222,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #c7ff34;
+  background: #77f6bd;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2645,6 +2645,7 @@ blockquote {
 }
 .post-title a {
   color: #030303 !important;
+  font-weight: 800;
 }
 .menu-item a {
 /* 基础文字样式 */
@@ -2665,6 +2666,10 @@ blockquote {
   color: #fff !important; /* 文字变白 */
   border-color: #7b9ddb;
   transform: scale(1.1); /* 稍微放大一点 */
+}
+.category-list-count {
+  color: #040404 !important;
+  font-weight: 800;
 }
 @-moz-keyframes typedjsBlink {
   50% {
