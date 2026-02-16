@@ -1222,7 +1222,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #d57dcc;
+  background: #e5d457;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2621,6 +2621,10 @@ blockquote {
   margin: 20px 0;
 /* 5. 圆角 */
   border-radius: 5px;
+}
+.tag_cloud_tags a {
+  color: #0f0d0d; /* 文字改成深黑色 */
+  font-size: 18px;
 }
 @-moz-keyframes typedjsBlink {
   50% {
