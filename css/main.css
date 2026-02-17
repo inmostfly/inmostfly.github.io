@@ -1222,7 +1222,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #f16577;
+  background: #c9ebff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2575,7 +2575,7 @@ code {
   border-radius: 10px;
 }
 .site-state {
-  margin-top: 280px;
+  margin-top: 310px;
 }
 .site-state-item-count {
   color: #e7e3e3; /* 数字改成白色 */
