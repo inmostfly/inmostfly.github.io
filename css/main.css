@@ -1222,7 +1222,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #53c21a;
+  background: #501c1b;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2658,9 +2658,9 @@ blockquote {
   background: rgba(245,245,245,0.808); /* 浅灰背景 */
   border-radius: 15px; /* 圆角胶囊状 */
   border: 1px solid #e0e0e0; /* 细边框 */
-  width: 60px;
 /* 动画 */
   transition: all 0.2s ease-in-out;
+  width: 40px;
 }
 .menu-item a:hover {
   background: #7b9ddb; /* 背景变蓝 */
