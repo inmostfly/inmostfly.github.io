@@ -1222,7 +1222,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #59f0ff;
+  background: #b1ff32;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2476,7 +2476,7 @@ embed {
   white-space: nowrap;
 }
 body {
-  background: url("/uploads/background.jpg");
+  background: url("/uploads/Yiliya.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
