@@ -59,6 +59,7 @@
     this.lifeSpan = 120; //ms
     this.initialStyles ={
       "position": "fixed",
+      "left": "0",
       "top": "0", //必须加
       "display": "block",
       "pointerEvents": "none",
