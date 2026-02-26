@@ -1222,7 +1222,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #402bd7;
+  background: #471f0e;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2680,8 +2680,11 @@ blockquote {
   color: #000 !important;
   transform: scale(1.1);
 }
-.footer-inner :not(.fa fa-heart) {
-  color: rgba(3,2,2,0.647);
+.footer-inner {
+  color: #030202;
+}
+.with-love .fa-heart {
+  color: rgba(232,17,17,0.969);
 }
 @-moz-keyframes typedjsBlink {
   50% {
