@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hello World</title>
-    <url>/2026/02/09/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://inmostfly.github.io/">Hexo</a>! This is my very first blog.</p>
-<h2 id="Maybe-you-can-see"><a href="#Maybe-you-can-see" class="headerlink" title="Maybe you can see"></a>Maybe you can see</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">c c++ python java javascript </span><br><span class="line">机器学习，transformer框架浅谈，深度学习 and so on.</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
     <title>JavaScript</title>
     <url>/2026/02/26/JavaScript/</url>
-    <content><![CDATA[<p>JS为动态弱类型，解释型语言，前端核心，html,css,js三者协同构成网页</p>
+    <content><![CDATA[<p>前端学习笔记，HTML,CSS,JavaScript三者协同构成网页</p>
 <span id="more"></span>
 <h2 id="动态弱类型，解释型语言，前端核心"><a href="#动态弱类型，解释型语言，前端核心" class="headerlink" title="动态弱类型，解释型语言，前端核心"></a>动态弱类型，解释型语言，前端核心</h2><h3 id="首先解释一个误区"><a href="#首先解释一个误区" class="headerlink" title="首先解释一个误区"></a>首先解释一个误区</h3><p>Java 与 JavaScript 的关系：没有任何直接的技术继承关系</p>
 <blockquote>
@@ -135,5 +128,12 @@
       <tags>
         <tag>随笔</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2026/02/09/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://inmostfly.github.io/">Hexo</a>! This is my very first blog.</p>
+<h2 id="Maybe-you-can-see"><a href="#Maybe-you-can-see" class="headerlink" title="Maybe you can see"></a>Maybe you can see</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">c c++ python java javascript </span><br><span class="line">机器学习，transformer框架浅谈，深度学习 and so on.</span><br></pre></td></tr></table></figure>
+]]></content>
   </entry>
 </search>
