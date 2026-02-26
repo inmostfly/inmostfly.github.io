@@ -1222,7 +1222,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #5b5e1c;
+  background: #06f609;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2473,7 +2473,7 @@ embed {
   white-space: nowrap;
 }
 body {
-  background: url("/uploads/background.jpg");
+  background: url("/uploads/background2.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -2535,7 +2535,7 @@ code {
   margin-top: 20px;
 }
 .site-author-name {
-  color: #a6c840;
+  color: #0c0c0c;
   font-family: 'Comic Sans MS', '楷体', sans-serif;
   font-weight: 800;
   font-size: 40px;
