@@ -1222,7 +1222,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #f5b816;
+  background: #ff0946;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2679,6 +2679,9 @@ blockquote {
   background: rgba(215,210,210,0.024) !important;
   color: #000 !important;
   transform: scale(1.1);
+}
+.footer-inner :not(.with-love) {
+  color: rgba(3,2,2,0.647);
 }
 @-moz-keyframes typedjsBlink {
   50% {
