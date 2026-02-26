@@ -1222,7 +1222,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #50ff8e;
+  background: #cfff55;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2661,7 +2661,7 @@ blockquote {
 }
 .menu-item a:hover {
   background: #7b9ddb; /* 背景变蓝 */
-  color: #fff !important; /* 文字变白 */
+  font-weight: 800;
   border-color: #7b9ddb;
   transform: scale(1.1); /* 稍微放大一点 */
 }

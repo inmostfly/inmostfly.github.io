@@ -10,7 +10,25 @@
   <rights>All rights reserved 2026, inmost</rights>
   <subtitle>inmostsama</subtitle>
   <title>inmost's blog</title>
-  <updated>2026-02-25T17:42:42.056Z</updated>
+  <updated>2026-02-26T10:39:47.795Z</updated>
+  <entry>
+    <author>
+      <name>inmost</name>
+    </author>
+    <category term="笔记" scheme="http://inmostfly.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+    <category term="前端" scheme="http://inmostfly.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    <category term="JavaScript" scheme="http://inmostfly.github.io/tags/JavaScript/"/>
+    <category term="HTML" scheme="http://inmostfly.github.io/tags/HTML/"/>
+    <category term="CSS" scheme="http://inmostfly.github.io/tags/CSS/"/>
+    <id>http://inmostfly.github.io/2026/02/26/JavaScript/</id>
+    <link href="http://inmostfly.github.io/2026/02/26/JavaScript/"/>
+    <published>2026-02-26T07:31:36.000Z</published>
+    <summary>
+      <![CDATA[<p>JS为动态弱类型，解释型语言，前端核心，html,css,js三者协同构成网页</p>]]>
+    </summary>
+    <title>JavaScript</title>
+    <updated>2026-02-26T10:39:47.795Z</updated>
+  </entry>
   <entry>
     <author>
       <name>inmost</name>
@@ -26,10 +44,10 @@
     <link href="http://inmostfly.github.io/2026/02/16/cf1079-div2/"/>
     <published>2026-02-16T07:55:59.000Z</published>
     <summary>
-      <![CDATA[<h2 id="CF1079-题解"><a href="#CF1079-题解" class="headerlink" title="CF1079 题解"></a><a href="https://codeforces.com/contest/2197">CF1079</a> 题解</h2><p>二分 模拟 排序 博弈论 数论 分治  </p>]]>
+      <![CDATA[<h2 id="CF1079-题解"><a href="#CF1079-题解" class="headerlink" title="CF1079 题解"></a><a href="https://codeforces.com/contest/2197">CF1079</a> 题解</h2><p>文中主要包括如下考点（CF题目做法灵活，只叙述自己赛时做法）<br>二分 模拟 排序 博弈论 数论 分治  </p>]]>
     </summary>
     <title>CF1079_Div2</title>
-    <updated>2026-02-25T17:42:42.056Z</updated>
+    <updated>2026-02-26T07:27:02.902Z</updated>
   </entry>
   <entry>
     <author>
@@ -44,7 +62,7 @@
       <![CDATA[<h2 id="谨以此贴，记录生活与工作"><a href="#谨以此贴，记录生活与工作" class="headerlink" title="谨以此贴，记录生活与工作"></a>谨以此贴，记录生活与工作</h2><h3 id="我为什么会想起来写博客"><a]]>
     </summary>
     <title>新的开始!!!</title>
-    <updated>2026-02-11T08:50:04.745Z</updated>
+    <updated>2026-02-26T07:30:20.103Z</updated>
   </entry>
   <entry>
     <author>
