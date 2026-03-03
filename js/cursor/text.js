@@ -1,7 +1,7 @@
 var a_idx = 0;
 jQuery(document).ready(function($) {
   $("body").click(function(e) {
-    var a = new Array("喜欢我", "不喜欢我");
+    var a = new Array("AC", "TLE","WA","RE","Peace","Love","Joy","Happiness","Wealth","Health","Success","Fate","Destiny");
     var $i = $("<span/>").text(a[a_idx]);
     var x = e.pageX,
     y = e.pageY;
@@ -10,7 +10,7 @@ jQuery(document).ready(function($) {
       "top": y - 28,
       "left": x - a[a_idx].length * 8,
       "position": "absolute",
-      "color": "#ff7a45"
+      "color": "#c7ff45"
     });
     $("body").append($i);
     $i.animate({
