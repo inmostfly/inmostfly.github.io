@@ -10,28 +10,22 @@
   <rights>All rights reserved 2026, inmost</rights>
   <subtitle>inmostsama</subtitle>
   <title>inmost's blog</title>
-  <updated>2026-02-26T15:57:18.340Z</updated>
+  <updated>2026-03-04T15:00:55.252Z</updated>
   <entry>
     <author>
       <name>inmost</name>
     </author>
-    <category term="题解" scheme="http://inmostfly.github.io/categories/%E9%A2%98%E8%A7%A3/"/>
-    <category term="数论" scheme="http://inmostfly.github.io/tags/%E6%95%B0%E8%AE%BA/"/>
-    <category term="模拟" scheme="http://inmostfly.github.io/tags/%E6%A8%A1%E6%8B%9F/"/>
-    <category term="排序" scheme="http://inmostfly.github.io/tags/%E6%8E%92%E5%BA%8F/"/>
-    <category term="dp" scheme="http://inmostfly.github.io/tags/dp/"/>
-    <category term="贪心" scheme="http://inmostfly.github.io/tags/%E8%B4%AA%E5%BF%83/"/>
-    <category term="数学" scheme="http://inmostfly.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
-    <category term="树形结构" scheme="http://inmostfly.github.io/tags/%E6%A0%91%E5%BD%A2%E7%BB%93%E6%9E%84/"/>
-    <category term="dfs" scheme="http://inmostfly.github.io/tags/dfs/"/>
-    <id>http://inmostfly.github.io/2026/02/26/CF1080-Div3/</id>
-    <link href="http://inmostfly.github.io/2026/02/26/CF1080-Div3/"/>
+    <category term="算法" scheme="http://inmostfly.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    <category term="欧式筛" scheme="http://inmostfly.github.io/tags/%E6%AC%A7%E5%BC%8F%E7%AD%9B/"/>
+    <category term="动态规划" scheme="http://inmostfly.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    <id>http://inmostfly.github.io/2026/02/26/%E6%AC%A7%E5%BC%8F%E7%AD%9B/</id>
+    <link href="http://inmostfly.github.io/2026/02/26/%E6%AC%A7%E5%BC%8F%E7%AD%9B/"/>
     <published>2026-02-26T15:50:26.000Z</published>
     <summary>
-      <![CDATA[<h2 id="CF1080-Div3"><a href="#CF1080-Div3" class="headerlink" title="CF1080_Div3"></a><a href="https://codeforces.com/contest/2195">CF1080_Div3</a></h2><p>CF1080题解</p>]]>
+      <![CDATA[<h2 id="欧式筛"><a href="#欧式筛" class="headerlink" title="欧式筛"></a><a href="https://codeforces.com/contest/2200/problem/E">欧式筛</a></h2><p>于CF1080_E题遇到对欧式筛的活用，从新总结用法及原理</p>]]>
     </summary>
-    <title>CF1080_Div3</title>
-    <updated>2026-02-26T15:57:18.340Z</updated>
+    <title>欧式筛</title>
+    <updated>2026-03-04T15:00:55.252Z</updated>
   </entry>
   <entry>
     <author>
@@ -56,11 +50,11 @@
       <name>inmost</name>
     </author>
     <category term="题解" scheme="http://inmostfly.github.io/categories/%E9%A2%98%E8%A7%A3/"/>
-    <category term="数论" scheme="http://inmostfly.github.io/tags/%E6%95%B0%E8%AE%BA/"/>
+    <category term="二分" scheme="http://inmostfly.github.io/tags/%E4%BA%8C%E5%88%86/"/>
     <category term="模拟" scheme="http://inmostfly.github.io/tags/%E6%A8%A1%E6%8B%9F/"/>
     <category term="排序" scheme="http://inmostfly.github.io/tags/%E6%8E%92%E5%BA%8F/"/>
-    <category term="二分" scheme="http://inmostfly.github.io/tags/%E4%BA%8C%E5%88%86/"/>
     <category term="博弈论" scheme="http://inmostfly.github.io/tags/%E5%8D%9A%E5%BC%88%E8%AE%BA/"/>
+    <category term="数论" scheme="http://inmostfly.github.io/tags/%E6%95%B0%E8%AE%BA/"/>
     <category term="分治" scheme="http://inmostfly.github.io/tags/%E5%88%86%E6%B2%BB/"/>
     <id>http://inmostfly.github.io/2026/02/16/CF1079-div2/</id>
     <link href="http://inmostfly.github.io/2026/02/16/CF1079-div2/"/>

@@ -21,23 +21,23 @@
     var CONFIG = {"hostname":"inmostfly.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":true,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="前端学习笔记，HTML,CSS,JavaScript三者协同构成网页">
+  <meta name="description" content="欧式筛于CF1080_E题遇到对欧式筛的活用，从新总结用法及原理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript">
-<meta property="og:url" content="http://inmostfly.github.io/2026/02/26/JavaScript/index.html">
+<meta property="og:title" content="欧式筛">
+<meta property="og:url" content="http://inmostfly.github.io/2026/02/26/%E6%AC%A7%E5%BC%8F%E7%AD%9B/index.html">
 <meta property="og:site_name" content="inmost&#39;s blog">
-<meta property="og:description" content="前端学习笔记，HTML,CSS,JavaScript三者协同构成网页">
+<meta property="og:description" content="欧式筛于CF1080_E题遇到对欧式筛的活用，从新总结用法及原理">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-02-26T07:31:36.000Z">
-<meta property="article:modified_time" content="2026-02-26T15:23:16.402Z">
+<meta property="og:image" content="http://inmostfly.github.io/uploads/%E9%87%8D%E5%BA%86.jpg">
+<meta property="article:published_time" content="2026-02-26T15:50:26.000Z">
+<meta property="article:modified_time" content="2026-03-04T15:00:55.252Z">
 <meta property="article:author" content="inmost">
-<meta property="article:tag" content="CSS">
-<meta property="article:tag" content="HTML">
-<meta property="article:tag" content="JavaScript">
-<meta property="article:tag" content="前端">
+<meta property="article:tag" content="动态规划">
+<meta property="article:tag" content="欧式筛">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://inmostfly.github.io/uploads/%E9%87%8D%E5%BA%86.jpg">
 
-<link rel="canonical" href="http://inmostfly.github.io/2026/02/26/JavaScript/">
+<link rel="canonical" href="http://inmostfly.github.io/2026/02/26/%E6%AC%A7%E5%BC%8F%E7%AD%9B/">
 
 
 <script id="page-configurations">
@@ -50,7 +50,7 @@
   };
 </script>
 
-  <title>JavaScript | inmost's blog</title>
+  <title>欧式筛 | inmost's blog</title>
   
 
 
@@ -205,7 +205,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://inmostfly.github.io/2026/02/26/JavaScript/">
+    <link itemprop="mainEntityOfPage" href="http://inmostfly.github.io/2026/02/26/%E6%AC%A7%E5%BC%8F%E7%AD%9B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.jpg">
@@ -218,7 +218,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          JavaScript
+          欧式筛
         </h1>
 
         <div class="post-meta">
@@ -227,17 +227,23 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2026-02-26 15:31:36 / 修改时间：23:23:16" itemprop="dateCreated datePublished" datetime="2026-02-26T15:31:36+08:00">2026-02-26</time>
+              <time title="创建时间：2026-02-26 23:50:26" itemprop="dateCreated datePublished" datetime="2026-02-26T23:50:26+08:00">2026-02-26</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2026-03-04 23:00:55" itemprop="dateModified" datetime="2026-03-04T23:00:55+08:00">2026-03-04</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
                 </span>
             </span>
 
@@ -254,14 +260,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>3k</span>
+              <span>1.9k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>5 分钟</span>
+              <span>3 分钟</span>
             </span>
 
         </div>
@@ -273,32 +279,20 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>前端学习笔记，HTML,CSS,JavaScript三者协同构成网页</p>
+        <h2 id="欧式筛"><a href="#欧式筛" class="headerlink" title="欧式筛"></a><a target="_blank" rel="noopener" href="https://codeforces.com/contest/2200/problem/E">欧式筛</a></h2><p>于CF1080_E题遇到对欧式筛的活用，从新总结用法及原理</p>
 <span id="more"></span>
-<h2 id="动态弱类型，解释型语言，前端核心"><a href="#动态弱类型，解释型语言，前端核心" class="headerlink" title="动态弱类型，解释型语言，前端核心"></a>动态弱类型，解释型语言，前端核心</h2><h3 id="首先解释一个误区"><a href="#首先解释一个误区" class="headerlink" title="首先解释一个误区"></a>首先解释一个误区</h3><p>Java 与 JavaScript 的关系：没有任何直接的技术继承关系</p>
-<blockquote>
-<p>命名历史：JavaScript 最初由 Netscape（网景）公司开发，原名为LiveScript。当时 Java 语言非常火爆，Netscape 为了市场营销蹭热度，与 Sun 公司（Java 的开发商）达成协议，将其改名为 JavaScript。</p>
-</blockquote>
-<h3 id="爬虫-脚本"><a href="#爬虫-脚本" class="headerlink" title="爬虫,脚本"></a>爬虫,脚本</h3><p>看懂网页，才能分析网页，不至于像本蒟蒻一样在github上找到脚本之后还要摸索半天找cookie 😭</p>
-<h3 id="HTML学习"><a href="#HTML学习" class="headerlink" title="HTML学习"></a>HTML学习</h3><h4 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h4><p>使用vsc学习过程中推荐插件Live Server Preview，按下F1输入live之后将在右侧实时显示，不用反复跳转浏览器</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt; </span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;<span class="built_in">head</span>&gt;</span><br><span class="line">        &lt;meta charset=<span class="string">&quot;utf-8&quot;</span>&gt;</span><br><span class="line">        &lt;title&gt;Study HTML&lt;/title&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line"></span><br><span class="line">        &lt;h1&gt;我的第一个标题&lt;/h1&gt;</span><br><span class="line">        </span><br><span class="line">        &lt;p&gt;我的第一个段落&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">        &lt;p&gt;我的第二个段落&lt;/p&gt;</span><br><span class="line">        </span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- &lt;!DOCTYPE html&gt; 声明为 HTML5 文档</span><br><span class="line">&lt;html&gt; 元素是 HTML 页面的根元素</span><br><span class="line">&lt;<span class="built_in">head</span>&gt; 元素包含了文档的元（meta）数据，如 &lt;meta charset=<span class="string">&quot;utf-8&quot;</span>&gt; 定义网页编码格式为 utf-8。</span><br><span class="line">&lt;title&gt; 元素描述了文档的标题</span><br><span class="line">&lt;body&gt; 元素包含了可见的页面内容</span><br><span class="line">&lt;h1&gt; 元素定义一个大标题</span><br><span class="line">&lt;p&gt; 元素定义一个段落 --&gt;</span><br></pre></td></tr></table></figure>
-<p>html标签通常是成对出现的，第一个是开始，第二个是结束<br>“HTML 标签” 和 “HTML 元素” 通常都是描述同样的意思.<br>但是严格来讲, 一个 HTML 元素包含了开始标签与结束标签</p>
-<h4 id="html文件的读取"><a href="#html文件的读取" class="headerlink" title="html文件的读取"></a>html文件的读取</h4><p>Web浏览器可以直接渲染，我们定义的标签决定了HTML页面如何呈现内容给用户</p>
-<h4 id="lt-DOCTYPE-gt-声明"><a href="#lt-DOCTYPE-gt-声明" class="headerlink" title="&lt;!DOCTYPE&gt;声明"></a>&lt;!DOCTYPE&gt;声明</h4><blockquote>
-<p>&lt;!DOCTYPE&gt;声明有助于浏览器中正确显示网页.网络上有很多不同的文件，如果能够正确声明HTML的版本，浏览器就能正确显示网页内容。</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE HTML&gt;</span><br><span class="line"></span><br><span class="line">&lt;!doctype html&gt;</span><br><span class="line"></span><br><span class="line">&lt;!Doctype Html&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="HTML基础"><a href="#HTML基础" class="headerlink" title="HTML基础"></a>HTML基础</h4><h5 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h5><p>通过h1-h6,六级标签来定义，相当于word几级标题</p>
-<h5 id="段落"><a href="#段落" class="headerlink" title="段落"></a>段落</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">通过标签&lt;p&gt;来定义</span><br><span class="line">&lt;p&gt;这是一个段落&lt;/p&gt;</span><br></pre></td></tr></table></figure>
-<h5 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=<span class="string">&quot;https://inmostfly.github.io/&quot;</span>&gt;这是一个链接&lt;/a&gt;</span><br><span class="line">在href属性中指定链接的地址</span><br><span class="line">os:这里踩过几个坑，在.styl里面定义的时候链接通常需要特殊的指定才能生效，如.menu-item a&#123;  &#125;</span><br><span class="line">查询到是：&gt;&gt;链接自带默认强制色，继承被阻断 在 CSS 规范中，任何直接作用于元素的样式，其优先级都高于继承的样式，即使继承的样式带有 !important。</span><br></pre></td></tr></table></figure>
-<h5 id="图像"><a href="#图像" class="headerlink" title="图像"></a>图像</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=<span class="string">&quot;/images/logo.png&quot;</span> width=<span class="string">&quot;258&quot;</span> height=<span class="string">&quot;39&quot;</span> /&gt;</span><br><span class="line">通过&lt;img&gt;来定义，名称和尺寸是以属性的形式提供的，src传递位置，后面两个同理</span><br></pre></td></tr></table></figure>
-<h5 id="元素"><a href="#元素" class="headerlink" title="元素"></a>元素</h5><p>开始&lt;&gt;与结尾&lt;&gt;放在一起，与中间的主体一起构成元素</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;br/&gt;无结束符，换行 是空元素的一种 空元素以/更稳妥</span><br></pre></td></tr></table></figure>
-<h5 id="嵌套的元素"><a href="#嵌套的元素" class="headerlink" title="嵌套的元素"></a>嵌套的元素</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">    &lt;html&gt;</span><br><span class="line">        &lt;body&gt;</span><br><span class="line">            &lt;p&gt;这是第一个段落。&lt;/p&gt;</span><br><span class="line">        &lt;/body&gt;</span><br><span class="line">    &lt;/html&gt;</span><br><span class="line"></span><br><span class="line">包含了三个元素</span><br></pre></td></tr></table></figure>
-<h5 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h5><p>属性是 HTML 元素提供的附加信息。<br>属性通常出现在 HTML 标签的开始标签中，用于定义元素的行为、样式、内容或其他特性。属性总是以 name=”value” 的形式写在标签内，name 是属性的名称，value 是属性的值。<em>属性一般描述于开始标签</em></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=<span class="string">&quot;https://inmostfly.github.io/&quot;</span>&gt;这是一个链接&lt;/a&gt;</span><br><span class="line">href是属性名称，后面是值</span><br><span class="line">在某些个别的情况下，比如属性值本身就含有双引号，那么您必须使用单引号</span><br><span class="line">HTML 提示：使用小写属性</span><br><span class="line">属性名	 适用元素	说明</span><br><span class="line"><span class="built_in">id</span>	    所有元素	为元素指定唯一的标识符。</span><br><span class="line">class	所有元素	为元素指定一个或多个类名，用于 CSS 或 JavaScript 选择。</span><br><span class="line">style	所有元素	直接在元素上应用 CSS 样式。</span><br><span class="line">title	所有元素	为元素提供额外的提示信息，通常在鼠标悬停时显示。</span><br><span class="line">data-*	所有元素	用于存储自定义数据，通常通过 JavaScript 访问。</span><br><span class="line">href	&lt;a&gt;, &lt;<span class="built_in">link</span>&gt;	指定链接的目标 URL。</span><br><span class="line">src	    &lt;img&gt;, &lt;script&gt;, &lt;iframe&gt;	指定外部资源（如图片、脚本、框架）的 URL。</span><br><span class="line">alt	    &lt;img&gt;	为图像提供替代文本，当图像无法显示时显示。</span><br><span class="line"><span class="built_in">type</span>	&lt;input&gt;, &lt;button&gt;	指定输入控件的类型（如 text, password, checkbox 等）。</span><br><span class="line">value	&lt;input&gt;, &lt;button&gt;, &lt;option&gt;	指定元素的初始值。</span><br><span class="line">disabled	表单元素	禁用元素，使其不可交互。</span><br><span class="line">checked	&lt;input <span class="built_in">type</span>=<span class="string">&quot;checkbox&quot;</span>&gt;, &lt;input <span class="built_in">type</span>=<span class="string">&quot;radio&quot;</span>&gt;	指定复选框或单选按钮是否被选中。</span><br><span class="line">placeholder	&lt;input&gt;, &lt;textarea&gt;	在输入框中显示提示文本。</span><br><span class="line">target	&lt;a&gt;, &lt;form&gt;	指定链接或表单提交的目标窗口或框架（如 _blank 表示新标签页）。</span><br><span class="line"><span class="built_in">readonly</span>	表单元素	使输入框只读。</span><br><span class="line">required	表单元素	指定输入字段为必填项。</span><br><span class="line">autoplay	&lt;audio&gt;, &lt;video&gt;	自动播放媒体。</span><br><span class="line">onclick	    所有元素	当用户点击元素时触发 JavaScript 事件。</span><br><span class="line">onmouseover	所有元素	当用户将鼠标悬停在元素上时触发 JavaScript 事件。</span><br><span class="line">onchange	表单元素	当元素的值发生变化时触发 JavaScript 事件。</span><br></pre></td></tr></table></figure>
-<p>更多属性请移步至<a target="_blank" rel="noopener" href="https://www.runoob.com/html/html-attributes.html">Runoob</a>.</p>
-<p>更新到标题，稍后继续更新</p>
+<h2 id="欧式筛-1"><a href="#欧式筛-1" class="headerlink" title="欧式筛"></a>欧式筛</h2><h3 id="欧式筛-线性筛：核心是利用一个质数筛掉其他合数"><a href="#欧式筛-线性筛：核心是利用一个质数筛掉其他合数" class="headerlink" title="欧式筛/线性筛：核心是利用一个质数筛掉其他合数"></a>欧式筛/线性筛：核心是利用一个质数筛掉其他合数</h3><p>动态规划的思想</p>
+<p>任何一个合数C，只能被分解为$ C=i \cdot p<em>{min} $,其中$ p</em>{min} $是C的最小质因数，i是某个确定的整数。</p>
+<p>算法外层循环遍历所有整数i，内层循环从小到大遍历已知质数集合p。我们把$ i \cdot p_{min} $当作已知的合数，把他标记为被筛出。</p>
+<h3 id="最关键的逻辑：-if-i-p-0-break"><a href="#最关键的逻辑：-if-i-p-0-break" class="headerlink" title="最关键的逻辑： if(i%p==0) break;"></a>最关键的逻辑： if(i%p==0) break;</h3><p>当i%p==0成立时，意味着质数p已经是整数i的质因数之一，且由于我们从小到大遍历质数，p就是i的最小质因数。此时我们不难考虑到，此时如果再进行合数的计算，就使得$p<em>{next} \cdot i$的最小质因数不再是$p</em>{next}$而是p，不满足我们在前面设定的最小质因数的合数条件，故break，等待后面的遍历来计算，防止重复。</p>
+<h3 id="欧式筛模板代码"><a href="#欧式筛模板代码" class="headerlink" title="欧式筛模板代码"></a>欧式筛模板代码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;int&gt; primes;</span><br><span class="line">bool is_prime[1000005];</span><br><span class="line"></span><br><span class="line">void <span class="function"><span class="title">count_primes</span></span>()&#123;</span><br><span class="line">    <span class="keyword">for</span>(int i=2;i&lt;=1000005;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!is_prime[i]) </span><br><span class="line">        primes.push_back(i);</span><br><span class="line">        <span class="keyword">for</span>(auto p:primes)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i*p&gt;1000005) <span class="built_in">break</span>;</span><br><span class="line">            is_prime[i*p]=1;</span><br><span class="line">            <span class="keyword">if</span>(i%p==0) <span class="built_in">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">primes存所有质数，is_prime用位置的值反应是否是素数，0是素数，1是合数。</span><br></pre></td></tr></table></figure>
+<h2 id="E-Divisive-Battle"><a href="#E-Divisive-Battle" class="headerlink" title="E. Divisive Battle"></a>E. Divisive Battle</h2><p>对本题而言，题目核心及解出数列内的数的最小素因数和最大素因数，关键在于理解，若当前数的不同的素因数个数大于1，则Alice必定胜利(分解后内部有序，故需判断两个相邻的数分解后是否保持有序)</p>
+<p>对上述计量方法插入对最大最小素因数的统计，及统计其个数。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">int max_p[1000005];</span><br><span class="line">vector&lt;int&gt; primes;</span><br><span class="line">bool is_prime[1000005];</span><br><span class="line">int min_p[1000005];</span><br><span class="line"></span><br><span class="line">inline int gcd(int x,int y)&#123;</span><br><span class="line">    <span class="keyword">while</span>(y)&#123;int t=x%y;x=y;y=t;&#125;<span class="built_in">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int cnt[1000005];//某个数的质数个数</span><br><span class="line">void <span class="function"><span class="title">count_primes</span></span>()&#123;</span><br><span class="line">    min_p[1]=1;</span><br><span class="line">    max_p[1]=1;</span><br><span class="line">    cnt[1]=0;</span><br><span class="line">    <span class="keyword">for</span>(int i=2;i&lt;=1000000;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!is_prime[i])&#123;</span><br><span class="line">            primes.push_back(i);</span><br><span class="line">            min_p[i]=i;</span><br><span class="line">            max_p[i]=i;</span><br><span class="line">            cnt[i]=1;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(auto p:primes)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i*p&gt;1000000) <span class="built_in">break</span>;</span><br><span class="line">            is_prime[i*p]=1;</span><br><span class="line">            min_p[i*p]=p;</span><br><span class="line">            max_p[i*p]=max(max_p[i],p);</span><br><span class="line">            <span class="keyword">if</span>(i%p==0)&#123;</span><br><span class="line">                cnt[i*p]=cnt[i];//可以不写，未来还会来处理</span><br><span class="line">                <span class="built_in">break</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                cnt[i*p]=cnt[i]+1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>cnt[i]的计算是两种状态转移<br>A.当i%p==0,可以不做处理，当前产生的合数无法增加素因数个数<br>B.当i%p!=0，此时合数在i的素因数基础上再+p，及素因数个数+1</p>
+<p>当我们先手一次性处理完之后，即可直接判断</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(cnt[a[i]]&gt;1)&#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;Alice&quot;</span>&lt;&lt;<span class="string">endl;</span></span><br><span class="line"><span class="string">    return;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">//若某个数素因数个数多于1，直接判定Alice胜利</span></span><br><span class="line"><span class="string">if(i&lt;n &amp;&amp; max_p[a[i]]&gt;min_p[a[i+1]])&#123;</span></span><br><span class="line"><span class="string">    cout&lt;&lt;&quot;Alice&quot;&lt;&lt;endl</span>;</span><br><span class="line">    <span class="built_in">return</span>;</span><br><span class="line">&#125;</span><br><span class="line">//若在拆分过程中发现相邻两个数不满足拆分后素数last_max&lt;=next_min,即不满足非递减，则Alice胜利</span><br><span class="line">//除此之外，Bob胜利</span><br></pre></td></tr></table></figure>
+<p><img src="/uploads/重庆.jpg" alt="重庆"></p>
 
     </div>
 
@@ -314,7 +308,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://inmostfly.github.io/2026/02/26/JavaScript/" title="JavaScript">http://inmostfly.github.io/2026/02/26/JavaScript/</a>
+    <a href="http://inmostfly.github.io/2026/02/26/%E6%AC%A7%E5%BC%8F%E7%AD%9B/" title="欧式筛">http://inmostfly.github.io/2026/02/26/欧式筛/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -325,10 +319,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag"># 前端</a>
-              <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
-              <a href="/tags/HTML/" rel="tag"># HTML</a>
-              <a href="/tags/CSS/" rel="tag"># CSS</a>
+              <a href="/tags/%E6%AC%A7%E5%BC%8F%E7%AD%9B/" rel="tag"># 欧式筛</a>
+              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag"># 动态规划</a>
           </div>
 
         
@@ -337,13 +329,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2026/02/16/CF1079-div2/" rel="prev" title="CF1079_Div2">
-      <i class="fa fa-chevron-left"></i> CF1079_Div2
+    <a href="/2026/02/26/JavaScript/" rel="prev" title="JavaScript">
+      <i class="fa fa-chevron-left"></i> JavaScript
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2026/02/26/%E6%AC%A7%E5%BC%8F%E7%AD%9B/" rel="next" title="欧式筛">
-      欧式筛 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -403,7 +392,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E5%BC%B1%E7%B1%BB%E5%9E%8B%EF%BC%8C%E8%A7%A3%E9%87%8A%E5%9E%8B%E8%AF%AD%E8%A8%80%EF%BC%8C%E5%89%8D%E7%AB%AF%E6%A0%B8%E5%BF%83"><span class="nav-number">1.</span> <span class="nav-text">动态弱类型，解释型语言，前端核心</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A6%96%E5%85%88%E8%A7%A3%E9%87%8A%E4%B8%80%E4%B8%AA%E8%AF%AF%E5%8C%BA"><span class="nav-number">1.1.</span> <span class="nav-text">首先解释一个误区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%88%AC%E8%99%AB-%E8%84%9A%E6%9C%AC"><span class="nav-number">1.2.</span> <span class="nav-text">爬虫,脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTML%E5%AD%A6%E4%B9%A0"><span class="nav-number">1.3.</span> <span class="nav-text">HTML学习</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B7%A5%E5%85%B7"><span class="nav-number">1.3.1.</span> <span class="nav-text">工具</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#html%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96"><span class="nav-number">1.3.2.</span> <span class="nav-text">html文件的读取</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-DOCTYPE-gt-%E5%A3%B0%E6%98%8E"><span class="nav-number">1.3.3.</span> <span class="nav-text">&lt;!DOCTYPE&gt;声明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML%E5%9F%BA%E7%A1%80"><span class="nav-number">1.3.4.</span> <span class="nav-text">HTML基础</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A0%87%E9%A2%98"><span class="nav-number">1.3.4.1.</span> <span class="nav-text">标题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%AE%B5%E8%90%BD"><span class="nav-number">1.3.4.2.</span> <span class="nav-text">段落</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%93%BE%E6%8E%A5"><span class="nav-number">1.3.4.3.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9B%BE%E5%83%8F"><span class="nav-number">1.3.4.4.</span> <span class="nav-text">图像</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%85%83%E7%B4%A0"><span class="nav-number">1.3.4.5.</span> <span class="nav-text">元素</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B5%8C%E5%A5%97%E7%9A%84%E5%85%83%E7%B4%A0"><span class="nav-number">1.3.4.6.</span> <span class="nav-text">嵌套的元素</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B1%9E%E6%80%A7"><span class="nav-number">1.3.4.7.</span> <span class="nav-text">属性</span></a></li></ol></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AC%A7%E5%BC%8F%E7%AD%9B"><span class="nav-number">1.</span> <span class="nav-text">欧式筛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AC%A7%E5%BC%8F%E7%AD%9B-1"><span class="nav-number">2.</span> <span class="nav-text">欧式筛</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AC%A7%E5%BC%8F%E7%AD%9B-%E7%BA%BF%E6%80%A7%E7%AD%9B%EF%BC%9A%E6%A0%B8%E5%BF%83%E6%98%AF%E5%88%A9%E7%94%A8%E4%B8%80%E4%B8%AA%E8%B4%A8%E6%95%B0%E7%AD%9B%E6%8E%89%E5%85%B6%E4%BB%96%E5%90%88%E6%95%B0"><span class="nav-number">2.1.</span> <span class="nav-text">欧式筛&#x2F;线性筛：核心是利用一个质数筛掉其他合数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E5%85%B3%E9%94%AE%E7%9A%84%E9%80%BB%E8%BE%91%EF%BC%9A-if-i-p-0-break"><span class="nav-number">2.2.</span> <span class="nav-text">最关键的逻辑： if(i%p&#x3D;&#x3D;0) break;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AC%A7%E5%BC%8F%E7%AD%9B%E6%A8%A1%E6%9D%BF%E4%BB%A3%E7%A0%81"><span class="nav-number">2.3.</span> <span class="nav-text">欧式筛模板代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#E-Divisive-Battle"><span class="nav-number">3.</span> <span class="nav-text">E. Divisive Battle</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -694,7 +683,7 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
       repo        : 'inmostfly.github.io',
       owner       : 'inmostfly',
       admin       : ['inmostfly'],
-      id          : 'dd1378d373c5a36e00e166a32de94efc',
+      id          : '0b3969a8334c91e0d233a00f044023b2',
         language: 'zh-CN',
       distractionFreeMode: false
     });
