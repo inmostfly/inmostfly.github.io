@@ -18,8 +18,8 @@
     <category term="算法" scheme="http://inmostfly.github.io/categories/%E7%AE%97%E6%B3%95/"/>
     <category term="筛" scheme="http://inmostfly.github.io/tags/%E7%AD%9B/"/>
     <category term="动态规划" scheme="http://inmostfly.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
-    <id>http://inmostfly.github.io/2026/02/26/%E6%AC%A7%E5%BC%8F%E7%AD%9B/</id>
-    <link href="http://inmostfly.github.io/2026/02/26/%E6%AC%A7%E5%BC%8F%E7%AD%9B/"/>
+    <id>http://inmostfly.github.io/2026/02/26/%E6%AC%A7%E6%8B%89%E7%AD%9B/</id>
+    <link href="http://inmostfly.github.io/2026/02/26/%E6%AC%A7%E6%8B%89%E7%AD%9B/"/>
     <published>2026-02-26T15:50:26.000Z</published>
     <summary>
       <![CDATA[<h2 id="欧拉筛"><a href="#欧拉筛" class="headerlink" title="欧拉筛"></a><a href="https://codeforces.com/contest/2200/problem/E">欧拉筛</a></h2><p>于CF1080_E题遇到对欧拉筛的活用，从新总结用法及原理</p>]]>
@@ -56,14 +56,14 @@
     <category term="博弈论" scheme="http://inmostfly.github.io/tags/%E5%8D%9A%E5%BC%88%E8%AE%BA/"/>
     <category term="数论" scheme="http://inmostfly.github.io/tags/%E6%95%B0%E8%AE%BA/"/>
     <category term="分治" scheme="http://inmostfly.github.io/tags/%E5%88%86%E6%B2%BB/"/>
-    <id>http://inmostfly.github.io/2026/02/16/CF1079-div2/</id>
-    <link href="http://inmostfly.github.io/2026/02/16/CF1079-div2/"/>
+    <id>http://inmostfly.github.io/2026/02/16/CF1079_Div2/</id>
+    <link href="http://inmostfly.github.io/2026/02/16/CF1079_Div2/"/>
     <published>2026-02-16T07:55:59.000Z</published>
     <summary>
       <![CDATA[<h2 id="CF1079-题解"><a href="#CF1079-题解" class="headerlink" title="CF1079 题解"></a><a href="https://codeforces.com/contest/2197">CF1079</a> 题解</h2><p>文中主要包括如下考点（CF题目做法灵活，只叙述自己赛时做法）<br>二分 模拟 排序 博弈论 数论 分治  </p>]]>
     </summary>
     <title>CF1079_Div2</title>
-    <updated>2026-03-05T05:05:24.514Z</updated>
+    <updated>2026-03-05T05:08:33.839Z</updated>
   </entry>
   <entry>
     <author>
