@@ -275,45 +275,27 @@
       
         <p>前端学习笔记，HTML,CSS,JavaScript三者协同构成网页</p>
 <span id="more"></span>
-<h2 id="动态弱类型解释型语言前端核心"><a class="markdownIt-Anchor" href="#动态弱类型解释型语言前端核心"></a> 动态弱类型，解释型语言，前端核心</h2>
-<h3 id="首先解释一个误区"><a class="markdownIt-Anchor" href="#首先解释一个误区"></a> 首先解释一个误区</h3>
-<p>Java 与 JavaScript 的关系：没有任何直接的技术继承关系</p>
+<h2 id="动态弱类型，解释型语言，前端核心"><a href="#动态弱类型，解释型语言，前端核心" class="headerlink" title="动态弱类型，解释型语言，前端核心"></a>动态弱类型，解释型语言，前端核心</h2><h3 id="首先解释一个误区"><a href="#首先解释一个误区" class="headerlink" title="首先解释一个误区"></a>首先解释一个误区</h3><p>Java 与 JavaScript 的关系：没有任何直接的技术继承关系</p>
 <blockquote>
 <p>命名历史：JavaScript 最初由 Netscape（网景）公司开发，原名为LiveScript。当时 Java 语言非常火爆，Netscape 为了市场营销蹭热度，与 Sun 公司（Java 的开发商）达成协议，将其改名为 JavaScript。</p>
 </blockquote>
-<h3 id="爬虫脚本"><a class="markdownIt-Anchor" href="#爬虫脚本"></a> 爬虫,脚本</h3>
-<p>看懂网页，才能分析网页，不至于像本蒟蒻一样在github上找到脚本之后还要摸索半天找cookie 😭</p>
-<h3 id="html学习"><a class="markdownIt-Anchor" href="#html学习"></a> HTML学习</h3>
-<h4 id="工具"><a class="markdownIt-Anchor" href="#工具"></a> 工具</h4>
-<p>使用vsc学习过程中推荐插件Live Server Preview，按下F1输入live之后将在右侧实时显示，不用反复跳转浏览器</p>
+<h3 id="爬虫-脚本"><a href="#爬虫-脚本" class="headerlink" title="爬虫,脚本"></a>爬虫,脚本</h3><p>看懂网页，才能分析网页，不至于像本蒟蒻一样在github上找到脚本之后还要摸索半天找cookie 😭</p>
+<h3 id="HTML学习"><a href="#HTML学习" class="headerlink" title="HTML学习"></a>HTML学习</h3><h4 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h4><p>使用vsc学习过程中推荐插件Live Server Preview，按下F1输入live之后将在右侧实时显示，不用反复跳转浏览器</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt; </span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;<span class="built_in">head</span>&gt;</span><br><span class="line">        &lt;meta charset=<span class="string">&quot;utf-8&quot;</span>&gt;</span><br><span class="line">        &lt;title&gt;Study HTML&lt;/title&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line"></span><br><span class="line">        &lt;h1&gt;我的第一个标题&lt;/h1&gt;</span><br><span class="line">        </span><br><span class="line">        &lt;p&gt;我的第一个段落&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">        &lt;p&gt;我的第二个段落&lt;/p&gt;</span><br><span class="line">        </span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- &lt;!DOCTYPE html&gt; 声明为 HTML5 文档</span><br><span class="line">&lt;html&gt; 元素是 HTML 页面的根元素</span><br><span class="line">&lt;<span class="built_in">head</span>&gt; 元素包含了文档的元（meta）数据，如 &lt;meta charset=<span class="string">&quot;utf-8&quot;</span>&gt; 定义网页编码格式为 utf-8。</span><br><span class="line">&lt;title&gt; 元素描述了文档的标题</span><br><span class="line">&lt;body&gt; 元素包含了可见的页面内容</span><br><span class="line">&lt;h1&gt; 元素定义一个大标题</span><br><span class="line">&lt;p&gt; 元素定义一个段落 --&gt;</span><br></pre></td></tr></table></figure>
-<p>html标签通常是成对出现的，第一个是开始，第二个是结束<br />
-“HTML 标签” 和 “HTML 元素” 通常都是描述同样的意思.<br />
-但是严格来讲, 一个 HTML 元素包含了开始标签与结束标签</p>
-<h4 id="html文件的读取"><a class="markdownIt-Anchor" href="#html文件的读取"></a> html文件的读取</h4>
-<p>Web浏览器可以直接渲染，我们定义的标签决定了HTML页面如何呈现内容给用户</p>
-<h4 id="doctype声明"><a class="markdownIt-Anchor" href="#doctype声明"></a> &lt;!DOCTYPE&gt;声明</h4>
-<blockquote>
-<!DOCTYPE>声明有助于浏览器中正确显示网页.网络上有很多不同的文件，如果能够正确声明HTML的版本，浏览器就能正确显示网页内容。
+<p>html标签通常是成对出现的，第一个是开始，第二个是结束<br>“HTML 标签” 和 “HTML 元素” 通常都是描述同样的意思.<br>但是严格来讲, 一个 HTML 元素包含了开始标签与结束标签</p>
+<h4 id="html文件的读取"><a href="#html文件的读取" class="headerlink" title="html文件的读取"></a>html文件的读取</h4><p>Web浏览器可以直接渲染，我们定义的标签决定了HTML页面如何呈现内容给用户</p>
+<h4 id="lt-DOCTYPE-gt-声明"><a href="#lt-DOCTYPE-gt-声明" class="headerlink" title="&lt;!DOCTYPE&gt;声明"></a>&lt;!DOCTYPE&gt;声明</h4><blockquote>
+<p>&lt;!DOCTYPE&gt;声明有助于浏览器中正确显示网页.网络上有很多不同的文件，如果能够正确声明HTML的版本，浏览器就能正确显示网页内容。</p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE HTML&gt;</span><br><span class="line"></span><br><span class="line">&lt;!doctype html&gt;</span><br><span class="line"></span><br><span class="line">&lt;!Doctype Html&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="html基础"><a class="markdownIt-Anchor" href="#html基础"></a> HTML基础</h4>
-<h5 id="标题"><a class="markdownIt-Anchor" href="#标题"></a> 标题</h5>
-<p>通过h1-h6,六级标签来定义，相当于word几级标题</p>
-<h5 id="段落"><a class="markdownIt-Anchor" href="#段落"></a> 段落</h5>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">通过标签&lt;p&gt;来定义</span><br><span class="line">&lt;p&gt;这是一个段落&lt;/p&gt;</span><br></pre></td></tr></table></figure>
-<h5 id="链接"><a class="markdownIt-Anchor" href="#链接"></a> 链接</h5>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=<span class="string">&quot;https://inmostfly.github.io/&quot;</span>&gt;这是一个链接&lt;/a&gt;</span><br><span class="line">在href属性中指定链接的地址</span><br><span class="line">os:这里踩过几个坑，在.styl里面定义的时候链接通常需要特殊的指定才能生效，如.menu-item a&#123;  &#125;</span><br><span class="line">查询到是：&gt;&gt;链接自带默认强制色，继承被阻断 在 CSS 规范中，任何直接作用于元素的样式，其优先级都高于继承的样式，即使继承的样式带有 !important。</span><br></pre></td></tr></table></figure>
-<h5 id="图像"><a class="markdownIt-Anchor" href="#图像"></a> 图像</h5>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=<span class="string">&quot;/images/logo.png&quot;</span> width=<span class="string">&quot;258&quot;</span> height=<span class="string">&quot;39&quot;</span> /&gt;</span><br><span class="line">通过&lt;img&gt;来定义，名称和尺寸是以属性的形式提供的，src传递位置，后面两个同理</span><br></pre></td></tr></table></figure>
-<h5 id="元素"><a class="markdownIt-Anchor" href="#元素"></a> 元素</h5>
-<p>开始&lt;&gt;与结尾&lt;&gt;放在一起，与中间的主体一起构成元素</p>
+<h4 id="HTML基础"><a href="#HTML基础" class="headerlink" title="HTML基础"></a>HTML基础</h4><h5 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h5><p>通过h1-h6,六级标签来定义，相当于word几级标题</p>
+<h5 id="段落"><a href="#段落" class="headerlink" title="段落"></a>段落</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">通过标签&lt;p&gt;来定义</span><br><span class="line">&lt;p&gt;这是一个段落&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=<span class="string">&quot;https://inmostfly.github.io/&quot;</span>&gt;这是一个链接&lt;/a&gt;</span><br><span class="line">在href属性中指定链接的地址</span><br><span class="line">os:这里踩过几个坑，在.styl里面定义的时候链接通常需要特殊的指定才能生效，如.menu-item a&#123;  &#125;</span><br><span class="line">查询到是：&gt;&gt;链接自带默认强制色，继承被阻断 在 CSS 规范中，任何直接作用于元素的样式，其优先级都高于继承的样式，即使继承的样式带有 !important。</span><br></pre></td></tr></table></figure>
+<h5 id="图像"><a href="#图像" class="headerlink" title="图像"></a>图像</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=<span class="string">&quot;/images/logo.png&quot;</span> width=<span class="string">&quot;258&quot;</span> height=<span class="string">&quot;39&quot;</span> /&gt;</span><br><span class="line">通过&lt;img&gt;来定义，名称和尺寸是以属性的形式提供的，src传递位置，后面两个同理</span><br></pre></td></tr></table></figure>
+<h5 id="元素"><a href="#元素" class="headerlink" title="元素"></a>元素</h5><p>开始&lt;&gt;与结尾&lt;&gt;放在一起，与中间的主体一起构成元素</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;br/&gt;无结束符，换行 是空元素的一种 空元素以/更稳妥</span><br></pre></td></tr></table></figure>
-<h5 id="嵌套的元素"><a class="markdownIt-Anchor" href="#嵌套的元素"></a> 嵌套的元素</h5>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">    &lt;html&gt;</span><br><span class="line">        &lt;body&gt;</span><br><span class="line">            &lt;p&gt;这是第一个段落。&lt;/p&gt;</span><br><span class="line">        &lt;/body&gt;</span><br><span class="line">    &lt;/html&gt;</span><br><span class="line"></span><br><span class="line">包含了三个元素</span><br></pre></td></tr></table></figure>
-<h5 id="属性"><a class="markdownIt-Anchor" href="#属性"></a> 属性</h5>
-<p>属性是 HTML 元素提供的附加信息。<br />
-属性通常出现在 HTML 标签的开始标签中，用于定义元素的行为、样式、内容或其他特性。属性总是以 name=“value” 的形式写在标签内，name 是属性的名称，value 是属性的值。<em>属性一般描述于开始标签</em></p>
+<h5 id="嵌套的元素"><a href="#嵌套的元素" class="headerlink" title="嵌套的元素"></a>嵌套的元素</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">    &lt;html&gt;</span><br><span class="line">        &lt;body&gt;</span><br><span class="line">            &lt;p&gt;这是第一个段落。&lt;/p&gt;</span><br><span class="line">        &lt;/body&gt;</span><br><span class="line">    &lt;/html&gt;</span><br><span class="line"></span><br><span class="line">包含了三个元素</span><br></pre></td></tr></table></figure>
+<h5 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h5><p>属性是 HTML 元素提供的附加信息。<br>属性通常出现在 HTML 标签的开始标签中，用于定义元素的行为、样式、内容或其他特性。属性总是以 name=”value” 的形式写在标签内，name 是属性的名称，value 是属性的值。<em>属性一般描述于开始标签</em></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=<span class="string">&quot;https://inmostfly.github.io/&quot;</span>&gt;这是一个链接&lt;/a&gt;</span><br><span class="line">href是属性名称，后面是值</span><br><span class="line">在某些个别的情况下，比如属性值本身就含有双引号，那么您必须使用单引号</span><br><span class="line">HTML 提示：使用小写属性</span><br><span class="line">属性名	 适用元素	说明</span><br><span class="line"><span class="built_in">id</span>	    所有元素	为元素指定唯一的标识符。</span><br><span class="line">class	所有元素	为元素指定一个或多个类名，用于 CSS 或 JavaScript 选择。</span><br><span class="line">style	所有元素	直接在元素上应用 CSS 样式。</span><br><span class="line">title	所有元素	为元素提供额外的提示信息，通常在鼠标悬停时显示。</span><br><span class="line">data-*	所有元素	用于存储自定义数据，通常通过 JavaScript 访问。</span><br><span class="line">href	&lt;a&gt;, &lt;<span class="built_in">link</span>&gt;	指定链接的目标 URL。</span><br><span class="line">src	    &lt;img&gt;, &lt;script&gt;, &lt;iframe&gt;	指定外部资源（如图片、脚本、框架）的 URL。</span><br><span class="line">alt	    &lt;img&gt;	为图像提供替代文本，当图像无法显示时显示。</span><br><span class="line"><span class="built_in">type</span>	&lt;input&gt;, &lt;button&gt;	指定输入控件的类型（如 text, password, checkbox 等）。</span><br><span class="line">value	&lt;input&gt;, &lt;button&gt;, &lt;option&gt;	指定元素的初始值。</span><br><span class="line">disabled	表单元素	禁用元素，使其不可交互。</span><br><span class="line">checked	&lt;input <span class="built_in">type</span>=<span class="string">&quot;checkbox&quot;</span>&gt;, &lt;input <span class="built_in">type</span>=<span class="string">&quot;radio&quot;</span>&gt;	指定复选框或单选按钮是否被选中。</span><br><span class="line">placeholder	&lt;input&gt;, &lt;textarea&gt;	在输入框中显示提示文本。</span><br><span class="line">target	&lt;a&gt;, &lt;form&gt;	指定链接或表单提交的目标窗口或框架（如 _blank 表示新标签页）。</span><br><span class="line"><span class="built_in">readonly</span>	表单元素	使输入框只读。</span><br><span class="line">required	表单元素	指定输入字段为必填项。</span><br><span class="line">autoplay	&lt;audio&gt;, &lt;video&gt;	自动播放媒体。</span><br><span class="line">onclick	    所有元素	当用户点击元素时触发 JavaScript 事件。</span><br><span class="line">onmouseover	所有元素	当用户将鼠标悬停在元素上时触发 JavaScript 事件。</span><br><span class="line">onchange	表单元素	当元素的值发生变化时触发 JavaScript 事件。</span><br></pre></td></tr></table></figure>
 <p>更多属性请移步至<a target="_blank" rel="noopener" href="https://www.runoob.com/html/html-attributes.html">Runoob</a>.</p>
 <p>更新到标题，稍后继续更新</p>
@@ -421,7 +403,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E5%BC%B1%E7%B1%BB%E5%9E%8B%E8%A7%A3%E9%87%8A%E5%9E%8B%E8%AF%AD%E8%A8%80%E5%89%8D%E7%AB%AF%E6%A0%B8%E5%BF%83"><span class="nav-number">1.</span> <span class="nav-text"> 动态弱类型，解释型语言，前端核心</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A6%96%E5%85%88%E8%A7%A3%E9%87%8A%E4%B8%80%E4%B8%AA%E8%AF%AF%E5%8C%BA"><span class="nav-number">1.1.</span> <span class="nav-text"> 首先解释一个误区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%88%AC%E8%99%AB%E8%84%9A%E6%9C%AC"><span class="nav-number">1.2.</span> <span class="nav-text"> 爬虫,脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#html%E5%AD%A6%E4%B9%A0"><span class="nav-number">1.3.</span> <span class="nav-text"> HTML学习</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B7%A5%E5%85%B7"><span class="nav-number">1.3.1.</span> <span class="nav-text"> 工具</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#html%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96"><span class="nav-number">1.3.2.</span> <span class="nav-text"> html文件的读取</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#doctype%E5%A3%B0%E6%98%8E"><span class="nav-number">1.3.3.</span> <span class="nav-text"> &lt;!DOCTYPE&gt;声明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#html%E5%9F%BA%E7%A1%80"><span class="nav-number">1.3.4.</span> <span class="nav-text"> HTML基础</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A0%87%E9%A2%98"><span class="nav-number">1.3.4.1.</span> <span class="nav-text"> 标题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%AE%B5%E8%90%BD"><span class="nav-number">1.3.4.2.</span> <span class="nav-text"> 段落</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%93%BE%E6%8E%A5"><span class="nav-number">1.3.4.3.</span> <span class="nav-text"> 链接</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9B%BE%E5%83%8F"><span class="nav-number">1.3.4.4.</span> <span class="nav-text"> 图像</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%85%83%E7%B4%A0"><span class="nav-number">1.3.4.5.</span> <span class="nav-text"> 元素</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B5%8C%E5%A5%97%E7%9A%84%E5%85%83%E7%B4%A0"><span class="nav-number">1.3.4.6.</span> <span class="nav-text"> 嵌套的元素</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B1%9E%E6%80%A7"><span class="nav-number">1.3.4.7.</span> <span class="nav-text"> 属性</span></a></li></ol></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E5%BC%B1%E7%B1%BB%E5%9E%8B%EF%BC%8C%E8%A7%A3%E9%87%8A%E5%9E%8B%E8%AF%AD%E8%A8%80%EF%BC%8C%E5%89%8D%E7%AB%AF%E6%A0%B8%E5%BF%83"><span class="nav-number">1.</span> <span class="nav-text">动态弱类型，解释型语言，前端核心</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A6%96%E5%85%88%E8%A7%A3%E9%87%8A%E4%B8%80%E4%B8%AA%E8%AF%AF%E5%8C%BA"><span class="nav-number">1.1.</span> <span class="nav-text">首先解释一个误区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%88%AC%E8%99%AB-%E8%84%9A%E6%9C%AC"><span class="nav-number">1.2.</span> <span class="nav-text">爬虫,脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTML%E5%AD%A6%E4%B9%A0"><span class="nav-number">1.3.</span> <span class="nav-text">HTML学习</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B7%A5%E5%85%B7"><span class="nav-number">1.3.1.</span> <span class="nav-text">工具</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#html%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96"><span class="nav-number">1.3.2.</span> <span class="nav-text">html文件的读取</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-DOCTYPE-gt-%E5%A3%B0%E6%98%8E"><span class="nav-number">1.3.3.</span> <span class="nav-text">&lt;!DOCTYPE&gt;声明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML%E5%9F%BA%E7%A1%80"><span class="nav-number">1.3.4.</span> <span class="nav-text">HTML基础</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A0%87%E9%A2%98"><span class="nav-number">1.3.4.1.</span> <span class="nav-text">标题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%AE%B5%E8%90%BD"><span class="nav-number">1.3.4.2.</span> <span class="nav-text">段落</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%93%BE%E6%8E%A5"><span class="nav-number">1.3.4.3.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9B%BE%E5%83%8F"><span class="nav-number">1.3.4.4.</span> <span class="nav-text">图像</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%85%83%E7%B4%A0"><span class="nav-number">1.3.4.5.</span> <span class="nav-text">元素</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B5%8C%E5%A5%97%E7%9A%84%E5%85%83%E7%B4%A0"><span class="nav-number">1.3.4.6.</span> <span class="nav-text">嵌套的元素</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B1%9E%E6%80%A7"><span class="nav-number">1.3.4.7.</span> <span class="nav-text">属性</span></a></li></ol></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -500,12 +482,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">9k</span>
+    <span title="站点总字数">8k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">16 分钟</span>
+    <span title="站点阅读时长">15 分钟</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-user-md"></i>
@@ -645,6 +627,59 @@ setInterval("createtime()",250);
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
