@@ -62,6 +62,52 @@
 ]]></content>
   </entry>
   <entry>
+    <title>新的开始!!!</title>
+    <url>/2026/02/11/%E6%96%B0%E7%9A%84%E5%BC%80%E5%A7%8B/</url>
+    <content><![CDATA[<h2 id="谨以此贴，记录生活与工作"><a href="#谨以此贴，记录生活与工作" class="headerlink" title="谨以此贴，记录生活与工作"></a>谨以此贴，记录生活与工作</h2><h3 id="我为什么会想起来写博客"><a href="#我为什么会想起来写博客" class="headerlink" title="我为什么会想起来写博客"></a>我为什么会想起来写博客</h3><ul>
+<li>假期不需要在用大量时间去学不喜欢的课程，不需要为了绩点抽不开身，这就给我提供了自建网站的时间<br>（已经拖了很久了捏<em>^<em>__</em>^</em>）</li>
+<li>在读一些经典技术文章的过程中，总是读了忘，这就导致前面读了后面忘，一套<code>transformer</code>框架读了encoding忘了decoding，写博客也是对自己技术学习的阶段性总结</li>
+<li><code>八千代</code>是目标，趁当下无责一身轻，多多尝试，这也是对 <a href="https://github.com/inmostfly/wechatbot-1.1">catgirl</a> 的二次尝试!</li>
+<li>最早源自一次偶然的网上冲浪，看到了亚琪学长的个人博客，有羡慕也有向往。通过友链，又偶然看到了园长的博客，值此假期闲暇时，得以搭建。</li>
+</ul>
+<h2 id="inmost-的个人博客，自此启程"><a href="#inmost-的个人博客，自此启程" class="headerlink" title="inmost 的个人博客，自此启程"></a>inmost 的个人博客，自此启程</h2><ul>
+<li>后日谈</li>
+</ul>
+]]></content>
+      <categories>
+        <category>体悟</category>
+      </categories>
+      <tags>
+        <tag>随笔</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>欧式筛</title>
+    <url>/2026/02/26/%E6%AC%A7%E5%BC%8F%E7%AD%9B/</url>
+    <content><![CDATA[<h2 id="欧式筛"><a href="#欧式筛" class="headerlink" title="欧式筛"></a><a href="https://codeforces.com/contest/2200/problem/E">欧式筛</a></h2><p>于CF1080_E题遇到对欧式筛的活用，从新总结用法及原理</p>
+<span id="more"></span>
+<h2 id="欧式筛-1"><a href="#欧式筛-1" class="headerlink" title="欧式筛"></a>欧式筛</h2><h3 id="欧式筛-线性筛：核心是利用一个质数筛掉其他合数"><a href="#欧式筛-线性筛：核心是利用一个质数筛掉其他合数" class="headerlink" title="欧式筛/线性筛：核心是利用一个质数筛掉其他合数"></a>欧式筛/线性筛：核心是利用一个质数筛掉其他合数</h3><p>动态规划的思想</p>
+<p>任何一个合数C，只能被分解为 $ C=i \cdot p<em>{min} $ ,其中$ p</em>{min} $是C的最小质因数，i是某个确定的整数。</p>
+<p>算法外层循环遍历所有整数i，内层循环从小到大遍历已知质数集合p。我们把 $ i \cdot p_{min} $ 当作已知的合数，把他标记为被筛出。</p>
+<h3 id="最关键的逻辑：-if-i-p-0-break"><a href="#最关键的逻辑：-if-i-p-0-break" class="headerlink" title="最关键的逻辑： if(i%p==0) break;"></a>最关键的逻辑： if(i%p==0) break;</h3><p>当i%p==0成立时，意味着质数p已经是整数i的质因数之一，且由于我们从小到大遍历质数，p就是i的最小质因数。此时我们不难考虑到，此时如果再进行合数的计算，就使得$p<em>{next} \cdot i$的最小质因数不再是$p</em>{next}$而是p，不满足我们在前面设定的最小质因数的合数条件，故break，等待后面的遍历来计算，防止重复。</p>
+<h3 id="欧式筛模板代码"><a href="#欧式筛模板代码" class="headerlink" title="欧式筛模板代码"></a>欧式筛模板代码</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vector&lt;int&gt; primes;</span><br><span class="line">bool is_prime[1000005];</span><br><span class="line"></span><br><span class="line">void <span class="function"><span class="title">count_primes</span></span>()&#123;</span><br><span class="line">    <span class="keyword">for</span>(int i=2;i&lt;=1000005;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!is_prime[i]) </span><br><span class="line">        primes.push_back(i);</span><br><span class="line">        <span class="keyword">for</span>(auto p:primes)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i*p&gt;1000005) <span class="built_in">break</span>;</span><br><span class="line">            is_prime[i*p]=1;</span><br><span class="line">            <span class="keyword">if</span>(i%p==0) <span class="built_in">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">primes存所有质数，is_prime用位置的值反应是否是素数，0是素数，1是合数。</span><br></pre></td></tr></table></figure>
+<h2 id="E-Divisive-Battle"><a href="#E-Divisive-Battle" class="headerlink" title="E. Divisive Battle"></a>E. Divisive Battle</h2><p>对本题而言，题目核心及解出数列内的数的最小素因数和最大素因数，关键在于理解，若当前数的不同的素因数个数大于1，则Alice必定胜利(分解后内部有序，故需判断两个相邻的数分解后是否保持有序)</p>
+<p>对上述计量方法插入对最大最小素因数的统计，及统计其个数。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int max_p[1000005];</span><br><span class="line">vector&lt;int&gt; primes;</span><br><span class="line">bool is_prime[1000005];</span><br><span class="line">int min_p[1000005];</span><br><span class="line"></span><br><span class="line">inline int gcd(int x,int y)&#123;</span><br><span class="line">    <span class="keyword">while</span>(y)&#123;int t=x%y;x=y;y=t;&#125;<span class="built_in">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int cnt[1000005];//某个数的质数个数</span><br><span class="line">void <span class="function"><span class="title">count_primes</span></span>()&#123;</span><br><span class="line">    min_p[1]=1;</span><br><span class="line">    max_p[1]=1;</span><br><span class="line">    cnt[1]=0;</span><br><span class="line">    <span class="keyword">for</span>(int i=2;i&lt;=1000000;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!is_prime[i])&#123;</span><br><span class="line">            primes.push_back(i);</span><br><span class="line">            min_p[i]=i;</span><br><span class="line">            max_p[i]=i;</span><br><span class="line">            cnt[i]=1;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(auto p:primes)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i*p&gt;1000000) <span class="built_in">break</span>;</span><br><span class="line">            is_prime[i*p]=1;</span><br><span class="line">            min_p[i*p]=p;</span><br><span class="line">            max_p[i*p]=max(max_p[i],p);</span><br><span class="line">            <span class="keyword">if</span>(i%p==0)&#123;</span><br><span class="line">                cnt[i*p]=cnt[i];//可以不写，未来还会来处理</span><br><span class="line">                <span class="built_in">break</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                cnt[i*p]=cnt[i]+1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>cnt[i]的计算是两种状态转移<br>A.当i%p==0,可以不做处理，当前产生的合数无法增加素因数个数<br>B.当i%p!=0，此时合数在i的素因数基础上再+p，及素因数个数+1</p>
+<p>当我们先手一次性处理完之后，即可直接判断</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(cnt[a[i]]&gt;1)&#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;Alice&quot;</span>&lt;&lt;<span class="string">endl;</span></span><br><span class="line"><span class="string">    return;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">//若某个数素因数个数多于1，直接判定Alice胜利</span></span><br><span class="line"><span class="string">if(i&lt;n &amp;&amp; max_p[a[i]]&gt;min_p[a[i+1]])&#123;</span></span><br><span class="line"><span class="string">    cout&lt;&lt;&quot;Alice&quot;&lt;&lt;endl</span>;</span><br><span class="line">    <span class="built_in">return</span>;</span><br><span class="line">&#125;</span><br><span class="line">//若在拆分过程中发现相邻两个数不满足拆分后素数last_max&lt;=next_min,即不满足非递减，则Alice胜利</span><br><span class="line">//除此之外，Bob胜利</span><br></pre></td></tr></table></figure>
+<p><img src="/uploads/重庆.jpg" alt="重庆"></p>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>欧式筛</tag>
+        <tag>动态规划</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JavaScript</title>
     <url>/2026/02/26/JavaScript/</url>
     <content><![CDATA[<p>前端学习笔记，HTML,CSS,JavaScript三者协同构成网页</p>
@@ -99,52 +145,6 @@
         <tag>JavaScript</tag>
         <tag>HTML</tag>
         <tag>CSS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>欧式筛</title>
-    <url>/2026/02/26/%E6%AC%A7%E5%BC%8F%E7%AD%9B/</url>
-    <content><![CDATA[<h2 id="欧式筛"><a href="#欧式筛" class="headerlink" title="欧式筛"></a><a href="https://codeforces.com/contest/2200/problem/E">欧式筛</a></h2><p>于CF1080_E题遇到对欧式筛的活用，从新总结用法及原理</p>
-<span id="more"></span>
-<h2 id="欧式筛-1"><a href="#欧式筛-1" class="headerlink" title="欧式筛"></a>欧式筛</h2><h3 id="欧式筛-线性筛：核心是利用一个质数筛掉其他合数"><a href="#欧式筛-线性筛：核心是利用一个质数筛掉其他合数" class="headerlink" title="欧式筛/线性筛：核心是利用一个质数筛掉其他合数"></a>欧式筛/线性筛：核心是利用一个质数筛掉其他合数</h3><p>动态规划的思想</p>
-<p>任何一个合数C，只能被分解为$ C=i \cdot p<em>{min} $,其中$ p</em>{min} $是C的最小质因数，i是某个确定的整数。</p>
-<p>算法外层循环遍历所有整数i，内层循环从小到大遍历已知质数集合p。我们把$ i \cdot p_{min} $当作已知的合数，把他标记为被筛出。</p>
-<h3 id="最关键的逻辑：-if-i-p-0-break"><a href="#最关键的逻辑：-if-i-p-0-break" class="headerlink" title="最关键的逻辑： if(i%p==0) break;"></a>最关键的逻辑： if(i%p==0) break;</h3><p>当i%p==0成立时，意味着质数p已经是整数i的质因数之一，且由于我们从小到大遍历质数，p就是i的最小质因数。此时我们不难考虑到，此时如果再进行合数的计算，就使得$p<em>{next} \cdot i$的最小质因数不再是$p</em>{next}$而是p，不满足我们在前面设定的最小质因数的合数条件，故break，等待后面的遍历来计算，防止重复。</p>
-<h3 id="欧式筛模板代码"><a href="#欧式筛模板代码" class="headerlink" title="欧式筛模板代码"></a>欧式筛模板代码</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vector&lt;int&gt; primes;</span><br><span class="line">bool is_prime[1000005];</span><br><span class="line"></span><br><span class="line">void <span class="function"><span class="title">count_primes</span></span>()&#123;</span><br><span class="line">    <span class="keyword">for</span>(int i=2;i&lt;=1000005;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!is_prime[i]) </span><br><span class="line">        primes.push_back(i);</span><br><span class="line">        <span class="keyword">for</span>(auto p:primes)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i*p&gt;1000005) <span class="built_in">break</span>;</span><br><span class="line">            is_prime[i*p]=1;</span><br><span class="line">            <span class="keyword">if</span>(i%p==0) <span class="built_in">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">primes存所有质数，is_prime用位置的值反应是否是素数，0是素数，1是合数。</span><br></pre></td></tr></table></figure>
-<h2 id="E-Divisive-Battle"><a href="#E-Divisive-Battle" class="headerlink" title="E. Divisive Battle"></a>E. Divisive Battle</h2><p>对本题而言，题目核心及解出数列内的数的最小素因数和最大素因数，关键在于理解，若当前数的不同的素因数个数大于1，则Alice必定胜利(分解后内部有序，故需判断两个相邻的数分解后是否保持有序)</p>
-<p>对上述计量方法插入对最大最小素因数的统计，及统计其个数。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int max_p[1000005];</span><br><span class="line">vector&lt;int&gt; primes;</span><br><span class="line">bool is_prime[1000005];</span><br><span class="line">int min_p[1000005];</span><br><span class="line"></span><br><span class="line">inline int gcd(int x,int y)&#123;</span><br><span class="line">    <span class="keyword">while</span>(y)&#123;int t=x%y;x=y;y=t;&#125;<span class="built_in">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int cnt[1000005];//某个数的质数个数</span><br><span class="line">void <span class="function"><span class="title">count_primes</span></span>()&#123;</span><br><span class="line">    min_p[1]=1;</span><br><span class="line">    max_p[1]=1;</span><br><span class="line">    cnt[1]=0;</span><br><span class="line">    <span class="keyword">for</span>(int i=2;i&lt;=1000000;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!is_prime[i])&#123;</span><br><span class="line">            primes.push_back(i);</span><br><span class="line">            min_p[i]=i;</span><br><span class="line">            max_p[i]=i;</span><br><span class="line">            cnt[i]=1;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(auto p:primes)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i*p&gt;1000000) <span class="built_in">break</span>;</span><br><span class="line">            is_prime[i*p]=1;</span><br><span class="line">            min_p[i*p]=p;</span><br><span class="line">            max_p[i*p]=max(max_p[i],p);</span><br><span class="line">            <span class="keyword">if</span>(i%p==0)&#123;</span><br><span class="line">                cnt[i*p]=cnt[i];//可以不写，未来还会来处理</span><br><span class="line">                <span class="built_in">break</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                cnt[i*p]=cnt[i]+1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>cnt[i]的计算是两种状态转移<br>A.当i%p==0,可以不做处理，当前产生的合数无法增加素因数个数<br>B.当i%p!=0，此时合数在i的素因数基础上再+p，及素因数个数+1</p>
-<p>当我们先手一次性处理完之后，即可直接判断</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(cnt[a[i]]&gt;1)&#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;Alice&quot;</span>&lt;&lt;<span class="string">endl;</span></span><br><span class="line"><span class="string">    return;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">//若某个数素因数个数多于1，直接判定Alice胜利</span></span><br><span class="line"><span class="string">if(i&lt;n &amp;&amp; max_p[a[i]]&gt;min_p[a[i+1]])&#123;</span></span><br><span class="line"><span class="string">    cout&lt;&lt;&quot;Alice&quot;&lt;&lt;endl</span>;</span><br><span class="line">    <span class="built_in">return</span>;</span><br><span class="line">&#125;</span><br><span class="line">//若在拆分过程中发现相邻两个数不满足拆分后素数last_max&lt;=next_min,即不满足非递减，则Alice胜利</span><br><span class="line">//除此之外，Bob胜利</span><br></pre></td></tr></table></figure>
-<p><img src="/uploads/重庆.jpg" alt="重庆"></p>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>欧式筛</tag>
-        <tag>动态规划</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>新的开始!!!</title>
-    <url>/2026/02/11/%E6%96%B0%E7%9A%84%E5%BC%80%E5%A7%8B/</url>
-    <content><![CDATA[<h2 id="谨以此贴，记录生活与工作"><a href="#谨以此贴，记录生活与工作" class="headerlink" title="谨以此贴，记录生活与工作"></a>谨以此贴，记录生活与工作</h2><h3 id="我为什么会想起来写博客"><a href="#我为什么会想起来写博客" class="headerlink" title="我为什么会想起来写博客"></a>我为什么会想起来写博客</h3><ul>
-<li>假期不需要在用大量时间去学不喜欢的课程，不需要为了绩点抽不开身，这就给我提供了自建网站的时间<br>（已经拖了很久了捏<em>^<em>__</em>^</em>）</li>
-<li>在读一些经典技术文章的过程中，总是读了忘，这就导致前面读了后面忘，一套<code>transformer</code>框架读了encoding忘了decoding，写博客也是对自己技术学习的阶段性总结</li>
-<li><code>八千代</code>是目标，趁当下无责一身轻，多多尝试，这也是对 <a href="https://github.com/inmostfly/wechatbot-1.1">catgirl</a> 的二次尝试!</li>
-<li>最早源自一次偶然的网上冲浪，看到了亚琪学长的个人博客，有羡慕也有向往。通过友链，又偶然看到了园长的博客，值此假期闲暇时，得以搭建。</li>
-</ul>
-<h2 id="inmost-的个人博客，自此启程"><a href="#inmost-的个人博客，自此启程" class="headerlink" title="inmost 的个人博客，自此启程"></a>inmost 的个人博客，自此启程</h2><ul>
-<li>后日谈</li>
-</ul>
-]]></content>
-      <categories>
-        <category>体悟</category>
-      </categories>
-      <tags>
-        <tag>随笔</tag>
       </tags>
   </entry>
 </search>
