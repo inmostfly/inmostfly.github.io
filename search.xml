@@ -41,6 +41,7 @@
 </ul>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">void <span class="function"><span class="title">solve</span></span>()&#123;</span><br><span class="line">    int n;</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    vector&lt;int&gt; a(n+1);</span><br><span class="line">    <span class="keyword">for</span>(int i=1;i&lt;=n;i++)&#123;</span><br><span class="line">        cin&gt;&gt;a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    int ans=0;</span><br><span class="line">    int tem=sqrt(2*n)+1;</span><br><span class="line">    <span class="keyword">for</span>(int k=1;k&lt;=tem;k++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(int j=1;j&lt;=n;j++)&#123;</span><br><span class="line">            int temp=a[j]*k;</span><br><span class="line">            <span class="keyword">if</span>(temp&lt;j&amp;&amp;a[j]&gt;=k)&#123;</span><br><span class="line">                int i=j-temp;</span><br><span class="line">                <span class="keyword">if</span>(a[i]==k) ans++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(j+temp&lt;=n&amp;&amp;a[j]&gt;k)&#123;</span><br><span class="line">                int m=j+temp;</span><br><span class="line">                <span class="keyword">if</span>(a[m]==k) ans++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;<span class="string">ans&lt;&lt;endl;</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
 <h3 id="聂菲斯可爱捏"><a href="#聂菲斯可爱捏" class="headerlink" title="聂菲斯可爱捏"></a>聂菲斯可爱捏</h3><p><img src="/uploads/bingo.jpg" alt="聂菲斯可爱捏"></p>
+<h2 id="代码仓库"><a href="#代码仓库" class="headerlink" title="代码仓库"></a>代码仓库</h2><p><a href="https://github.com/inmostfly/CF1079-div2">GitHub</a></p>
 ]]></content>
       <categories>
         <category>题解</category>
@@ -53,13 +54,6 @@
         <tag>数论</tag>
         <tag>分治</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2026/02/09/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://inmostfly.github.io/">Hexo</a>! This is my very first blog.</p>
-<h2 id="Maybe-you-can-see"><a href="#Maybe-you-can-see" class="headerlink" title="Maybe you can see"></a>Maybe you can see</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">c c++ python java javascript </span><br><span class="line">机器学习，transformer框架浅谈，深度学习 and so on.</span><br></pre></td></tr></table></figure>
-]]></content>
   </entry>
   <entry>
     <title>JavaScript</title>
@@ -100,6 +94,13 @@
         <tag>HTML</tag>
         <tag>CSS</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2026/02/09/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://inmostfly.github.io/">Hexo</a>! This is my very first blog.</p>
+<h2 id="Maybe-you-can-see"><a href="#Maybe-you-can-see" class="headerlink" title="Maybe you can see"></a>Maybe you can see</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">c c++ python java javascript </span><br><span class="line">机器学习，transformer框架浅谈，深度学习 and so on.</span><br></pre></td></tr></table></figure>
+]]></content>
   </entry>
   <entry>
     <title>新的开始!!!</title>
