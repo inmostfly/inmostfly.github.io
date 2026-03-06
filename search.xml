@@ -95,31 +95,29 @@
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2026/02/09/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://inmostfly.github.io/">Hexo</a>! This is my very first blog.</p>
-<h2 id="Maybe-you-can-see"><a href="#Maybe-you-can-see" class="headerlink" title="Maybe you can see"></a>Maybe you can see</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">c c++ python java javascript </span><br><span class="line">机器学习，transformer框架浅谈，深度学习 and so on.</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
     <title>gcd及其扩展</title>
     <url>/2026/03/06/gcd%E5%8F%8A%E5%85%B6%E6%89%A9%E5%B1%95/</url>
     <content><![CDATA[<h2 id="gcd运算严格满足结合率"><a href="#gcd运算严格满足结合率" class="headerlink" title="gcd运算严格满足结合率"></a>gcd运算严格满足结合率</h2><p>即有 $\gcd(a,b,c) = \gcd(\gcd(a,b),c) = \gcd(a,\gcd(b,c))$</p>
 <span id="more"></span>
-<blockquote>
-<p>$\gcd(a,b,c) = \gcd(\gcd(a,b),c) = \gcd(a,\gcd(b,c))$<br>三者求最大公约数顺序任意</p>
-</blockquote>
+<p>三者求最大公约数顺序任意排列</p>
 <h3 id="严格证明"><a href="#严格证明" class="headerlink" title="严格证明"></a>严格证明</h3><p>d=gcd(a,b)意味着d是同时能整除a,b的最大整数，g=gcd(d,c),意味着g是能同时整除d,c的最大整数<br>因为g能整除d,d能整除a,b，故g能整除a,b,c，即g是a,b,c的公约数<br>反过来，我们取a,b,c的公约数k，k定然能被其最大公约数d整除，k同时又是d,c的因数，故又能被g整除，因此g定然是a,b,c中最大的公约数（a,b的公约数是gcd(a,b)的因数的证明在下）</p>
 <blockquote>
 <p>本质推理是素因数分解</p>
 </blockquote>
-<p>对于两个数而言，素因数分解<br>$a=p_{1}^{m1} \cdot p_{2}^{m2}…p_{n}^{mk}$<br>$b=p_{1}^{n1} \cdot p_{2}^{n2}…p_{nk}^{mk}$<br>不难观察到，其最大公约数就是其素因数幂次8的组合<br>即 最大公约数=$p_1^{\min(m_1,n_1)} p_2^{\min(m_2,n_2)} \cdots p_k^{\min(m_k,n_k)}$<br>根据上述式子，我们可以得到a,b的其他任意公约数均可以整除最大公约数<br>故不管再多的数放在一起求gcd，都是满足结合律的。（故其实也可以直接从证明看出可结合性 本质是min取的过程中不在乎顺序如何）  </p>
-<h2 id="exgcd模板"><a href="#exgcd模板" class="headerlink" title="exgcd模板"></a>exgcd模板</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int exgcd(int a, int b, int&amp; x, int&amp; y) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!b) &#123;</span><br><span class="line">        x = 1;</span><br><span class="line">        y = 0;</span><br><span class="line">        <span class="built_in">return</span> a;</span><br><span class="line">    &#125;</span><br><span class="line">    int d = exgcd(b, a % b, y, x);</span><br><span class="line">    y -= a / b * x;</span><br><span class="line">    <span class="built_in">return</span> d;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>返回的d即最终 $ax+by=gcd(a,b)$<br>即：对于任意两个不全为零的整数 $a$ 和 $b$，一定存在整数 $x$ 和 $y$，使得 $ax+by=\gcd(a,b)$ 成立。同时通过值引用，$x,y$最终的值即$x,y$的解</p>
+<p>对于两个数而言，素因数分解<br>$a=p_{1}^{m1} \cdot p_{2}^{m2}…p_{n}^{mk}$<br>$b=p_{1}^{n1} \cdot p_{2}^{n2}…p_{nk}^{mk}$<br>不难观察到，其最大公约数就是其素因数幂次的组合<br>即 最大公约数=$p_1^{\min(m_1,n_1)} p_2^{\min(m_2,n_2)} \cdots p_k^{\min(m_k,n_k)}$<br>根据上述式子，我们可以得到a,b的其他任意公约数均可以整除最大公约数<br>故不管再多的数放在一起求gcd，都是满足结合律的。（故其实也可以直接从证明看出可结合性 本质是min取的过程中不在乎顺序如何）  </p>
+<h2 id="exgcd模板"><a href="#exgcd模板" class="headerlink" title="exgcd模板"></a>exgcd模板</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int exgcd(int a, int b, int&amp; x, int&amp; y) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!b) &#123;</span><br><span class="line">        x = 1;</span><br><span class="line">        y = 0;</span><br><span class="line">        <span class="built_in">return</span> a;</span><br><span class="line">    &#125;</span><br><span class="line">    int d = exgcd(b, a % b, y, x);//返回值是最大公约数</span><br><span class="line">    y -= a / b * x;</span><br><span class="line">    <span class="built_in">return</span> d;</span><br><span class="line">&#125;</span><br><span class="line">/*void exgcd(ll a,ll b,ll &amp;x,ll &amp;y)&#123;  //更简洁的求解写法</span><br><span class="line">    <span class="keyword">if</span>(b == 0) &#123; x = 1,y = 0; <span class="built_in">return</span>;&#125;</span><br><span class="line">    exgcd(b,a%b,y,x);           //x和y换位</span><br><span class="line">    y = y- a/b*x;</span><br><span class="line">&#125;*/</span><br></pre></td></tr></table></figure>
+<p>返回的d即最终 $ax+by=gcd(a,b)$<br>即：对于任意两个不全为零的整数 $a$ 和 $b$，一定存在整数 $x$ 和 $y$，使得 $ax+by=\gcd(a,b)$ 成立。同时通过值引用，$x,y$最终的值即$x,y$的最小特解。</p>
 <p>用处：  </p>
-<h3 id="1-求解二元一次不定方程"><a href="#1-求解二元一次不定方程" class="headerlink" title="1.求解二元一次不定方程"></a>1.求解二元一次不定方程</h3><p>用于求解形如 $ax+by=c$ 的整数解。根据裴蜀定理的推论，这个方程有解的充要条件是 $\gcd(a,b)$ 能整除 $c$。通过 exgcd 求出 $ax+by=\gcd(a,b)$ 的一组解后，将其按比例扩大，即可得到原方程的一组特解，进而可以推导出通解。</p>
-<h3 id="2-求解模综合乘法逆元"><a href="#2-求解模综合乘法逆元" class="headerlink" title="2.求解模综合乘法逆元"></a>2.求解模综合乘法逆元</h3><p>当要求解 $a$ 在模 $m$ 意义下的乘法逆元 $x$ 时，等价于求解同余方程 $ax\equiv 1\pmod m$。这个同余方程可以转化为不定方程 $ax+my=1$。只要 $\gcd(a,m)=1$（即 $a$ 和 $m$ 互质），就可以直接用 exgcd 求出 $x$ 的值。</p>
+<h3 id="1-求解二元一次不定方程"><a href="#1-求解二元一次不定方程" class="headerlink" title="1.求解二元一次不定方程"></a>1.求解二元一次不定方程</h3><p>用于求解形如 $ax+by=c$ 的整数解。根据裴蜀定理的推论，这个方程有解的充要条件是 $\gcd(a,b)$ 能整除 $c$。通过 exgcd 求出 $ax+by=\gcd(a,b)$ 的一组解后，将其按比例扩大，即可得到原方程的一组特解$x_0,y_0$，进而可以推导出通解。<br>通解：$x=x_0 + k\cdot \frac{b}{gcd(a,b)}$ ，$y=y_0 - k\cdot \frac{a}{gcd(a,b)}$<br>(k是任意整数)</p>
+<h3 id="2-求解模综合乘法逆元"><a href="#2-求解模综合乘法逆元" class="headerlink" title="2.求解模综合乘法逆元"></a>2.求解模综合乘法逆元</h3><p>当要求解 $a$ 在模 $m$ 意义下的乘法逆元 $x$ 时，等价于求解同余方程 $ax\equiv 1\pmod m$。这个同余方程可以转化为不定方程 $ax+my=1$。只要 $\gcd(a,m)=1$（即 $a$ 和 $m$ 互质），就可以直接用 exgcd 求出 $x$ 的值。<br>这次的exgcd的结果是在模意义下的，故其是唯一的特解，需注意实际使用中通常还需要保证取模之后的结果为正数，故+m再取余以保证正数。</p>
+<script type="math/tex; mode=display">x_{min} = (x_0 \bmod m + m) \bmod m</script><h4 id="费马小定理解法"><a href="#费马小定理解法" class="headerlink" title="费马小定理解法"></a>费马小定理解法</h4><blockquote>
+<p>求乘法逆元同时也可使用费马小定理。注意：此时要求mod必须是质数<br>$ax \equiv 1\pmod m$<br>有公式：<script type="math/tex">x=a^{m-2} \pmod m</script><br>x即a关于模m的乘法逆元</p>
+</blockquote>
 <h3 id="3-求解线性同余方程组（CRT-的扩展）"><a href="#3-求解线性同余方程组（CRT-的扩展）" class="headerlink" title="3.求解线性同余方程组（CRT 的扩展）"></a>3.求解线性同余方程组（<a href="https://www.cnblogs.com/ailanxier/p/13370753.html">CRT</a> 的扩展）</h3><p>在处理扩展中国剩余定理（EXCRT）时，由于模数可能不互质，普通的 CRT 无法使用。此时需要两两合并同余方程，合并的过程本质上就是求解形如 $ax+by=c$ 的线性方程，强依赖 exgcd。</p>
+<h4 id="CRT求解模板"><a href="#CRT求解模板" class="headerlink" title="CRT求解模板"></a>CRT求解模板</h4><p>能力有限，模板转载自上述链接：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include &lt;bits/stdc++.h&gt;</span></span><br><span class="line">using namespace std;</span><br><span class="line">typedef long long ll ;</span><br><span class="line">ll mod[15],yu[15],M = 1,ans;//mod[i]即为mi,yu[i]存放模后余数</span><br><span class="line"></span><br><span class="line">void exGcd(ll a,ll b,ll &amp;x,ll &amp;y)&#123;   //求解 ax+by = gcd(a,b)，注意是传引用</span><br><span class="line">    <span class="keyword">if</span>(b == 0) &#123; x = 1,y = 0; <span class="built_in">return</span>;&#125;         // b = 0时,a = gcd(原a,原b)</span><br><span class="line">    exGcd(b,a%b,x,y);</span><br><span class="line">    ll temX = x;</span><br><span class="line">    x = y,y = temX - a/b * y;   //x = y<span class="string">&#x27;, y = x&#x27;</span> - a/b * y<span class="string">&#x27; (x&#x27;</span>和y<span class="string">&#x27;是递归下一层返回后的x和y)</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">/*void exGcd(ll a,ll b,ll &amp;x,ll &amp;y)&#123;  //更简洁的写法</span></span><br><span class="line"><span class="string">    if(b == 0) &#123; x = 1,y = 0; return;&#125;</span></span><br><span class="line"><span class="string">    exGcd(b,a%b,y,x);           //x和y换位</span></span><br><span class="line"><span class="string">    y = y- a/b*x;</span></span><br><span class="line"><span class="string">&#125;*/</span></span><br><span class="line"><span class="string">int main() &#123;</span></span><br><span class="line"><span class="string">    int n;</span></span><br><span class="line"><span class="string">    cin&gt;&gt;n;       //方程组数</span></span><br><span class="line"><span class="string">    for (int i = 1; i &lt;= n ; ++i) &#123;</span></span><br><span class="line"><span class="string">        scanf(&quot;%ld %ld&quot;,&amp;mod[i],&amp;yu[i]);  //模数和余数，模数互质</span></span><br><span class="line"><span class="string">        M*=mod[i];</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">    for (int i = 1; i &lt;= n ; ++i) &#123;</span></span><br><span class="line"><span class="string">        ll Mi = M / mod[i],inv,y; // Mi为所有模数乘积除以第i个模数，inv为Mi在模mi意义下的逆元</span></span><br><span class="line"><span class="string">        exGcd(Mi, mod[i], inv, y);</span></span><br><span class="line"><span class="string">        inv = inv % mod[i];</span></span><br><span class="line"><span class="string">        ans = (ans + yu[i] * Mi * inv) % M;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">    cout&lt;&lt; (ans + M) % M;          //保证结果不出现负数</span></span><br><span class="line"><span class="string">    return 0;</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+<h4 id="EXCRT求解模板"><a href="#EXCRT求解模板" class="headerlink" title="EXCRT求解模板"></a>EXCRT求解模板</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include &lt;bits/stdc++.h&gt;</span></span><br><span class="line">using namespace std;</span><br><span class="line">typedef long long ll;</span><br><span class="line">ll n,mod[100009],yu[100009];</span><br><span class="line"></span><br><span class="line">//要用快速乘（龟速乘），防止爆long long</span><br><span class="line">ll qMul(ll a,ll b,ll mo)&#123;</span><br><span class="line">    ll an = 0;</span><br><span class="line">    <span class="keyword">while</span>(b) &#123;</span><br><span class="line">        <span class="keyword">if</span>(b&amp;1) an =(an+a) % mo;</span><br><span class="line">        a = (a+a)%mo;</span><br><span class="line">        b&gt;&gt;=1;</span><br><span class="line">    &#125;<span class="built_in">return</span> an%mo;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//扩展欧几里得算法，返回gcd(a,b),并计算出ax+by = gcd(a,b)中的x和y</span><br><span class="line">ll exGcd(ll a,ll b,ll &amp;x,ll &amp;y)&#123;</span><br><span class="line">    <span class="keyword">if</span>( b == 0 ) &#123; x = 1;y = 0; <span class="built_in">return</span> a;&#125;</span><br><span class="line">    ll gcd = exGcd(b,a%b,y,x);  //注意x和y的顺序</span><br><span class="line">    y = y - a/b*x;</span><br><span class="line">    <span class="built_in">return</span> gcd;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);//加速cin和cout</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    <span class="keyword">for</span>(int i = 1;i &lt;= n;i++) cin&gt;&gt;mod[i]&gt;&gt;yu[i];</span><br><span class="line">    ll ans = yu[1],M = mod[1] ,t,y;  //ans表示前i-1个方程式的特解（余数），M为前i-1个方程式的模数的最小公倍数(i从2开始)</span><br><span class="line">    <span class="keyword">for</span>(int i = 2;i &lt;= n;i++)&#123;</span><br><span class="line">        ll mi = mod[i],res = ((yu[i] - ans)%mi + mi)%mi;  //res是等式的右边部分，不能出现负数</span><br><span class="line">        ll gcd = exGcd(M,mi,t,y);        //求出gcd(mi,M)</span><br><span class="line">        if(res % gcd != <span class="number">0</span>) &#123; cout&lt;&lt;-<span class="number">1</span>&lt;&lt;endl;exit(<span class="number">0</span>); &#125;   //如果等式右边不能整除gcd，方程组无解</span><br><span class="line">        t = qMul(t,res/gcd,mi);            //求出t还要乘上倍数，注意是快速乘取模mi (对谁取模要分清)</span><br><span class="line">        ans += t * M;                               //得到前i个方程的特解（余数）</span><br><span class="line">        M = mi /gcd * M;                         //M等于lcm(M,mi)，注意乘法要在除法后面做，否则会爆long long</span><br><span class="line">        ans = (ans%M+M)%M;                //让特解范围限定在<span class="number">0</span>~(M-<span class="number">1</span>)内，防止会出现负数</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;ans;</span><br><span class="line">    return <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="放一道例题-hard"><a href="#放一道例题-hard" class="headerlink" title="放一道例题(hard)"></a>放一道例题(hard)</h2><p><a href="https://www.luogu.com.cn/problem/U628784?contestId=295494">U628784 Laz玩游戏</a><br>key:ey33</p>
 ]]></content>
       <categories>
         <category>算法</category>
@@ -128,6 +126,33 @@
         <tag>数论</tag>
         <tag>数学</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>新的开始!!!</title>
+    <url>/2026/02/11/%E6%96%B0%E7%9A%84%E5%BC%80%E5%A7%8B/</url>
+    <content><![CDATA[<h2 id="谨以此贴，记录生活与工作"><a href="#谨以此贴，记录生活与工作" class="headerlink" title="谨以此贴，记录生活与工作"></a>谨以此贴，记录生活与工作</h2><h3 id="我为什么会想起来写博客"><a href="#我为什么会想起来写博客" class="headerlink" title="我为什么会想起来写博客"></a>我为什么会想起来写博客</h3><ul>
+<li>假期不需要在用大量时间去学不喜欢的课程，不需要为了绩点抽不开身，这就给我提供了自建网站的时间<br>（已经拖了很久了捏<em>^____^</em>）</li>
+<li>在读一些经典技术文章的过程中，总是读了忘，这就导致前面读了后面忘，一套<code>transformer</code>框架读了encoding忘了decoding，写博客也是对自己技术学习的阶段性总结</li>
+<li><code>八千代</code>是目标，趁当下无责一身轻，多多尝试，这也是对 <a href="https://github.com/inmostfly/wechatbot-1.1">catgirl</a> 的二次尝试!</li>
+<li>最早源自一次偶然的网上冲浪，看到了亚琪学长的个人博客，有羡慕也有向往。通过友链，又偶然看到了园长的博客，值此假期闲暇时，得以搭建。</li>
+</ul>
+<h2 id="inmost-的个人博客，自此启程"><a href="#inmost-的个人博客，自此启程" class="headerlink" title="inmost 的个人博客，自此启程"></a>inmost 的个人博客，自此启程</h2><ul>
+<li>后日谈</li>
+</ul>
+]]></content>
+      <categories>
+        <category>体悟</category>
+      </categories>
+      <tags>
+        <tag>随笔</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2026/02/09/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://inmostfly.github.io/">Hexo</a>! This is my very first blog.</p>
+<h2 id="Maybe-you-can-see"><a href="#Maybe-you-can-see" class="headerlink" title="Maybe you can see"></a>Maybe you can see</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">c c++ python java javascript </span><br><span class="line">机器学习，transformer框架浅谈，深度学习 and so on.</span><br></pre></td></tr></table></figure>
+]]></content>
   </entry>
   <entry>
     <title>欧拉筛！</title>
@@ -153,26 +178,6 @@
       <tags>
         <tag>筛</tag>
         <tag>动态规划</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>新的开始!!!</title>
-    <url>/2026/02/11/%E6%96%B0%E7%9A%84%E5%BC%80%E5%A7%8B/</url>
-    <content><![CDATA[<h2 id="谨以此贴，记录生活与工作"><a href="#谨以此贴，记录生活与工作" class="headerlink" title="谨以此贴，记录生活与工作"></a>谨以此贴，记录生活与工作</h2><h3 id="我为什么会想起来写博客"><a href="#我为什么会想起来写博客" class="headerlink" title="我为什么会想起来写博客"></a>我为什么会想起来写博客</h3><ul>
-<li>假期不需要在用大量时间去学不喜欢的课程，不需要为了绩点抽不开身，这就给我提供了自建网站的时间<br>（已经拖了很久了捏<em>^____^</em>）</li>
-<li>在读一些经典技术文章的过程中，总是读了忘，这就导致前面读了后面忘，一套<code>transformer</code>框架读了encoding忘了decoding，写博客也是对自己技术学习的阶段性总结</li>
-<li><code>八千代</code>是目标，趁当下无责一身轻，多多尝试，这也是对 <a href="https://github.com/inmostfly/wechatbot-1.1">catgirl</a> 的二次尝试!</li>
-<li>最早源自一次偶然的网上冲浪，看到了亚琪学长的个人博客，有羡慕也有向往。通过友链，又偶然看到了园长的博客，值此假期闲暇时，得以搭建。</li>
-</ul>
-<h2 id="inmost-的个人博客，自此启程"><a href="#inmost-的个人博客，自此启程" class="headerlink" title="inmost 的个人博客，自此启程"></a>inmost 的个人博客，自此启程</h2><ul>
-<li>后日谈</li>
-</ul>
-]]></content>
-      <categories>
-        <category>体悟</category>
-      </categories>
-      <tags>
-        <tag>随笔</tag>
       </tags>
   </entry>
 </search>

@@ -10,7 +10,7 @@
   <rights>All rights reserved 2026, inmost</rights>
   <subtitle>inmostsama</subtitle>
   <title>inmost's blog</title>
-  <updated>2026-03-05T17:02:41.344Z</updated>
+  <updated>2026-03-06T03:17:37.258Z</updated>
   <entry>
     <author>
       <name>inmost</name>
@@ -20,12 +20,12 @@
     <category term="数学" scheme="http://inmostfly.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
     <id>http://inmostfly.github.io/2026/03/06/gcd%E5%8F%8A%E5%85%B6%E6%89%A9%E5%B1%95/</id>
     <link href="http://inmostfly.github.io/2026/03/06/gcd%E5%8F%8A%E5%85%B6%E6%89%A9%E5%B1%95/"/>
-    <published>2026-03-05T16:57:38.000Z</published>
+    <published>2026-03-05T16:57:03.000Z</published>
     <summary>
       <![CDATA[<h2 id="gcd运算严格满足结合率"><a href="#gcd运算严格满足结合率" class="headerlink" title="gcd运算严格满足结合率"></a>gcd运算严格满足结合率</h2><p>即有 $\gcd(a,b,c) = \gcd(\gcd(a,b),c) = \gcd(a,\gcd(b,c))$</p>]]>
     </summary>
     <title>gcd及其扩展</title>
-    <updated>2026-03-05T17:02:41.344Z</updated>
+    <updated>2026-03-06T03:17:37.258Z</updated>
   </entry>
   <entry>
     <author>
