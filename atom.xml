@@ -10,7 +10,7 @@
   <rights>All rights reserved 2026, inmost</rights>
   <subtitle>inmostsama</subtitle>
   <title>inmost's blog</title>
-  <updated>2026-03-07T04:22:20.128Z</updated>
+  <updated>2026-03-07T04:43:43.088Z</updated>
   <entry>
     <author>
       <name>inmost</name>
@@ -25,7 +25,7 @@
       <![CDATA[<h2 id="gcd运算严格满足结合率"><a href="#gcd运算严格满足结合率" class="headerlink" title="gcd运算严格满足结合率"></a>gcd运算严格满足结合率</h2><p>即有 $\gcd(a,b,c) = \gcd(\gcd(a,b),c) = \gcd(a,\gcd(b,c))$</p>]]>
     </summary>
     <title>gcd及其扩展</title>
-    <updated>2026-03-07T04:22:20.128Z</updated>
+    <updated>2026-03-07T04:43:43.088Z</updated>
   </entry>
   <entry>
     <author>
