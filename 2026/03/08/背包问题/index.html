@@ -29,7 +29,7 @@
 <meta property="og:description" content="搁置已久，今天来简单讨论下背包的基础性问题">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-03-08T04:33:25.000Z">
-<meta property="article:modified_time" content="2026-03-08T08:42:17.080Z">
+<meta property="article:modified_time" content="2026-03-08T08:44:33.906Z">
 <meta property="article:author" content="inmost">
 <meta property="article:tag" content="动态规划">
 <meta property="article:tag" content="背包">
@@ -227,7 +227,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2026-03-08 12:33:25 / 修改时间：16:42:17" itemprop="dateCreated datePublished" datetime="2026-03-08T12:33:25+08:00">2026-03-08</time>
+              <time title="创建时间：2026-03-08 12:33:25 / 修改时间：16:44:33" itemprop="dateCreated datePublished" datetime="2026-03-08T12:33:25+08:00">2026-03-08</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -281,7 +281,7 @@
 <h3 id="01背包核心代码"><a href="#01背包核心代码" class="headerlink" title="01背包核心代码"></a>01背包核心代码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (int j = m; j &gt;= w[i]; j--) &#123;</span><br><span class="line">        dp[j] = max(dp[j], dp[j - w[i]] + v[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="完全背包"><a href="#完全背包" class="headerlink" title="完全背包"></a>完全背包</h2><p>其差别在于，完全背包不再有物品的数量限制，每件物品均有无穷件<br>那就好办了，我们刚刚说了之所以倒序，就是为了避免第i物品被考虑多次，那我们正着写，那就恰满足了每件物品被考虑多件的需求，我们每次从小开始遍历，在处理j的时候j-w[i]实际上已经考虑过有第i件物品情况下的最优解，依次类推即每件物品都没有了件数限制  </p>
 <h3 id="完全背包核心代码"><a href="#完全背包核心代码" class="headerlink" title="完全背包核心代码"></a>完全背包核心代码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (int j = w[i]; j &lt;= m; j++) &#123;</span><br><span class="line">        dp[j] = max(dp[j], dp[j - w[i]] + v[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="多重背包"><a href="#多重背包" class="headerlink" title="多重背包"></a>多重背包</h2><h2 id="放上题目"><a href="#放上题目" class="headerlink" title="放上题目"></a>放上题目</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/B2174">B2174 完全背包</a></p>
+<h2 id="多重背包"><a href="#多重背包" class="headerlink" title="多重背包"></a>多重背包</h2><h2 id="放上题目"><a href="#放上题目" class="headerlink" title="放上题目"></a>放上题目</h2><p>B2174 完全背包<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/B2174">B2174 完全背包</a></p>
 <p>背包问题有时甚至会混淆视听<br>P7223 [RC-04] 01 背包(<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P7223">https://www.luogu.com.cn/problem/P7223</a>)</p>
 
     </div>
@@ -322,7 +322,10 @@
     <a href="/2026/03/06/gcd%E5%8F%8A%E5%85%B6%E6%89%A9%E5%B1%95/" rel="prev" title="gcd及其扩展">
       <i class="fa fa-chevron-left"></i> gcd及其扩展
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2026/03/12/%E5%AD%97%E5%85%B8%E6%A0%91/" rel="next" title="字典树">
+      字典树 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -398,7 +401,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -411,7 +414,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -461,12 +464,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">13k</span>
+    <span title="站点总字数">14k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">24 分钟</span>
+    <span title="站点阅读时长">26 分钟</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-user-md"></i>
