@@ -10,7 +10,22 @@
   <rights>All rights reserved 2026, inmost</rights>
   <subtitle>inmostsama</subtitle>
   <title>inmost's blog</title>
-  <updated>2026-03-12T12:55:47.901Z</updated>
+  <updated>2026-03-16T09:26:44.459Z</updated>
+  <entry>
+    <author>
+      <name>inmost</name>
+    </author>
+    <category term="算法" scheme="http://inmostfly.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    <category term="并查集" scheme="http://inmostfly.github.io/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/"/>
+    <id>http://inmostfly.github.io/2026/03/16/%E5%B9%B6%E6%9F%A5%E9%9B%86/</id>
+    <link href="http://inmostfly.github.io/2026/03/16/%E5%B9%B6%E6%9F%A5%E9%9B%86/"/>
+    <published>2026-03-16T08:28:34.000Z</published>
+    <summary>
+      <![CDATA[<h2 id="并查集"><a href="#并查集" class="headerlink" title="并查集"></a>并查集</h2><p>青春猪头少年不会在赛时被并查集少一次遍历卡165min遗憾退场</p>]]>
+    </summary>
+    <title>并查集</title>
+    <updated>2026-03-16T09:26:44.459Z</updated>
+  </entry>
   <entry>
     <author>
       <name>inmost</name>
@@ -25,7 +40,7 @@
       <![CDATA[<p>字符串的处理方式极多，字典树便是其中一种</p>]]>
     </summary>
     <title>字典树</title>
-    <updated>2026-03-12T12:55:47.901Z</updated>
+    <updated>2026-03-16T09:19:33.245Z</updated>
   </entry>
   <entry>
     <author>
@@ -64,8 +79,8 @@
       <name>inmost</name>
     </author>
     <category term="算法" scheme="http://inmostfly.github.io/categories/%E7%AE%97%E6%B3%95/"/>
-    <category term="动态规划" scheme="http://inmostfly.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
     <category term="筛" scheme="http://inmostfly.github.io/tags/%E7%AD%9B/"/>
+    <category term="动态规划" scheme="http://inmostfly.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
     <id>http://inmostfly.github.io/2026/02/26/%E6%AC%A7%E6%8B%89%E7%AD%9B/</id>
     <link href="http://inmostfly.github.io/2026/02/26/%E6%AC%A7%E6%8B%89%E7%AD%9B/"/>
     <published>2026-02-26T15:50:26.000Z</published>
@@ -98,11 +113,11 @@
       <name>inmost</name>
     </author>
     <category term="题解" scheme="http://inmostfly.github.io/categories/%E9%A2%98%E8%A7%A3/"/>
+    <category term="数论" scheme="http://inmostfly.github.io/tags/%E6%95%B0%E8%AE%BA/"/>
     <category term="二分" scheme="http://inmostfly.github.io/tags/%E4%BA%8C%E5%88%86/"/>
     <category term="模拟" scheme="http://inmostfly.github.io/tags/%E6%A8%A1%E6%8B%9F/"/>
     <category term="排序" scheme="http://inmostfly.github.io/tags/%E6%8E%92%E5%BA%8F/"/>
     <category term="博弈论" scheme="http://inmostfly.github.io/tags/%E5%8D%9A%E5%BC%88%E8%AE%BA/"/>
-    <category term="数论" scheme="http://inmostfly.github.io/tags/%E6%95%B0%E8%AE%BA/"/>
     <category term="分治" scheme="http://inmostfly.github.io/tags/%E5%88%86%E6%B2%BB/"/>
     <id>http://inmostfly.github.io/2026/02/16/CF1079_Div2/</id>
     <link href="http://inmostfly.github.io/2026/02/16/CF1079_Div2/"/>

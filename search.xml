@@ -1,67 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>CF1079_Div2</title>
-    <url>/2026/02/16/CF1079_Div2/</url>
-    <content><![CDATA[<h2 id="CF1079-题解"><a href="#CF1079-题解" class="headerlink" title="CF1079 题解"></a><a href="https://codeforces.com/contest/2197">CF1079</a> 题解</h2><p>文中主要包括如下考点（CF题目做法灵活，只叙述自己赛时做法）<br>二分 模拟 排序 博弈论 数论 分治  </p>
-<span id="more"></span>
-<h3 id="A-Friendly-Numbers"><a href="#A-Friendly-Numbers" class="headerlink" title="A.Friendly Numbers"></a>A.Friendly Numbers</h3><p>数学题，有性质(本题数据范围极小，$[x,x+100]$)</p>
-<blockquote>
-<p>任何整数 $y$ 减去它的各位数字之和 $d(y)$，结果一定是 9 的倍数。</p>
-</blockquote>
-<p>故优先判断是否是9的倍数，如果不是则直接 return</p>
-<blockquote>
-<p>A题代码如下</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int get_d(int n)&#123;</span><br><span class="line">    int <span class="built_in">sum</span>=0;</span><br><span class="line">    <span class="keyword">while</span>(n&gt;0)&#123;</span><br><span class="line">        <span class="built_in">sum</span>+=n%10;</span><br><span class="line">        n/=10;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> <span class="built_in">sum</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void <span class="function"><span class="title">solve</span></span>()&#123;</span><br><span class="line">    int x;</span><br><span class="line">    cin&gt;&gt;x;</span><br><span class="line">    <span class="keyword">if</span>(x%9!=0)&#123;</span><br><span class="line">        cout&lt;&lt;<span class="string">0&lt;&lt;endl;</span></span><br><span class="line"><span class="string">        return;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">    int count=0</span>;</span><br><span class="line">    <span class="keyword">for</span>(int y=x;y&lt;=x+100;y++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(y-get_d(y)==x)&#123;</span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;<span class="string">count&lt;&lt;endl;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">signed main() &#123;</span></span><br><span class="line"><span class="string">    fast;</span></span><br><span class="line"><span class="string">    int T = 1;</span></span><br><span class="line"><span class="string">    cin &gt;&gt; T;</span></span><br><span class="line"><span class="string">    while (T--) &#123;</span></span><br><span class="line"><span class="string">        solve();</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">    return 0;</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
-<h3 id="B-Array-and-Permutation"><a href="#B-Array-and-Permutation" class="headerlink" title="B. Array and Permutation"></a>B. Array and Permutation</h3><p>本题需要用排列生成数组，注意到一个数在排列中只能出现一次，故只用查去连续重复后第一次出现时的相对位置，即当前数组中的数字对应的排列中的位置是否合理，记录对应排列位置中的最小值，若当前数组对应位置小于最小值，false.</p>
-<blockquote>
-<p>采用哈希的方式记录位置，即当前值pos[p[i]]=i;<br>a.erase(unique(a.begin(),a.end()),a.end());</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">void <span class="function"><span class="title">solve</span></span>()&#123;</span><br><span class="line">    int n;</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    vector&lt;int&gt; p(n+1);</span><br><span class="line">    vector&lt;int&gt; a(n+1);</span><br><span class="line">    vector&lt;int&gt; pos(n+1);</span><br><span class="line">    <span class="keyword">for</span>(int i=1;i&lt;=n;i++)&#123;</span><br><span class="line">        cin&gt;&gt;p[i];</span><br><span class="line">        pos[p[i]]=i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(int i=1;i&lt;=n;i++)&#123;</span><br><span class="line">        cin&gt;&gt;a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    a.erase(unique(a.begin()+1,a.end()),a.end());</span><br><span class="line">    bool flag=<span class="literal">true</span>;</span><br><span class="line">    int minn=0;</span><br><span class="line">    <span class="keyword">for</span>(int i=1;i&lt;a.size();i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(minn&gt;pos[a[i]])&#123;</span><br><span class="line">            flag=<span class="literal">false</span>;</span><br><span class="line">            cout&lt;&lt;<span class="string">&quot;NO&quot;</span>&lt;&lt;<span class="string">endl;</span></span><br><span class="line"><span class="string">            return;</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">        minn=pos[a[i]];</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">    cout&lt;&lt;&quot;YES&quot;&lt;&lt;endl</span>;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="C-Game-with-a-Fraction"><a href="#C-Game-with-a-Fraction" class="headerlink" title="C. Game with a Fraction"></a>C. Game with a Fraction</h3><p>博弈题，放在坐标系中，即检查直线是否能在下方与 $p=2/3q$ 有交点</p>
-<blockquote>
-<p>直线的原因在于，博弈中均采用对自己最有利的方向，二者与对手操作相反，最终形成一条$y=x$的曲线,即从初始位置出发沿y=x下降（建议画图）</p>
-</blockquote>
-<p>为什么不能直接跳过 $p=\frac{2}{3}q$ 到下方保证 Alice 胜利？</p>
-<p>假设 $tem = 3 \cdot p - 2 \cdot q$，且目前初始点在 $y=x$ 与 $y=\frac{2}{3}x$ 之间。<br>此时 Alice 目标是减小后跳过，即 Alice 操作 <code>tem -= 3</code>，Bob 操作 <code>tem += 2</code>。</p>
-<p>假如 $tem \% 3 == 1$ 或者 $2$，Alice 可以跳过，但是 Bob 紧接着可以操作 <code>+2</code>。<br>若 Alice 操作后为 $-1$，则继续拉锯。然而 $p &lt; q$，注定 Alice 先无法操作（因为 $q-p &gt; 1$）。</p>
-<p>若不在上述区间内，易得Alice必胜</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">void <span class="function"><span class="title">solve</span></span>()&#123;</span><br><span class="line">    int p,q;</span><br><span class="line">    cin&gt;&gt;p&gt;&gt;q;</span><br><span class="line">    <span class="keyword">if</span>(p*3==2*q)&#123;</span><br><span class="line">        cout&lt;&lt;<span class="string">&quot;Bob&quot;</span>&lt;&lt;<span class="string">endl;</span></span><br><span class="line"><span class="string">        return;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">    if(p==0&amp;&amp;q==1)&#123;</span></span><br><span class="line"><span class="string">        cout&lt;&lt;&quot;Alice&quot;&lt;&lt;endl</span>;</span><br><span class="line">        <span class="built_in">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(3*p&gt;2*q&amp;&amp;p&lt;q)&#123;</span><br><span class="line">        cout&lt;&lt;<span class="string">&quot;Bob&quot;</span>&lt;&lt;<span class="string">endl;</span></span><br><span class="line"><span class="string">        return;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">    else&#123;</span></span><br><span class="line"><span class="string">        cout&lt;&lt;&quot;Alice&quot;&lt;&lt;endl</span>;</span><br><span class="line">        <span class="built_in">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">signed <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line">    fast;</span><br><span class="line">    int T = 1;</span><br><span class="line">    cin &gt;&gt; T;</span><br><span class="line">    <span class="keyword">while</span> (T--) &#123;</span><br><span class="line">        solve();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">return</span> 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="D-Another-Problem-about-Beautiful-Pairs"><a href="#D-Another-Problem-about-Beautiful-Pairs" class="headerlink" title="D. Another Problem about Beautiful Pairs"></a>D. Another Problem about Beautiful Pairs</h3><p>核心在于暴力枚举过程中的分冶优化 <em>根号分治</em></p>
-<blockquote>
-<script type="math/tex; mode=display">x \cdot y \le N \implies \min(x, y) \le \sqrt{N}</script><p>在任何满足乘积限制的配对中，必然有一个数是非常小的，$ k &lt; \sqrt{N} $，去遍历这个所有可能的小数，根据这个假设的小数可以通过遍历数组，遍历举j的位置推得较大的另一个数的位置，检测当前位置是否为这个小数.<br>在检测位置时需要留意，$j+$还是$j-$,我们并不知道举出来的二者谁是在左谁是在右</p>
-</blockquote>
-<p>本题数据量在 $ 2 \cdot 10^5 \cdot 2 \cdot 10^5 $, sqrt 优化后可到$ 10^8 $极限通过</p>
-<blockquote>
-<p>解题过程中发现过于极限TLE，摸排后遍历过程中可以同时探测两个方向  </p>
-</blockquote>
-<ul>
-<li>根号优化：专门针对带有 $x \cdot y = K$ 或者 $x \cdot y \le N$ 这类约束的题目.</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">void <span class="function"><span class="title">solve</span></span>()&#123;</span><br><span class="line">    int n;</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    vector&lt;int&gt; a(n+1);</span><br><span class="line">    <span class="keyword">for</span>(int i=1;i&lt;=n;i++)&#123;</span><br><span class="line">        cin&gt;&gt;a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    int ans=0;</span><br><span class="line">    int tem=sqrt(2*n)+1;</span><br><span class="line">    <span class="keyword">for</span>(int k=1;k&lt;=tem;k++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(int j=1;j&lt;=n;j++)&#123;</span><br><span class="line">            int temp=a[j]*k;</span><br><span class="line">            <span class="keyword">if</span>(temp&lt;j&amp;&amp;a[j]&gt;=k)&#123;</span><br><span class="line">                int i=j-temp;</span><br><span class="line">                <span class="keyword">if</span>(a[i]==k) ans++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(j+temp&lt;=n&amp;&amp;a[j]&gt;k)&#123;</span><br><span class="line">                int m=j+temp;</span><br><span class="line">                <span class="keyword">if</span>(a[m]==k) ans++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;<span class="string">ans&lt;&lt;endl;</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
-<h3 id="聂菲斯可爱捏"><a href="#聂菲斯可爱捏" class="headerlink" title="聂菲斯可爱捏"></a>聂菲斯可爱捏</h3><p><img src="/uploads/bingo.jpg" alt="聂菲斯可爱捏"></p>
-]]></content>
-      <categories>
-        <category>题解</category>
-      </categories>
-      <tags>
-        <tag>二分</tag>
-        <tag>模拟</tag>
-        <tag>排序</tag>
-        <tag>博弈论</tag>
-        <tag>数论</tag>
-        <tag>分治</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2026/02/09/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://inmostfly.github.io/">Hexo</a>! This is my very first blog.</p>
-<h2 id="Maybe-you-can-see"><a href="#Maybe-you-can-see" class="headerlink" title="Maybe you can see"></a>Maybe you can see</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">c c++ python java javascript </span><br><span class="line">机器学习，transformer框架浅谈，深度学习 and so on.</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
     <title>JavaScript</title>
     <url>/2026/02/26/JavaScript/</url>
     <content><![CDATA[<p>前端学习笔记，HTML,CSS,JavaScript三者协同构成网页</p>
@@ -135,18 +74,109 @@
       </tags>
   </entry>
   <entry>
+    <title>CF1079_Div2</title>
+    <url>/2026/02/16/CF1079_Div2/</url>
+    <content><![CDATA[<h2 id="CF1079-题解"><a href="#CF1079-题解" class="headerlink" title="CF1079 题解"></a><a href="https://codeforces.com/contest/2197">CF1079</a> 题解</h2><p>文中主要包括如下考点（CF题目做法灵活，只叙述自己赛时做法）<br>二分 模拟 排序 博弈论 数论 分治  </p>
+<span id="more"></span>
+<h3 id="A-Friendly-Numbers"><a href="#A-Friendly-Numbers" class="headerlink" title="A.Friendly Numbers"></a>A.Friendly Numbers</h3><p>数学题，有性质(本题数据范围极小，$[x,x+100]$)</p>
+<blockquote>
+<p>任何整数 $y$ 减去它的各位数字之和 $d(y)$，结果一定是 9 的倍数。</p>
+</blockquote>
+<p>故优先判断是否是9的倍数，如果不是则直接 return</p>
+<blockquote>
+<p>A题代码如下</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int get_d(int n)&#123;</span><br><span class="line">    int <span class="built_in">sum</span>=0;</span><br><span class="line">    <span class="keyword">while</span>(n&gt;0)&#123;</span><br><span class="line">        <span class="built_in">sum</span>+=n%10;</span><br><span class="line">        n/=10;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> <span class="built_in">sum</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void <span class="function"><span class="title">solve</span></span>()&#123;</span><br><span class="line">    int x;</span><br><span class="line">    cin&gt;&gt;x;</span><br><span class="line">    <span class="keyword">if</span>(x%9!=0)&#123;</span><br><span class="line">        cout&lt;&lt;<span class="string">0&lt;&lt;endl;</span></span><br><span class="line"><span class="string">        return;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">    int count=0</span>;</span><br><span class="line">    <span class="keyword">for</span>(int y=x;y&lt;=x+100;y++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(y-get_d(y)==x)&#123;</span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;<span class="string">count&lt;&lt;endl;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">signed main() &#123;</span></span><br><span class="line"><span class="string">    fast;</span></span><br><span class="line"><span class="string">    int T = 1;</span></span><br><span class="line"><span class="string">    cin &gt;&gt; T;</span></span><br><span class="line"><span class="string">    while (T--) &#123;</span></span><br><span class="line"><span class="string">        solve();</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">    return 0;</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="B-Array-and-Permutation"><a href="#B-Array-and-Permutation" class="headerlink" title="B. Array and Permutation"></a>B. Array and Permutation</h3><p>本题需要用排列生成数组，注意到一个数在排列中只能出现一次，故只用查去连续重复后第一次出现时的相对位置，即当前数组中的数字对应的排列中的位置是否合理，记录对应排列位置中的最小值，若当前数组对应位置小于最小值，false.</p>
+<blockquote>
+<p>采用哈希的方式记录位置，即当前值pos[p[i]]=i;<br>a.erase(unique(a.begin(),a.end()),a.end());</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">void <span class="function"><span class="title">solve</span></span>()&#123;</span><br><span class="line">    int n;</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    vector&lt;int&gt; p(n+1);</span><br><span class="line">    vector&lt;int&gt; a(n+1);</span><br><span class="line">    vector&lt;int&gt; pos(n+1);</span><br><span class="line">    <span class="keyword">for</span>(int i=1;i&lt;=n;i++)&#123;</span><br><span class="line">        cin&gt;&gt;p[i];</span><br><span class="line">        pos[p[i]]=i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(int i=1;i&lt;=n;i++)&#123;</span><br><span class="line">        cin&gt;&gt;a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    a.erase(unique(a.begin()+1,a.end()),a.end());</span><br><span class="line">    bool flag=<span class="literal">true</span>;</span><br><span class="line">    int minn=0;</span><br><span class="line">    <span class="keyword">for</span>(int i=1;i&lt;a.size();i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(minn&gt;pos[a[i]])&#123;</span><br><span class="line">            flag=<span class="literal">false</span>;</span><br><span class="line">            cout&lt;&lt;<span class="string">&quot;NO&quot;</span>&lt;&lt;<span class="string">endl;</span></span><br><span class="line"><span class="string">            return;</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">        minn=pos[a[i]];</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">    cout&lt;&lt;&quot;YES&quot;&lt;&lt;endl</span>;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="C-Game-with-a-Fraction"><a href="#C-Game-with-a-Fraction" class="headerlink" title="C. Game with a Fraction"></a>C. Game with a Fraction</h3><p>博弈题，放在坐标系中，即检查直线是否能在下方与 $p=2/3q$ 有交点</p>
+<blockquote>
+<p>直线的原因在于，博弈中均采用对自己最有利的方向，二者与对手操作相反，最终形成一条$y=x$的曲线,即从初始位置出发沿y=x下降（建议画图）</p>
+</blockquote>
+<p>为什么不能直接跳过 $p=\frac{2}{3}q$ 到下方保证 Alice 胜利？</p>
+<p>假设 $tem = 3 \cdot p - 2 \cdot q$，且目前初始点在 $y=x$ 与 $y=\frac{2}{3}x$ 之间。<br>此时 Alice 目标是减小后跳过，即 Alice 操作 <code>tem -= 3</code>，Bob 操作 <code>tem += 2</code>。</p>
+<p>假如 $tem \% 3 == 1$ 或者 $2$，Alice 可以跳过，但是 Bob 紧接着可以操作 <code>+2</code>。<br>若 Alice 操作后为 $-1$，则继续拉锯。然而 $p &lt; q$，注定 Alice 先无法操作（因为 $q-p &gt; 1$）。</p>
+<p>若不在上述区间内，易得Alice必胜</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">void <span class="function"><span class="title">solve</span></span>()&#123;</span><br><span class="line">    int p,q;</span><br><span class="line">    cin&gt;&gt;p&gt;&gt;q;</span><br><span class="line">    <span class="keyword">if</span>(p*3==2*q)&#123;</span><br><span class="line">        cout&lt;&lt;<span class="string">&quot;Bob&quot;</span>&lt;&lt;<span class="string">endl;</span></span><br><span class="line"><span class="string">        return;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">    if(p==0&amp;&amp;q==1)&#123;</span></span><br><span class="line"><span class="string">        cout&lt;&lt;&quot;Alice&quot;&lt;&lt;endl</span>;</span><br><span class="line">        <span class="built_in">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(3*p&gt;2*q&amp;&amp;p&lt;q)&#123;</span><br><span class="line">        cout&lt;&lt;<span class="string">&quot;Bob&quot;</span>&lt;&lt;<span class="string">endl;</span></span><br><span class="line"><span class="string">        return;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">    else&#123;</span></span><br><span class="line"><span class="string">        cout&lt;&lt;&quot;Alice&quot;&lt;&lt;endl</span>;</span><br><span class="line">        <span class="built_in">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">signed <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line">    fast;</span><br><span class="line">    int T = 1;</span><br><span class="line">    cin &gt;&gt; T;</span><br><span class="line">    <span class="keyword">while</span> (T--) &#123;</span><br><span class="line">        solve();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">return</span> 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="D-Another-Problem-about-Beautiful-Pairs"><a href="#D-Another-Problem-about-Beautiful-Pairs" class="headerlink" title="D. Another Problem about Beautiful Pairs"></a>D. Another Problem about Beautiful Pairs</h3><p>核心在于暴力枚举过程中的分冶优化 <em>根号分治</em></p>
+<blockquote>
+<script type="math/tex; mode=display">x \cdot y \le N \implies \min(x, y) \le \sqrt{N}</script><p>在任何满足乘积限制的配对中，必然有一个数是非常小的，$ k &lt; \sqrt{N} $，去遍历这个所有可能的小数，根据这个假设的小数可以通过遍历数组，遍历举j的位置推得较大的另一个数的位置，检测当前位置是否为这个小数.<br>在检测位置时需要留意，$j+$还是$j-$,我们并不知道举出来的二者谁是在左谁是在右</p>
+</blockquote>
+<p>本题数据量在 $ 2 \cdot 10^5 \cdot 2 \cdot 10^5 $, sqrt 优化后可到$ 10^8 $极限通过</p>
+<blockquote>
+<p>解题过程中发现过于极限TLE，摸排后遍历过程中可以同时探测两个方向  </p>
+</blockquote>
+<ul>
+<li>根号优化：专门针对带有 $x \cdot y = K$ 或者 $x \cdot y \le N$ 这类约束的题目.</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">void <span class="function"><span class="title">solve</span></span>()&#123;</span><br><span class="line">    int n;</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    vector&lt;int&gt; a(n+1);</span><br><span class="line">    <span class="keyword">for</span>(int i=1;i&lt;=n;i++)&#123;</span><br><span class="line">        cin&gt;&gt;a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    int ans=0;</span><br><span class="line">    int tem=sqrt(2*n)+1;</span><br><span class="line">    <span class="keyword">for</span>(int k=1;k&lt;=tem;k++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(int j=1;j&lt;=n;j++)&#123;</span><br><span class="line">            int temp=a[j]*k;</span><br><span class="line">            <span class="keyword">if</span>(temp&lt;j&amp;&amp;a[j]&gt;=k)&#123;</span><br><span class="line">                int i=j-temp;</span><br><span class="line">                <span class="keyword">if</span>(a[i]==k) ans++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(j+temp&lt;=n&amp;&amp;a[j]&gt;k)&#123;</span><br><span class="line">                int m=j+temp;</span><br><span class="line">                <span class="keyword">if</span>(a[m]==k) ans++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;<span class="string">ans&lt;&lt;endl;</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="聂菲斯可爱捏"><a href="#聂菲斯可爱捏" class="headerlink" title="聂菲斯可爱捏"></a>聂菲斯可爱捏</h3><p><img src="/uploads/bingo.jpg" alt="聂菲斯可爱捏"></p>
+]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>数论</tag>
+        <tag>二分</tag>
+        <tag>模拟</tag>
+        <tag>排序</tag>
+        <tag>博弈论</tag>
+        <tag>分治</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2026/02/09/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://inmostfly.github.io/">Hexo</a>! This is my very first blog.</p>
+<h2 id="Maybe-you-can-see"><a href="#Maybe-you-can-see" class="headerlink" title="Maybe you can see"></a>Maybe you can see</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">c c++ python java javascript </span><br><span class="line">机器学习，transformer框架浅谈，深度学习 and so on.</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
     <title>字典树</title>
     <url>/2026/03/12/%E5%AD%97%E5%85%B8%E6%A0%91/</url>
     <content><![CDATA[<p>字符串的处理方式极多，字典树便是其中一种</p>
 <span id="more"></span>
-<h2 id="先放一个板子"><a href="#先放一个板子" class="headerlink" title="先放一个板子"></a>先放一个板子</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include &lt;bits/stdc++.h&gt;</span></span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">const int N = 1000005;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int trie[N][26], cnt[N], pass[N], <span class="built_in">id</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void insert(const string &amp;s)</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    int p = 0;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (char c : s)</span><br><span class="line"></span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">        int x = c - <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!trie[p][x]) trie[p][x] = ++<span class="built_in">id</span>;</span><br><span class="line"></span><br><span class="line">        p = trie[p][x];</span><br><span class="line"></span><br><span class="line">        pass[p]++;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    cnt[p]++;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int find(const string &amp;s)</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    int p = 0;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (char c : s)</span><br><span class="line"></span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">        int x = c - <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!trie[p][x]) <span class="built_in">return</span> 0;</span><br><span class="line"></span><br><span class="line">        p = trie[p][x];</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">return</span> cnt[p];</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int find_prefix(const string &amp;s)</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    int p = 0;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (char c : s)</span><br><span class="line"></span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">        int x = c - <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!trie[p][x]) <span class="built_in">return</span> 0;</span><br><span class="line"></span><br><span class="line">        p = trie[p][x];</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">return</span> pass[p];</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int <span class="function"><span class="title">main</span></span>()</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    int n;</span><br><span class="line"></span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (n--)</span><br><span class="line"></span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">        string s;</span><br><span class="line"></span><br><span class="line">        cin &gt;&gt; s;</span><br><span class="line"></span><br><span class="line">        insert(s);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    string s;</span><br><span class="line"></span><br><span class="line">    cin &gt;&gt; s;</span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;出现次数: &quot;</span> &lt;&lt; <span class="string">find(s) &lt;&lt; &#x27;\n&#x27;;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    cout &lt;&lt; &quot;前缀次数: &quot; &lt;&lt; find_prefix(s) &lt;&lt; &#x27;\n&#x27;;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    return 0;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
-]]></content>
+<h2 id="先放一个板子"><a href="#先放一个板子" class="headerlink" title="先放一个板子"></a>先放一个板子</h2><p>此篇重写，再无板子之谈  </p>
+<font color=red> 板子不理解的时候真能坑死人,还不如没有 </font>]]></content>
       <categories>
         <category>算法</category>
       </categories>
       <tags>
         <tag>树</tag>
         <tag>字符串</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>并查集</title>
+    <url>/2026/03/16/%E5%B9%B6%E6%9F%A5%E9%9B%86/</url>
+    <content><![CDATA[<h2 id="并查集"><a href="#并查集" class="headerlink" title="并查集"></a>并查集</h2><p>青春猪头少年不会在赛时被并查集少一次遍历卡165min遗憾退场</p>
+<span id="more"></span>
+<p>并查集，核心在查询其公共根节点，即族长</p>
+<h3 id="搜寻公共根节点，合并，判是否同族"><a href="#搜寻公共根节点，合并，判是否同族" class="headerlink" title="搜寻公共根节点，合并，判是否同族"></a>搜寻公共根节点，合并，判是否同族</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//搜寻公共根节点，期间路径压缩，记录已经找到根节点的数据，省略其一步步查找的过程</span><br><span class="line">int f[100000]</span><br><span class="line">int find(int u)&#123;</span><br><span class="line">    <span class="built_in">return</span> f[u]==u?u:f[u]=find(f[u]);</span><br><span class="line">&#125;</span><br><span class="line">void unite(int x,int y)&#123;</span><br><span class="line">    f[find(x)]=find(y);</span><br><span class="line">&#125;</span><br><span class="line">bool same(int x,int y)&#123;</span><br><span class="line">    <span class="built_in">return</span> find(x)==find(y)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>核心就三点，查询，判别，合并</p>
+<h3 id="毒点"><a href="#毒点" class="headerlink" title="毒点"></a>毒点</h3><h4 id="带圈的并查集怎么解决"><a href="#带圈的并查集怎么解决" class="headerlink" title="带圈的并查集怎么解决"></a>带圈的并查集怎么解决</h4><p>os:所以这玩意为什么能卡我三个小时，道心破碎了吗（这个题其实很快就看出来思路了，但是卡在并查集了）<br>[路径问题]<a href="http://10.67.4.89/p/P10029">http://10.67.4.89/p/P10029</a><br>问题来了，假如说我们要通过并查集判断一个有向图里面环的个数，每个环中任意节点出入度都是1，那么并查集由于其unite步骤，默认合并x的父节点到y的父节点下方，环的特殊性使得存在如下情况 </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1-&gt;2  2-&gt;3  3-&gt;4  4-&gt;1</span><br><span class="line">f[1]=2;f[2]=3;f[3]=4;f[4]=1;</span><br><span class="line">//find步骤递归将无穷进行，也就是说，我们必须规定一个环中具有某特征的数在unite时固定充当父节点</span><br></pre></td></tr></table></figure>
+<p>最简单的就是找大小来比较，两个根节点合并的时候，大的合并到小的或小的合并到大的</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">void unite(int x,int y)&#123;</span><br><span class="line">    int tem1=find(x);</span><br><span class="line">    int tem2=find(y);</span><br><span class="line">	f[min(tem1,tem2)]=max(tem1,tem2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="f最终在跑完一整遍图之后，存的直接就是最终的父节点吗"><a href="#f最终在跑完一整遍图之后，存的直接就是最终的父节点吗" class="headerlink" title="f最终在跑完一整遍图之后，存的直接就是最终的父节点吗"></a>f最终在跑完一整遍图之后，存的直接就是最终的父节点吗</h4><center>
+<font color=red>  不是！！！ </font>
+</center>
+
+<p>f仅仅是处理过程中的路径压缩，只有在跑过去的时候才会压缩到，否则还是原根节点  </p>
+<p>举个例子，2的根节点是3，f[2]=3,之后进行了依次f[3]=f[4]的合并，f[2]依旧是3</p>
+<p>只有在最后存完之后</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(int i=1;i&lt;=n;i++)&#123;</span><br><span class="line">    f[i]=find(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>才能算是真正f[i]存的是根节点,实际前面做的都是建链，最后顺着链子跑一遍，才是真正把每个节点锚定到根节点。</p>
+<h2 id="依旧遗憾离场"><a href="#依旧遗憾离场" class="headerlink" title="依旧遗憾离场"></a>依旧遗憾离场</h2><p>以后再也不会盯着一个题看那么长时间了，归根到底还是做题习惯</p>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>并查集</tag>
       </tags>
   </entry>
   <entry>
@@ -167,30 +197,6 @@
       </categories>
       <tags>
         <tag>随笔</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>背包问题</title>
-    <url>/2026/03/08/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<p>搁置已久，今天来简单讨论下背包的基础性问题<br><span id="more"></span></p>
-<h2 id="01背包"><a href="#01背包" class="headerlink" title="01背包"></a>01背包</h2><blockquote>
-<p>有n件物品和一个最多能背重量为w 的背包。第i件物品的重量是weight[i]，得到的价值是value[i] 。每件物品只能用一次，求解将哪些物品装入背包里物品价值总和最大</p>
-</blockquote>
-<p>二维状态转移方程：$dp[i][j] = max(dp[i-1][j], dp[i-1][j-w[i]] + v[i])$<br>$dp[i][j]$表示前i件物品放入一个容量为j的背包可以获得的最大价值，v[i]可放可不放</p>
-<p>一维状态转移方程：$dp[j] = max(dp[j], dp[j-w[i]] + v[i])$<br>dp[j]表示容量恰为j的时候的最大价值</p>
-<h3 id="一维01背包为什么倒序"><a href="#一维01背包为什么倒序" class="headerlink" title="一维01背包为什么倒序"></a>一维01背包为什么倒序</h3><p>对二维背包来讲，i各种容量下的解依赖的是没有i这个物品时的最优解，即考虑前i-1件物品所产生的最优解  对于一维背包来讲，我们优化掉了存储的维度，如果正序遍历j，那么在更新dp[j]时，dp[j-w[i]]已经被物品i更新过了，依赖关系被破坏，即在更新时，由于 $j-w[i]&lt;j$ 会优先更新dp[j-w[i]-w[i]]，<br>而倒序遍历j则会保证较小的j-w[i]维持i-1次的状态，故而保证第i件物品在每次更新时不会重复使用。<br>（正是因为每次都是逐步考虑保证了前i次的最优解，故最终遍历到n时即保证全局最优解，即动态规划）</p>
-<h3 id="01背包核心代码"><a href="#01背包核心代码" class="headerlink" title="01背包核心代码"></a>01背包核心代码</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (int j = m; j &gt;= w[i]; j--) &#123;</span><br><span class="line">        dp[j] = max(dp[j], dp[j - w[i]] + v[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="完全背包"><a href="#完全背包" class="headerlink" title="完全背包"></a>完全背包</h2><p>其差别在于，完全背包不再有物品的数量限制，每件物品均有无穷件<br>那就好办了，我们刚刚说了之所以倒序，就是为了避免第i物品被考虑多次，那我们正着写，那就恰满足了每件物品被考虑多件的需求，我们每次从小开始遍历，在处理j的时候j-w[i]实际上已经考虑过有第i件物品情况下的最优解，依次类推即每件物品都没有了件数限制  </p>
-<h3 id="完全背包核心代码"><a href="#完全背包核心代码" class="headerlink" title="完全背包核心代码"></a>完全背包核心代码</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (int j = w[i]; j &lt;= m; j++) &#123;</span><br><span class="line">        dp[j] = max(dp[j], dp[j - w[i]] + v[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="多重背包"><a href="#多重背包" class="headerlink" title="多重背包"></a>多重背包</h2><h2 id="放上题目"><a href="#放上题目" class="headerlink" title="放上题目"></a>放上题目</h2><p>B2174 完全背包<a href="https://www.luogu.com.cn/problem/B2174">B2174 完全背包</a></p>
-<p>背包问题有时甚至会混淆视听<br>P7223 [RC-04] 01 背包(<a href="https://www.luogu.com.cn/problem/P7223">https://www.luogu.com.cn/problem/P7223</a>)</p>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>动态规划</tag>
-        <tag>背包</tag>
       </tags>
   </entry>
   <entry>
@@ -215,8 +221,32 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>动态规划</tag>
         <tag>筛</tag>
+        <tag>动态规划</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>背包问题</title>
+    <url>/2026/03/08/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>搁置已久，今天来简单讨论下背包的基础性问题<br><span id="more"></span></p>
+<h2 id="01背包"><a href="#01背包" class="headerlink" title="01背包"></a>01背包</h2><blockquote>
+<p>有n件物品和一个最多能背重量为w 的背包。第i件物品的重量是weight[i]，得到的价值是value[i] 。每件物品只能用一次，求解将哪些物品装入背包里物品价值总和最大</p>
+</blockquote>
+<p>二维状态转移方程：$dp[i][j] = max(dp[i-1][j], dp[i-1][j-w[i]] + v[i])$<br>$dp[i][j]$表示前i件物品放入一个容量为j的背包可以获得的最大价值，v[i]可放可不放</p>
+<p>一维状态转移方程：$dp[j] = max(dp[j], dp[j-w[i]] + v[i])$<br>dp[j]表示容量恰为j的时候的最大价值</p>
+<h3 id="一维01背包为什么倒序"><a href="#一维01背包为什么倒序" class="headerlink" title="一维01背包为什么倒序"></a>一维01背包为什么倒序</h3><p>对二维背包来讲，i各种容量下的解依赖的是没有i这个物品时的最优解，即考虑前i-1件物品所产生的最优解  对于一维背包来讲，我们优化掉了存储的维度，如果正序遍历j，那么在更新dp[j]时，dp[j-w[i]]已经被物品i更新过了，依赖关系被破坏，即在更新时，由于 $j-w[i]&lt;j$ 会优先更新dp[j-w[i]-w[i]]，<br>而倒序遍历j则会保证较小的j-w[i]维持i-1次的状态，故而保证第i件物品在每次更新时不会重复使用。<br>（正是因为每次都是逐步考虑保证了前i次的最优解，故最终遍历到n时即保证全局最优解，即动态规划）</p>
+<h3 id="01背包核心代码"><a href="#01背包核心代码" class="headerlink" title="01背包核心代码"></a>01背包核心代码</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (int j = m; j &gt;= w[i]; j--) &#123;</span><br><span class="line">        dp[j] = max(dp[j], dp[j - w[i]] + v[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="完全背包"><a href="#完全背包" class="headerlink" title="完全背包"></a>完全背包</h2><p>其差别在于，完全背包不再有物品的数量限制，每件物品均有无穷件<br>那就好办了，我们刚刚说了之所以倒序，就是为了避免第i物品被考虑多次，那我们正着写，那就恰满足了每件物品被考虑多件的需求，我们每次从小开始遍历，在处理j的时候j-w[i]实际上已经考虑过有第i件物品情况下的最优解，依次类推即每件物品都没有了件数限制  </p>
+<h3 id="完全背包核心代码"><a href="#完全背包核心代码" class="headerlink" title="完全背包核心代码"></a>完全背包核心代码</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (int j = w[i]; j &lt;= m; j++) &#123;</span><br><span class="line">        dp[j] = max(dp[j], dp[j - w[i]] + v[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="多重背包"><a href="#多重背包" class="headerlink" title="多重背包"></a>多重背包</h2><h2 id="放上题目"><a href="#放上题目" class="headerlink" title="放上题目"></a>放上题目</h2><p>B2174 完全背包<a href="https://www.luogu.com.cn/problem/B2174">B2174 完全背包</a></p>
+<p>背包问题有时甚至会混淆视听<br>P7223 [RC-04] 01 背包(<a href="https://www.luogu.com.cn/problem/P7223">https://www.luogu.com.cn/problem/P7223</a>)</p>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>动态规划</tag>
+        <tag>背包</tag>
       </tags>
   </entry>
 </search>
