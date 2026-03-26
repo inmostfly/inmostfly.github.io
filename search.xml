@@ -55,37 +55,11 @@
       </tags>
   </entry>
   <entry>
-    <title>gcd及其扩展</title>
-    <url>/2026/03/06/gcd%E5%8F%8A%E5%85%B6%E6%89%A9%E5%B1%95/</url>
-    <content><![CDATA[<h2 id="gcd运算严格满足结合率"><a href="#gcd运算严格满足结合率" class="headerlink" title="gcd运算严格满足结合率"></a>gcd运算严格满足结合率</h2><p>即有 $\gcd(a,b,c) = \gcd(\gcd(a,b),c) = \gcd(a,\gcd(b,c))$</p>
-<span id="more"></span>
-<p>三者求最大公约数顺序任意排列</p>
-<h3 id="严格证明"><a href="#严格证明" class="headerlink" title="严格证明"></a>严格证明</h3><p>d=gcd(a,b)意味着d是同时能整除a,b的最大整数，g=gcd(d,c),意味着g是能同时整除d,c的最大整数<br>因为g能整除d,d能整除a,b，故g能整除a,b,c，即g是a,b,c的公约数<br>反过来，我们取a,b,c的公约数k，k定然能被其最大公约数d整除，k同时又是d,c的因数，故又能被g整除，因此g定然是a,b,c中最大的公约数（a,b的公约数是gcd(a,b)的因数的证明在下）</p>
-<blockquote>
-<p>本质推理是素因数分解</p>
-</blockquote>
-<p>对于两个数而言，素因数分解<br>$a=p_{1}^{m1} \cdot p_{2}^{m2}…p_{n}^{mk}$<br>$b=p_{1}^{n1} \cdot p_{2}^{n2}…p_{nk}^{mk}$<br>不难观察到，其最大公约数就是其素因数幂次的组合<br>即 最大公约数=$p_1^{\min(m_1,n_1)} p_2^{\min(m_2,n_2)} \cdots p_k^{\min(m_k,n_k)}$<br>根据上述式子，我们可以得到a,b的其他任意公约数均可以整除最大公约数<br>故不管再多的数放在一起求gcd，都是满足结合律的。（故其实也可以直接从证明看出可结合性 本质是min取的过程中不在乎顺序如何）  </p>
-<h2 id="exgcd模板"><a href="#exgcd模板" class="headerlink" title="exgcd模板"></a>exgcd模板</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int exgcd(int a, int b, int&amp; x, int&amp; y) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!b) &#123;</span><br><span class="line">        x = 1;</span><br><span class="line">        y = 0;</span><br><span class="line">        <span class="built_in">return</span> a;</span><br><span class="line">    &#125;</span><br><span class="line">    int d = exgcd(b, a % b, y, x);//返回值是最大公约数</span><br><span class="line">    y -= a / b * x;</span><br><span class="line">    <span class="built_in">return</span> d;</span><br><span class="line">&#125;</span><br><span class="line">/*void exgcd(ll a,ll b,ll &amp;x,ll &amp;y)&#123;  //更简洁的求解写法</span><br><span class="line">    <span class="keyword">if</span>(b == 0) &#123; x = 1,y = 0; <span class="built_in">return</span>;&#125;</span><br><span class="line">    exgcd(b,a%b,y,x);           //x和y换位</span><br><span class="line">    y = y- a/b*x;</span><br><span class="line">&#125;*/</span><br></pre></td></tr></table></figure>
-<p>返回的d即最终 $ax+by=gcd(a,b)$<br>即：对于任意两个不全为零的整数 $a$ 和 $b$，一定存在整数 $x$ 和 $y$，使得 $ax+by=\gcd(a,b)$ 成立。同时通过值引用，$x,y$最终的值即$x,y$的最小特解。</p>
-<p>用处：  </p>
-<h3 id="1-求解二元一次不定方程"><a href="#1-求解二元一次不定方程" class="headerlink" title="1.求解二元一次不定方程"></a>1.求解二元一次不定方程</h3><p>用于求解形如 $ax+by=c$ 的整数解。根据裴蜀定理的推论，这个方程有解的充要条件是 $\gcd(a,b)$ 能整除 $c$。通过 exgcd 求出 $ax+by=\gcd(a,b)$ 的一组解后，将其按比例扩大，即可得到原方程的一组特解$x_0,y_0$，进而可以推导出通解。<br>通解：$x=x_0 + k\cdot \frac{b}{gcd(a,b)}$ ，$y=y_0 - k\cdot \frac{a}{gcd(a,b)}$<br>(k是任意整数)</p>
-<h3 id="2-求解模综合乘法逆元"><a href="#2-求解模综合乘法逆元" class="headerlink" title="2.求解模综合乘法逆元"></a>2.求解模综合乘法逆元</h3><p>当要求解 $a$ 在模 $m$ 意义下的乘法逆元 $x$ 时，等价于求解同余方程 $ax\equiv 1\pmod m$。这个同余方程可以转化为不定方程 $ax+my=1$。只要 $\gcd(a,m)=1$（即 $a$ 和 $m$ 互质），就可以直接用 exgcd 求出 $x$ 的值。<br>这次的exgcd的结果是在模意义下的，故其是唯一的特解，需注意实际使用中通常还需要保证取模之后的结果为正数，故+m再取余以保证正数。</p>
-<script type="math/tex; mode=display">x_{min} = (x_0 \bmod m + m) \bmod m</script><h4 id="费马小定理解法"><a href="#费马小定理解法" class="headerlink" title="费马小定理解法"></a>费马小定理解法</h4><blockquote>
-<p>求乘法逆元同时也可使用费马小定理。注意：此时要求mod必须是质数<br>$ax \equiv 1\pmod m$<br>有公式：<script type="math/tex">x=a^{m-2} \pmod m</script><br>x即a关于模m的乘法逆元</p>
-</blockquote>
-<h3 id="3-求解线性同余方程组（CRT-的扩展）"><a href="#3-求解线性同余方程组（CRT-的扩展）" class="headerlink" title="3.求解线性同余方程组（CRT 的扩展）"></a>3.求解线性同余方程组（<a href="https://www.cnblogs.com/ailanxier/p/13370753.html">CRT</a> 的扩展）</h3><p>在处理扩展中国剩余定理（EXCRT）时，由于模数可能不互质，普通的 CRT 无法使用。此时需要两两合并同余方程，合并的过程本质上就是求解形如 $ax+by=c$ 的线性方程，强依赖 exgcd。</p>
-<h4 id="CRT求解模板"><a href="#CRT求解模板" class="headerlink" title="CRT求解模板"></a>CRT求解模板</h4><p>能力有限，模板转载自上述链接：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include &lt;bits/stdc++.h&gt;</span></span><br><span class="line">using namespace std;</span><br><span class="line">typedef long long ll ;</span><br><span class="line">ll mod[15],yu[15],M = 1,ans;//mod[i]即为mi,yu[i]存放模后余数</span><br><span class="line"></span><br><span class="line">void exGcd(ll a,ll b,ll &amp;x,ll &amp;y)&#123;   //求解 ax+by = gcd(a,b)，注意是传引用</span><br><span class="line">    <span class="keyword">if</span>(b == 0) &#123; x = 1,y = 0; <span class="built_in">return</span>;&#125;         // b = 0时,a = gcd(原a,原b)</span><br><span class="line">    exGcd(b,a%b,x,y);</span><br><span class="line">    ll temX = x;</span><br><span class="line">    x = y,y = temX - a/b * y;   //x = y1, y = x1 - a/b * y1 (x1和y1是递归下一层返回后的x和y)</span><br><span class="line">&#125;</span><br><span class="line">/*void exGcd(ll a,ll b,ll &amp;x,ll &amp;y)&#123;  //更简洁的写法</span><br><span class="line">    <span class="keyword">if</span>(b == 0) &#123; x = 1,y = 0; <span class="built_in">return</span>;&#125;</span><br><span class="line">    exGcd(b,a%b,y,x);           //x和y换位</span><br><span class="line">    y = y- a/b*x;</span><br><span class="line">&#125;*/</span><br><span class="line">int <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line">    int n;</span><br><span class="line">    cin&gt;&gt;n;       //方程组数</span><br><span class="line">    <span class="keyword">for</span> (int i = 1; i &lt;= n ; ++i) &#123;</span><br><span class="line">        scanf(<span class="string">&quot;%ld %ld&quot;</span>,&amp;mod[i],&amp;yu[i]);  //模数和余数，模数互质</span><br><span class="line">        M*=mod[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (int i = 1; i &lt;= n ; ++i) &#123;</span><br><span class="line">        ll Mi = M / mod[i],inv,y; // Mi为所有模数乘积除以第i个模数，inv为Mi在模mi意义下的逆元</span><br><span class="line">        exGcd(Mi, mod[i], inv, y);</span><br><span class="line">        inv = (inv % mod[i]+mod[i]) % mod[i];//防止逆元求解过程中的负数出现</span><br><span class="line">        ans = (ans + yu[i] * Mi * inv) % M;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt; (ans + M) % M;          //保证结果不出现负数</span><br><span class="line">    <span class="built_in">return</span> 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="EXCRT求解模板"><a href="#EXCRT求解模板" class="headerlink" title="EXCRT求解模板"></a>EXCRT求解模板</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include &lt;bits/stdc++.h&gt;</span></span><br><span class="line">using namespace std;</span><br><span class="line">typedef long long ll;</span><br><span class="line">ll n,mod[100009],yu[100009];</span><br><span class="line"></span><br><span class="line">//要用快速乘（龟速乘），防止爆long long</span><br><span class="line">ll qMul(ll a,ll b,ll mo)&#123;</span><br><span class="line">    ll an = 0;</span><br><span class="line">    <span class="keyword">while</span>(b) &#123;</span><br><span class="line">        <span class="keyword">if</span>(b&amp;1) an =(an+a) % mo;</span><br><span class="line">        a = (a+a)%mo;</span><br><span class="line">        b&gt;&gt;=1;</span><br><span class="line">    &#125;<span class="built_in">return</span> an%mo;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//扩展欧几里得算法，返回gcd(a,b),并计算出ax+by = gcd(a,b)中的x和y</span><br><span class="line">ll exGcd(ll a,ll b,ll &amp;x,ll &amp;y)&#123;</span><br><span class="line">    <span class="keyword">if</span>( b == 0 ) &#123; x = 1;y = 0; <span class="built_in">return</span> a;&#125;</span><br><span class="line">    ll gcd = exGcd(b,a%b,y,x);  //注意x和y的顺序</span><br><span class="line">    y = y - a/b*x;</span><br><span class="line">    <span class="built_in">return</span> gcd;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);//加速cin和cout</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    <span class="keyword">for</span>(int i = 1;i &lt;= n;i++) cin&gt;&gt;mod[i]&gt;&gt;yu[i];</span><br><span class="line">    ll ans = yu[1],M = mod[1] ,t,y;  //ans表示前i-1个方程式的特解（余数），M为前i-1个方程式的模数的最小公倍数(i从2开始)</span><br><span class="line">    <span class="keyword">for</span>(int i = 2;i &lt;= n;i++)&#123;</span><br><span class="line">        ll mi = mod[i],res = ((yu[i] - ans)%mi + mi)%mi;  //res是等式的右边部分，不能出现负数</span><br><span class="line">        ll gcd = exGcd(M,mi,t,y);        //求出gcd(mi,M)</span><br><span class="line">        if(res % gcd != <span class="number">0</span>) &#123; cout&lt;&lt;-<span class="number">1</span>&lt;&lt;endl;exit(<span class="number">0</span>); &#125;   //如果等式右边不能整除gcd，方程组无解</span><br><span class="line">        t = qMul(t,res/gcd,mi);            //求出t还要乘上倍数，注意是快速乘取模mi (对谁取模要分清)</span><br><span class="line">        ans += t * M;                               //得到前i个方程的特解（余数）</span><br><span class="line">        M = mi /gcd * M;                         //M等于lcm(M,mi)，注意乘法要在除法后面做，否则会爆long long</span><br><span class="line">        ans = (ans%M+M)%M;                //让特解范围限定在<span class="number">0</span>~(M-<span class="number">1</span>)内，防止会出现负数</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;ans;</span><br><span class="line">    return <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="放一道例题-hard"><a href="#放一道例题-hard" class="headerlink" title="放一道例题(hard)"></a>放一道例题(hard)</h2><p><a href="https://www.luogu.com.cn/problem/U628784?contestId=295494">U628784 Laz玩游戏</a><br>key:ey33</p>
+    <title>Hello World</title>
+    <url>/2026/02/09/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://inmostfly.github.io/">Hexo</a>! This is my very first blog.</p>
+<h2 id="Maybe-you-can-see"><a href="#Maybe-you-can-see" class="headerlink" title="Maybe you can see"></a>Maybe you can see</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">c c++ python java javascript </span><br><span class="line">机器学习，transformer框架浅谈，深度学习 and so on.</span><br></pre></td></tr></table></figure>
 ]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>数论</tag>
-        <tag>数学</tag>
-      </tags>
   </entry>
   <entry>
     <title>JavaScript</title>
@@ -128,35 +102,36 @@
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2026/02/09/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://inmostfly.github.io/">Hexo</a>! This is my very first blog.</p>
-<h2 id="Maybe-you-can-see"><a href="#Maybe-you-can-see" class="headerlink" title="Maybe you can see"></a>Maybe you can see</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">c c++ python java javascript </span><br><span class="line">机器学习，transformer框架浅谈，深度学习 and so on.</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
-    <title>字典树</title>
-    <url>/2026/03/12/%E5%AD%97%E5%85%B8%E6%A0%91/</url>
-    <content><![CDATA[<p>字符串的处理方式极多，字典树便是其中一种</p>
+    <title>gcd及其扩展</title>
+    <url>/2026/03/06/gcd%E5%8F%8A%E5%85%B6%E6%89%A9%E5%B1%95/</url>
+    <content><![CDATA[<h2 id="gcd运算严格满足结合率"><a href="#gcd运算严格满足结合率" class="headerlink" title="gcd运算严格满足结合率"></a>gcd运算严格满足结合率</h2><p>即有 $\gcd(a,b,c) = \gcd(\gcd(a,b),c) = \gcd(a,\gcd(b,c))$</p>
 <span id="more"></span>
-<h2 id="字典树基础"><a href="#字典树基础" class="headerlink" title="字典树基础"></a>字典树基础</h2><p>此篇重写，再无板子之谈  </p>
-<font color=red> 板子不理解的时候真能坑死人,还不如没有 </font>
-
-<p>常用二维数组存储，一般认为每个节点含有26个子节点，分别表示字符a到z，编号1-26. 定义$trie[u][id]=k$中,u表字典树的节点编号，id表示该节点中编号为id的字符，u在全局中唯一，唯一标识每个节点。k即表示u的id子节点的编号。  </p>
-<h3 id="插入字符串"><a href="#插入字符串" class="headerlink" title="插入字符串"></a>插入字符串</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int tot=0;//tot表示节点总数/节点编号</span><br><span class="line">void insert(string s)&#123;  </span><br><span class="line">    int pos=0;</span><br><span class="line">    <span class="keyword">for</span>(int i=0;i&lt;s.size();i++)&#123;</span><br><span class="line">      int <span class="built_in">id</span>=s[i]-<span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">      <span class="keyword">if</span>(tree[pos][<span class="built_in">id</span>]==0)&#123;</span><br><span class="line">        tree[pos][<span class="built_in">id</span>]=++tot;</span><br><span class="line">      &#125;</span><br><span class="line">      pos=tree[pos][<span class="built_in">id</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    tag[pos]=1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="查找字符串"><a href="#查找字符串" class="headerlink" title="查找字符串"></a>查找字符串</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int find(string s)&#123;</span><br><span class="line">    int pos=0;</span><br><span class="line">    <span class="keyword">for</span>(int i=0;i&lt;s.size();i++)&#123;</span><br><span class="line">      int <span class="built_in">id</span>=s[i]-<span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">      <span class="keyword">if</span>(tree[pos][<span class="built_in">id</span>]==0)&#123;</span><br><span class="line">        <span class="built_in">return</span> -1;</span><br><span class="line">      &#125;</span><br><span class="line">      pos=tree[pos][<span class="built_in">id</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(tag[pos]==1)&#123;</span><br><span class="line">      <span class="built_in">return</span> 1;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">      <span class="built_in">return</span> -1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="字典树的活用"><a href="#字典树的活用" class="headerlink" title="字典树的活用"></a>字典树的活用</h2><h3 id="求多项字符串的最大公共前缀长度之和"><a href="#求多项字符串的最大公共前缀长度之和" class="headerlink" title="求多项字符串的最大公共前缀长度之和"></a>求多项字符串的最大公共前缀长度之和</h3><p>此时需要记录每个节点有几个字符串经过了这个节点，即节点需记录通过自己的字符串数量。<br>实现：每次插入过程中pos更新时同时cnt[pos]++即可。  </p>
-<center>
-<font color=green>
-基础数据结构重在插入，即树的构建，剩下的就是其多样的用法。
-</font>
-</center>]]></content>
+<p>三者求最大公约数顺序任意排列</p>
+<h3 id="严格证明"><a href="#严格证明" class="headerlink" title="严格证明"></a>严格证明</h3><p>d=gcd(a,b)意味着d是同时能整除a,b的最大整数，g=gcd(d,c),意味着g是能同时整除d,c的最大整数<br>因为g能整除d,d能整除a,b，故g能整除a,b,c，即g是a,b,c的公约数<br>反过来，我们取a,b,c的公约数k，k定然能被其最大公约数d整除，k同时又是d,c的因数，故又能被g整除，因此g定然是a,b,c中最大的公约数（a,b的公约数是gcd(a,b)的因数的证明在下）</p>
+<blockquote>
+<p>本质推理是素因数分解</p>
+</blockquote>
+<p>对于两个数而言，素因数分解<br>$a=p_{1}^{m1} \cdot p_{2}^{m2}…p_{n}^{mk}$<br>$b=p_{1}^{n1} \cdot p_{2}^{n2}…p_{nk}^{mk}$<br>不难观察到，其最大公约数就是其素因数幂次的组合<br>即 最大公约数=$p_1^{\min(m_1,n_1)} p_2^{\min(m_2,n_2)} \cdots p_k^{\min(m_k,n_k)}$<br>根据上述式子，我们可以得到a,b的其他任意公约数均可以整除最大公约数<br>故不管再多的数放在一起求gcd，都是满足结合律的。（故其实也可以直接从证明看出可结合性 本质是min取的过程中不在乎顺序如何）  </p>
+<h2 id="exgcd模板"><a href="#exgcd模板" class="headerlink" title="exgcd模板"></a>exgcd模板</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int exgcd(int a, int b, int&amp; x, int&amp; y) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!b) &#123;</span><br><span class="line">        x = 1;</span><br><span class="line">        y = 0;</span><br><span class="line">        <span class="built_in">return</span> a;</span><br><span class="line">    &#125;</span><br><span class="line">    int d = exgcd(b, a % b, y, x);//返回值是最大公约数</span><br><span class="line">    y -= a / b * x;</span><br><span class="line">    <span class="built_in">return</span> d;</span><br><span class="line">&#125;</span><br><span class="line">/*void exgcd(ll a,ll b,ll &amp;x,ll &amp;y)&#123;  //更简洁的求解写法</span><br><span class="line">    <span class="keyword">if</span>(b == 0) &#123; x = 1,y = 0; <span class="built_in">return</span>;&#125;</span><br><span class="line">    exgcd(b,a%b,y,x);           //x和y换位</span><br><span class="line">    y = y- a/b*x;</span><br><span class="line">&#125;*/</span><br></pre></td></tr></table></figure>
+<p>返回的d即最终 $ax+by=gcd(a,b)$<br>即：对于任意两个不全为零的整数 $a$ 和 $b$，一定存在整数 $x$ 和 $y$，使得 $ax+by=\gcd(a,b)$ 成立。同时通过值引用，$x,y$最终的值即$x,y$的最小特解。</p>
+<p>用处：  </p>
+<h3 id="1-求解二元一次不定方程"><a href="#1-求解二元一次不定方程" class="headerlink" title="1.求解二元一次不定方程"></a>1.求解二元一次不定方程</h3><p>用于求解形如 $ax+by=c$ 的整数解。根据裴蜀定理的推论，这个方程有解的充要条件是 $\gcd(a,b)$ 能整除 $c$。通过 exgcd 求出 $ax+by=\gcd(a,b)$ 的一组解后，将其按比例扩大，即可得到原方程的一组特解$x_0,y_0$，进而可以推导出通解。<br>通解：$x=x_0 + k\cdot \frac{b}{gcd(a,b)}$ ，$y=y_0 - k\cdot \frac{a}{gcd(a,b)}$<br>(k是任意整数)</p>
+<h3 id="2-求解模综合乘法逆元"><a href="#2-求解模综合乘法逆元" class="headerlink" title="2.求解模综合乘法逆元"></a>2.求解模综合乘法逆元</h3><p>当要求解 $a$ 在模 $m$ 意义下的乘法逆元 $x$ 时，等价于求解同余方程 $ax\equiv 1\pmod m$。这个同余方程可以转化为不定方程 $ax+my=1$。只要 $\gcd(a,m)=1$（即 $a$ 和 $m$ 互质），就可以直接用 exgcd 求出 $x$ 的值。<br>这次的exgcd的结果是在模意义下的，故其是唯一的特解，需注意实际使用中通常还需要保证取模之后的结果为正数，故+m再取余以保证正数。</p>
+<script type="math/tex; mode=display">x_{min} = (x_0 \bmod m + m) \bmod m</script><h4 id="费马小定理解法"><a href="#费马小定理解法" class="headerlink" title="费马小定理解法"></a>费马小定理解法</h4><blockquote>
+<p>求乘法逆元同时也可使用费马小定理。注意：此时要求mod必须是质数<br>$ax \equiv 1\pmod m$<br>有公式：<script type="math/tex">x=a^{m-2} \pmod m</script><br>x即a关于模m的乘法逆元</p>
+</blockquote>
+<h3 id="3-求解线性同余方程组（CRT-的扩展）"><a href="#3-求解线性同余方程组（CRT-的扩展）" class="headerlink" title="3.求解线性同余方程组（CRT 的扩展）"></a>3.求解线性同余方程组（<a href="https://www.cnblogs.com/ailanxier/p/13370753.html">CRT</a> 的扩展）</h3><p>在处理扩展中国剩余定理（EXCRT）时，由于模数可能不互质，普通的 CRT 无法使用。此时需要两两合并同余方程，合并的过程本质上就是求解形如 $ax+by=c$ 的线性方程，强依赖 exgcd。</p>
+<h4 id="CRT求解模板"><a href="#CRT求解模板" class="headerlink" title="CRT求解模板"></a>CRT求解模板</h4><p>能力有限，模板转载自上述链接：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include &lt;bits/stdc++.h&gt;</span></span><br><span class="line">using namespace std;</span><br><span class="line">typedef long long ll ;</span><br><span class="line">ll mod[15],yu[15],M = 1,ans;//mod[i]即为mi,yu[i]存放模后余数</span><br><span class="line"></span><br><span class="line">void exGcd(ll a,ll b,ll &amp;x,ll &amp;y)&#123;   //求解 ax+by = gcd(a,b)，注意是传引用</span><br><span class="line">    <span class="keyword">if</span>(b == 0) &#123; x = 1,y = 0; <span class="built_in">return</span>;&#125;         // b = 0时,a = gcd(原a,原b)</span><br><span class="line">    exGcd(b,a%b,x,y);</span><br><span class="line">    ll temX = x;</span><br><span class="line">    x = y,y = temX - a/b * y;   //x = y1, y = x1 - a/b * y1 (x1和y1是递归下一层返回后的x和y)</span><br><span class="line">&#125;</span><br><span class="line">/*void exGcd(ll a,ll b,ll &amp;x,ll &amp;y)&#123;  //更简洁的写法</span><br><span class="line">    <span class="keyword">if</span>(b == 0) &#123; x = 1,y = 0; <span class="built_in">return</span>;&#125;</span><br><span class="line">    exGcd(b,a%b,y,x);           //x和y换位</span><br><span class="line">    y = y- a/b*x;</span><br><span class="line">&#125;*/</span><br><span class="line">int <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line">    int n;</span><br><span class="line">    cin&gt;&gt;n;       //方程组数</span><br><span class="line">    <span class="keyword">for</span> (int i = 1; i &lt;= n ; ++i) &#123;</span><br><span class="line">        scanf(<span class="string">&quot;%ld %ld&quot;</span>,&amp;mod[i],&amp;yu[i]);  //模数和余数，模数互质</span><br><span class="line">        M*=mod[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (int i = 1; i &lt;= n ; ++i) &#123;</span><br><span class="line">        ll Mi = M / mod[i],inv,y; // Mi为所有模数乘积除以第i个模数，inv为Mi在模mi意义下的逆元</span><br><span class="line">        exGcd(Mi, mod[i], inv, y);</span><br><span class="line">        inv = (inv % mod[i]+mod[i]) % mod[i];//防止逆元求解过程中的负数出现</span><br><span class="line">        ans = (ans + yu[i] * Mi * inv) % M;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt; (ans + M) % M;          //保证结果不出现负数</span><br><span class="line">    <span class="built_in">return</span> 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="EXCRT求解模板"><a href="#EXCRT求解模板" class="headerlink" title="EXCRT求解模板"></a>EXCRT求解模板</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include &lt;bits/stdc++.h&gt;</span></span><br><span class="line">using namespace std;</span><br><span class="line">typedef long long ll;</span><br><span class="line">ll n,mod[100009],yu[100009];</span><br><span class="line"></span><br><span class="line">//要用快速乘（龟速乘），防止爆long long</span><br><span class="line">ll qMul(ll a,ll b,ll mo)&#123;</span><br><span class="line">    ll an = 0;</span><br><span class="line">    <span class="keyword">while</span>(b) &#123;</span><br><span class="line">        <span class="keyword">if</span>(b&amp;1) an =(an+a) % mo;</span><br><span class="line">        a = (a+a)%mo;</span><br><span class="line">        b&gt;&gt;=1;</span><br><span class="line">    &#125;<span class="built_in">return</span> an%mo;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//扩展欧几里得算法，返回gcd(a,b),并计算出ax+by = gcd(a,b)中的x和y</span><br><span class="line">ll exGcd(ll a,ll b,ll &amp;x,ll &amp;y)&#123;</span><br><span class="line">    <span class="keyword">if</span>( b == 0 ) &#123; x = 1;y = 0; <span class="built_in">return</span> a;&#125;</span><br><span class="line">    ll gcd = exGcd(b,a%b,y,x);  //注意x和y的顺序</span><br><span class="line">    y = y - a/b*x;</span><br><span class="line">    <span class="built_in">return</span> gcd;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);//加速cin和cout</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    <span class="keyword">for</span>(int i = 1;i &lt;= n;i++) cin&gt;&gt;mod[i]&gt;&gt;yu[i];</span><br><span class="line">    ll ans = yu[1],M = mod[1] ,t,y;  //ans表示前i-1个方程式的特解（余数），M为前i-1个方程式的模数的最小公倍数(i从2开始)</span><br><span class="line">    <span class="keyword">for</span>(int i = 2;i &lt;= n;i++)&#123;</span><br><span class="line">        ll mi = mod[i],res = ((yu[i] - ans)%mi + mi)%mi;  //res是等式的右边部分，不能出现负数</span><br><span class="line">        ll gcd = exGcd(M,mi,t,y);        //求出gcd(mi,M)</span><br><span class="line">        if(res % gcd != <span class="number">0</span>) &#123; cout&lt;&lt;-<span class="number">1</span>&lt;&lt;endl;exit(<span class="number">0</span>); &#125;   //如果等式右边不能整除gcd，方程组无解</span><br><span class="line">        t = qMul(t,res/gcd,mi);            //求出t还要乘上倍数，注意是快速乘取模mi (对谁取模要分清)</span><br><span class="line">        ans += t * M;                               //得到前i个方程的特解（余数）</span><br><span class="line">        M = mi /gcd * M;                         //M等于lcm(M,mi)，注意乘法要在除法后面做，否则会爆long long</span><br><span class="line">        ans = (ans%M+M)%M;                //让特解范围限定在<span class="number">0</span>~(M-<span class="number">1</span>)内，防止会出现负数</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;ans;</span><br><span class="line">    return <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="放一道例题-hard"><a href="#放一道例题-hard" class="headerlink" title="放一道例题(hard)"></a>放一道例题(hard)</h2><p><a href="https://www.luogu.com.cn/problem/U628784?contestId=295494">U628784 Laz玩游戏</a><br>key:ey33</p>
+]]></content>
       <categories>
         <category>算法</category>
       </categories>
       <tags>
-        <tag>树</tag>
-        <tag>字符串</tag>
+        <tag>数论</tag>
+        <tag>数学</tag>
       </tags>
   </entry>
   <entry>
@@ -192,6 +167,55 @@
       </tags>
   </entry>
   <entry>
+    <title>字典树</title>
+    <url>/2026/03/12/%E5%AD%97%E5%85%B8%E6%A0%91/</url>
+    <content><![CDATA[<p>字符串的处理方式极多，字典树便是其中一种</p>
+<span id="more"></span>
+<h2 id="字典树基础"><a href="#字典树基础" class="headerlink" title="字典树基础"></a>字典树基础</h2><p>此篇重写，再无板子之谈  </p>
+<font color=red> 板子不理解的时候真能坑死人,还不如没有 </font>
+
+<p>常用二维数组存储，一般认为每个节点含有26个子节点，分别表示字符a到z，编号1-26. 定义$trie[u][id]=k$中,u表字典树的节点编号，id表示该节点中编号为id的字符，u在全局中唯一，唯一标识每个节点。k即表示u的id子节点的编号。  </p>
+<h3 id="插入字符串"><a href="#插入字符串" class="headerlink" title="插入字符串"></a>插入字符串</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int tot=0;//tot表示节点总数/节点编号</span><br><span class="line">void insert(string s)&#123;  </span><br><span class="line">    int pos=0;</span><br><span class="line">    <span class="keyword">for</span>(int i=0;i&lt;s.size();i++)&#123;</span><br><span class="line">      int <span class="built_in">id</span>=s[i]-<span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">      <span class="keyword">if</span>(tree[pos][<span class="built_in">id</span>]==0)&#123;</span><br><span class="line">        tree[pos][<span class="built_in">id</span>]=++tot;</span><br><span class="line">      &#125;</span><br><span class="line">      pos=tree[pos][<span class="built_in">id</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    tag[pos]=1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="查找字符串"><a href="#查找字符串" class="headerlink" title="查找字符串"></a>查找字符串</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int find(string s)&#123;</span><br><span class="line">    int pos=0;</span><br><span class="line">    <span class="keyword">for</span>(int i=0;i&lt;s.size();i++)&#123;</span><br><span class="line">      int <span class="built_in">id</span>=s[i]-<span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">      <span class="keyword">if</span>(tree[pos][<span class="built_in">id</span>]==0)&#123;</span><br><span class="line">        <span class="built_in">return</span> -1;</span><br><span class="line">      &#125;</span><br><span class="line">      pos=tree[pos][<span class="built_in">id</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(tag[pos]==1)&#123;</span><br><span class="line">      <span class="built_in">return</span> 1;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">      <span class="built_in">return</span> -1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="字典树的活用"><a href="#字典树的活用" class="headerlink" title="字典树的活用"></a>字典树的活用</h2><h3 id="求多项字符串的最大公共前缀长度之和"><a href="#求多项字符串的最大公共前缀长度之和" class="headerlink" title="求多项字符串的最大公共前缀长度之和"></a>求多项字符串的最大公共前缀长度之和</h3><p>此时需要记录每个节点有几个字符串经过了这个节点，即节点需记录通过自己的字符串数量。<br>实现：每次插入过程中pos更新时同时cnt[pos]++即可。  </p>
+<center>
+<font color=green>
+基础数据结构重在插入，即树的构建，剩下的就是其多样的用法。
+</font>
+</center>]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>树</tag>
+        <tag>字符串</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>背包问题</title>
+    <url>/2026/03/08/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>搁置已久，今天来简单讨论下背包的基础性问题<br><span id="more"></span></p>
+<h2 id="01背包"><a href="#01背包" class="headerlink" title="01背包"></a>01背包</h2><blockquote>
+<p>有n件物品和一个最多能背重量为w 的背包。第i件物品的重量是weight[i]，得到的价值是value[i] 。每件物品只能用一次，求解将哪些物品装入背包里物品价值总和最大</p>
+</blockquote>
+<p>二维状态转移方程：$dp[i][j] = max(dp[i-1][j], dp[i-1][j-w[i]] + v[i])$<br>$dp[i][j]$表示前i件物品放入一个容量为j的背包可以获得的最大价值，v[i]可放可不放</p>
+<p>一维状态转移方程：$dp[j] = max(dp[j], dp[j-w[i]] + v[i])$<br>dp[j]表示容量恰为j的时候的最大价值</p>
+<h3 id="一维01背包为什么倒序"><a href="#一维01背包为什么倒序" class="headerlink" title="一维01背包为什么倒序"></a>一维01背包为什么倒序</h3><p>对二维背包来讲，i各种容量下的解依赖的是没有i这个物品时的最优解，即考虑前i-1件物品所产生的最优解  对于一维背包来讲，我们优化掉了存储的维度，如果正序遍历j，那么在更新dp[j]时，dp[j-w[i]]已经被物品i更新过了，依赖关系被破坏，即在更新时，由于 $j-w[i]&lt;j$ 会优先更新dp[j-w[i]-w[i]]，<br>而倒序遍历j则会保证较小的j-w[i]维持i-1次的状态，故而保证第i件物品在每次更新时不会重复使用。<br>（正是因为每次都是逐步考虑保证了前i次的最优解，故最终遍历到n时即保证全局最优解，即动态规划）</p>
+<h3 id="01背包核心代码"><a href="#01背包核心代码" class="headerlink" title="01背包核心代码"></a>01背包核心代码</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (int j = m; j &gt;= w[i]; j--) &#123;</span><br><span class="line">        dp[j] = max(dp[j], dp[j - w[i]] + v[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="完全背包"><a href="#完全背包" class="headerlink" title="完全背包"></a>完全背包</h2><p>其差别在于，完全背包不再有物品的数量限制，每件物品均有无穷件<br>那就好办了，我们刚刚说了之所以倒序，就是为了避免第i物品被考虑多次，那我们正着写，那就恰满足了每件物品被考虑多件的需求，我们每次从小开始遍历，在处理j的时候j-w[i]实际上已经考虑过有第i件物品情况下的最优解，依次类推即每件物品都没有了件数限制  </p>
+<h3 id="完全背包核心代码"><a href="#完全背包核心代码" class="headerlink" title="完全背包核心代码"></a>完全背包核心代码</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (int j = w[i]; j &lt;= m; j++) &#123;</span><br><span class="line">        dp[j] = max(dp[j], dp[j - w[i]] + v[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="多重背包"><a href="#多重背包" class="headerlink" title="多重背包"></a>多重背包</h2><h2 id="放上题目"><a href="#放上题目" class="headerlink" title="放上题目"></a>放上题目</h2><p>B2174 完全背包<a href="https://www.luogu.com.cn/problem/B2174">B2174 完全背包</a></p>
+<p>背包问题有时甚至会混淆视听<br>P7223 [RC-04] 01 背包(<a href="https://www.luogu.com.cn/problem/P7223">https://www.luogu.com.cn/problem/P7223</a>)</p>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>动态规划</tag>
+        <tag>背包</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>新的开始!!!</title>
     <url>/2026/02/11/%E6%96%B0%E7%9A%84%E5%BC%80%E5%A7%8B/</url>
     <content><![CDATA[<h2 id="谨以此贴，记录生活与工作"><a href="#谨以此贴，记录生活与工作" class="headerlink" title="谨以此贴，记录生活与工作"></a>谨以此贴，记录生活与工作</h2><h3 id="我为什么会想起来写博客"><a href="#我为什么会想起来写博客" class="headerlink" title="我为什么会想起来写博客"></a>我为什么会想起来写博客</h3><ul>
@@ -203,6 +227,19 @@
 <h2 id="inmost-的个人博客，自此启程"><a href="#inmost-的个人博客，自此启程" class="headerlink" title="inmost 的个人博客，自此启程"></a>inmost 的个人博客，自此启程</h2><ul>
 <li>后日谈</li>
 </ul>
+]]></content>
+      <categories>
+        <category>体悟</category>
+      </categories>
+      <tags>
+        <tag>随笔</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>首次团队赛回顾</title>
+    <url>/2026/03/22/%E9%A6%96%E6%AC%A1%E5%9B%A2%E9%98%9F%E8%B5%9B%E5%9B%9E%E9%A1%BE/</url>
+    <content><![CDATA[<p>浪潮完赛，队友太强了最后20min成功冲出全场唯二的D题（<font color=orange>%%%</font>),最后rank8极限一等奖，这次总归没有遗憾离场。</p>
+<span id="more"></span>
 ]]></content>
       <categories>
         <category>体悟</category>
@@ -233,45 +270,8 @@
         <category>算法</category>
       </categories>
       <tags>
+        <tag>动态规划</tag>
         <tag>筛</tag>
-        <tag>动态规划</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>背包问题</title>
-    <url>/2026/03/08/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<p>搁置已久，今天来简单讨论下背包的基础性问题<br><span id="more"></span></p>
-<h2 id="01背包"><a href="#01背包" class="headerlink" title="01背包"></a>01背包</h2><blockquote>
-<p>有n件物品和一个最多能背重量为w 的背包。第i件物品的重量是weight[i]，得到的价值是value[i] 。每件物品只能用一次，求解将哪些物品装入背包里物品价值总和最大</p>
-</blockquote>
-<p>二维状态转移方程：$dp[i][j] = max(dp[i-1][j], dp[i-1][j-w[i]] + v[i])$<br>$dp[i][j]$表示前i件物品放入一个容量为j的背包可以获得的最大价值，v[i]可放可不放</p>
-<p>一维状态转移方程：$dp[j] = max(dp[j], dp[j-w[i]] + v[i])$<br>dp[j]表示容量恰为j的时候的最大价值</p>
-<h3 id="一维01背包为什么倒序"><a href="#一维01背包为什么倒序" class="headerlink" title="一维01背包为什么倒序"></a>一维01背包为什么倒序</h3><p>对二维背包来讲，i各种容量下的解依赖的是没有i这个物品时的最优解，即考虑前i-1件物品所产生的最优解  对于一维背包来讲，我们优化掉了存储的维度，如果正序遍历j，那么在更新dp[j]时，dp[j-w[i]]已经被物品i更新过了，依赖关系被破坏，即在更新时，由于 $j-w[i]&lt;j$ 会优先更新dp[j-w[i]-w[i]]，<br>而倒序遍历j则会保证较小的j-w[i]维持i-1次的状态，故而保证第i件物品在每次更新时不会重复使用。<br>（正是因为每次都是逐步考虑保证了前i次的最优解，故最终遍历到n时即保证全局最优解，即动态规划）</p>
-<h3 id="01背包核心代码"><a href="#01背包核心代码" class="headerlink" title="01背包核心代码"></a>01背包核心代码</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (int j = m; j &gt;= w[i]; j--) &#123;</span><br><span class="line">        dp[j] = max(dp[j], dp[j - w[i]] + v[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="完全背包"><a href="#完全背包" class="headerlink" title="完全背包"></a>完全背包</h2><p>其差别在于，完全背包不再有物品的数量限制，每件物品均有无穷件<br>那就好办了，我们刚刚说了之所以倒序，就是为了避免第i物品被考虑多次，那我们正着写，那就恰满足了每件物品被考虑多件的需求，我们每次从小开始遍历，在处理j的时候j-w[i]实际上已经考虑过有第i件物品情况下的最优解，依次类推即每件物品都没有了件数限制  </p>
-<h3 id="完全背包核心代码"><a href="#完全背包核心代码" class="headerlink" title="完全背包核心代码"></a>完全背包核心代码</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (int j = w[i]; j &lt;= m; j++) &#123;</span><br><span class="line">        dp[j] = max(dp[j], dp[j - w[i]] + v[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="多重背包"><a href="#多重背包" class="headerlink" title="多重背包"></a>多重背包</h2><h2 id="放上题目"><a href="#放上题目" class="headerlink" title="放上题目"></a>放上题目</h2><p>B2174 完全背包<a href="https://www.luogu.com.cn/problem/B2174">B2174 完全背包</a></p>
-<p>背包问题有时甚至会混淆视听<br>P7223 [RC-04] 01 背包(<a href="https://www.luogu.com.cn/problem/P7223">https://www.luogu.com.cn/problem/P7223</a>)</p>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>动态规划</tag>
-        <tag>背包</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>首次团队赛回顾</title>
-    <url>/2026/03/22/%E9%A6%96%E6%AC%A1%E5%9B%A2%E9%98%9F%E8%B5%9B%E5%9B%9E%E9%A1%BE/</url>
-    <content><![CDATA[<p>浪潮完赛，队友太强了最后20min成功冲出全场唯二的D题（<font color=orange>%%%</font>),最后rank8极限一等奖，这次总归没有遗憾离场。</p>
-<span id="more"></span>
-]]></content>
-      <categories>
-        <category>体悟</category>
-      </categories>
-      <tags>
-        <tag>随笔</tag>
       </tags>
   </entry>
 </search>
