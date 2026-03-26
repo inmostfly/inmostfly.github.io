@@ -94,8 +94,8 @@
       <name>inmost</name>
     </author>
     <category term="算法" scheme="http://inmostfly.github.io/categories/%E7%AE%97%E6%B3%95/"/>
-    <category term="筛" scheme="http://inmostfly.github.io/tags/%E7%AD%9B/"/>
     <category term="动态规划" scheme="http://inmostfly.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    <category term="筛" scheme="http://inmostfly.github.io/tags/%E7%AD%9B/"/>
     <id>http://inmostfly.github.io/2026/02/26/%E6%AC%A7%E6%8B%89%E7%AD%9B/</id>
     <link href="http://inmostfly.github.io/2026/02/26/%E6%AC%A7%E6%8B%89%E7%AD%9B/"/>
     <published>2026-02-26T15:50:26.000Z</published>
