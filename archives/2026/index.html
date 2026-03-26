@@ -758,7 +758,7 @@ setInterval("createtime()",250);
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/waifu.css">
 <style>
-  .waifu{
+  #waifu{
     position: fixed!important;
     bottom: 0!important;
     left: auto!important;
@@ -766,7 +766,12 @@ setInterval("createtime()",250);
     z-index: 1050!important;
     line-height:0;
   }
-
+  #waifu-tips{
+    position: absolute;!important;
+    left: auto;
+    right: 0!important;
+    top: -20px;
+  }
   #live2d{
     position:relative;
     width: 350px!important;
