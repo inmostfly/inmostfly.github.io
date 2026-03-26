@@ -754,3 +754,32 @@ setInterval("createtime()",250);
 
     <script src="/js/cursor/cherry.js"></script>
     <script async src="/js/cursor/text.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/waifu.css">
+
+<div class="waifu">
+    <div class="waifu-tips"></div>
+    <canvas id="live2d" class="live2d"></canvas>
+    <div class="waifu-tool">
+        <span class="fui-home"></span>
+        <span class="fui-chat"></span>
+        <span class="fui-eye"></span>
+        <span class="fui-user"></span>
+        <span class="fui-photo"></span>
+        <span class="fui-info-circle"></span>
+        <span class="fui-cross"></span>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/live2d.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/waifu-tips.js"></script>
+
+<script type="text/javascript">
+    // 这里可以配置模型地址，你可以先用默认的测试
+    initWidget({
+        waifuPath: "https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/waifu-tips.json",
+        apiPath: "https://live2d.fghrsh.net/api/",
+        tools: ["fui-home", "fui-chat", "fui-eye", "fui-user", "fui-photo", "fui-info-circle", "fui-cross"]
+    });
+</script>
