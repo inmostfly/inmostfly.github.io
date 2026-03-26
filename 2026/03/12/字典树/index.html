@@ -701,7 +701,25 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/waifu.css">
-
+<style>
+  .waifu{
+    position: fixed!important;
+    bottom: 0!important;
+    left: auto!important;
+    right:20px!important;
+    z-index: 1050!important;
+    line-height:0;
+  }
+  .waifu-tips{
+    position: absolute;
+    top:-30px;
+  }
+  #live2d{
+    position:relative;
+    width: 280px;
+    height: 280px;
+  }
+</style>
 <div class="waifu">
     <div class="waifu-tips"></div>
     <canvas id="live2d" class="live2d"></canvas>
