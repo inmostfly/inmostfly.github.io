@@ -1475,8 +1475,10 @@ setInterval("createtime()",250);
 <script type="text/javascript">
     // 这里可以配置模型地址，你可以先用默认的测试
     initWidget({
-        waifuPath: "https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/waifu-tips.json",
-        apiPath: "https://live2d.fghrsh.net/api/",
+            waifuPath: "https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/waifu-tips.json",
+            // 这是一个常用的免费模型 API
+            apiPath: "https://live2d.fghrsh.net/api/",
+            // 指定初始化的模型 ID（这里以某个猫娘模型为例，你可以试着换数字）
         tools: ["fui-home", "fui-chat", "fui-eye", "fui-user", "fui-photo", "fui-info-circle", "fui-cross"]
     });
 </script>
