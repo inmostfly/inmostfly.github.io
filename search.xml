@@ -55,46 +55,6 @@
       </tags>
   </entry>
   <entry>
-    <title>gcd及其扩展</title>
-    <url>/2026/03/06/gcd%E5%8F%8A%E5%85%B6%E6%89%A9%E5%B1%95/</url>
-    <content><![CDATA[<h2 id="gcd运算严格满足结合率"><a href="#gcd运算严格满足结合率" class="headerlink" title="gcd运算严格满足结合率"></a>gcd运算严格满足结合率</h2><p>即有 $\gcd(a,b,c) = \gcd(\gcd(a,b),c) = \gcd(a,\gcd(b,c))$</p>
-<span id="more"></span>
-<p>三者求最大公约数顺序任意排列</p>
-<h3 id="严格证明"><a href="#严格证明" class="headerlink" title="严格证明"></a>严格证明</h3><p>d=gcd(a,b)意味着d是同时能整除a,b的最大整数，g=gcd(d,c),意味着g是能同时整除d,c的最大整数<br>因为g能整除d,d能整除a,b，故g能整除a,b,c，即g是a,b,c的公约数<br>反过来，我们取a,b,c的公约数k，k定然能被其最大公约数d整除，k同时又是d,c的因数，故又能被g整除，因此g定然是a,b,c中最大的公约数（a,b的公约数是gcd(a,b)的因数的证明在下）</p>
-<blockquote>
-<p>本质推理是素因数分解</p>
-</blockquote>
-<p>对于两个数而言，素因数分解<br>$a=p_{1}^{m1} \cdot p_{2}^{m2}…p_{n}^{mk}$<br>$b=p_{1}^{n1} \cdot p_{2}^{n2}…p_{nk}^{mk}$<br>不难观察到，其最大公约数就是其素因数幂次的组合<br>即 最大公约数=$p_1^{\min(m_1,n_1)} p_2^{\min(m_2,n_2)} \cdots p_k^{\min(m_k,n_k)}$<br>根据上述式子，我们可以得到a,b的其他任意公约数均可以整除最大公约数<br>故不管再多的数放在一起求gcd，都是满足结合律的。（故其实也可以直接从证明看出可结合性 本质是min取的过程中不在乎顺序如何）  </p>
-<h2 id="exgcd模板"><a href="#exgcd模板" class="headerlink" title="exgcd模板"></a>exgcd模板</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int exgcd(int a, int b, int&amp; x, int&amp; y) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!b) &#123;</span><br><span class="line">        x = 1;</span><br><span class="line">        y = 0;</span><br><span class="line">        <span class="built_in">return</span> a;</span><br><span class="line">    &#125;</span><br><span class="line">    int d = exgcd(b, a % b, y, x);//返回值是最大公约数</span><br><span class="line">    y -= a / b * x;</span><br><span class="line">    <span class="built_in">return</span> d;</span><br><span class="line">&#125;</span><br><span class="line">/*void exgcd(ll a,ll b,ll &amp;x,ll &amp;y)&#123;  //更简洁的求解写法</span><br><span class="line">    <span class="keyword">if</span>(b == 0) &#123; x = 1,y = 0; <span class="built_in">return</span>;&#125;</span><br><span class="line">    exgcd(b,a%b,y,x);           //x和y换位</span><br><span class="line">    y = y- a/b*x;</span><br><span class="line">&#125;*/</span><br></pre></td></tr></table></figure>
-<p>返回的d即最终 $ax+by=gcd(a,b)$<br>即：对于任意两个不全为零的整数 $a$ 和 $b$，一定存在整数 $x$ 和 $y$，使得 $ax+by=\gcd(a,b)$ 成立。同时通过值引用，$x,y$最终的值即$x,y$的最小特解。</p>
-<p>用处：  </p>
-<h3 id="1-求解二元一次不定方程"><a href="#1-求解二元一次不定方程" class="headerlink" title="1.求解二元一次不定方程"></a>1.求解二元一次不定方程</h3><p>用于求解形如 $ax+by=c$ 的整数解。根据裴蜀定理的推论，这个方程有解的充要条件是 $\gcd(a,b)$ 能整除 $c$。通过 exgcd 求出 $ax+by=\gcd(a,b)$ 的一组解后，将其按比例扩大，即可得到原方程的一组特解$x_0,y_0$，进而可以推导出通解。<br>通解：$x=x_0 + k\cdot \frac{b}{gcd(a,b)}$ ，$y=y_0 - k\cdot \frac{a}{gcd(a,b)}$<br>(k是任意整数)</p>
-<h3 id="2-求解模综合乘法逆元"><a href="#2-求解模综合乘法逆元" class="headerlink" title="2.求解模综合乘法逆元"></a>2.求解模综合乘法逆元</h3><p>当要求解 $a$ 在模 $m$ 意义下的乘法逆元 $x$ 时，等价于求解同余方程 $ax\equiv 1\pmod m$。这个同余方程可以转化为不定方程 $ax+my=1$。只要 $\gcd(a,m)=1$（即 $a$ 和 $m$ 互质），就可以直接用 exgcd 求出 $x$ 的值。<br>这次的exgcd的结果是在模意义下的，故其是唯一的特解，需注意实际使用中通常还需要保证取模之后的结果为正数，故+m再取余以保证正数。</p>
-<script type="math/tex; mode=display">x_{min} = (x_0 \bmod m + m) \bmod m</script><h4 id="费马小定理解法"><a href="#费马小定理解法" class="headerlink" title="费马小定理解法"></a>费马小定理解法</h4><blockquote>
-<p>求乘法逆元同时也可使用费马小定理。注意：此时要求mod必须是质数<br>$ax \equiv 1\pmod m$<br>有公式：<script type="math/tex">x=a^{m-2} \pmod m</script><br>x即a关于模m的乘法逆元</p>
-</blockquote>
-<h3 id="3-求解线性同余方程组（CRT-的扩展）"><a href="#3-求解线性同余方程组（CRT-的扩展）" class="headerlink" title="3.求解线性同余方程组（CRT 的扩展）"></a>3.求解线性同余方程组（<a href="https://www.cnblogs.com/ailanxier/p/13370753.html">CRT</a> 的扩展）</h3><p>在处理扩展中国剩余定理（EXCRT）时，由于模数可能不互质，普通的 CRT 无法使用。此时需要两两合并同余方程，合并的过程本质上就是求解形如 $ax+by=c$ 的线性方程，强依赖 exgcd。</p>
-<h4 id="CRT求解模板"><a href="#CRT求解模板" class="headerlink" title="CRT求解模板"></a>CRT求解模板</h4><p>能力有限，模板转载自上述链接：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include &lt;bits/stdc++.h&gt;</span></span><br><span class="line">using namespace std;</span><br><span class="line">typedef long long ll ;</span><br><span class="line">ll mod[15],yu[15],M = 1,ans;//mod[i]即为mi,yu[i]存放模后余数</span><br><span class="line"></span><br><span class="line">void exGcd(ll a,ll b,ll &amp;x,ll &amp;y)&#123;   //求解 ax+by = gcd(a,b)，注意是传引用</span><br><span class="line">    <span class="keyword">if</span>(b == 0) &#123; x = 1,y = 0; <span class="built_in">return</span>;&#125;         // b = 0时,a = gcd(原a,原b)</span><br><span class="line">    exGcd(b,a%b,x,y);</span><br><span class="line">    ll temX = x;</span><br><span class="line">    x = y,y = temX - a/b * y;   //x = y1, y = x1 - a/b * y1 (x1和y1是递归下一层返回后的x和y)</span><br><span class="line">&#125;</span><br><span class="line">/*void exGcd(ll a,ll b,ll &amp;x,ll &amp;y)&#123;  //更简洁的写法</span><br><span class="line">    <span class="keyword">if</span>(b == 0) &#123; x = 1,y = 0; <span class="built_in">return</span>;&#125;</span><br><span class="line">    exGcd(b,a%b,y,x);           //x和y换位</span><br><span class="line">    y = y- a/b*x;</span><br><span class="line">&#125;*/</span><br><span class="line">int <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line">    int n;</span><br><span class="line">    cin&gt;&gt;n;       //方程组数</span><br><span class="line">    <span class="keyword">for</span> (int i = 1; i &lt;= n ; ++i) &#123;</span><br><span class="line">        scanf(<span class="string">&quot;%ld %ld&quot;</span>,&amp;mod[i],&amp;yu[i]);  //模数和余数，模数互质</span><br><span class="line">        M*=mod[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (int i = 1; i &lt;= n ; ++i) &#123;</span><br><span class="line">        ll Mi = M / mod[i],inv,y; // Mi为所有模数乘积除以第i个模数，inv为Mi在模mi意义下的逆元</span><br><span class="line">        exGcd(Mi, mod[i], inv, y);</span><br><span class="line">        inv = (inv % mod[i]+mod[i]) % mod[i];//防止逆元求解过程中的负数出现</span><br><span class="line">        ans = (ans + yu[i] * Mi * inv) % M;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt; (ans + M) % M;          //保证结果不出现负数</span><br><span class="line">    <span class="built_in">return</span> 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="EXCRT求解模板"><a href="#EXCRT求解模板" class="headerlink" title="EXCRT求解模板"></a>EXCRT求解模板</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include &lt;bits/stdc++.h&gt;</span></span><br><span class="line">using namespace std;</span><br><span class="line">typedef long long ll;</span><br><span class="line">ll n,mod[100009],yu[100009];</span><br><span class="line"></span><br><span class="line">//要用快速乘（龟速乘），防止爆long long</span><br><span class="line">ll qMul(ll a,ll b,ll mo)&#123;</span><br><span class="line">    ll an = 0;</span><br><span class="line">    <span class="keyword">while</span>(b) &#123;</span><br><span class="line">        <span class="keyword">if</span>(b&amp;1) an =(an+a) % mo;</span><br><span class="line">        a = (a+a)%mo;</span><br><span class="line">        b&gt;&gt;=1;</span><br><span class="line">    &#125;<span class="built_in">return</span> an%mo;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//扩展欧几里得算法，返回gcd(a,b),并计算出ax+by = gcd(a,b)中的x和y</span><br><span class="line">ll exGcd(ll a,ll b,ll &amp;x,ll &amp;y)&#123;</span><br><span class="line">    <span class="keyword">if</span>( b == 0 ) &#123; x = 1;y = 0; <span class="built_in">return</span> a;&#125;</span><br><span class="line">    ll gcd = exGcd(b,a%b,y,x);  //注意x和y的顺序</span><br><span class="line">    y = y - a/b*x;</span><br><span class="line">    <span class="built_in">return</span> gcd;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);//加速cin和cout</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    <span class="keyword">for</span>(int i = 1;i &lt;= n;i++) cin&gt;&gt;mod[i]&gt;&gt;yu[i];</span><br><span class="line">    ll ans = yu[1],M = mod[1] ,t,y;  //ans表示前i-1个方程式的特解（余数），M为前i-1个方程式的模数的最小公倍数(i从2开始)</span><br><span class="line">    <span class="keyword">for</span>(int i = 2;i &lt;= n;i++)&#123;</span><br><span class="line">        ll mi = mod[i],res = ((yu[i] - ans)%mi + mi)%mi;  //res是等式的右边部分，不能出现负数</span><br><span class="line">        ll gcd = exGcd(M,mi,t,y);        //求出gcd(mi,M)</span><br><span class="line">        if(res % gcd != <span class="number">0</span>) &#123; cout&lt;&lt;-<span class="number">1</span>&lt;&lt;endl;exit(<span class="number">0</span>); &#125;   //如果等式右边不能整除gcd，方程组无解</span><br><span class="line">        t = qMul(t,res/gcd,mi);            //求出t还要乘上倍数，注意是快速乘取模mi (对谁取模要分清)</span><br><span class="line">        ans += t * M;                               //得到前i个方程的特解（余数）</span><br><span class="line">        M = mi /gcd * M;                         //M等于lcm(M,mi)，注意乘法要在除法后面做，否则会爆long long</span><br><span class="line">        ans = (ans%M+M)%M;                //让特解范围限定在<span class="number">0</span>~(M-<span class="number">1</span>)内，防止会出现负数</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;ans;</span><br><span class="line">    return <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="放一道例题-hard"><a href="#放一道例题-hard" class="headerlink" title="放一道例题(hard)"></a>放一道例题(hard)</h2><p><a href="https://www.luogu.com.cn/problem/U628784?contestId=295494">U628784 Laz玩游戏</a><br>key:ey33</p>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>数论</tag>
-        <tag>数学</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2026/02/09/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://inmostfly.github.io/">Hexo</a>! This is my very first blog.</p>
-<h2 id="Maybe-you-can-see"><a href="#Maybe-you-can-see" class="headerlink" title="Maybe you can see"></a>Maybe you can see</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">c c++ python java javascript </span><br><span class="line">机器学习，transformer框架浅谈，深度学习 and so on.</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
     <title>JavaScript</title>
     <url>/2026/02/26/JavaScript/</url>
     <content><![CDATA[<p>前端学习笔记，HTML,CSS,JavaScript三者协同构成网页</p>
@@ -135,35 +95,43 @@
       </tags>
   </entry>
   <entry>
-    <title>并查集</title>
-    <url>/2026/03/16/%E5%B9%B6%E6%9F%A5%E9%9B%86/</url>
-    <content><![CDATA[<h2 id="并查集"><a href="#并查集" class="headerlink" title="并查集"></a>并查集</h2><p>青春猪头少年不会在赛时被并查集少一次遍历卡165min遗憾退场</p>
+    <title>Hello World</title>
+    <url>/2026/02/09/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://inmostfly.github.io/">Hexo</a>! This is my very first blog.</p>
+<h2 id="Maybe-you-can-see"><a href="#Maybe-you-can-see" class="headerlink" title="Maybe you can see"></a>Maybe you can see</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">c c++ python java javascript </span><br><span class="line">机器学习，transformer框架浅谈，深度学习 and so on.</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
+    <title>gcd及其扩展</title>
+    <url>/2026/03/06/gcd%E5%8F%8A%E5%85%B6%E6%89%A9%E5%B1%95/</url>
+    <content><![CDATA[<h2 id="gcd运算严格满足结合率"><a href="#gcd运算严格满足结合率" class="headerlink" title="gcd运算严格满足结合率"></a>gcd运算严格满足结合率</h2><p>即有 $\gcd(a,b,c) = \gcd(\gcd(a,b),c) = \gcd(a,\gcd(b,c))$</p>
 <span id="more"></span>
-<p>并查集，核心在查询其公共根节点，即族长</p>
-<h3 id="搜寻公共根节点，合并，判是否同族"><a href="#搜寻公共根节点，合并，判是否同族" class="headerlink" title="搜寻公共根节点，合并，判是否同族"></a>搜寻公共根节点，合并，判是否同族</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//搜寻公共根节点，期间路径压缩，记录已经找到根节点的数据，省略其一步步查找的过程</span><br><span class="line">int f[100000]</span><br><span class="line">int find(int u)&#123;</span><br><span class="line">    <span class="built_in">return</span> f[u]==u?u:f[u]=find(f[u]);</span><br><span class="line">&#125;</span><br><span class="line">void unite(int x,int y)&#123;</span><br><span class="line">    f[find(x)]=find(y);</span><br><span class="line">&#125;</span><br><span class="line">bool same(int x,int y)&#123;</span><br><span class="line">    <span class="built_in">return</span> find(x)==find(y)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>核心就三点，查询，判别，合并</p>
-<h3 id="毒点"><a href="#毒点" class="headerlink" title="毒点"></a>毒点</h3><h4 id="带圈的并查集怎么解决"><a href="#带圈的并查集怎么解决" class="headerlink" title="带圈的并查集怎么解决"></a>带圈的并查集怎么解决</h4><p>os:所以这玩意为什么能卡我三个小时，道心破碎了吗（这个题其实很快就看出来思路了，但是卡在并查集了）<br><a href="http://10.67.4.89/p/P10029">路径问题</a><br>问题来了，假如说我们要通过并查集判断一个有向图里面环的个数，每个环中任意节点出入度都是1，那么并查集由于其unite步骤，默认合并x的父节点到y的父节点下方，环的特殊性使得存在如下情况</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1-&gt;2  2-&gt;3  3-&gt;4  4-&gt;1</span><br><span class="line">f[1]=2;f[2]=3;f[3]=4;f[4]=1;</span><br><span class="line">//find步骤递归将无穷进行，也就是说，我们必须规定一个环中具有某特征的数在unite时固定充当父节点</span><br></pre></td></tr></table></figure>
-<p>最简单的就是找大小来比较，两个根节点合并的时候，大的合并到小的或小的合并到大的<br>至于same中为什么写find，其实都一样，无非少一遍自家人不认自家人的unite</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">void unite(int x,int y)&#123;</span><br><span class="line">    int tem1=find(x);</span><br><span class="line">    int tem2=find(y);</span><br><span class="line">	f[min(tem1,tem2)]=max(tem1,tem2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="f最终在跑完一整遍图之后，存的直接就是最终的父节点吗"><a href="#f最终在跑完一整遍图之后，存的直接就是最终的父节点吗" class="headerlink" title="f最终在跑完一整遍图之后，存的直接就是最终的父节点吗"></a>f最终在跑完一整遍图之后，存的直接就是最终的父节点吗</h4><center>
-<font color=red>  不是！！！ </font>
-</center>
-
-<p>f仅仅是处理过程中的路径压缩，只有在跑过去的时候才会压缩到，否则还是原根节点  </p>
-<p>举个例子，2的根节点是3，f[2]=3,之后进行了一次f[3]=f[4]的合并，f[2]依旧是3</p>
-<p>只有在最后存完之后</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(int i=1;i&lt;=n;i++)&#123;</span><br><span class="line">    f[i]=find(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>才能算是真正f[i]存的是根节点,实际前面做的都是建链，最后顺着链子跑一遍，才是真正把每个节点锚定到根节点。</p>
-<h2 id="满满遗憾"><a href="#满满遗憾" class="headerlink" title="满满遗憾"></a>满满遗憾</h2><p>最后当然是遗憾离场，这个题如果不一直在并查集上考虑其实有很多简单的方法 ，行列式那题很简单，n=4，可以说是一个小模拟，但被我安排到这个题写完再写了,没关注这题，也就没注意到n小，自然以为他要写递归…赛前更是一道图题都没写，倒是关注的背包和gcd一点没考….</p>
-<p>承队友之幸，省赛还有希望上场，加训，莫辜负。</p>
-<p>以后再也不会盯着一个题看那么长时间了，归根到底还是做题习惯，另外就是debug的问题<br>不要用ai debug！ 不要用ai debug！ 不要用ai debug！赛时会很drama（重要的事情说三遍）</p>
+<p>三者求最大公约数顺序任意排列</p>
+<h3 id="严格证明"><a href="#严格证明" class="headerlink" title="严格证明"></a>严格证明</h3><p>d=gcd(a,b)意味着d是同时能整除a,b的最大整数，g=gcd(d,c),意味着g是能同时整除d,c的最大整数<br>因为g能整除d,d能整除a,b，故g能整除a,b,c，即g是a,b,c的公约数<br>反过来，我们取a,b,c的公约数k，k定然能被其最大公约数d整除，k同时又是d,c的因数，故又能被g整除，因此g定然是a,b,c中最大的公约数（a,b的公约数是gcd(a,b)的因数的证明在下）</p>
+<blockquote>
+<p>本质推理是素因数分解</p>
+</blockquote>
+<p>对于两个数而言，素因数分解<br>$a=p_{1}^{m1} \cdot p_{2}^{m2}…p_{n}^{mk}$<br>$b=p_{1}^{n1} \cdot p_{2}^{n2}…p_{nk}^{mk}$<br>不难观察到，其最大公约数就是其素因数幂次的组合<br>即 最大公约数=$p_1^{\min(m_1,n_1)} p_2^{\min(m_2,n_2)} \cdots p_k^{\min(m_k,n_k)}$<br>根据上述式子，我们可以得到a,b的其他任意公约数均可以整除最大公约数<br>故不管再多的数放在一起求gcd，都是满足结合律的。（故其实也可以直接从证明看出可结合性 本质是min取的过程中不在乎顺序如何）  </p>
+<h2 id="exgcd模板"><a href="#exgcd模板" class="headerlink" title="exgcd模板"></a>exgcd模板</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int exgcd(int a, int b, int&amp; x, int&amp; y) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!b) &#123;</span><br><span class="line">        x = 1;</span><br><span class="line">        y = 0;</span><br><span class="line">        <span class="built_in">return</span> a;</span><br><span class="line">    &#125;</span><br><span class="line">    int d = exgcd(b, a % b, y, x);//返回值是最大公约数</span><br><span class="line">    y -= a / b * x;</span><br><span class="line">    <span class="built_in">return</span> d;</span><br><span class="line">&#125;</span><br><span class="line">/*void exgcd(ll a,ll b,ll &amp;x,ll &amp;y)&#123;  //更简洁的求解写法</span><br><span class="line">    <span class="keyword">if</span>(b == 0) &#123; x = 1,y = 0; <span class="built_in">return</span>;&#125;</span><br><span class="line">    exgcd(b,a%b,y,x);           //x和y换位</span><br><span class="line">    y = y- a/b*x;</span><br><span class="line">&#125;*/</span><br></pre></td></tr></table></figure>
+<p>返回的d即最终 $ax+by=gcd(a,b)$<br>即：对于任意两个不全为零的整数 $a$ 和 $b$，一定存在整数 $x$ 和 $y$，使得 $ax+by=\gcd(a,b)$ 成立。同时通过值引用，$x,y$最终的值即$x,y$的最小特解。</p>
+<p>用处：  </p>
+<h3 id="1-求解二元一次不定方程"><a href="#1-求解二元一次不定方程" class="headerlink" title="1.求解二元一次不定方程"></a>1.求解二元一次不定方程</h3><p>用于求解形如 $ax+by=c$ 的整数解。根据裴蜀定理的推论，这个方程有解的充要条件是 $\gcd(a,b)$ 能整除 $c$。通过 exgcd 求出 $ax+by=\gcd(a,b)$ 的一组解后，将其按比例扩大，即可得到原方程的一组特解$x_0,y_0$，进而可以推导出通解。<br>通解：$x=x_0 + k\cdot \frac{b}{gcd(a,b)}$ ，$y=y_0 - k\cdot \frac{a}{gcd(a,b)}$<br>(k是任意整数)</p>
+<h3 id="2-求解模综合乘法逆元"><a href="#2-求解模综合乘法逆元" class="headerlink" title="2.求解模综合乘法逆元"></a>2.求解模综合乘法逆元</h3><p>当要求解 $a$ 在模 $m$ 意义下的乘法逆元 $x$ 时，等价于求解同余方程 $ax\equiv 1\pmod m$。这个同余方程可以转化为不定方程 $ax+my=1$。只要 $\gcd(a,m)=1$（即 $a$ 和 $m$ 互质），就可以直接用 exgcd 求出 $x$ 的值。<br>这次的exgcd的结果是在模意义下的，故其是唯一的特解，需注意实际使用中通常还需要保证取模之后的结果为正数，故+m再取余以保证正数。</p>
+<script type="math/tex; mode=display">x_{min} = (x_0 \bmod m + m) \bmod m</script><h4 id="费马小定理解法"><a href="#费马小定理解法" class="headerlink" title="费马小定理解法"></a>费马小定理解法</h4><blockquote>
+<p>求乘法逆元同时也可使用费马小定理。注意：此时要求mod必须是质数<br>$ax \equiv 1\pmod m$<br>有公式：<script type="math/tex">x=a^{m-2} \pmod m</script><br>x即a关于模m的乘法逆元</p>
+</blockquote>
+<h3 id="3-求解线性同余方程组（CRT-的扩展）"><a href="#3-求解线性同余方程组（CRT-的扩展）" class="headerlink" title="3.求解线性同余方程组（CRT 的扩展）"></a>3.求解线性同余方程组（<a href="https://www.cnblogs.com/ailanxier/p/13370753.html">CRT</a> 的扩展）</h3><p>在处理扩展中国剩余定理（EXCRT）时，由于模数可能不互质，普通的 CRT 无法使用。此时需要两两合并同余方程，合并的过程本质上就是求解形如 $ax+by=c$ 的线性方程，强依赖 exgcd。</p>
+<h4 id="CRT求解模板"><a href="#CRT求解模板" class="headerlink" title="CRT求解模板"></a>CRT求解模板</h4><p>能力有限，模板转载自上述链接：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include &lt;bits/stdc++.h&gt;</span></span><br><span class="line">using namespace std;</span><br><span class="line">typedef long long ll ;</span><br><span class="line">ll mod[15],yu[15],M = 1,ans;//mod[i]即为mi,yu[i]存放模后余数</span><br><span class="line"></span><br><span class="line">void exGcd(ll a,ll b,ll &amp;x,ll &amp;y)&#123;   //求解 ax+by = gcd(a,b)，注意是传引用</span><br><span class="line">    <span class="keyword">if</span>(b == 0) &#123; x = 1,y = 0; <span class="built_in">return</span>;&#125;         // b = 0时,a = gcd(原a,原b)</span><br><span class="line">    exGcd(b,a%b,x,y);</span><br><span class="line">    ll temX = x;</span><br><span class="line">    x = y,y = temX - a/b * y;   //x = y1, y = x1 - a/b * y1 (x1和y1是递归下一层返回后的x和y)</span><br><span class="line">&#125;</span><br><span class="line">/*void exGcd(ll a,ll b,ll &amp;x,ll &amp;y)&#123;  //更简洁的写法</span><br><span class="line">    <span class="keyword">if</span>(b == 0) &#123; x = 1,y = 0; <span class="built_in">return</span>;&#125;</span><br><span class="line">    exGcd(b,a%b,y,x);           //x和y换位</span><br><span class="line">    y = y- a/b*x;</span><br><span class="line">&#125;*/</span><br><span class="line">int <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line">    int n;</span><br><span class="line">    cin&gt;&gt;n;       //方程组数</span><br><span class="line">    <span class="keyword">for</span> (int i = 1; i &lt;= n ; ++i) &#123;</span><br><span class="line">        scanf(<span class="string">&quot;%ld %ld&quot;</span>,&amp;mod[i],&amp;yu[i]);  //模数和余数，模数互质</span><br><span class="line">        M*=mod[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (int i = 1; i &lt;= n ; ++i) &#123;</span><br><span class="line">        ll Mi = M / mod[i],inv,y; // Mi为所有模数乘积除以第i个模数，inv为Mi在模mi意义下的逆元</span><br><span class="line">        exGcd(Mi, mod[i], inv, y);</span><br><span class="line">        inv = (inv % mod[i]+mod[i]) % mod[i];//防止逆元求解过程中的负数出现</span><br><span class="line">        ans = (ans + yu[i] * Mi * inv) % M;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt; (ans + M) % M;          //保证结果不出现负数</span><br><span class="line">    <span class="built_in">return</span> 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="EXCRT求解模板"><a href="#EXCRT求解模板" class="headerlink" title="EXCRT求解模板"></a>EXCRT求解模板</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include &lt;bits/stdc++.h&gt;</span></span><br><span class="line">using namespace std;</span><br><span class="line">typedef long long ll;</span><br><span class="line">ll n,mod[100009],yu[100009];</span><br><span class="line"></span><br><span class="line">//要用快速乘（龟速乘），防止爆long long</span><br><span class="line">ll qMul(ll a,ll b,ll mo)&#123;</span><br><span class="line">    ll an = 0;</span><br><span class="line">    <span class="keyword">while</span>(b) &#123;</span><br><span class="line">        <span class="keyword">if</span>(b&amp;1) an =(an+a) % mo;</span><br><span class="line">        a = (a+a)%mo;</span><br><span class="line">        b&gt;&gt;=1;</span><br><span class="line">    &#125;<span class="built_in">return</span> an%mo;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//扩展欧几里得算法，返回gcd(a,b),并计算出ax+by = gcd(a,b)中的x和y</span><br><span class="line">ll exGcd(ll a,ll b,ll &amp;x,ll &amp;y)&#123;</span><br><span class="line">    <span class="keyword">if</span>( b == 0 ) &#123; x = 1;y = 0; <span class="built_in">return</span> a;&#125;</span><br><span class="line">    ll gcd = exGcd(b,a%b,y,x);  //注意x和y的顺序</span><br><span class="line">    y = y - a/b*x;</span><br><span class="line">    <span class="built_in">return</span> gcd;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);//加速cin和cout</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    <span class="keyword">for</span>(int i = 1;i &lt;= n;i++) cin&gt;&gt;mod[i]&gt;&gt;yu[i];</span><br><span class="line">    ll ans = yu[1],M = mod[1] ,t,y;  //ans表示前i-1个方程式的特解（余数），M为前i-1个方程式的模数的最小公倍数(i从2开始)</span><br><span class="line">    <span class="keyword">for</span>(int i = 2;i &lt;= n;i++)&#123;</span><br><span class="line">        ll mi = mod[i],res = ((yu[i] - ans)%mi + mi)%mi;  //res是等式的右边部分，不能出现负数</span><br><span class="line">        ll gcd = exGcd(M,mi,t,y);        //求出gcd(mi,M)</span><br><span class="line">        if(res % gcd != <span class="number">0</span>) &#123; cout&lt;&lt;-<span class="number">1</span>&lt;&lt;endl;exit(<span class="number">0</span>); &#125;   //如果等式右边不能整除gcd，方程组无解</span><br><span class="line">        t = qMul(t,res/gcd,mi);            //求出t还要乘上倍数，注意是快速乘取模mi (对谁取模要分清)</span><br><span class="line">        ans += t * M;                               //得到前i个方程的特解（余数）</span><br><span class="line">        M = mi /gcd * M;                         //M等于lcm(M,mi)，注意乘法要在除法后面做，否则会爆long long</span><br><span class="line">        ans = (ans%M+M)%M;                //让特解范围限定在<span class="number">0</span>~(M-<span class="number">1</span>)内，防止会出现负数</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;ans;</span><br><span class="line">    return <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="放一道例题-hard"><a href="#放一道例题-hard" class="headerlink" title="放一道例题(hard)"></a>放一道例题(hard)</h2><p><a href="https://www.luogu.com.cn/problem/U628784?contestId=295494">U628784 Laz玩游戏</a><br>key:ey33</p>
 ]]></content>
       <categories>
         <category>算法</category>
       </categories>
       <tags>
-        <tag>并查集</tag>
+        <tag>数论</tag>
+        <tag>数学</tag>
       </tags>
   </entry>
   <entry>
@@ -212,6 +180,38 @@
       </tags>
   </entry>
   <entry>
+    <title>并查集</title>
+    <url>/2026/03/16/%E5%B9%B6%E6%9F%A5%E9%9B%86/</url>
+    <content><![CDATA[<h2 id="并查集"><a href="#并查集" class="headerlink" title="并查集"></a>并查集</h2><p>青春猪头少年不会在赛时被并查集少一次遍历卡165min遗憾退场</p>
+<span id="more"></span>
+<p>并查集，核心在查询其公共根节点，即族长</p>
+<h3 id="搜寻公共根节点，合并，判是否同族"><a href="#搜寻公共根节点，合并，判是否同族" class="headerlink" title="搜寻公共根节点，合并，判是否同族"></a>搜寻公共根节点，合并，判是否同族</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//搜寻公共根节点，期间路径压缩，记录已经找到根节点的数据，省略其一步步查找的过程</span><br><span class="line">int f[100000]</span><br><span class="line">int find(int u)&#123;</span><br><span class="line">    <span class="built_in">return</span> f[u]==u?u:f[u]=find(f[u]);</span><br><span class="line">&#125;</span><br><span class="line">void unite(int x,int y)&#123;</span><br><span class="line">    f[find(x)]=find(y);</span><br><span class="line">&#125;</span><br><span class="line">bool same(int x,int y)&#123;</span><br><span class="line">    <span class="built_in">return</span> find(x)==find(y)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>核心就三点，查询，判别，合并</p>
+<h3 id="毒点"><a href="#毒点" class="headerlink" title="毒点"></a>毒点</h3><h4 id="带圈的并查集怎么解决"><a href="#带圈的并查集怎么解决" class="headerlink" title="带圈的并查集怎么解决"></a>带圈的并查集怎么解决</h4><p>os:所以这玩意为什么能卡我三个小时，道心破碎了吗（这个题其实很快就看出来思路了，但是卡在并查集了）<br><a href="http://10.67.4.89/p/P10029">路径问题</a><br>问题来了，假如说我们要通过并查集判断一个有向图里面环的个数，每个环中任意节点出入度都是1，那么并查集由于其unite步骤，默认合并x的父节点到y的父节点下方，环的特殊性使得存在如下情况</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1-&gt;2  2-&gt;3  3-&gt;4  4-&gt;1</span><br><span class="line">f[1]=2;f[2]=3;f[3]=4;f[4]=1;</span><br><span class="line">//find步骤递归将无穷进行，也就是说，我们必须规定一个环中具有某特征的数在unite时固定充当父节点</span><br></pre></td></tr></table></figure>
+<p>最简单的就是找大小来比较，两个根节点合并的时候，大的合并到小的或小的合并到大的<br>至于same中为什么写find，其实都一样，无非少一遍自家人不认自家人的unite</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">void unite(int x,int y)&#123;</span><br><span class="line">    int tem1=find(x);</span><br><span class="line">    int tem2=find(y);</span><br><span class="line">	f[min(tem1,tem2)]=max(tem1,tem2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="f最终在跑完一整遍图之后，存的直接就是最终的父节点吗"><a href="#f最终在跑完一整遍图之后，存的直接就是最终的父节点吗" class="headerlink" title="f最终在跑完一整遍图之后，存的直接就是最终的父节点吗"></a>f最终在跑完一整遍图之后，存的直接就是最终的父节点吗</h4><center>
+<font color=red>  不是！！！ </font>
+</center>
+
+<p>f仅仅是处理过程中的路径压缩，只有在跑过去的时候才会压缩到，否则还是原根节点  </p>
+<p>举个例子，2的根节点是3，f[2]=3,之后进行了一次f[3]=f[4]的合并，f[2]依旧是3</p>
+<p>只有在最后存完之后</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(int i=1;i&lt;=n;i++)&#123;</span><br><span class="line">    f[i]=find(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>才能算是真正f[i]存的是根节点,实际前面做的都是建链，最后顺着链子跑一遍，才是真正把每个节点锚定到根节点。</p>
+<h2 id="满满遗憾"><a href="#满满遗憾" class="headerlink" title="满满遗憾"></a>满满遗憾</h2><p>最后当然是遗憾离场，这个题如果不一直在并查集上考虑其实有很多简单的方法 ，行列式那题很简单，n=4，可以说是一个小模拟，但被我安排到这个题写完再写了,没关注这题，也就没注意到n小，自然以为他要写递归…赛前更是一道图题都没写，倒是关注的背包和gcd一点没考….</p>
+<p>承队友之幸，省赛还有希望上场，加训，莫辜负。</p>
+<p>以后再也不会盯着一个题看那么长时间了，归根到底还是做题习惯，另外就是debug的问题<br>不要用ai debug！ 不要用ai debug！ 不要用ai debug！赛时会很drama（重要的事情说三遍）</p>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>并查集</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>欧拉筛！</title>
     <url>/2026/02/26/%E6%AC%A7%E6%8B%89%E7%AD%9B/</url>
     <content><![CDATA[<h2 id="欧拉筛"><a href="#欧拉筛" class="headerlink" title="欧拉筛"></a><a href="https://codeforces.com/contest/2200/problem/E">欧拉筛</a></h2><p>于CF1080_E题遇到对欧拉筛的活用，从新总结用法及原理</p>
@@ -239,19 +239,6 @@
       </tags>
   </entry>
   <entry>
-    <title>首次团队赛回顾</title>
-    <url>/2026/03/22/%E9%A6%96%E6%AC%A1%E5%9B%A2%E9%98%9F%E8%B5%9B%E5%9B%9E%E9%A1%BE/</url>
-    <content><![CDATA[<p>浪潮完赛，杜神太强了最后20min成功冲出全场唯二的D题（<font color=orange>%%%</font>),最后rank8极限一等奖，这次总归没有遗憾离场。</p>
-<span id="more"></span>
-]]></content>
-      <categories>
-        <category>体悟</category>
-      </categories>
-      <tags>
-        <tag>随笔</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>背包问题</title>
     <url>/2026/03/08/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<p>搁置已久，今天来简单讨论下背包的基础性问题<br><span id="more"></span></p>
@@ -273,6 +260,19 @@
       <tags>
         <tag>动态规划</tag>
         <tag>背包</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>首次团队赛回顾</title>
+    <url>/2026/03/22/%E9%A6%96%E6%AC%A1%E5%9B%A2%E9%98%9F%E8%B5%9B%E5%9B%9E%E9%A1%BE/</url>
+    <content><![CDATA[<p>浪潮完赛，杜神太强了最后20min成功冲出全场唯二的D题（<font color=orange>%%%</font>),最后rank8极限一等奖，这次总归没有遗憾离场。</p>
+<span id="more"></span>
+]]></content>
+      <categories>
+        <category>体悟</category>
+      </categories>
+      <tags>
+        <tag>随笔</tag>
       </tags>
   </entry>
 </search>
