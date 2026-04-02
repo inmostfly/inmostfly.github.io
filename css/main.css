@@ -1283,7 +1283,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #ff36ff;
+  background: #82b473;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2688,7 +2688,7 @@ code {
   display: none;
 }
 .site-state-item {
-  background: rgba(123,157,219,0.576);
+  background: rgba(123,157,219,0.576); /* 补充了缺失的分号 */
   padding: 10px;
   border-radius: 15px;
 }
@@ -2698,63 +2698,51 @@ code {
 }
 /* --- 修复引用块 (Blockquote) 的显示问题 --- */
 blockquote {
-/* 1. 加深文字颜色，确保看得清 */
   color: #333 !important;
-/* 2. 给引用块加一个半透明的白底，把字“托”起来 */
   background-color: rgba(255,255,255,0.6);
-/* 3. 左边加一条装饰线，更有层次感 */
   border-left: 4px solid #7b9ddb;
-/* 4. 调整一下内边距，不要贴着边 */
   padding: 10px 20px;
   margin: 20px 0;
-/* 5. 圆角 */
   border-radius: 5px;
 }
 .tag-cloud-tags a {
-/* 基础文字样式 */
   color: #111 !important;
-  font-size: 14px !important; /* 如果做成按钮，建议统一大小比较整齐 */
-/* 按钮形状 */
+  font-size: 14px !important;
   display: inline-block;
   padding: 5px 10px;
   margin: 5px;
-  background: #f5f5f5; /* 浅灰背景 */
-  border-radius: 15px; /* 圆角胶囊状 */
-  border: 1px solid #e0e0e0; /* 细边框 */
-/* 动画 */
+  background: #f5f5f5;
+  border-radius: 15px;
+  border: 1px solid #e0e0e0;
   transition: all 0.2s ease-in-out;
 }
-/* 鼠标悬停效果 */
 .tag-cloud-tags a:hover {
-  background: #7b9ddb; /* 背景变蓝 */
-  color: #fff !important; /* 文字变白 */
+  background: #7b9ddb;
+  color: #fff !important;
   border-color: #7b9ddb;
-  transform: scale(1.1); /* 稍微放大一点 */
+  transform: scale(1.1);
 }
 .post-title a {
   color: #030303 !important;
   font-weight: 800;
 }
 .menu-item a {
-/* 基础文字样式 */
   color: #080808 !important;
-  font-size: 14px !important; /* 如果做成按钮，建议统一大小比较整齐 */
-/* 按钮形状 */
+  font-size: 14px !important;
   display: inline-block;
   padding: 5px 10px;
   margin: 5px;
-  background: rgba(245,245,245,0.808); /* 浅灰背景 */
-  border-radius: 15px; /* 圆角胶囊状 */
-  border: 1px solid #e0e0e0; /* 细边框 */
-/* 动画 */
+  background: rgba(245,245,245,0.808);
+  border-radius: 15px;
+  border: 1px solid #e0e0e0;
   transition: all 0.2s ease-in-out;
   width: 40px;
 }
 .menu-item a:hover {
-  background: #7b9ddb; /* 背景变蓝 */
+  background: #7b9ddb;
   font-weight: 800;
   border-color: #7b9ddb;
-  transform: scale(1.1); /* 稍微放大一点 */
+  transform: scale(1.1);
 }
 .category-list-count {
   color: #040404 !important;
@@ -2780,18 +2768,30 @@ blockquote {
 .nav a {
   color: #030202;
 }
-.sidebar-active .header-inner,
+/* --- 彻底阻断 NexT 主题的侧边栏推挤行为 --- */
+/* 拦截 body 的位移 */
+body.sidebar-active {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+/* 拦截所有主要容器的位移、宽度压缩和平移动画 */
+.sidebar-active .container,
+.sidebar-active .main,
 .sidebar-active .main-inner,
+.sidebar-active .header,
+.sidebar-active .header-inner,
+.sidebar-active .footer,
 .sidebar-active .footer-inner {
   padding-left: 0 !important;
   padding-right: 0 !important;
   margin-left: auto !important;
   margin-right: auto !important;
   transform: none !important;
+  width: 100% !important;
 }
-body.sidebar-active {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
+/* 补充：确保侧边栏在固定定位时靠左对齐，不受容器影响 */
+.sidebar {
+  left: 0 !important;
 }
 @-moz-keyframes typedjsBlink {
   50% {
