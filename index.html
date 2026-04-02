@@ -1456,12 +1456,48 @@ setInterval("createtime()",250);
 </body>
 </html>
 
-<script async src="/js/cursor/text.js"></script>
-<script async src="/js/cursor/cherry.js"></script>
+
+
 <script>
-if(window.innerWidth>768){
-const script=document.createElement('script');
-script.src="https://fastly.jsdelivr.net/gh/inmostfly/live2d-widget@1.2.1/dist/autoload.js";
-document.head.appendChild(script);
-}
+  // 仅在非手机端且页面完全加载后执行
+  window.addEventListener('load', function() {
+    if (window.innerWidth > 768) {
+      const type = "cherry";
+      
+      // 动态创建并加载脚本
+      function loadScript(src, callback) {
+        const script = document.createElement('script');
+        script.src = src;
+        script.onload = callback;
+        document.head.appendChild(script);
+      }
+
+      if (type === "explosion") {
+        // 先插入 Canvas 节点
+        document.body.insertAdjacentHTML('beforeend', '<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 9999; pointer-events: none;"></canvas>');
+        // 依次加载 anime.js 和 特效脚本
+        loadScript("//cdn.bootcss.com/animejs/2.2.0/anime.min.js", function() {
+          loadScript("/js/cursor/explosion.min.js");
+        });
+      } else if (type === "cherry") {
+        loadScript("/js/cursor/cherry.js");
+        loadScript("/js/cursor/text.js");
+      }
+    }
+  });
+</script>
+
+
+
+<script>
+  window.addEventListener('load', function() {
+    // 再次延迟 1.5 秒加载看板娘，错开资源下载高峰
+    if (window.innerWidth > 768) {
+      setTimeout(function() {
+        const live2d = document.createElement('script');
+        live2d.src = "https://fastly.jsdelivr.net/gh/inmostfly/live2d-widget@1.2.1/dist/autoload.js";
+        document.head.appendChild(live2d);
+      }, 1500); 
+    }
+  });
 </script>
