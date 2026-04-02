@@ -1283,7 +1283,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #28ffff;
+  background: #41be61;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2568,27 +2568,29 @@ body::before {
   opacity: 1;
   color: #080707;
   border-radius: 10px;
-  margin-top: 40px;
-  margin-bottom: 20px;
+/* 核心修改：设置上下边距，左右自动居中 */
+  margin: 40px auto 20px;
   padding: 40px;
   -webkit-box-shadow: 0 0 5px rgba(202,203,203,0.5);
   -moz-box-shadow: 0 0 5px rgba(202,203,204,0.5);
+  box-shadow: 0 0 5px rgba(202,203,204,0.5);
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .post-block {
-    margin: 20px;
+    margin: 20px auto;
     padding: 10px;
   }
 }
 @media (max-width: 767px) {
   .post-block {
-    margin: 15px;
+    margin: 15px auto;
     padding: 15px;
   }
 }
 .pagination,
 .comments {
   opacity: 0.8;
+  margin: auto; /* 确保分页和评论区也尝试居中 */
 }
 .sidebar {
   background-color: rgba(141,183,198,0.545);
