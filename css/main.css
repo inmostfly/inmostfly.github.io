@@ -1283,7 +1283,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #ffffe0;
+  background: #ff36ff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2779,6 +2779,19 @@ blockquote {
 }
 .nav a {
   color: #030202;
+}
+.sidebar-active .header-inner,
+.sidebar-active .main-inner,
+.sidebar-active .footer-inner {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  transform: none !important;
+}
+body.sidebar-active {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 @-moz-keyframes typedjsBlink {
   50% {
