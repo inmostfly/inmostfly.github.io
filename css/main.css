@@ -1283,7 +1283,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #c94b6b;
+  background: #c1ffff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2591,23 +2591,31 @@ body::before {
   opacity: 0.8;
 }
 .sidebar {
-  position: fixed !important;
-  left: 10px;
-  z-index: 1000;
-/* 外观设置 */
   background-color: rgba(141,183,198,0.545);
   background-size: cover;
   background-position: top;
   background-repeat: no-repeat;
   box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
   border-radius: 15px;
-/* 尺寸与位置 */
+  position: fixed !important;
+  z-index: 1000;
   margin-top: 80px;
   height: auto !important;
   max-height: 70vh;
   bottom: auto !important;
-/* 核心修复：强制隐藏溢出内容。当 JS 将宽度设为 0 时，连同阴影、背景和文字一起切断显示 */
   overflow: hidden !important;
+/* 核心修改：默认移出屏幕左侧，透明度设为0 */
+  left: -350px !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+/* 添加平滑动画，替代 JS 的计算 */
+  transition: all 0.3s ease-in-out !important;
+}
+/* --- 2. 侧边栏激活状态：显示（移入屏幕） --- */
+body.sidebar-active .sidebar {
+  left: 10px !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 .sidebar-inner {
   background: rgba(216,202,202,0);

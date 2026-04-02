@@ -102,31 +102,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>字典树</title>
-    <url>/2026/03/12/%E5%AD%97%E5%85%B8%E6%A0%91/</url>
-    <content><![CDATA[<p>字符串的处理方式极多，字典树便是其中一种</p>
-<span id="more"></span>
-<h2 id="字典树基础"><a href="#字典树基础" class="headerlink" title="字典树基础"></a>字典树基础</h2><p>此篇重写，再无板子之谈  </p>
-<font color=red> 板子不理解的时候真能坑死人,还不如没有 </font>
-
-<p>常用二维数组存储，一般认为每个节点含有26个子节点，分别表示字符a到z，编号1-26. 定义$trie[u][id]=k$中,u表字典树的节点编号，id表示该节点中编号为id的字符，u在全局中唯一，唯一标识每个节点。k即表示u的id子节点的编号。  </p>
-<h3 id="插入字符串"><a href="#插入字符串" class="headerlink" title="插入字符串"></a>插入字符串</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int tot=0;//tot表示节点总数/节点编号</span><br><span class="line">void insert(string s)&#123;  </span><br><span class="line">    int pos=0;</span><br><span class="line">    <span class="keyword">for</span>(int i=0;i&lt;s.size();i++)&#123;</span><br><span class="line">      int <span class="built_in">id</span>=s[i]-<span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">      <span class="keyword">if</span>(tree[pos][<span class="built_in">id</span>]==0)&#123;</span><br><span class="line">        tree[pos][<span class="built_in">id</span>]=++tot;</span><br><span class="line">      &#125;</span><br><span class="line">      pos=tree[pos][<span class="built_in">id</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    tag[pos]=1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="查找字符串"><a href="#查找字符串" class="headerlink" title="查找字符串"></a>查找字符串</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int find(string s)&#123;</span><br><span class="line">    int pos=0;</span><br><span class="line">    <span class="keyword">for</span>(int i=0;i&lt;s.size();i++)&#123;</span><br><span class="line">      int <span class="built_in">id</span>=s[i]-<span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">      <span class="keyword">if</span>(tree[pos][<span class="built_in">id</span>]==0)&#123;</span><br><span class="line">        <span class="built_in">return</span> -1;</span><br><span class="line">      &#125;</span><br><span class="line">      pos=tree[pos][<span class="built_in">id</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(tag[pos]==1)&#123;</span><br><span class="line">      <span class="built_in">return</span> 1;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">      <span class="built_in">return</span> -1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="字典树的活用"><a href="#字典树的活用" class="headerlink" title="字典树的活用"></a>字典树的活用</h2><h3 id="求多项字符串的最大公共前缀长度之和"><a href="#求多项字符串的最大公共前缀长度之和" class="headerlink" title="求多项字符串的最大公共前缀长度之和"></a>求多项字符串的最大公共前缀长度之和</h3><p>此时需要记录每个节点有几个字符串经过了这个节点，即节点需记录通过自己的字符串数量。<br>实现：每次插入过程中pos更新时同时cnt[pos]++即可。  </p>
-<center>
-<font color=green>
-基础数据结构重在插入，即树的构建，剩下的就是其多样的用法。
-</font>
-</center>]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>树</tag>
-        <tag>字符串</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>gcd及其扩展</title>
     <url>/2026/03/06/gcd%E5%8F%8A%E5%85%B6%E6%89%A9%E5%B1%95/</url>
     <content><![CDATA[<h2 id="gcd运算严格满足结合率"><a href="#gcd运算严格满足结合率" class="headerlink" title="gcd运算严格满足结合率"></a>gcd运算严格满足结合率</h2><p>即有 $\gcd(a,b,c) = \gcd(\gcd(a,b),c) = \gcd(a,\gcd(b,c))$</p>
@@ -160,30 +135,52 @@
       </tags>
   </entry>
   <entry>
-    <title>欧拉筛！</title>
-    <url>/2026/02/26/%E6%AC%A7%E6%8B%89%E7%AD%9B/</url>
-    <content><![CDATA[<h2 id="欧拉筛"><a href="#欧拉筛" class="headerlink" title="欧拉筛"></a><a href="https://codeforces.com/contest/2200/problem/E">欧拉筛</a></h2><p>于CF1080_E题遇到对欧拉筛的活用，从新总结用法及原理</p>
+    <title>字典树</title>
+    <url>/2026/03/12/%E5%AD%97%E5%85%B8%E6%A0%91/</url>
+    <content><![CDATA[<p>字符串的处理方式极多，字典树便是其中一种</p>
 <span id="more"></span>
-<h2 id="欧拉筛-1"><a href="#欧拉筛-1" class="headerlink" title="欧拉筛"></a>欧拉筛</h2><h3 id="欧拉筛-线性筛：核心是利用一个质数筛掉其他合数"><a href="#欧拉筛-线性筛：核心是利用一个质数筛掉其他合数" class="headerlink" title="欧拉筛/线性筛：核心是利用一个质数筛掉其他合数"></a>欧拉筛/线性筛：核心是利用一个质数筛掉其他合数</h3><p>动态规划的思想</p>
-<p>任何一个合数C，能且只能被分解为唯一的 $C=i \cdot p_{min}$ ,其中 $p_{min}$ 是C的最小质因数，i是某个确定的整数。</p>
-<p>算法外层循环遍历所有整数i，内层循环从小到大遍历已知质数集合p。我们把 $i \cdot p_{min}$ 当作已知的合数，把他标记为被筛出。</p>
-<p>外层遍历i的过程中，若i是合数，那么其一定可以被分解为比自己小的倍数$i_{last}$与比他小的素数的积(比他小保证了在遍历到他之前已经被处理过)，其会在处理i之前被处理为is_prime[$p_{min}*i_{last}$]=1；反之则说明其不是合数，我们直接将其添加到is_prime中即可</p>
-<h3 id="最关键的逻辑：-if-i-p-0-break"><a href="#最关键的逻辑：-if-i-p-0-break" class="headerlink" title="最关键的逻辑： if(i%p==0) break;"></a>最关键的逻辑： if(i%p==0) break;</h3><p>当i%p==0成立时，意味着质数p已经是整数i的质因数之一，且由于我们从小到大遍历质数，p就是i的最小质因数。此时我们不难考虑到，此时如果再进行合数的计算，就使得 $p_{next} \cdot i$ 的最小质因数不再是 $p_{next}$ 而是p，不满足我们在前面设定的最小质因数的合数条件，故break，等待后面的遍历来计算，防止重复。</p>
-<h3 id="欧拉筛模板代码"><a href="#欧拉筛模板代码" class="headerlink" title="欧拉筛模板代码"></a>欧拉筛模板代码</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vector&lt;int&gt; primes;</span><br><span class="line">bool is_prime[1000005];</span><br><span class="line"></span><br><span class="line">void <span class="function"><span class="title">count_primes</span></span>()&#123;</span><br><span class="line">    <span class="keyword">for</span>(int i=2;i&lt;=1000005;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!is_prime[i]) </span><br><span class="line">        primes.push_back(i);</span><br><span class="line">        <span class="keyword">for</span>(auto p:primes)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i*p&gt;1000005) <span class="built_in">break</span>;</span><br><span class="line">            is_prime[i*p]=1;</span><br><span class="line">            <span class="keyword">if</span>(i%p==0) <span class="built_in">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">primes存所有质数，is_prime用位置的值反应是否是素数，0是素数，1是合数。</span><br></pre></td></tr></table></figure>
-<h2 id="E-Divisive-Battle"><a href="#E-Divisive-Battle" class="headerlink" title="E. Divisive Battle"></a>E. Divisive Battle</h2><p>对本题而言，题目核心及解出数列内的数的最小素因数和最大素因数，关键在于理解，若当前数的不同的素因数个数大于1，则Alice必定胜利(分解后内部有序，故需判断两个相邻的数分解后是否保持有序)</p>
-<p>对上述计量方法插入对最大最小素因数的统计，及统计其个数。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int max_p[1000005];</span><br><span class="line">vector&lt;int&gt; primes;</span><br><span class="line">bool is_prime[1000005];</span><br><span class="line">int min_p[1000005];</span><br><span class="line"></span><br><span class="line">inline int gcd(int x,int y)&#123;</span><br><span class="line">    <span class="keyword">while</span>(y)&#123;int t=x%y;x=y;y=t;&#125;<span class="built_in">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int cnt[1000005];//某个数的质数个数</span><br><span class="line">void <span class="function"><span class="title">count_primes</span></span>()&#123;</span><br><span class="line">    min_p[1]=1;</span><br><span class="line">    max_p[1]=1;</span><br><span class="line">    cnt[1]=0;</span><br><span class="line">    <span class="keyword">for</span>(int i=2;i&lt;=1000000;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!is_prime[i])&#123;</span><br><span class="line">            primes.push_back(i);</span><br><span class="line">            min_p[i]=i;</span><br><span class="line">            max_p[i]=i;</span><br><span class="line">            cnt[i]=1;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(auto p:primes)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i*p&gt;1000000) <span class="built_in">break</span>;</span><br><span class="line">            is_prime[i*p]=1;</span><br><span class="line">            min_p[i*p]=p;</span><br><span class="line">            max_p[i*p]=max(max_p[i],p);</span><br><span class="line">            <span class="keyword">if</span>(i%p==0)&#123;</span><br><span class="line">                cnt[i*p]=cnt[i];//可以不写，未来还会来处理</span><br><span class="line">                <span class="built_in">break</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                cnt[i*p]=cnt[i]+1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>cnt[i]的计算是两种状态转移<br>A.当i%p==0,可以不做处理，当前产生的合数无法增加素因数个数<br>B.当i%p!=0，此时合数在i的素因数基础上再+p，及素因数个数+1</p>
-<p>当我们先手一次性处理完之后，即可直接判断</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(cnt[a[i]]&gt;1)&#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;Alice&quot;</span>&lt;&lt;<span class="string">endl;</span></span><br><span class="line"><span class="string">    return;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">//若某个数素因数个数多于1，直接判定Alice胜利</span></span><br><span class="line"><span class="string">if(i&lt;n &amp;&amp; max_p[a[i]]&gt;min_p[a[i+1]])&#123;</span></span><br><span class="line"><span class="string">    cout&lt;&lt;&quot;Alice&quot;&lt;&lt;endl</span>;</span><br><span class="line">    <span class="built_in">return</span>;</span><br><span class="line">&#125;</span><br><span class="line">//若在拆分过程中发现相邻两个数不满足拆分后素数last_max&lt;=next_min,即不满足非递减，则Alice胜利</span><br><span class="line">//除此之外，Bob胜利</span><br></pre></td></tr></table></figure>
-<p><img src="/uploads/重庆.jpg" alt="重庆"></p>
+<h2 id="字典树基础"><a href="#字典树基础" class="headerlink" title="字典树基础"></a>字典树基础</h2><p>此篇重写，再无板子之谈  </p>
+<font color=red> 板子不理解的时候真能坑死人,还不如没有 </font>
+
+<p>常用二维数组存储，一般认为每个节点含有26个子节点，分别表示字符a到z，编号1-26. 定义$trie[u][id]=k$中,u表字典树的节点编号，id表示该节点中编号为id的字符，u在全局中唯一，唯一标识每个节点。k即表示u的id子节点的编号。  </p>
+<h3 id="插入字符串"><a href="#插入字符串" class="headerlink" title="插入字符串"></a>插入字符串</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int tot=0;//tot表示节点总数/节点编号</span><br><span class="line">void insert(string s)&#123;  </span><br><span class="line">    int pos=0;</span><br><span class="line">    <span class="keyword">for</span>(int i=0;i&lt;s.size();i++)&#123;</span><br><span class="line">      int <span class="built_in">id</span>=s[i]-<span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">      <span class="keyword">if</span>(tree[pos][<span class="built_in">id</span>]==0)&#123;</span><br><span class="line">        tree[pos][<span class="built_in">id</span>]=++tot;</span><br><span class="line">      &#125;</span><br><span class="line">      pos=tree[pos][<span class="built_in">id</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    tag[pos]=1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="查找字符串"><a href="#查找字符串" class="headerlink" title="查找字符串"></a>查找字符串</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int find(string s)&#123;</span><br><span class="line">    int pos=0;</span><br><span class="line">    <span class="keyword">for</span>(int i=0;i&lt;s.size();i++)&#123;</span><br><span class="line">      int <span class="built_in">id</span>=s[i]-<span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">      <span class="keyword">if</span>(tree[pos][<span class="built_in">id</span>]==0)&#123;</span><br><span class="line">        <span class="built_in">return</span> -1;</span><br><span class="line">      &#125;</span><br><span class="line">      pos=tree[pos][<span class="built_in">id</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(tag[pos]==1)&#123;</span><br><span class="line">      <span class="built_in">return</span> 1;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">      <span class="built_in">return</span> -1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="字典树的活用"><a href="#字典树的活用" class="headerlink" title="字典树的活用"></a>字典树的活用</h2><h3 id="求多项字符串的最大公共前缀长度之和"><a href="#求多项字符串的最大公共前缀长度之和" class="headerlink" title="求多项字符串的最大公共前缀长度之和"></a>求多项字符串的最大公共前缀长度之和</h3><p>此时需要记录每个节点有几个字符串经过了这个节点，即节点需记录通过自己的字符串数量。<br>实现：每次插入过程中pos更新时同时cnt[pos]++即可。  </p>
+<center>
+<font color=green>
+基础数据结构重在插入，即树的构建，剩下的就是其多样的用法。
+</font>
+</center>]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>树</tag>
+        <tag>字符串</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>背包问题</title>
+    <url>/2026/03/08/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>搁置已久，今天来简单讨论下背包的基础性问题<br><span id="more"></span></p>
+<h2 id="01背包"><a href="#01背包" class="headerlink" title="01背包"></a>01背包</h2><blockquote>
+<p>有n件物品和一个最多能背重量为w 的背包。第i件物品的重量是weight[i]，得到的价值是value[i] 。每件物品只能用一次，求解将哪些物品装入背包里物品价值总和最大</p>
+</blockquote>
+<p>二维状态转移方程：$dp[i][j] = max(dp[i-1][j], dp[i-1][j-w[i]] + v[i])$<br>$dp[i][j]$表示前i件物品放入一个容量为j的背包可以获得的最大价值，v[i]可放可不放</p>
+<p>一维状态转移方程：$dp[j] = max(dp[j], dp[j-w[i]] + v[i])$<br>dp[j]表示容量恰为j的时候的最大价值</p>
+<h3 id="一维01背包为什么倒序"><a href="#一维01背包为什么倒序" class="headerlink" title="一维01背包为什么倒序"></a>一维01背包为什么倒序</h3><p>对二维背包来讲，i各种容量下的解依赖的是没有i这个物品时的最优解，即考虑前i-1件物品所产生的最优解  对于一维背包来讲，我们优化掉了存储的维度，如果正序遍历j，那么在更新dp[j]时，dp[j-w[i]]已经被物品i更新过了，依赖关系被破坏，即在更新时，由于 $j-w[i]&lt;j$ 会优先更新dp[j-w[i]-w[i]]，<br>而倒序遍历j则会保证较小的j-w[i]维持i-1次的状态，故而保证第i件物品在每次更新时不会重复使用。<br>（正是因为每次都是逐步考虑保证了前i次的最优解，故最终遍历到n时即保证全局最优解，即动态规划）</p>
+<h3 id="01背包核心代码"><a href="#01背包核心代码" class="headerlink" title="01背包核心代码"></a>01背包核心代码</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (int j = m; j &gt;= w[i]; j--) &#123;</span><br><span class="line">        dp[j] = max(dp[j], dp[j - w[i]] + v[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="完全背包"><a href="#完全背包" class="headerlink" title="完全背包"></a>完全背包</h2><p>其差别在于，完全背包不再有物品的数量限制，每件物品均有无穷件<br>那就好办了，我们刚刚说了之所以倒序，就是为了避免第i物品被考虑多次，那我们正着写，那就恰满足了每件物品被考虑多件的需求，我们每次从小开始遍历，在处理j的时候j-w[i]实际上已经考虑过有第i件物品情况下的最优解，依次类推即每件物品都没有了件数限制  </p>
+<h3 id="完全背包核心代码"><a href="#完全背包核心代码" class="headerlink" title="完全背包核心代码"></a>完全背包核心代码</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (int j = w[i]; j &lt;= m; j++) &#123;</span><br><span class="line">        dp[j] = max(dp[j], dp[j - w[i]] + v[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="多重背包"><a href="#多重背包" class="headerlink" title="多重背包"></a>多重背包</h2><h2 id="放上题目"><a href="#放上题目" class="headerlink" title="放上题目"></a>放上题目</h2><p>B2174 完全背包<a href="https://www.luogu.com.cn/problem/B2174">B2174 完全背包</a></p>
+<p>背包问题有时甚至会混淆视听<br>P7223 [RC-04] 01 背包(<a href="https://www.luogu.com.cn/problem/P7223">https://www.luogu.com.cn/problem/P7223</a>)</p>
 ]]></content>
       <categories>
         <category>算法</category>
       </categories>
       <tags>
-        <tag>筛</tag>
         <tag>动态规划</tag>
+        <tag>背包</tag>
       </tags>
   </entry>
   <entry>
@@ -219,30 +216,6 @@
       </tags>
   </entry>
   <entry>
-    <title>背包问题</title>
-    <url>/2026/03/08/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<p>搁置已久，今天来简单讨论下背包的基础性问题<br><span id="more"></span></p>
-<h2 id="01背包"><a href="#01背包" class="headerlink" title="01背包"></a>01背包</h2><blockquote>
-<p>有n件物品和一个最多能背重量为w 的背包。第i件物品的重量是weight[i]，得到的价值是value[i] 。每件物品只能用一次，求解将哪些物品装入背包里物品价值总和最大</p>
-</blockquote>
-<p>二维状态转移方程：$dp[i][j] = max(dp[i-1][j], dp[i-1][j-w[i]] + v[i])$<br>$dp[i][j]$表示前i件物品放入一个容量为j的背包可以获得的最大价值，v[i]可放可不放</p>
-<p>一维状态转移方程：$dp[j] = max(dp[j], dp[j-w[i]] + v[i])$<br>dp[j]表示容量恰为j的时候的最大价值</p>
-<h3 id="一维01背包为什么倒序"><a href="#一维01背包为什么倒序" class="headerlink" title="一维01背包为什么倒序"></a>一维01背包为什么倒序</h3><p>对二维背包来讲，i各种容量下的解依赖的是没有i这个物品时的最优解，即考虑前i-1件物品所产生的最优解  对于一维背包来讲，我们优化掉了存储的维度，如果正序遍历j，那么在更新dp[j]时，dp[j-w[i]]已经被物品i更新过了，依赖关系被破坏，即在更新时，由于 $j-w[i]&lt;j$ 会优先更新dp[j-w[i]-w[i]]，<br>而倒序遍历j则会保证较小的j-w[i]维持i-1次的状态，故而保证第i件物品在每次更新时不会重复使用。<br>（正是因为每次都是逐步考虑保证了前i次的最优解，故最终遍历到n时即保证全局最优解，即动态规划）</p>
-<h3 id="01背包核心代码"><a href="#01背包核心代码" class="headerlink" title="01背包核心代码"></a>01背包核心代码</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (int j = m; j &gt;= w[i]; j--) &#123;</span><br><span class="line">        dp[j] = max(dp[j], dp[j - w[i]] + v[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="完全背包"><a href="#完全背包" class="headerlink" title="完全背包"></a>完全背包</h2><p>其差别在于，完全背包不再有物品的数量限制，每件物品均有无穷件<br>那就好办了，我们刚刚说了之所以倒序，就是为了避免第i物品被考虑多次，那我们正着写，那就恰满足了每件物品被考虑多件的需求，我们每次从小开始遍历，在处理j的时候j-w[i]实际上已经考虑过有第i件物品情况下的最优解，依次类推即每件物品都没有了件数限制  </p>
-<h3 id="完全背包核心代码"><a href="#完全背包核心代码" class="headerlink" title="完全背包核心代码"></a>完全背包核心代码</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (int j = w[i]; j &lt;= m; j++) &#123;</span><br><span class="line">        dp[j] = max(dp[j], dp[j - w[i]] + v[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="多重背包"><a href="#多重背包" class="headerlink" title="多重背包"></a>多重背包</h2><h2 id="放上题目"><a href="#放上题目" class="headerlink" title="放上题目"></a>放上题目</h2><p>B2174 完全背包<a href="https://www.luogu.com.cn/problem/B2174">B2174 完全背包</a></p>
-<p>背包问题有时甚至会混淆视听<br>P7223 [RC-04] 01 背包(<a href="https://www.luogu.com.cn/problem/P7223">https://www.luogu.com.cn/problem/P7223</a>)</p>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>动态规划</tag>
-        <tag>背包</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>新的开始!!!</title>
     <url>/2026/02/11/%E6%96%B0%E7%9A%84%E5%BC%80%E5%A7%8B/</url>
     <content><![CDATA[<h2 id="谨以此贴，记录生活与工作"><a href="#谨以此贴，记录生活与工作" class="headerlink" title="谨以此贴，记录生活与工作"></a>谨以此贴，记录生活与工作</h2><h3 id="我为什么会想起来写博客"><a href="#我为什么会想起来写博客" class="headerlink" title="我为什么会想起来写博客"></a>我为什么会想起来写博客</h3><ul>
@@ -260,6 +233,33 @@
       </categories>
       <tags>
         <tag>随笔</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>欧拉筛！</title>
+    <url>/2026/02/26/%E6%AC%A7%E6%8B%89%E7%AD%9B/</url>
+    <content><![CDATA[<h2 id="欧拉筛"><a href="#欧拉筛" class="headerlink" title="欧拉筛"></a><a href="https://codeforces.com/contest/2200/problem/E">欧拉筛</a></h2><p>于CF1080_E题遇到对欧拉筛的活用，从新总结用法及原理</p>
+<span id="more"></span>
+<h2 id="欧拉筛-1"><a href="#欧拉筛-1" class="headerlink" title="欧拉筛"></a>欧拉筛</h2><h3 id="欧拉筛-线性筛：核心是利用一个质数筛掉其他合数"><a href="#欧拉筛-线性筛：核心是利用一个质数筛掉其他合数" class="headerlink" title="欧拉筛/线性筛：核心是利用一个质数筛掉其他合数"></a>欧拉筛/线性筛：核心是利用一个质数筛掉其他合数</h3><p>动态规划的思想</p>
+<p>任何一个合数C，能且只能被分解为唯一的 $C=i \cdot p_{min}$ ,其中 $p_{min}$ 是C的最小质因数，i是某个确定的整数。</p>
+<p>算法外层循环遍历所有整数i，内层循环从小到大遍历已知质数集合p。我们把 $i \cdot p_{min}$ 当作已知的合数，把他标记为被筛出。</p>
+<p>外层遍历i的过程中，若i是合数，那么其一定可以被分解为比自己小的倍数$i_{last}$与比他小的素数的积(比他小保证了在遍历到他之前已经被处理过)，其会在处理i之前被处理为is_prime[$p_{min}*i_{last}$]=1；反之则说明其不是合数，我们直接将其添加到is_prime中即可</p>
+<h3 id="最关键的逻辑：-if-i-p-0-break"><a href="#最关键的逻辑：-if-i-p-0-break" class="headerlink" title="最关键的逻辑： if(i%p==0) break;"></a>最关键的逻辑： if(i%p==0) break;</h3><p>当i%p==0成立时，意味着质数p已经是整数i的质因数之一，且由于我们从小到大遍历质数，p就是i的最小质因数。此时我们不难考虑到，此时如果再进行合数的计算，就使得 $p_{next} \cdot i$ 的最小质因数不再是 $p_{next}$ 而是p，不满足我们在前面设定的最小质因数的合数条件，故break，等待后面的遍历来计算，防止重复。</p>
+<h3 id="欧拉筛模板代码"><a href="#欧拉筛模板代码" class="headerlink" title="欧拉筛模板代码"></a>欧拉筛模板代码</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vector&lt;int&gt; primes;</span><br><span class="line">bool is_prime[1000005];</span><br><span class="line"></span><br><span class="line">void <span class="function"><span class="title">count_primes</span></span>()&#123;</span><br><span class="line">    <span class="keyword">for</span>(int i=2;i&lt;=1000005;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!is_prime[i]) </span><br><span class="line">        primes.push_back(i);</span><br><span class="line">        <span class="keyword">for</span>(auto p:primes)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i*p&gt;1000005) <span class="built_in">break</span>;</span><br><span class="line">            is_prime[i*p]=1;</span><br><span class="line">            <span class="keyword">if</span>(i%p==0) <span class="built_in">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">primes存所有质数，is_prime用位置的值反应是否是素数，0是素数，1是合数。</span><br></pre></td></tr></table></figure>
+<h2 id="E-Divisive-Battle"><a href="#E-Divisive-Battle" class="headerlink" title="E. Divisive Battle"></a>E. Divisive Battle</h2><p>对本题而言，题目核心及解出数列内的数的最小素因数和最大素因数，关键在于理解，若当前数的不同的素因数个数大于1，则Alice必定胜利(分解后内部有序，故需判断两个相邻的数分解后是否保持有序)</p>
+<p>对上述计量方法插入对最大最小素因数的统计，及统计其个数。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int max_p[1000005];</span><br><span class="line">vector&lt;int&gt; primes;</span><br><span class="line">bool is_prime[1000005];</span><br><span class="line">int min_p[1000005];</span><br><span class="line"></span><br><span class="line">inline int gcd(int x,int y)&#123;</span><br><span class="line">    <span class="keyword">while</span>(y)&#123;int t=x%y;x=y;y=t;&#125;<span class="built_in">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int cnt[1000005];//某个数的质数个数</span><br><span class="line">void <span class="function"><span class="title">count_primes</span></span>()&#123;</span><br><span class="line">    min_p[1]=1;</span><br><span class="line">    max_p[1]=1;</span><br><span class="line">    cnt[1]=0;</span><br><span class="line">    <span class="keyword">for</span>(int i=2;i&lt;=1000000;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!is_prime[i])&#123;</span><br><span class="line">            primes.push_back(i);</span><br><span class="line">            min_p[i]=i;</span><br><span class="line">            max_p[i]=i;</span><br><span class="line">            cnt[i]=1;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(auto p:primes)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i*p&gt;1000000) <span class="built_in">break</span>;</span><br><span class="line">            is_prime[i*p]=1;</span><br><span class="line">            min_p[i*p]=p;</span><br><span class="line">            max_p[i*p]=max(max_p[i],p);</span><br><span class="line">            <span class="keyword">if</span>(i%p==0)&#123;</span><br><span class="line">                cnt[i*p]=cnt[i];//可以不写，未来还会来处理</span><br><span class="line">                <span class="built_in">break</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                cnt[i*p]=cnt[i]+1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>cnt[i]的计算是两种状态转移<br>A.当i%p==0,可以不做处理，当前产生的合数无法增加素因数个数<br>B.当i%p!=0，此时合数在i的素因数基础上再+p，及素因数个数+1</p>
+<p>当我们先手一次性处理完之后，即可直接判断</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(cnt[a[i]]&gt;1)&#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;Alice&quot;</span>&lt;&lt;<span class="string">endl;</span></span><br><span class="line"><span class="string">    return;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">//若某个数素因数个数多于1，直接判定Alice胜利</span></span><br><span class="line"><span class="string">if(i&lt;n &amp;&amp; max_p[a[i]]&gt;min_p[a[i+1]])&#123;</span></span><br><span class="line"><span class="string">    cout&lt;&lt;&quot;Alice&quot;&lt;&lt;endl</span>;</span><br><span class="line">    <span class="built_in">return</span>;</span><br><span class="line">&#125;</span><br><span class="line">//若在拆分过程中发现相邻两个数不满足拆分后素数last_max&lt;=next_min,即不满足非递减，则Alice胜利</span><br><span class="line">//除此之外，Bob胜利</span><br></pre></td></tr></table></figure>
+<p><img src="/uploads/重庆.jpg" alt="重庆"></p>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>动态规划</tag>
+        <tag>筛</tag>
       </tags>
   </entry>
   <entry>
