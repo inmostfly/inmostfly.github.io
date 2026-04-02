@@ -135,6 +135,26 @@
 ]]></content>
   </entry>
   <entry>
+    <title>新的开始!!!</title>
+    <url>/2026/02/11/%E6%96%B0%E7%9A%84%E5%BC%80%E5%A7%8B/</url>
+    <content><![CDATA[<h2 id="谨以此贴，记录生活与工作"><a href="#谨以此贴，记录生活与工作" class="headerlink" title="谨以此贴，记录生活与工作"></a>谨以此贴，记录生活与工作</h2><h3 id="我为什么会想起来写博客"><a href="#我为什么会想起来写博客" class="headerlink" title="我为什么会想起来写博客"></a>我为什么会想起来写博客</h3><ul>
+<li>假期不需要在用大量时间去学不喜欢的课程，不需要为了绩点抽不开身，这就给我提供了自建网站的时间<br>（已经拖了很久了捏<em>^____^</em>）</li>
+<li>在读一些经典技术文章的过程中，总是读了忘，这就导致前面读了后面忘，一套<code>transformer</code>框架读了encoding忘了decoding，写博客也是对自己技术学习的阶段性总结</li>
+<li><code>八千代</code>是目标，趁当下无责一身轻，多多尝试，这也是对 <a href="https://github.com/inmostfly/wechatbot-1.1">catgirl</a> 的二次尝试!</li>
+<li>最早源自一次偶然的网上冲浪，看到了亚琪学长的个人博客，有羡慕也有向往。通过友链，又偶然看到了园长的博客，值此假期闲暇时，得以搭建。</li>
+</ul>
+<h2 id="inmost-的个人博客，自此启程"><a href="#inmost-的个人博客，自此启程" class="headerlink" title="inmost 的个人博客，自此启程"></a>inmost 的个人博客，自此启程</h2><ul>
+<li>后日谈</li>
+</ul>
+]]></content>
+      <categories>
+        <category>体悟</category>
+      </categories>
+      <tags>
+        <tag>随笔</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>字典树</title>
     <url>/2026/03/12/%E5%AD%97%E5%85%B8%E6%A0%91/</url>
     <content><![CDATA[<p>字符串的处理方式极多，字典树便是其中一种</p>
@@ -157,58 +177,6 @@
       <tags>
         <tag>树</tag>
         <tag>字符串</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>并查集</title>
-    <url>/2026/03/16/%E5%B9%B6%E6%9F%A5%E9%9B%86/</url>
-    <content><![CDATA[<h2 id="并查集"><a href="#并查集" class="headerlink" title="并查集"></a>并查集</h2><p>青春猪头少年不会在赛时被并查集少一次遍历卡165min遗憾退场</p>
-<span id="more"></span>
-<p>并查集，核心在查询其公共根节点，即族长</p>
-<h3 id="搜寻公共根节点，合并，判是否同族"><a href="#搜寻公共根节点，合并，判是否同族" class="headerlink" title="搜寻公共根节点，合并，判是否同族"></a>搜寻公共根节点，合并，判是否同族</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//搜寻公共根节点，期间路径压缩，记录已经找到根节点的数据，省略其一步步查找的过程</span><br><span class="line">int f[100000]</span><br><span class="line">int find(int u)&#123;</span><br><span class="line">    <span class="built_in">return</span> f[u]==u?u:f[u]=find(f[u]);</span><br><span class="line">&#125;</span><br><span class="line">void unite(int x,int y)&#123;</span><br><span class="line">    f[find(x)]=find(y);</span><br><span class="line">&#125;</span><br><span class="line">bool same(int x,int y)&#123;</span><br><span class="line">    <span class="built_in">return</span> find(x)==find(y)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>核心就三点，查询，判别，合并</p>
-<h3 id="毒点"><a href="#毒点" class="headerlink" title="毒点"></a>毒点</h3><h4 id="带圈的并查集怎么解决"><a href="#带圈的并查集怎么解决" class="headerlink" title="带圈的并查集怎么解决"></a>带圈的并查集怎么解决</h4><p>os:所以这玩意为什么能卡我三个小时，道心破碎了吗（这个题其实很快就看出来思路了，但是卡在并查集了）<br><a href="http://10.67.4.89/p/P10029">路径问题</a><br>问题来了，假如说我们要通过并查集判断一个有向图里面环的个数，每个环中任意节点出入度都是1，那么并查集由于其unite步骤，默认合并x的父节点到y的父节点下方，环的特殊性使得存在如下情况</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1-&gt;2  2-&gt;3  3-&gt;4  4-&gt;1</span><br><span class="line">f[1]=2;f[2]=3;f[3]=4;f[4]=1;</span><br><span class="line">//find步骤递归将无穷进行，也就是说，我们必须规定一个环中具有某特征的数在unite时固定充当父节点</span><br></pre></td></tr></table></figure>
-<p>最简单的就是找大小来比较，两个根节点合并的时候，大的合并到小的或小的合并到大的<br>至于same中为什么写find，其实都一样，无非少一遍自家人不认自家人的unite</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">void unite(int x,int y)&#123;</span><br><span class="line">    int tem1=find(x);</span><br><span class="line">    int tem2=find(y);</span><br><span class="line">	f[min(tem1,tem2)]=max(tem1,tem2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="f最终在跑完一整遍图之后，存的直接就是最终的父节点吗"><a href="#f最终在跑完一整遍图之后，存的直接就是最终的父节点吗" class="headerlink" title="f最终在跑完一整遍图之后，存的直接就是最终的父节点吗"></a>f最终在跑完一整遍图之后，存的直接就是最终的父节点吗</h4><center>
-<font color=red>  不是！！！ </font>
-</center>
-
-<p>f仅仅是处理过程中的路径压缩，只有在跑过去的时候才会压缩到，否则还是原根节点  </p>
-<p>举个例子，2的根节点是3，f[2]=3,之后进行了一次f[3]=f[4]的合并，f[2]依旧是3</p>
-<p>只有在最后存完之后</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(int i=1;i&lt;=n;i++)&#123;</span><br><span class="line">    f[i]=find(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>才能算是真正f[i]存的是根节点,实际前面做的都是建链，最后顺着链子跑一遍，才是真正把每个节点锚定到根节点。</p>
-<h2 id="满满遗憾"><a href="#满满遗憾" class="headerlink" title="满满遗憾"></a>满满遗憾</h2><p>最后当然是遗憾离场，这个题如果不一直在并查集上考虑其实有很多简单的方法 ，行列式那题很简单，n=4，可以说是一个小模拟，但被我安排到这个题写完再写了,没关注这题，也就没注意到n小，自然以为他要写递归…赛前更是一道图题都没写，倒是关注的背包和gcd一点没考….</p>
-<p>承队友之幸，省赛还有希望上场，加训，莫辜负。</p>
-<p>以后再也不会盯着一个题看那么长时间了，归根到底还是做题习惯，另外就是debug的问题<br>不要用ai debug！ 不要用ai debug！ 不要用ai debug！赛时会很drama（重要的事情说三遍）</p>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>并查集</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>新的开始!!!</title>
-    <url>/2026/02/11/%E6%96%B0%E7%9A%84%E5%BC%80%E5%A7%8B/</url>
-    <content><![CDATA[<h2 id="谨以此贴，记录生活与工作"><a href="#谨以此贴，记录生活与工作" class="headerlink" title="谨以此贴，记录生活与工作"></a>谨以此贴，记录生活与工作</h2><h3 id="我为什么会想起来写博客"><a href="#我为什么会想起来写博客" class="headerlink" title="我为什么会想起来写博客"></a>我为什么会想起来写博客</h3><ul>
-<li>假期不需要在用大量时间去学不喜欢的课程，不需要为了绩点抽不开身，这就给我提供了自建网站的时间<br>（已经拖了很久了捏<em>^____^</em>）</li>
-<li>在读一些经典技术文章的过程中，总是读了忘，这就导致前面读了后面忘，一套<code>transformer</code>框架读了encoding忘了decoding，写博客也是对自己技术学习的阶段性总结</li>
-<li><code>八千代</code>是目标，趁当下无责一身轻，多多尝试，这也是对 <a href="https://github.com/inmostfly/wechatbot-1.1">catgirl</a> 的二次尝试!</li>
-<li>最早源自一次偶然的网上冲浪，看到了亚琪学长的个人博客，有羡慕也有向往。通过友链，又偶然看到了园长的博客，值此假期闲暇时，得以搭建。</li>
-</ul>
-<h2 id="inmost-的个人博客，自此启程"><a href="#inmost-的个人博客，自此启程" class="headerlink" title="inmost 的个人博客，自此启程"></a>inmost 的个人博客，自此启程</h2><ul>
-<li>后日谈</li>
-</ul>
-]]></content>
-      <categories>
-        <category>体悟</category>
-      </categories>
-      <tags>
-        <tag>随笔</tag>
       </tags>
   </entry>
   <entry>
@@ -273,6 +241,38 @@
       </categories>
       <tags>
         <tag>随笔</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>并查集</title>
+    <url>/2026/03/16/%E5%B9%B6%E6%9F%A5%E9%9B%86/</url>
+    <content><![CDATA[<h2 id="并查集"><a href="#并查集" class="headerlink" title="并查集"></a>并查集</h2><p>青春猪头少年不会在赛时被并查集少一次遍历卡165min遗憾退场</p>
+<span id="more"></span>
+<p>并查集，核心在查询其公共根节点，即族长</p>
+<h3 id="搜寻公共根节点，合并，判是否同族"><a href="#搜寻公共根节点，合并，判是否同族" class="headerlink" title="搜寻公共根节点，合并，判是否同族"></a>搜寻公共根节点，合并，判是否同族</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//搜寻公共根节点，期间路径压缩，记录已经找到根节点的数据，省略其一步步查找的过程</span><br><span class="line">int f[100000]</span><br><span class="line">int find(int u)&#123;</span><br><span class="line">    <span class="built_in">return</span> f[u]==u?u:f[u]=find(f[u]);</span><br><span class="line">&#125;</span><br><span class="line">void unite(int x,int y)&#123;</span><br><span class="line">    f[find(x)]=find(y);</span><br><span class="line">&#125;</span><br><span class="line">bool same(int x,int y)&#123;</span><br><span class="line">    <span class="built_in">return</span> find(x)==find(y)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>核心就三点，查询，判别，合并</p>
+<h3 id="毒点"><a href="#毒点" class="headerlink" title="毒点"></a>毒点</h3><h4 id="带圈的并查集怎么解决"><a href="#带圈的并查集怎么解决" class="headerlink" title="带圈的并查集怎么解决"></a>带圈的并查集怎么解决</h4><p>os:所以这玩意为什么能卡我三个小时，道心破碎了吗（这个题其实很快就看出来思路了，但是卡在并查集了）<br><a href="http://10.67.4.89/p/P10029">路径问题</a><br>问题来了，假如说我们要通过并查集判断一个有向图里面环的个数，每个环中任意节点出入度都是1，那么并查集由于其unite步骤，默认合并x的父节点到y的父节点下方，环的特殊性使得存在如下情况</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1-&gt;2  2-&gt;3  3-&gt;4  4-&gt;1</span><br><span class="line">f[1]=2;f[2]=3;f[3]=4;f[4]=1;</span><br><span class="line">//find步骤递归将无穷进行，也就是说，我们必须规定一个环中具有某特征的数在unite时固定充当父节点</span><br></pre></td></tr></table></figure>
+<p>最简单的就是找大小来比较，两个根节点合并的时候，大的合并到小的或小的合并到大的<br>至于same中为什么写find，其实都一样，无非少一遍自家人不认自家人的unite</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">void unite(int x,int y)&#123;</span><br><span class="line">    int tem1=find(x);</span><br><span class="line">    int tem2=find(y);</span><br><span class="line">	f[min(tem1,tem2)]=max(tem1,tem2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="f最终在跑完一整遍图之后，存的直接就是最终的父节点吗"><a href="#f最终在跑完一整遍图之后，存的直接就是最终的父节点吗" class="headerlink" title="f最终在跑完一整遍图之后，存的直接就是最终的父节点吗"></a>f最终在跑完一整遍图之后，存的直接就是最终的父节点吗</h4><center>
+<font color=red>  不是！！！ </font>
+</center>
+
+<p>f仅仅是处理过程中的路径压缩，只有在跑过去的时候才会压缩到，否则还是原根节点  </p>
+<p>举个例子，2的根节点是3，f[2]=3,之后进行了一次f[3]=f[4]的合并，f[2]依旧是3</p>
+<p>只有在最后存完之后</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(int i=1;i&lt;=n;i++)&#123;</span><br><span class="line">    f[i]=find(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>才能算是真正f[i]存的是根节点,实际前面做的都是建链，最后顺着链子跑一遍，才是真正把每个节点锚定到根节点。</p>
+<h2 id="满满遗憾"><a href="#满满遗憾" class="headerlink" title="满满遗憾"></a>满满遗憾</h2><p>最后当然是遗憾离场，这个题如果不一直在并查集上考虑其实有很多简单的方法 ，行列式那题很简单，n=4，可以说是一个小模拟，但被我安排到这个题写完再写了,没关注这题，也就没注意到n小，自然以为他要写递归…赛前更是一道图题都没写，倒是关注的背包和gcd一点没考….</p>
+<p>承队友之幸，省赛还有希望上场，加训，莫辜负。</p>
+<p>以后再也不会盯着一个题看那么长时间了，归根到底还是做题习惯，另外就是debug的问题<br>不要用ai debug！ 不要用ai debug！ 不要用ai debug！赛时会很drama（重要的事情说三遍）</p>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>并查集</tag>
       </tags>
   </entry>
 </search>
