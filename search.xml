@@ -1,6 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>JavaScript</title>
+    <url>/2026/02/26/JavaScript/</url>
+    <content><![CDATA[<p>前端学习笔记，HTML,CSS,JavaScript三者协同构成网页</p>
+<span id="more"></span>
+<h2 id="动态弱类型，解释型语言，前端核心"><a href="#动态弱类型，解释型语言，前端核心" class="headerlink" title="动态弱类型，解释型语言，前端核心"></a>动态弱类型，解释型语言，前端核心</h2><h3 id="首先解释一个误区"><a href="#首先解释一个误区" class="headerlink" title="首先解释一个误区"></a>首先解释一个误区</h3><p>Java 与 JavaScript 的关系：没有任何直接的技术继承关系</p>
+<blockquote>
+<p>命名历史：JavaScript 最初由 Netscape（网景）公司开发，原名为LiveScript。当时 Java 语言非常火爆，Netscape 为了市场营销蹭热度，与 Sun 公司（Java 的开发商）达成协议，将其改名为 JavaScript。</p>
+</blockquote>
+<h3 id="爬虫-脚本"><a href="#爬虫-脚本" class="headerlink" title="爬虫,脚本"></a>爬虫,脚本</h3><p>看懂网页，才能分析网页，不至于像本蒟蒻一样在github上找到脚本之后还要摸索半天找cookie 😭</p>
+<h3 id="HTML学习"><a href="#HTML学习" class="headerlink" title="HTML学习"></a>HTML学习</h3><h4 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h4><p>使用vsc学习过程中推荐插件Live Server Preview，按下F1输入live之后将在右侧实时显示，不用反复跳转浏览器</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt; </span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;<span class="built_in">head</span>&gt;</span><br><span class="line">        &lt;meta charset=<span class="string">&quot;utf-8&quot;</span>&gt;</span><br><span class="line">        &lt;title&gt;Study HTML&lt;/title&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line"></span><br><span class="line">        &lt;h1&gt;我的第一个标题&lt;/h1&gt;</span><br><span class="line">        </span><br><span class="line">        &lt;p&gt;我的第一个段落&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">        &lt;p&gt;我的第二个段落&lt;/p&gt;</span><br><span class="line">        </span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- &lt;!DOCTYPE html&gt; 声明为 HTML5 文档</span><br><span class="line">&lt;html&gt; 元素是 HTML 页面的根元素</span><br><span class="line">&lt;<span class="built_in">head</span>&gt; 元素包含了文档的元（meta）数据，如 &lt;meta charset=<span class="string">&quot;utf-8&quot;</span>&gt; 定义网页编码格式为 utf-8。</span><br><span class="line">&lt;title&gt; 元素描述了文档的标题</span><br><span class="line">&lt;body&gt; 元素包含了可见的页面内容</span><br><span class="line">&lt;h1&gt; 元素定义一个大标题</span><br><span class="line">&lt;p&gt; 元素定义一个段落 --&gt;</span><br></pre></td></tr></table></figure>
+<p>html标签通常是成对出现的，第一个是开始，第二个是结束<br>“HTML 标签” 和 “HTML 元素” 通常都是描述同样的意思.<br>但是严格来讲, 一个 HTML 元素包含了开始标签与结束标签</p>
+<h4 id="html文件的读取"><a href="#html文件的读取" class="headerlink" title="html文件的读取"></a>html文件的读取</h4><p>Web浏览器可以直接渲染，我们定义的标签决定了HTML页面如何呈现内容给用户</p>
+<h4 id="lt-DOCTYPE-gt-声明"><a href="#lt-DOCTYPE-gt-声明" class="headerlink" title="&lt;!DOCTYPE&gt;声明"></a>&lt;!DOCTYPE&gt;声明</h4><blockquote>
+<p>&lt;!DOCTYPE&gt;声明有助于浏览器中正确显示网页.网络上有很多不同的文件，如果能够正确声明HTML的版本，浏览器就能正确显示网页内容。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE HTML&gt;</span><br><span class="line"></span><br><span class="line">&lt;!doctype html&gt;</span><br><span class="line"></span><br><span class="line">&lt;!Doctype Html&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="HTML基础"><a href="#HTML基础" class="headerlink" title="HTML基础"></a>HTML基础</h4><h5 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h5><p>通过h1-h6,六级标签来定义，相当于word几级标题</p>
+<h5 id="段落"><a href="#段落" class="headerlink" title="段落"></a>段落</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">通过标签&lt;p&gt;来定义</span><br><span class="line">&lt;p&gt;这是一个段落&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;a href=<span class="string">&quot;https://inmostfly.github.io/&quot;</span>&gt;这是一个链接&lt;/a&gt;</span><br><span class="line">在href属性中指定链接的地址</span><br><span class="line">os:这里踩过几个坑，在.styl里面定义的时候链接通常需要特殊的指定才能生效，如.menu-item a&#123;  &#125;</span><br><span class="line">查询到是：&gt;&gt;链接自带默认强制色，继承被阻断 在 CSS 规范中，任何直接作用于元素的样式，其优先级都高于继承的样式，即使继承的样式带有 !important。</span><br></pre></td></tr></table></figure>
+<h5 id="图像"><a href="#图像" class="headerlink" title="图像"></a>图像</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;img src=<span class="string">&quot;/images/logo.png&quot;</span> width=<span class="string">&quot;258&quot;</span> height=<span class="string">&quot;39&quot;</span> /&gt;</span><br><span class="line">通过&lt;img&gt;来定义，名称和尺寸是以属性的形式提供的，src传递位置，后面两个同理</span><br></pre></td></tr></table></figure>
+<h5 id="元素"><a href="#元素" class="headerlink" title="元素"></a>元素</h5><p>开始&lt;&gt;与结尾&lt;&gt;放在一起，与中间的主体一起构成元素</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;br/&gt;无结束符，换行 是空元素的一种 空元素以/更稳妥</span><br></pre></td></tr></table></figure>
+<h5 id="嵌套的元素"><a href="#嵌套的元素" class="headerlink" title="嵌套的元素"></a>嵌套的元素</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">    &lt;html&gt;</span><br><span class="line">        &lt;body&gt;</span><br><span class="line">            &lt;p&gt;这是第一个段落。&lt;/p&gt;</span><br><span class="line">        &lt;/body&gt;</span><br><span class="line">    &lt;/html&gt;</span><br><span class="line"></span><br><span class="line">包含了三个元素</span><br></pre></td></tr></table></figure>
+<h5 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h5><p>属性是 HTML 元素提供的附加信息。<br>属性通常出现在 HTML 标签的开始标签中，用于定义元素的行为、样式、内容或其他特性。属性总是以 name=”value” 的形式写在标签内，name 是属性的名称，value 是属性的值。<em>属性一般描述于开始标签</em></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;a href=<span class="string">&quot;https://inmostfly.github.io/&quot;</span>&gt;这是一个链接&lt;/a&gt;</span><br><span class="line">href是属性名称，后面是值</span><br><span class="line">在某些个别的情况下，比如属性值本身就含有双引号，那么您必须使用单引号</span><br><span class="line">HTML 提示：使用小写属性</span><br><span class="line">属性名	 适用元素	说明</span><br><span class="line"><span class="built_in">id</span>	    所有元素	为元素指定唯一的标识符。</span><br><span class="line">class	所有元素	为元素指定一个或多个类名，用于 CSS 或 JavaScript 选择。</span><br><span class="line">style	所有元素	直接在元素上应用 CSS 样式。</span><br><span class="line">title	所有元素	为元素提供额外的提示信息，通常在鼠标悬停时显示。</span><br><span class="line">data-*	所有元素	用于存储自定义数据，通常通过 JavaScript 访问。</span><br><span class="line">href	&lt;a&gt;, &lt;<span class="built_in">link</span>&gt;	指定链接的目标 URL。</span><br><span class="line">src	    &lt;img&gt;, &lt;script&gt;, &lt;iframe&gt;	指定外部资源（如图片、脚本、框架）的 URL。</span><br><span class="line">alt	    &lt;img&gt;	为图像提供替代文本，当图像无法显示时显示。</span><br><span class="line"><span class="built_in">type</span>	&lt;input&gt;, &lt;button&gt;	指定输入控件的类型（如 text, password, checkbox 等）。</span><br><span class="line">value	&lt;input&gt;, &lt;button&gt;, &lt;option&gt;	指定元素的初始值。</span><br><span class="line">disabled	表单元素	禁用元素，使其不可交互。</span><br><span class="line">checked	&lt;input <span class="built_in">type</span>=<span class="string">&quot;checkbox&quot;</span>&gt;, &lt;input <span class="built_in">type</span>=<span class="string">&quot;radio&quot;</span>&gt;	指定复选框或单选按钮是否被选中。</span><br><span class="line">placeholder	&lt;input&gt;, &lt;textarea&gt;	在输入框中显示提示文本。</span><br><span class="line">target	&lt;a&gt;, &lt;form&gt;	指定链接或表单提交的目标窗口或框架（如 _blank 表示新标签页）。</span><br><span class="line"><span class="built_in">readonly</span>	表单元素	使输入框只读。</span><br><span class="line">required	表单元素	指定输入字段为必填项。</span><br><span class="line">autoplay	&lt;audio&gt;, &lt;video&gt;	自动播放媒体。</span><br><span class="line">onclick	    所有元素	当用户点击元素时触发 JavaScript 事件。</span><br><span class="line">onmouseover	所有元素	当用户将鼠标悬停在元素上时触发 JavaScript 事件。</span><br><span class="line">onchange	表单元素	当元素的值发生变化时触发 JavaScript 事件。</span><br></pre></td></tr></table></figure>
+<p>更多属性请移步至<a href="https://www.runoob.com/html/html-attributes.html">Runoob</a>.</p>
+<p>更新到标题，稍后继续更新</p>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+        <tag>JavaScript</tag>
+        <tag>HTML</tag>
+        <tag>CSS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CF1079_Div2</title>
     <url>/2026/02/16/CF1079_Div2/</url>
     <content><![CDATA[<h2 id="CF1079-题解"><a href="#CF1079-题解" class="headerlink" title="CF1079 题解"></a><a href="https://codeforces.com/contest/2197">CF1079</a> 题解</h2><p>文中主要包括如下考点（CF题目做法灵活，只叙述自己赛时做法）<br>二分 模拟 排序 博弈论 数论 分治  </p>
@@ -55,79 +95,6 @@
       </tags>
   </entry>
   <entry>
-    <title>JavaScript</title>
-    <url>/2026/02/26/JavaScript/</url>
-    <content><![CDATA[<p>前端学习笔记，HTML,CSS,JavaScript三者协同构成网页</p>
-<span id="more"></span>
-<h2 id="动态弱类型，解释型语言，前端核心"><a href="#动态弱类型，解释型语言，前端核心" class="headerlink" title="动态弱类型，解释型语言，前端核心"></a>动态弱类型，解释型语言，前端核心</h2><h3 id="首先解释一个误区"><a href="#首先解释一个误区" class="headerlink" title="首先解释一个误区"></a>首先解释一个误区</h3><p>Java 与 JavaScript 的关系：没有任何直接的技术继承关系</p>
-<blockquote>
-<p>命名历史：JavaScript 最初由 Netscape（网景）公司开发，原名为LiveScript。当时 Java 语言非常火爆，Netscape 为了市场营销蹭热度，与 Sun 公司（Java 的开发商）达成协议，将其改名为 JavaScript。</p>
-</blockquote>
-<h3 id="爬虫-脚本"><a href="#爬虫-脚本" class="headerlink" title="爬虫,脚本"></a>爬虫,脚本</h3><p>看懂网页，才能分析网页，不至于像本蒟蒻一样在github上找到脚本之后还要摸索半天找cookie 😭</p>
-<h3 id="HTML学习"><a href="#HTML学习" class="headerlink" title="HTML学习"></a>HTML学习</h3><h4 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h4><p>使用vsc学习过程中推荐插件Live Server Preview，按下F1输入live之后将在右侧实时显示，不用反复跳转浏览器</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt; </span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;<span class="built_in">head</span>&gt;</span><br><span class="line">        &lt;meta charset=<span class="string">&quot;utf-8&quot;</span>&gt;</span><br><span class="line">        &lt;title&gt;Study HTML&lt;/title&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line"></span><br><span class="line">        &lt;h1&gt;我的第一个标题&lt;/h1&gt;</span><br><span class="line">        </span><br><span class="line">        &lt;p&gt;我的第一个段落&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">        &lt;p&gt;我的第二个段落&lt;/p&gt;</span><br><span class="line">        </span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- &lt;!DOCTYPE html&gt; 声明为 HTML5 文档</span><br><span class="line">&lt;html&gt; 元素是 HTML 页面的根元素</span><br><span class="line">&lt;<span class="built_in">head</span>&gt; 元素包含了文档的元（meta）数据，如 &lt;meta charset=<span class="string">&quot;utf-8&quot;</span>&gt; 定义网页编码格式为 utf-8。</span><br><span class="line">&lt;title&gt; 元素描述了文档的标题</span><br><span class="line">&lt;body&gt; 元素包含了可见的页面内容</span><br><span class="line">&lt;h1&gt; 元素定义一个大标题</span><br><span class="line">&lt;p&gt; 元素定义一个段落 --&gt;</span><br></pre></td></tr></table></figure>
-<p>html标签通常是成对出现的，第一个是开始，第二个是结束<br>“HTML 标签” 和 “HTML 元素” 通常都是描述同样的意思.<br>但是严格来讲, 一个 HTML 元素包含了开始标签与结束标签</p>
-<h4 id="html文件的读取"><a href="#html文件的读取" class="headerlink" title="html文件的读取"></a>html文件的读取</h4><p>Web浏览器可以直接渲染，我们定义的标签决定了HTML页面如何呈现内容给用户</p>
-<h4 id="lt-DOCTYPE-gt-声明"><a href="#lt-DOCTYPE-gt-声明" class="headerlink" title="&lt;!DOCTYPE&gt;声明"></a>&lt;!DOCTYPE&gt;声明</h4><blockquote>
-<p>&lt;!DOCTYPE&gt;声明有助于浏览器中正确显示网页.网络上有很多不同的文件，如果能够正确声明HTML的版本，浏览器就能正确显示网页内容。</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE HTML&gt;</span><br><span class="line"></span><br><span class="line">&lt;!doctype html&gt;</span><br><span class="line"></span><br><span class="line">&lt;!Doctype Html&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="HTML基础"><a href="#HTML基础" class="headerlink" title="HTML基础"></a>HTML基础</h4><h5 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h5><p>通过h1-h6,六级标签来定义，相当于word几级标题</p>
-<h5 id="段落"><a href="#段落" class="headerlink" title="段落"></a>段落</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">通过标签&lt;p&gt;来定义</span><br><span class="line">&lt;p&gt;这是一个段落&lt;/p&gt;</span><br></pre></td></tr></table></figure>
-<h5 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;a href=<span class="string">&quot;https://inmostfly.github.io/&quot;</span>&gt;这是一个链接&lt;/a&gt;</span><br><span class="line">在href属性中指定链接的地址</span><br><span class="line">os:这里踩过几个坑，在.styl里面定义的时候链接通常需要特殊的指定才能生效，如.menu-item a&#123;  &#125;</span><br><span class="line">查询到是：&gt;&gt;链接自带默认强制色，继承被阻断 在 CSS 规范中，任何直接作用于元素的样式，其优先级都高于继承的样式，即使继承的样式带有 !important。</span><br></pre></td></tr></table></figure>
-<h5 id="图像"><a href="#图像" class="headerlink" title="图像"></a>图像</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;img src=<span class="string">&quot;/images/logo.png&quot;</span> width=<span class="string">&quot;258&quot;</span> height=<span class="string">&quot;39&quot;</span> /&gt;</span><br><span class="line">通过&lt;img&gt;来定义，名称和尺寸是以属性的形式提供的，src传递位置，后面两个同理</span><br></pre></td></tr></table></figure>
-<h5 id="元素"><a href="#元素" class="headerlink" title="元素"></a>元素</h5><p>开始&lt;&gt;与结尾&lt;&gt;放在一起，与中间的主体一起构成元素</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;br/&gt;无结束符，换行 是空元素的一种 空元素以/更稳妥</span><br></pre></td></tr></table></figure>
-<h5 id="嵌套的元素"><a href="#嵌套的元素" class="headerlink" title="嵌套的元素"></a>嵌套的元素</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">    &lt;html&gt;</span><br><span class="line">        &lt;body&gt;</span><br><span class="line">            &lt;p&gt;这是第一个段落。&lt;/p&gt;</span><br><span class="line">        &lt;/body&gt;</span><br><span class="line">    &lt;/html&gt;</span><br><span class="line"></span><br><span class="line">包含了三个元素</span><br></pre></td></tr></table></figure>
-<h5 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h5><p>属性是 HTML 元素提供的附加信息。<br>属性通常出现在 HTML 标签的开始标签中，用于定义元素的行为、样式、内容或其他特性。属性总是以 name=”value” 的形式写在标签内，name 是属性的名称，value 是属性的值。<em>属性一般描述于开始标签</em></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;a href=<span class="string">&quot;https://inmostfly.github.io/&quot;</span>&gt;这是一个链接&lt;/a&gt;</span><br><span class="line">href是属性名称，后面是值</span><br><span class="line">在某些个别的情况下，比如属性值本身就含有双引号，那么您必须使用单引号</span><br><span class="line">HTML 提示：使用小写属性</span><br><span class="line">属性名	 适用元素	说明</span><br><span class="line"><span class="built_in">id</span>	    所有元素	为元素指定唯一的标识符。</span><br><span class="line">class	所有元素	为元素指定一个或多个类名，用于 CSS 或 JavaScript 选择。</span><br><span class="line">style	所有元素	直接在元素上应用 CSS 样式。</span><br><span class="line">title	所有元素	为元素提供额外的提示信息，通常在鼠标悬停时显示。</span><br><span class="line">data-*	所有元素	用于存储自定义数据，通常通过 JavaScript 访问。</span><br><span class="line">href	&lt;a&gt;, &lt;<span class="built_in">link</span>&gt;	指定链接的目标 URL。</span><br><span class="line">src	    &lt;img&gt;, &lt;script&gt;, &lt;iframe&gt;	指定外部资源（如图片、脚本、框架）的 URL。</span><br><span class="line">alt	    &lt;img&gt;	为图像提供替代文本，当图像无法显示时显示。</span><br><span class="line"><span class="built_in">type</span>	&lt;input&gt;, &lt;button&gt;	指定输入控件的类型（如 text, password, checkbox 等）。</span><br><span class="line">value	&lt;input&gt;, &lt;button&gt;, &lt;option&gt;	指定元素的初始值。</span><br><span class="line">disabled	表单元素	禁用元素，使其不可交互。</span><br><span class="line">checked	&lt;input <span class="built_in">type</span>=<span class="string">&quot;checkbox&quot;</span>&gt;, &lt;input <span class="built_in">type</span>=<span class="string">&quot;radio&quot;</span>&gt;	指定复选框或单选按钮是否被选中。</span><br><span class="line">placeholder	&lt;input&gt;, &lt;textarea&gt;	在输入框中显示提示文本。</span><br><span class="line">target	&lt;a&gt;, &lt;form&gt;	指定链接或表单提交的目标窗口或框架（如 _blank 表示新标签页）。</span><br><span class="line"><span class="built_in">readonly</span>	表单元素	使输入框只读。</span><br><span class="line">required	表单元素	指定输入字段为必填项。</span><br><span class="line">autoplay	&lt;audio&gt;, &lt;video&gt;	自动播放媒体。</span><br><span class="line">onclick	    所有元素	当用户点击元素时触发 JavaScript 事件。</span><br><span class="line">onmouseover	所有元素	当用户将鼠标悬停在元素上时触发 JavaScript 事件。</span><br><span class="line">onchange	表单元素	当元素的值发生变化时触发 JavaScript 事件。</span><br></pre></td></tr></table></figure>
-<p>更多属性请移步至<a href="https://www.runoob.com/html/html-attributes.html">Runoob</a>.</p>
-<p>更新到标题，稍后继续更新</p>
-]]></content>
-      <categories>
-        <category>笔记</category>
-      </categories>
-      <tags>
-        <tag>前端</tag>
-        <tag>JavaScript</tag>
-        <tag>HTML</tag>
-        <tag>CSS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>gcd及其扩展</title>
-    <url>/2026/03/06/gcd%E5%8F%8A%E5%85%B6%E6%89%A9%E5%B1%95/</url>
-    <content><![CDATA[<h2 id="gcd运算严格满足结合率"><a href="#gcd运算严格满足结合率" class="headerlink" title="gcd运算严格满足结合率"></a>gcd运算严格满足结合率</h2><p>即有 $\gcd(a,b,c) = \gcd(\gcd(a,b),c) = \gcd(a,\gcd(b,c))$</p>
-<span id="more"></span>
-<p>三者求最大公约数顺序任意排列</p>
-<h3 id="严格证明"><a href="#严格证明" class="headerlink" title="严格证明"></a>严格证明</h3><p>d=gcd(a,b)意味着d是同时能整除a,b的最大整数，g=gcd(d,c),意味着g是能同时整除d,c的最大整数<br>因为g能整除d,d能整除a,b，故g能整除a,b,c，即g是a,b,c的公约数<br>反过来，我们取a,b,c的公约数k，k定然能被其最大公约数d整除，k同时又是d,c的因数，故又能被g整除，因此g定然是a,b,c中最大的公约数（a,b的公约数是gcd(a,b)的因数的证明在下）</p>
-<blockquote>
-<p>本质推理是素因数分解</p>
-</blockquote>
-<p>对于两个数而言，素因数分解<br>$a=p_{1}^{m1} \cdot p_{2}^{m2}…p_{n}^{mk}$<br>$b=p_{1}^{n1} \cdot p_{2}^{n2}…p_{nk}^{mk}$<br>不难观察到，其最大公约数就是其素因数幂次的组合<br>即 最大公约数=$p_1^{\min(m_1,n_1)} p_2^{\min(m_2,n_2)} \cdots p_k^{\min(m_k,n_k)}$<br>根据上述式子，我们可以得到a,b的其他任意公约数均可以整除最大公约数<br>故不管再多的数放在一起求gcd，都是满足结合律的。（故其实也可以直接从证明看出可结合性 本质是min取的过程中不在乎顺序如何）  </p>
-<h2 id="exgcd模板"><a href="#exgcd模板" class="headerlink" title="exgcd模板"></a>exgcd模板</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int exgcd(int a, int b, int&amp; x, int&amp; y) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!b) &#123;</span><br><span class="line">        x = 1;</span><br><span class="line">        y = 0;</span><br><span class="line">        <span class="built_in">return</span> a;</span><br><span class="line">    &#125;</span><br><span class="line">    int d = exgcd(b, a % b, y, x);//返回值是最大公约数</span><br><span class="line">    y -= a / b * x;</span><br><span class="line">    <span class="built_in">return</span> d;</span><br><span class="line">&#125;</span><br><span class="line">/*void exgcd(ll a,ll b,ll &amp;x,ll &amp;y)&#123;  //更简洁的求解写法</span><br><span class="line">    <span class="keyword">if</span>(b == 0) &#123; x = 1,y = 0; <span class="built_in">return</span>;&#125;</span><br><span class="line">    exgcd(b,a%b,y,x);           //x和y换位</span><br><span class="line">    y = y- a/b*x;</span><br><span class="line">&#125;*/</span><br></pre></td></tr></table></figure>
-<p>返回的d即最终 $ax+by=gcd(a,b)$<br>即：对于任意两个不全为零的整数 $a$ 和 $b$，一定存在整数 $x$ 和 $y$，使得 $ax+by=\gcd(a,b)$ 成立。同时通过值引用，$x,y$最终的值即$x,y$的最小特解。</p>
-<p>用处：  </p>
-<h3 id="1-求解二元一次不定方程"><a href="#1-求解二元一次不定方程" class="headerlink" title="1.求解二元一次不定方程"></a>1.求解二元一次不定方程</h3><p>用于求解形如 $ax+by=c$ 的整数解。根据裴蜀定理的推论，这个方程有解的充要条件是 $\gcd(a,b)$ 能整除 $c$。通过 exgcd 求出 $ax+by=\gcd(a,b)$ 的一组解后，将其按比例扩大，即可得到原方程的一组特解$x_0,y_0$，进而可以推导出通解。<br>通解：$x=x_0 + k\cdot \frac{b}{gcd(a,b)}$ ，$y=y_0 - k\cdot \frac{a}{gcd(a,b)}$<br>(k是任意整数)</p>
-<h3 id="2-求解模综合乘法逆元"><a href="#2-求解模综合乘法逆元" class="headerlink" title="2.求解模综合乘法逆元"></a>2.求解模综合乘法逆元</h3><p>当要求解 $a$ 在模 $m$ 意义下的乘法逆元 $x$ 时，等价于求解同余方程 $ax\equiv 1\pmod m$。这个同余方程可以转化为不定方程 $ax+my=1$。只要 $\gcd(a,m)=1$（即 $a$ 和 $m$ 互质），就可以直接用 exgcd 求出 $x$ 的值。<br>这次的exgcd的结果是在模意义下的，故其是唯一的特解，需注意实际使用中通常还需要保证取模之后的结果为正数，故+m再取余以保证正数。</p>
-<script type="math/tex; mode=display">x_{min} = (x_0 \bmod m + m) \bmod m</script><h4 id="费马小定理解法"><a href="#费马小定理解法" class="headerlink" title="费马小定理解法"></a>费马小定理解法</h4><blockquote>
-<p>求乘法逆元同时也可使用费马小定理。注意：此时要求mod必须是质数<br>$ax \equiv 1\pmod m$<br>有公式：<script type="math/tex">x=a^{m-2} \pmod m</script><br>x即a关于模m的乘法逆元</p>
-</blockquote>
-<h3 id="3-求解线性同余方程组（CRT-的扩展）"><a href="#3-求解线性同余方程组（CRT-的扩展）" class="headerlink" title="3.求解线性同余方程组（CRT 的扩展）"></a>3.求解线性同余方程组（<a href="https://www.cnblogs.com/ailanxier/p/13370753.html">CRT</a> 的扩展）</h3><p>在处理扩展中国剩余定理（EXCRT）时，由于模数可能不互质，普通的 CRT 无法使用。此时需要两两合并同余方程，合并的过程本质上就是求解形如 $ax+by=c$ 的线性方程，强依赖 exgcd。</p>
-<h4 id="CRT求解模板"><a href="#CRT求解模板" class="headerlink" title="CRT求解模板"></a>CRT求解模板</h4><p>能力有限，模板转载自上述链接：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include &lt;bits/stdc++.h&gt;</span></span><br><span class="line">using namespace std;</span><br><span class="line">typedef long long ll ;</span><br><span class="line">ll mod[15],yu[15],M = 1,ans;//mod[i]即为mi,yu[i]存放模后余数</span><br><span class="line"></span><br><span class="line">void exGcd(ll a,ll b,ll &amp;x,ll &amp;y)&#123;   //求解 ax+by = gcd(a,b)，注意是传引用</span><br><span class="line">    <span class="keyword">if</span>(b == 0) &#123; x = 1,y = 0; <span class="built_in">return</span>;&#125;         // b = 0时,a = gcd(原a,原b)</span><br><span class="line">    exGcd(b,a%b,x,y);</span><br><span class="line">    ll temX = x;</span><br><span class="line">    x = y,y = temX - a/b * y;   //x = y1, y = x1 - a/b * y1 (x1和y1是递归下一层返回后的x和y)</span><br><span class="line">&#125;</span><br><span class="line">/*void exGcd(ll a,ll b,ll &amp;x,ll &amp;y)&#123;  //更简洁的写法</span><br><span class="line">    <span class="keyword">if</span>(b == 0) &#123; x = 1,y = 0; <span class="built_in">return</span>;&#125;</span><br><span class="line">    exGcd(b,a%b,y,x);           //x和y换位</span><br><span class="line">    y = y- a/b*x;</span><br><span class="line">&#125;*/</span><br><span class="line">int <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line">    int n;</span><br><span class="line">    cin&gt;&gt;n;       //方程组数</span><br><span class="line">    <span class="keyword">for</span> (int i = 1; i &lt;= n ; ++i) &#123;</span><br><span class="line">        scanf(<span class="string">&quot;%ld %ld&quot;</span>,&amp;mod[i],&amp;yu[i]);  //模数和余数，模数互质</span><br><span class="line">        M*=mod[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (int i = 1; i &lt;= n ; ++i) &#123;</span><br><span class="line">        ll Mi = M / mod[i],inv,y; // Mi为所有模数乘积除以第i个模数，inv为Mi在模mi意义下的逆元</span><br><span class="line">        exGcd(Mi, mod[i], inv, y);</span><br><span class="line">        inv = (inv % mod[i]+mod[i]) % mod[i];//防止逆元求解过程中的负数出现</span><br><span class="line">        ans = (ans + yu[i] * Mi * inv) % M;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt; (ans + M) % M;          //保证结果不出现负数</span><br><span class="line">    <span class="built_in">return</span> 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="EXCRT求解模板"><a href="#EXCRT求解模板" class="headerlink" title="EXCRT求解模板"></a>EXCRT求解模板</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include &lt;bits/stdc++.h&gt;</span></span><br><span class="line">using namespace std;</span><br><span class="line">typedef long long ll;</span><br><span class="line">ll n,mod[100009],yu[100009];</span><br><span class="line"></span><br><span class="line">//要用快速乘（龟速乘），防止爆long long</span><br><span class="line">ll qMul(ll a,ll b,ll mo)&#123;</span><br><span class="line">    ll an = 0;</span><br><span class="line">    <span class="keyword">while</span>(b) &#123;</span><br><span class="line">        <span class="keyword">if</span>(b&amp;1) an =(an+a) % mo;</span><br><span class="line">        a = (a+a)%mo;</span><br><span class="line">        b&gt;&gt;=1;</span><br><span class="line">    &#125;<span class="built_in">return</span> an%mo;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//扩展欧几里得算法，返回gcd(a,b),并计算出ax+by = gcd(a,b)中的x和y</span><br><span class="line">ll exGcd(ll a,ll b,ll &amp;x,ll &amp;y)&#123;</span><br><span class="line">    <span class="keyword">if</span>( b == 0 ) &#123; x = 1;y = 0; <span class="built_in">return</span> a;&#125;</span><br><span class="line">    ll gcd = exGcd(b,a%b,y,x);  //注意x和y的顺序</span><br><span class="line">    y = y - a/b*x;</span><br><span class="line">    <span class="built_in">return</span> gcd;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);//加速cin和cout</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    <span class="keyword">for</span>(int i = 1;i &lt;= n;i++) cin&gt;&gt;mod[i]&gt;&gt;yu[i];</span><br><span class="line">    ll ans = yu[1],M = mod[1] ,t,y;  //ans表示前i-1个方程式的特解（余数），M为前i-1个方程式的模数的最小公倍数(i从2开始)</span><br><span class="line">    <span class="keyword">for</span>(int i = 2;i &lt;= n;i++)&#123;</span><br><span class="line">        ll mi = mod[i],res = ((yu[i] - ans)%mi + mi)%mi;  //res是等式的右边部分，不能出现负数</span><br><span class="line">        ll gcd = exGcd(M,mi,t,y);        //求出gcd(mi,M)</span><br><span class="line">        if(res % gcd != <span class="number">0</span>) &#123; cout&lt;&lt;-<span class="number">1</span>&lt;&lt;endl;exit(<span class="number">0</span>); &#125;   //如果等式右边不能整除gcd，方程组无解</span><br><span class="line">        t = qMul(t,res/gcd,mi);            //求出t还要乘上倍数，注意是快速乘取模mi (对谁取模要分清)</span><br><span class="line">        ans += t * M;                               //得到前i个方程的特解（余数）</span><br><span class="line">        M = mi /gcd * M;                         //M等于lcm(M,mi)，注意乘法要在除法后面做，否则会爆long long</span><br><span class="line">        ans = (ans%M+M)%M;                //让特解范围限定在<span class="number">0</span>~(M-<span class="number">1</span>)内，防止会出现负数</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;ans;</span><br><span class="line">    return <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="放一道例题-hard"><a href="#放一道例题-hard" class="headerlink" title="放一道例题(hard)"></a>放一道例题(hard)</h2><p><a href="https://www.luogu.com.cn/problem/U628784?contestId=295494">U628784 Laz玩游戏</a><br>key:ey33</p>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>数论</tag>
-        <tag>数学</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hello World</title>
     <url>/2026/02/09/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://inmostfly.github.io/">Hexo</a>! This is my very first blog.</p>
@@ -167,6 +134,39 @@
       </tags>
   </entry>
   <entry>
+    <title>gcd及其扩展</title>
+    <url>/2026/03/06/gcd%E5%8F%8A%E5%85%B6%E6%89%A9%E5%B1%95/</url>
+    <content><![CDATA[<h2 id="gcd运算严格满足结合率"><a href="#gcd运算严格满足结合率" class="headerlink" title="gcd运算严格满足结合率"></a>gcd运算严格满足结合率</h2><p>即有 $\gcd(a,b,c) = \gcd(\gcd(a,b),c) = \gcd(a,\gcd(b,c))$</p>
+<span id="more"></span>
+<p>三者求最大公约数顺序任意排列</p>
+<h3 id="严格证明"><a href="#严格证明" class="headerlink" title="严格证明"></a>严格证明</h3><p>d=gcd(a,b)意味着d是同时能整除a,b的最大整数，g=gcd(d,c),意味着g是能同时整除d,c的最大整数<br>因为g能整除d,d能整除a,b，故g能整除a,b,c，即g是a,b,c的公约数<br>反过来，我们取a,b,c的公约数k，k定然能被其最大公约数d整除，k同时又是d,c的因数，故又能被g整除，因此g定然是a,b,c中最大的公约数（a,b的公约数是gcd(a,b)的因数的证明在下）</p>
+<blockquote>
+<p>本质推理是素因数分解</p>
+</blockquote>
+<p>对于两个数而言，素因数分解<br>$a=p_{1}^{m1} \cdot p_{2}^{m2}…p_{n}^{mk}$<br>$b=p_{1}^{n1} \cdot p_{2}^{n2}…p_{nk}^{mk}$<br>不难观察到，其最大公约数就是其素因数幂次的组合<br>即 最大公约数=$p_1^{\min(m_1,n_1)} p_2^{\min(m_2,n_2)} \cdots p_k^{\min(m_k,n_k)}$<br>根据上述式子，我们可以得到a,b的其他任意公约数均可以整除最大公约数<br>故不管再多的数放在一起求gcd，都是满足结合律的。（故其实也可以直接从证明看出可结合性 本质是min取的过程中不在乎顺序如何）  </p>
+<h2 id="exgcd模板"><a href="#exgcd模板" class="headerlink" title="exgcd模板"></a>exgcd模板</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int exgcd(int a, int b, int&amp; x, int&amp; y) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!b) &#123;</span><br><span class="line">        x = 1;</span><br><span class="line">        y = 0;</span><br><span class="line">        <span class="built_in">return</span> a;</span><br><span class="line">    &#125;</span><br><span class="line">    int d = exgcd(b, a % b, y, x);//返回值是最大公约数</span><br><span class="line">    y -= a / b * x;</span><br><span class="line">    <span class="built_in">return</span> d;</span><br><span class="line">&#125;</span><br><span class="line">/*void exgcd(ll a,ll b,ll &amp;x,ll &amp;y)&#123;  //更简洁的求解写法</span><br><span class="line">    <span class="keyword">if</span>(b == 0) &#123; x = 1,y = 0; <span class="built_in">return</span>;&#125;</span><br><span class="line">    exgcd(b,a%b,y,x);           //x和y换位</span><br><span class="line">    y = y- a/b*x;</span><br><span class="line">&#125;*/</span><br></pre></td></tr></table></figure>
+<p>返回的d即最终 $ax+by=gcd(a,b)$<br>即：对于任意两个不全为零的整数 $a$ 和 $b$，一定存在整数 $x$ 和 $y$，使得 $ax+by=\gcd(a,b)$ 成立。同时通过值引用，$x,y$最终的值即$x,y$的最小特解。</p>
+<p>用处：  </p>
+<h3 id="1-求解二元一次不定方程"><a href="#1-求解二元一次不定方程" class="headerlink" title="1.求解二元一次不定方程"></a>1.求解二元一次不定方程</h3><p>用于求解形如 $ax+by=c$ 的整数解。根据裴蜀定理的推论，这个方程有解的充要条件是 $\gcd(a,b)$ 能整除 $c$。通过 exgcd 求出 $ax+by=\gcd(a,b)$ 的一组解后，将其按比例扩大，即可得到原方程的一组特解$x_0,y_0$，进而可以推导出通解。<br>通解：$x=x_0 + k\cdot \frac{b}{gcd(a,b)}$ ，$y=y_0 - k\cdot \frac{a}{gcd(a,b)}$<br>(k是任意整数)</p>
+<h3 id="2-求解模综合乘法逆元"><a href="#2-求解模综合乘法逆元" class="headerlink" title="2.求解模综合乘法逆元"></a>2.求解模综合乘法逆元</h3><p>当要求解 $a$ 在模 $m$ 意义下的乘法逆元 $x$ 时，等价于求解同余方程 $ax\equiv 1\pmod m$。这个同余方程可以转化为不定方程 $ax+my=1$。只要 $\gcd(a,m)=1$（即 $a$ 和 $m$ 互质），就可以直接用 exgcd 求出 $x$ 的值。<br>这次的exgcd的结果是在模意义下的，故其是唯一的特解，需注意实际使用中通常还需要保证取模之后的结果为正数，故+m再取余以保证正数。</p>
+<script type="math/tex; mode=display">x_{min} = (x_0 \bmod m + m) \bmod m</script><h4 id="费马小定理解法"><a href="#费马小定理解法" class="headerlink" title="费马小定理解法"></a>费马小定理解法</h4><blockquote>
+<p>求乘法逆元同时也可使用费马小定理。注意：此时要求mod必须是质数<br>$ax \equiv 1\pmod m$<br>有公式：<script type="math/tex">x=a^{m-2} \pmod m</script><br>x即a关于模m的乘法逆元</p>
+</blockquote>
+<h3 id="3-求解线性同余方程组（CRT-的扩展）"><a href="#3-求解线性同余方程组（CRT-的扩展）" class="headerlink" title="3.求解线性同余方程组（CRT 的扩展）"></a>3.求解线性同余方程组（<a href="https://www.cnblogs.com/ailanxier/p/13370753.html">CRT</a> 的扩展）</h3><p>在处理扩展中国剩余定理（EXCRT）时，由于模数可能不互质，普通的 CRT 无法使用。此时需要两两合并同余方程，合并的过程本质上就是求解形如 $ax+by=c$ 的线性方程，强依赖 exgcd。</p>
+<h4 id="CRT求解模板"><a href="#CRT求解模板" class="headerlink" title="CRT求解模板"></a>CRT求解模板</h4><p>能力有限，模板转载自上述链接：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include &lt;bits/stdc++.h&gt;</span></span><br><span class="line">using namespace std;</span><br><span class="line">typedef long long ll ;</span><br><span class="line">ll mod[15],yu[15],M = 1,ans;//mod[i]即为mi,yu[i]存放模后余数</span><br><span class="line"></span><br><span class="line">void exGcd(ll a,ll b,ll &amp;x,ll &amp;y)&#123;   //求解 ax+by = gcd(a,b)，注意是传引用</span><br><span class="line">    <span class="keyword">if</span>(b == 0) &#123; x = 1,y = 0; <span class="built_in">return</span>;&#125;         // b = 0时,a = gcd(原a,原b)</span><br><span class="line">    exGcd(b,a%b,x,y);</span><br><span class="line">    ll temX = x;</span><br><span class="line">    x = y,y = temX - a/b * y;   //x = y1, y = x1 - a/b * y1 (x1和y1是递归下一层返回后的x和y)</span><br><span class="line">&#125;</span><br><span class="line">/*void exGcd(ll a,ll b,ll &amp;x,ll &amp;y)&#123;  //更简洁的写法</span><br><span class="line">    <span class="keyword">if</span>(b == 0) &#123; x = 1,y = 0; <span class="built_in">return</span>;&#125;</span><br><span class="line">    exGcd(b,a%b,y,x);           //x和y换位</span><br><span class="line">    y = y- a/b*x;</span><br><span class="line">&#125;*/</span><br><span class="line">int <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line">    int n;</span><br><span class="line">    cin&gt;&gt;n;       //方程组数</span><br><span class="line">    <span class="keyword">for</span> (int i = 1; i &lt;= n ; ++i) &#123;</span><br><span class="line">        scanf(<span class="string">&quot;%ld %ld&quot;</span>,&amp;mod[i],&amp;yu[i]);  //模数和余数，模数互质</span><br><span class="line">        M*=mod[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (int i = 1; i &lt;= n ; ++i) &#123;</span><br><span class="line">        ll Mi = M / mod[i],inv,y; // Mi为所有模数乘积除以第i个模数，inv为Mi在模mi意义下的逆元</span><br><span class="line">        exGcd(Mi, mod[i], inv, y);</span><br><span class="line">        inv = (inv % mod[i]+mod[i]) % mod[i];//防止逆元求解过程中的负数出现</span><br><span class="line">        ans = (ans + yu[i] * Mi * inv) % M;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt; (ans + M) % M;          //保证结果不出现负数</span><br><span class="line">    <span class="built_in">return</span> 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="EXCRT求解模板"><a href="#EXCRT求解模板" class="headerlink" title="EXCRT求解模板"></a>EXCRT求解模板</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include &lt;bits/stdc++.h&gt;</span></span><br><span class="line">using namespace std;</span><br><span class="line">typedef long long ll;</span><br><span class="line">ll n,mod[100009],yu[100009];</span><br><span class="line"></span><br><span class="line">//要用快速乘（龟速乘），防止爆long long</span><br><span class="line">ll qMul(ll a,ll b,ll mo)&#123;</span><br><span class="line">    ll an = 0;</span><br><span class="line">    <span class="keyword">while</span>(b) &#123;</span><br><span class="line">        <span class="keyword">if</span>(b&amp;1) an =(an+a) % mo;</span><br><span class="line">        a = (a+a)%mo;</span><br><span class="line">        b&gt;&gt;=1;</span><br><span class="line">    &#125;<span class="built_in">return</span> an%mo;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//扩展欧几里得算法，返回gcd(a,b),并计算出ax+by = gcd(a,b)中的x和y</span><br><span class="line">ll exGcd(ll a,ll b,ll &amp;x,ll &amp;y)&#123;</span><br><span class="line">    <span class="keyword">if</span>( b == 0 ) &#123; x = 1;y = 0; <span class="built_in">return</span> a;&#125;</span><br><span class="line">    ll gcd = exGcd(b,a%b,y,x);  //注意x和y的顺序</span><br><span class="line">    y = y - a/b*x;</span><br><span class="line">    <span class="built_in">return</span> gcd;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);//加速cin和cout</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    <span class="keyword">for</span>(int i = 1;i &lt;= n;i++) cin&gt;&gt;mod[i]&gt;&gt;yu[i];</span><br><span class="line">    ll ans = yu[1],M = mod[1] ,t,y;  //ans表示前i-1个方程式的特解（余数），M为前i-1个方程式的模数的最小公倍数(i从2开始)</span><br><span class="line">    <span class="keyword">for</span>(int i = 2;i &lt;= n;i++)&#123;</span><br><span class="line">        ll mi = mod[i],res = ((yu[i] - ans)%mi + mi)%mi;  //res是等式的右边部分，不能出现负数</span><br><span class="line">        ll gcd = exGcd(M,mi,t,y);        //求出gcd(mi,M)</span><br><span class="line">        if(res % gcd != <span class="number">0</span>) &#123; cout&lt;&lt;-<span class="number">1</span>&lt;&lt;endl;exit(<span class="number">0</span>); &#125;   //如果等式右边不能整除gcd，方程组无解</span><br><span class="line">        t = qMul(t,res/gcd,mi);            //求出t还要乘上倍数，注意是快速乘取模mi (对谁取模要分清)</span><br><span class="line">        ans += t * M;                               //得到前i个方程的特解（余数）</span><br><span class="line">        M = mi /gcd * M;                         //M等于lcm(M,mi)，注意乘法要在除法后面做，否则会爆long long</span><br><span class="line">        ans = (ans%M+M)%M;                //让特解范围限定在<span class="number">0</span>~(M-<span class="number">1</span>)内，防止会出现负数</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;ans;</span><br><span class="line">    return <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="放一道例题-hard"><a href="#放一道例题-hard" class="headerlink" title="放一道例题(hard)"></a>放一道例题(hard)</h2><p><a href="https://www.luogu.com.cn/problem/U628784?contestId=295494">U628784 Laz玩游戏</a><br>key:ey33</p>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>数论</tag>
+        <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>字典树</title>
     <url>/2026/03/12/%E5%AD%97%E5%85%B8%E6%A0%91/</url>
     <content><![CDATA[<p>字符串的处理方式极多，字典树便是其中一种</p>
@@ -203,6 +203,19 @@
 <h2 id="inmost-的个人博客，自此启程"><a href="#inmost-的个人博客，自此启程" class="headerlink" title="inmost 的个人博客，自此启程"></a>inmost 的个人博客，自此启程</h2><ul>
 <li>后日谈</li>
 </ul>
+]]></content>
+      <categories>
+        <category>体悟</category>
+      </categories>
+      <tags>
+        <tag>随笔</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>首次团队赛回顾</title>
+    <url>/2026/03/22/%E9%A6%96%E6%AC%A1%E5%9B%A2%E9%98%9F%E8%B5%9B%E5%9B%9E%E9%A1%BE/</url>
+    <content><![CDATA[<p>浪潮完赛，杜神太强了最后20min成功冲出全场唯二的D题（<font color=orange>%%%</font>),最后rank8极限一等奖，这次总归没有遗憾离场。</p>
+<span id="more"></span>
 ]]></content>
       <categories>
         <category>体悟</category>
@@ -260,19 +273,6 @@
       <tags>
         <tag>动态规划</tag>
         <tag>背包</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>首次团队赛回顾</title>
-    <url>/2026/03/22/%E9%A6%96%E6%AC%A1%E5%9B%A2%E9%98%9F%E8%B5%9B%E5%9B%9E%E9%A1%BE/</url>
-    <content><![CDATA[<p>浪潮完赛，杜神太强了最后20min成功冲出全场唯二的D题（<font color=orange>%%%</font>),最后rank8极限一等奖，这次总归没有遗憾离场。</p>
-<span id="more"></span>
-]]></content>
-      <categories>
-        <category>体悟</category>
-      </categories>
-      <tags>
-        <tag>随笔</tag>
       </tags>
   </entry>
 </search>

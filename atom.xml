@@ -4,9 +4,9 @@
     <name>inmost</name>
   </author>
   <generator uri="https://hexo.io/">Hexo</generator>
-  <id>http://inmostfly.github.io/</id>
-  <link href="http://inmostfly.github.io/" rel="alternate"/>
-  <link href="http://inmostfly.github.io/atom.xml" rel="self"/>
+  <id>https://inmostflyyy.xin/</id>
+  <link href="https://inmostflyyy.xin/" rel="alternate"/>
+  <link href="https://inmostflyyy.xin/atom.xml" rel="self"/>
   <rights>All rights reserved 2026, inmost</rights>
   <subtitle>inmostsama</subtitle>
   <title>inmost's blog</title>
@@ -15,10 +15,10 @@
     <author>
       <name>inmost</name>
     </author>
-    <category term="体悟" scheme="http://inmostfly.github.io/categories/%E4%BD%93%E6%82%9F/"/>
-    <category term="随笔" scheme="http://inmostfly.github.io/tags/%E9%9A%8F%E7%AC%94/"/>
-    <id>http://inmostfly.github.io/2026/03/22/%E9%A6%96%E6%AC%A1%E5%9B%A2%E9%98%9F%E8%B5%9B%E5%9B%9E%E9%A1%BE/</id>
-    <link href="http://inmostfly.github.io/2026/03/22/%E9%A6%96%E6%AC%A1%E5%9B%A2%E9%98%9F%E8%B5%9B%E5%9B%9E%E9%A1%BE/"/>
+    <category term="体悟" scheme="https://inmostflyyy.xin/categories/%E4%BD%93%E6%82%9F/"/>
+    <category term="随笔" scheme="https://inmostflyyy.xin/tags/%E9%9A%8F%E7%AC%94/"/>
+    <id>https://inmostflyyy.xin/2026/03/22/%E9%A6%96%E6%AC%A1%E5%9B%A2%E9%98%9F%E8%B5%9B%E5%9B%9E%E9%A1%BE/</id>
+    <link href="https://inmostflyyy.xin/2026/03/22/%E9%A6%96%E6%AC%A1%E5%9B%A2%E9%98%9F%E8%B5%9B%E5%9B%9E%E9%A1%BE/"/>
     <published>2026-03-22T14:53:15.000Z</published>
     <summary>
       <![CDATA[<p>浪潮完赛，杜神太强了最后20min成功冲出全场唯二的D题（<font color=orange>%%%</font>),最后rank8极限一等奖，这次总归没有遗憾离场。</p>]]>
@@ -30,10 +30,10 @@
     <author>
       <name>inmost</name>
     </author>
-    <category term="算法" scheme="http://inmostfly.github.io/categories/%E7%AE%97%E6%B3%95/"/>
-    <category term="并查集" scheme="http://inmostfly.github.io/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/"/>
-    <id>http://inmostfly.github.io/2026/03/16/%E5%B9%B6%E6%9F%A5%E9%9B%86/</id>
-    <link href="http://inmostfly.github.io/2026/03/16/%E5%B9%B6%E6%9F%A5%E9%9B%86/"/>
+    <category term="算法" scheme="https://inmostflyyy.xin/categories/%E7%AE%97%E6%B3%95/"/>
+    <category term="并查集" scheme="https://inmostflyyy.xin/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/"/>
+    <id>https://inmostflyyy.xin/2026/03/16/%E5%B9%B6%E6%9F%A5%E9%9B%86/</id>
+    <link href="https://inmostflyyy.xin/2026/03/16/%E5%B9%B6%E6%9F%A5%E9%9B%86/"/>
     <published>2026-03-16T08:28:34.000Z</published>
     <summary>
       <![CDATA[<h2 id="并查集"><a href="#并查集" class="headerlink" title="并查集"></a>并查集</h2><p>青春猪头少年不会在赛时被并查集少一次遍历卡165min遗憾退场</p>]]>
@@ -45,11 +45,11 @@
     <author>
       <name>inmost</name>
     </author>
-    <category term="算法" scheme="http://inmostfly.github.io/categories/%E7%AE%97%E6%B3%95/"/>
-    <category term="树" scheme="http://inmostfly.github.io/tags/%E6%A0%91/"/>
-    <category term="字符串" scheme="http://inmostfly.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
-    <id>http://inmostfly.github.io/2026/03/12/%E5%AD%97%E5%85%B8%E6%A0%91/</id>
-    <link href="http://inmostfly.github.io/2026/03/12/%E5%AD%97%E5%85%B8%E6%A0%91/"/>
+    <category term="算法" scheme="https://inmostflyyy.xin/categories/%E7%AE%97%E6%B3%95/"/>
+    <category term="树" scheme="https://inmostflyyy.xin/tags/%E6%A0%91/"/>
+    <category term="字符串" scheme="https://inmostflyyy.xin/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+    <id>https://inmostflyyy.xin/2026/03/12/%E5%AD%97%E5%85%B8%E6%A0%91/</id>
+    <link href="https://inmostflyyy.xin/2026/03/12/%E5%AD%97%E5%85%B8%E6%A0%91/"/>
     <published>2026-03-12T12:52:35.000Z</published>
     <summary>
       <![CDATA[<p>字符串的处理方式极多，字典树便是其中一种</p>]]>
@@ -61,11 +61,11 @@
     <author>
       <name>inmost</name>
     </author>
-    <category term="算法" scheme="http://inmostfly.github.io/categories/%E7%AE%97%E6%B3%95/"/>
-    <category term="动态规划" scheme="http://inmostfly.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
-    <category term="背包" scheme="http://inmostfly.github.io/tags/%E8%83%8C%E5%8C%85/"/>
-    <id>http://inmostfly.github.io/2026/03/08/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/</id>
-    <link href="http://inmostfly.github.io/2026/03/08/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/"/>
+    <category term="算法" scheme="https://inmostflyyy.xin/categories/%E7%AE%97%E6%B3%95/"/>
+    <category term="动态规划" scheme="https://inmostflyyy.xin/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    <category term="背包" scheme="https://inmostflyyy.xin/tags/%E8%83%8C%E5%8C%85/"/>
+    <id>https://inmostflyyy.xin/2026/03/08/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/</id>
+    <link href="https://inmostflyyy.xin/2026/03/08/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/"/>
     <published>2026-03-08T04:33:25.000Z</published>
     <summary>
       <![CDATA[<p>搁置已久，今天来简单讨论下背包的基础性问题<br>]]>
@@ -77,11 +77,11 @@
     <author>
       <name>inmost</name>
     </author>
-    <category term="算法" scheme="http://inmostfly.github.io/categories/%E7%AE%97%E6%B3%95/"/>
-    <category term="数论" scheme="http://inmostfly.github.io/tags/%E6%95%B0%E8%AE%BA/"/>
-    <category term="数学" scheme="http://inmostfly.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
-    <id>http://inmostfly.github.io/2026/03/06/gcd%E5%8F%8A%E5%85%B6%E6%89%A9%E5%B1%95/</id>
-    <link href="http://inmostfly.github.io/2026/03/06/gcd%E5%8F%8A%E5%85%B6%E6%89%A9%E5%B1%95/"/>
+    <category term="算法" scheme="https://inmostflyyy.xin/categories/%E7%AE%97%E6%B3%95/"/>
+    <category term="数论" scheme="https://inmostflyyy.xin/tags/%E6%95%B0%E8%AE%BA/"/>
+    <category term="数学" scheme="https://inmostflyyy.xin/tags/%E6%95%B0%E5%AD%A6/"/>
+    <id>https://inmostflyyy.xin/2026/03/06/gcd%E5%8F%8A%E5%85%B6%E6%89%A9%E5%B1%95/</id>
+    <link href="https://inmostflyyy.xin/2026/03/06/gcd%E5%8F%8A%E5%85%B6%E6%89%A9%E5%B1%95/"/>
     <published>2026-03-05T16:57:03.000Z</published>
     <summary>
       <![CDATA[<h2 id="gcd运算严格满足结合率"><a href="#gcd运算严格满足结合率" class="headerlink" title="gcd运算严格满足结合率"></a>gcd运算严格满足结合率</h2><p>即有 $\gcd(a,b,c) = \gcd(\gcd(a,b),c) = \gcd(a,\gcd(b,c))$</p>]]>
@@ -93,11 +93,11 @@
     <author>
       <name>inmost</name>
     </author>
-    <category term="算法" scheme="http://inmostfly.github.io/categories/%E7%AE%97%E6%B3%95/"/>
-    <category term="筛" scheme="http://inmostfly.github.io/tags/%E7%AD%9B/"/>
-    <category term="动态规划" scheme="http://inmostfly.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
-    <id>http://inmostfly.github.io/2026/02/26/%E6%AC%A7%E6%8B%89%E7%AD%9B/</id>
-    <link href="http://inmostfly.github.io/2026/02/26/%E6%AC%A7%E6%8B%89%E7%AD%9B/"/>
+    <category term="算法" scheme="https://inmostflyyy.xin/categories/%E7%AE%97%E6%B3%95/"/>
+    <category term="筛" scheme="https://inmostflyyy.xin/tags/%E7%AD%9B/"/>
+    <category term="动态规划" scheme="https://inmostflyyy.xin/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    <id>https://inmostflyyy.xin/2026/02/26/%E6%AC%A7%E6%8B%89%E7%AD%9B/</id>
+    <link href="https://inmostflyyy.xin/2026/02/26/%E6%AC%A7%E6%8B%89%E7%AD%9B/"/>
     <published>2026-02-26T15:50:26.000Z</published>
     <summary>
       <![CDATA[<h2 id="欧拉筛"><a href="#欧拉筛" class="headerlink" title="欧拉筛"></a><a href="https://codeforces.com/contest/2200/problem/E">欧拉筛</a></h2><p>于CF1080_E题遇到对欧拉筛的活用，从新总结用法及原理</p>]]>
@@ -109,13 +109,13 @@
     <author>
       <name>inmost</name>
     </author>
-    <category term="笔记" scheme="http://inmostfly.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
-    <category term="前端" scheme="http://inmostfly.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
-    <category term="JavaScript" scheme="http://inmostfly.github.io/tags/JavaScript/"/>
-    <category term="HTML" scheme="http://inmostfly.github.io/tags/HTML/"/>
-    <category term="CSS" scheme="http://inmostfly.github.io/tags/CSS/"/>
-    <id>http://inmostfly.github.io/2026/02/26/JavaScript/</id>
-    <link href="http://inmostfly.github.io/2026/02/26/JavaScript/"/>
+    <category term="笔记" scheme="https://inmostflyyy.xin/categories/%E7%AC%94%E8%AE%B0/"/>
+    <category term="前端" scheme="https://inmostflyyy.xin/tags/%E5%89%8D%E7%AB%AF/"/>
+    <category term="JavaScript" scheme="https://inmostflyyy.xin/tags/JavaScript/"/>
+    <category term="HTML" scheme="https://inmostflyyy.xin/tags/HTML/"/>
+    <category term="CSS" scheme="https://inmostflyyy.xin/tags/CSS/"/>
+    <id>https://inmostflyyy.xin/2026/02/26/JavaScript/</id>
+    <link href="https://inmostflyyy.xin/2026/02/26/JavaScript/"/>
     <published>2026-02-26T07:31:36.000Z</published>
     <summary>
       <![CDATA[<p>前端学习笔记，HTML,CSS,JavaScript三者协同构成网页</p>]]>
@@ -127,15 +127,15 @@
     <author>
       <name>inmost</name>
     </author>
-    <category term="题解" scheme="http://inmostfly.github.io/categories/%E9%A2%98%E8%A7%A3/"/>
-    <category term="二分" scheme="http://inmostfly.github.io/tags/%E4%BA%8C%E5%88%86/"/>
-    <category term="模拟" scheme="http://inmostfly.github.io/tags/%E6%A8%A1%E6%8B%9F/"/>
-    <category term="排序" scheme="http://inmostfly.github.io/tags/%E6%8E%92%E5%BA%8F/"/>
-    <category term="博弈论" scheme="http://inmostfly.github.io/tags/%E5%8D%9A%E5%BC%88%E8%AE%BA/"/>
-    <category term="数论" scheme="http://inmostfly.github.io/tags/%E6%95%B0%E8%AE%BA/"/>
-    <category term="分治" scheme="http://inmostfly.github.io/tags/%E5%88%86%E6%B2%BB/"/>
-    <id>http://inmostfly.github.io/2026/02/16/CF1079_Div2/</id>
-    <link href="http://inmostfly.github.io/2026/02/16/CF1079_Div2/"/>
+    <category term="题解" scheme="https://inmostflyyy.xin/categories/%E9%A2%98%E8%A7%A3/"/>
+    <category term="二分" scheme="https://inmostflyyy.xin/tags/%E4%BA%8C%E5%88%86/"/>
+    <category term="模拟" scheme="https://inmostflyyy.xin/tags/%E6%A8%A1%E6%8B%9F/"/>
+    <category term="排序" scheme="https://inmostflyyy.xin/tags/%E6%8E%92%E5%BA%8F/"/>
+    <category term="博弈论" scheme="https://inmostflyyy.xin/tags/%E5%8D%9A%E5%BC%88%E8%AE%BA/"/>
+    <category term="数论" scheme="https://inmostflyyy.xin/tags/%E6%95%B0%E8%AE%BA/"/>
+    <category term="分治" scheme="https://inmostflyyy.xin/tags/%E5%88%86%E6%B2%BB/"/>
+    <id>https://inmostflyyy.xin/2026/02/16/CF1079_Div2/</id>
+    <link href="https://inmostflyyy.xin/2026/02/16/CF1079_Div2/"/>
     <published>2026-02-16T07:55:59.000Z</published>
     <summary>
       <![CDATA[<h2 id="CF1079-题解"><a href="#CF1079-题解" class="headerlink" title="CF1079 题解"></a><a href="https://codeforces.com/contest/2197">CF1079</a> 题解</h2><p>文中主要包括如下考点（CF题目做法灵活，只叙述自己赛时做法）<br>二分 模拟 排序 博弈论 数论 分治  </p>]]>
@@ -147,10 +147,10 @@
     <author>
       <name>inmost</name>
     </author>
-    <category term="体悟" scheme="http://inmostfly.github.io/categories/%E4%BD%93%E6%82%9F/"/>
-    <category term="随笔" scheme="http://inmostfly.github.io/tags/%E9%9A%8F%E7%AC%94/"/>
-    <id>http://inmostfly.github.io/2026/02/11/%E6%96%B0%E7%9A%84%E5%BC%80%E5%A7%8B/</id>
-    <link href="http://inmostfly.github.io/2026/02/11/%E6%96%B0%E7%9A%84%E5%BC%80%E5%A7%8B/"/>
+    <category term="体悟" scheme="https://inmostflyyy.xin/categories/%E4%BD%93%E6%82%9F/"/>
+    <category term="随笔" scheme="https://inmostflyyy.xin/tags/%E9%9A%8F%E7%AC%94/"/>
+    <id>https://inmostflyyy.xin/2026/02/11/%E6%96%B0%E7%9A%84%E5%BC%80%E5%A7%8B/</id>
+    <link href="https://inmostflyyy.xin/2026/02/11/%E6%96%B0%E7%9A%84%E5%BC%80%E5%A7%8B/"/>
     <published>2026-02-11T00:49:58.000Z</published>
     <summary>
       <![CDATA[<h2 id="谨以此贴，记录生活与工作"><a href="#谨以此贴，记录生活与工作" class="headerlink" title="谨以此贴，记录生活与工作"></a>谨以此贴，记录生活与工作</h2><h3 id="我为什么会想起来写博客"><a]]>
@@ -162,8 +162,8 @@
     <author>
       <name>inmost</name>
     </author>
-    <id>http://inmostfly.github.io/2026/02/09/hello-world/</id>
-    <link href="http://inmostfly.github.io/2026/02/09/hello-world/"/>
+    <id>https://inmostflyyy.xin/2026/02/09/hello-world/</id>
+    <link href="https://inmostflyyy.xin/2026/02/09/hello-world/"/>
     <published>2026-02-09T08:57:29.443Z</published>
     <summary>
       <![CDATA[<p>Welcome to <a href="https://inmostfly.github.io/">Hexo</a>! This is my very first blog.</p>
