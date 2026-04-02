@@ -1283,7 +1283,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #c7ffdd;
+  background: #ffffe0;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2591,13 +2591,15 @@ body::before {
   opacity: 0.8;
 }
 .sidebar {
+  position: fixed !important;
   background-color: rgba(141,183,198,0.545);
+  z-index: 1000;
   background-size: cover;
-  background-position: header;
+  background-position: top;
   background-repeat: no-repeat;
   box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
-  margin-top: 100px;
-  height: 0 !important;
+  margin-top: 80px;
+  height: auto !important;
   max-height: 70vh;
   bottom: auto !important;
   border-radius: 15px; /* 圆角胶囊状 */
