@@ -1283,7 +1283,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #4fffbb;
+  background: #afffc6;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2576,7 +2576,7 @@ body::before {
   opacity: 1;
   color: #080707;
   border-radius: 10px; /* 圆角 */
-  margin: 40px auto 20px; /* 核心居中代码：上下边距，左右自动平分 */
+  margin: 40px auto 20px !important; /* 强制覆盖主题外边距，实现居中 */
   padding: 40px;
 /* 阴影效果，增加立体感 */
   -webkit-box-shadow: 0 0 5px rgba(202,203,203,0.5);
@@ -2587,21 +2587,22 @@ body::before {
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .post-block {
-    margin: 20px auto;
+    margin: 20px auto !important;
     padding: 10px;
   }
 }
 @media (max-width: 767px) {
   .post-block {
-    margin: 15px auto;
+    margin: 15px auto !important;
     padding: 15px;
   }
 }
-/* 分页和评论区半透明且居中 */
+/* 分页和评论区半透明且强制居中 */
 .pagination,
 .comments {
   opacity: 0.8;
-  margin: auto;
+  margin: 0 auto !important;
+  width: 100% !important;
 }
 .sidebar {
   background-color: rgba(141,183,198,0.545); /* 半透明背景色 */
@@ -2847,14 +2848,14 @@ body,
   padding-right: 0 !important;
   transform: none !important;
 }
-/* 将页头、主容器、页脚限制最大宽度并强制水平居中 */
+/* 强制将页头、主容器、页脚限制最大宽度并水平居中 */
 .header-inner,
 .main-inner,
 .footer-inner {
-  margin: 0 auto !important; /* 左右外边距自动 */
-  float: none !important; /* 清除浮动带来的影响 */
-  width: 100%;
-  max-width: 800px; /* 页面主体的最大阅读宽度，可自行调节 */
+  margin: 0 auto !important; /* 强制左右外边距自动 */
+  float: none !important; /* 强制清除浮动 */
+  width: 100% !important; /* 强制占满可用空间，由下面的 max-width 约束 */
+  max-width: 800px !important; /* 强制最大宽度 */
 }
 /* 移动端适配：屏幕小于767px时，主容器占屏幕95%宽度 */
 @media (max-width: 767px) {
