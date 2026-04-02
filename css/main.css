@@ -1283,7 +1283,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #41be61;
+  background: #4fffbb;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2543,11 +2543,15 @@ embed {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+/* =========================================================================
+   全局基础设置与背景
+   ========================================================================= */
 body {
   position: relative;
   margin: 0;
-  min-height: 100vh;
+  min-height: 100vh; /* 确保最小高度占满全屏 */
 }
+/* 固定全屏背景图片 */
 body::before {
   content: "";
   position: fixed;
@@ -2555,25 +2559,31 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
+  z-index: -1; /* 置于最底层 */
   background: url("/uploads/background2.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size: cover;
-  background-position: 50% 50%;
-  transform: scale(1.05);
+  background-size: cover; /* 背景图片等比例缩放铺满全屏 */
+  background-position: 50% 50%; /* 背景图片居中 */
+  transform: scale(1.05); /* 稍微放大背景以防止边缘留白或滚动时的细微穿帮 */
 }
+/* =========================================================================
+   文章主体与布局 (Post & Layout)
+   ========================================================================= */
+/* 单篇文章卡片的样式 */
 .post-block {
-  background: rgba(255,255,255,0.88);
+  background: rgba(255,255,255,0.88); /* 半透明白色背景 */
   opacity: 1;
   color: #080707;
-  border-radius: 10px;
-/* 核心修改：设置上下边距，左右自动居中 */
-  margin: 40px auto 20px;
+  border-radius: 10px; /* 圆角 */
+  margin: 40px auto 20px; /* 核心居中代码：上下边距，左右自动平分 */
   padding: 40px;
+/* 阴影效果，增加立体感 */
   -webkit-box-shadow: 0 0 5px rgba(202,203,203,0.5);
   -moz-box-shadow: 0 0 5px rgba(202,203,204,0.5);
   box-shadow: 0 0 5px rgba(202,203,204,0.5);
+/* 平板端响应式适配 */
+/* 移动端响应式适配 */
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .post-block {
@@ -2587,64 +2597,79 @@ body::before {
     padding: 15px;
   }
 }
+/* 分页和评论区半透明且居中 */
 .pagination,
 .comments {
   opacity: 0.8;
-  margin: auto; /* 确保分页和评论区也尝试居中 */
+  margin: auto;
 }
 .sidebar {
-  background-color: rgba(141,183,198,0.545);
+  background-color: rgba(141,183,198,0.545); /* 半透明背景色 */
   background-size: cover;
   background-position: top;
   background-repeat: no-repeat;
-  box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.5); /* 内阴影 */
   border-radius: 15px;
-  position: fixed !important;
+  position: fixed !important; /* 固定在左侧脱离文档流 */
   left: 10px !important;
-  z-index: 1000;
+  z-index: 1000; /* 置于上层 */
   margin-top: 80px;
   height: auto !important;
-  max-height: 70vh;
+  max-height: 70vh; /* 限制最大高度，防止溢出屏幕 */
   bottom: auto !important;
   overflow: hidden !important;
   transition: opacity 0.3s ease, visibility 0.3s ease !important;
 }
+/* 隐藏侧边栏的过渡状态处理 */
 .sidebar[style*="width: 0"],
 .sidebar[style*="width:0"],
 .sidebar[style*="transform: translate"],
 .sidebar[style*="margin"] {
   opacity: 0 !important;
-  pointer-events: none !important;
+  pointer-events: none !important; /* 隐藏时禁止点击穿透 */
   visibility: hidden !important;
 }
+/* 侧边栏内部容器完全透明 */
 .sidebar-inner {
   background: rgba(216,202,202,0);
 }
+/* =========================================================================
+   顶部导航与通用组件透明度
+   ========================================================================= */
+/* 菜单栏容器透明 */
 .header-inner {
   background: rgba(255,255,255,0);
 }
+/* 搜索框弹出层透明度 */
 .popup {
   opacity: 0.9;
 }
+/* 代码高亮块美化 */
 code {
   padding: 2px 4px;
   overflow-wrap: break-word;
-  word-wrap: break-word;
-  color: #c7254e;
-  background: #f9f2f4;
+  word-wrap: break-word; /* 允许长代码换行 */
+  color: #c7254e; /* 代码文字颜色 */
+  background: #f9f2f4; /* 代码底色 */
   border-radius: 3px;
   font-size: 18px;
 }
+/* 知识产权协议边距 */
 .cc-license {
   margin-top: 5px;
 }
+/* =========================================================================
+   字体、标题与侧边栏个人信息排版
+   ========================================================================= */
+/* 侧边栏作者名字 */
 .site-author-name {
   color: #0c0c0c;
   font-family: 'Comic Sans MS', '楷体', sans-serif;
-  font-weight: 800;
+  font-weight: 800; /* 加粗 */
   font-size: 40px;
-  font-style: italic;
+  font-style: italic; /* 斜体 */
 }
+/* 网站主标题 */
 .site-title {
   color: #e3dada;
   font-size: 50px;
@@ -2653,21 +2678,26 @@ code {
   margin-bottom: 10px;
   width: 100%;
 }
+/* 打字机光标动画效果 */
 .typed-cursor {
   font-size: 20px;
   color: #000;
   opacity: 1;
-  animation: typedjsBlink 0.7s infinite;
+  animation: typedjsBlink 0.7s infinite; /* 绑定闪烁动画 */
   vertical-align: baseline;
 }
+/* 光标闪烁动画关键帧 */
+/* 站点Logo区域背景透明 */
 .brand {
   background: rgba(77,137,172,0);
   border-radius: 15px;
   display: block !important;
 }
+/* 站点描述文本颜色 */
 .site-description {
   color: #111010;
 }
+/* 作者链接按钮样式 */
 .links-of-author a {
   color: #0b0b0b;
   margin-top: 0px;
@@ -2675,21 +2705,36 @@ code {
   padding: 10px;
   border-radius: 10px;
 }
+/* =========================================================================
+   博客统计面板 (日志/分类/标签 数量)
+   ========================================================================= */
 .site-state {
-  margin-top: 130px;
+  margin-top: 130px; /* 大类整体向下平移 */
 }
+/* 统计数字的样式 */
 .site-state-item-count {
-  color: #e7e3e3; /* 数字改成白色 */
+  color: #e7e3e3;
   font-size: 28px;
   font-weight: 600;
 }
+/* 统计文本（如"日志"）的样式 */
 .site-state-item-name {
-  color: #0f0d0d; /* 文字改成深黑色 */
+  color: #0f0d0d;
   font-size: 18px;
 }
-.posts-expand {
-  margin-top: -20px; /* 或者用外边距，效果差不多 */
+/* 单个统计区块样式 */
+.site-state-item {
+  background: rgba(123,157,219,0.576);
+  padding: 10px;
+  border-radius: 15px;
 }
+/* =========================================================================
+   细节微调与特效 (动画、引用、悬浮效果)
+   ========================================================================= */
+.posts-expand {
+  margin-top: -20px; /* 调整文章列表的顶边距 */
+}
+/* 副标题样式 */
 .site-subtitle {
   color: #0f0f0f;
   font-size: 20px;
@@ -2697,27 +2742,25 @@ code {
   display: inline-block !important;
   height: 20px;
 }
+/* 隐藏文章底部的分隔线空白 */
 .post-eof {
   display: none;
 }
-.site-state-item {
-  background: rgba(123,157,219,0.576); /* 补充了缺失的分号 */
-  padding: 10px;
-  border-radius: 15px;
-}
+/* 侧边栏元数据区域高度限制 */
 .site-meta {
   display: block !important;
   height: 160px;
 }
-/* --- 修复引用块 (Blockquote) 的显示问题 --- */
+/* 引用块 (Blockquote) 样式重写 */
 blockquote {
   color: #333 !important;
   background-color: rgba(255,255,255,0.6);
-  border-left: 4px solid #7b9ddb;
+  border-left: 4px solid #7b9ddb; /* 左侧粗边框修饰 */
   padding: 10px 20px;
   margin: 20px 0;
   border-radius: 5px;
 }
+/* 标签云中的标签基础样式 */
 .tag-cloud-tags a {
   color: #111 !important;
   font-size: 14px !important;
@@ -2727,18 +2770,21 @@ blockquote {
   background: #f5f5f5;
   border-radius: 15px;
   border: 1px solid #e0e0e0;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out; /* 添加平滑动画过渡 */
 }
+/* 标签云鼠标悬浮(Hover)动效：变色并放大 */
 .tag-cloud-tags a:hover {
   background: #7b9ddb;
   color: #fff !important;
   border-color: #7b9ddb;
   transform: scale(1.1);
 }
+/* 文章标题链接颜色加粗 */
 .post-title a {
   color: #030303 !important;
   font-weight: 800;
 }
+/* 菜单项基础样式（仿按钮） */
 .menu-item a {
   color: #080808 !important;
   font-size: 14px !important;
@@ -2751,36 +2797,47 @@ blockquote {
   transition: all 0.2s ease-in-out;
   width: 40px;
 }
+/* 菜单项鼠标悬浮(Hover)动效 */
 .menu-item a:hover {
   background: #7b9ddb;
   font-weight: 800;
   border-color: #7b9ddb;
   transform: scale(1.1);
 }
+/* 分类列表数字加粗 */
 .category-list-count {
   color: #040404 !important;
   font-weight: 800;
 }
+/* 阅读全文/常规按钮基础样式 */
 .post-button a {
   background: rgba(40,37,37,0.58) !important;
   font-weight: 700;
   border-radius: 15px;
   transition: all 0.2s ease-in-out;
 }
+/* 阅读全文/常规按钮悬浮效果 */
 .post-button a:hover {
   background: rgba(215,210,210,0.024) !important;
   color: #000 !important;
   transform: scale(1.1);
 }
+/* =========================================================================
+   页脚与整体居中控制 (Footer & Global Alignment)
+   ========================================================================= */
+/* 页脚文字颜色 */
 .footer-inner {
   color: #030202;
 }
+/* 页脚"爱心"图标颜色 */
 .with-love .fa-heart {
   color: rgba(232,17,17,0.969);
 }
+/* 导航链接颜色 */
 .nav a {
   color: #030202;
 }
+/* 清除原有主题的左右内边距及偏移，为强行居中做准备 */
 body,
 .container,
 .header,
@@ -2789,6 +2846,23 @@ body,
   padding-left: 0 !important;
   padding-right: 0 !important;
   transform: none !important;
+}
+/* 将页头、主容器、页脚限制最大宽度并强制水平居中 */
+.header-inner,
+.main-inner,
+.footer-inner {
+  margin: 0 auto !important; /* 左右外边距自动 */
+  float: none !important; /* 清除浮动带来的影响 */
+  width: 100%;
+  max-width: 800px; /* 页面主体的最大阅读宽度，可自行调节 */
+}
+/* 移动端适配：屏幕小于767px时，主容器占屏幕95%宽度 */
+@media (max-width: 767px) {
+  .header-inner,
+  .main-inner,
+  .footer-inner {
+    width: 95% !important;
+  }
 }
 @-moz-keyframes typedjsBlink {
   50% {
