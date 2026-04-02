@@ -1283,7 +1283,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #c1ffff;
+  background: #c1ff45;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2598,24 +2598,22 @@ body::before {
   box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
   border-radius: 15px;
   position: fixed !important;
+  left: 10px !important;
   z-index: 1000;
   margin-top: 80px;
   height: auto !important;
   max-height: 70vh;
   bottom: auto !important;
   overflow: hidden !important;
-/* 核心修改：默认移出屏幕左侧，透明度设为0 */
-  left: -350px !important;
-  opacity: 0 !important;
-  visibility: hidden !important;
-/* 添加平滑动画，替代 JS 的计算 */
-  transition: all 0.3s ease-in-out !important;
+  transition: opacity 0.3s ease, visibility 0.3s ease !important;
 }
-/* --- 2. 侧边栏激活状态：显示（移入屏幕） --- */
-body.sidebar-active .sidebar {
-  left: 10px !important;
-  opacity: 1 !important;
-  visibility: visible !important;
+.sidebar[style*="width: 0"],
+.sidebar[style*="width:0"],
+.sidebar[style*="transform: translate"],
+.sidebar[style*="margin"] {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
 }
 .sidebar-inner {
   background: rgba(216,202,202,0);
