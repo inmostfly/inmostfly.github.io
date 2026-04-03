@@ -135,6 +135,38 @@
 ]]></content>
   </entry>
   <entry>
+    <title>并查集</title>
+    <url>/2026/03/16/%E5%B9%B6%E6%9F%A5%E9%9B%86/</url>
+    <content><![CDATA[<h2 id="并查集"><a href="#并查集" class="headerlink" title="并查集"></a>并查集</h2><p>青春猪头少年不会在赛时被并查集少一次遍历卡165min遗憾退场</p>
+<span id="more"></span>
+<p>并查集，核心在查询其公共根节点，即族长</p>
+<h3 id="搜寻公共根节点，合并，判是否同族"><a href="#搜寻公共根节点，合并，判是否同族" class="headerlink" title="搜寻公共根节点，合并，判是否同族"></a>搜寻公共根节点，合并，判是否同族</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//搜寻公共根节点，期间路径压缩，记录已经找到根节点的数据，省略其一步步查找的过程</span><br><span class="line">int f[100000]</span><br><span class="line">int find(int u)&#123;</span><br><span class="line">    <span class="built_in">return</span> f[u]==u?u:f[u]=find(f[u]);</span><br><span class="line">&#125;</span><br><span class="line">void unite(int x,int y)&#123;</span><br><span class="line">    f[find(x)]=find(y);</span><br><span class="line">&#125;</span><br><span class="line">bool same(int x,int y)&#123;</span><br><span class="line">    <span class="built_in">return</span> find(x)==find(y)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>核心就三点，查询，判别，合并</p>
+<h3 id="毒点"><a href="#毒点" class="headerlink" title="毒点"></a>毒点</h3><h4 id="带圈的并查集怎么解决"><a href="#带圈的并查集怎么解决" class="headerlink" title="带圈的并查集怎么解决"></a>带圈的并查集怎么解决</h4><p>os:所以这玩意为什么能卡我三个小时，道心破碎了吗（这个题其实很快就看出来思路了，但是卡在并查集了）<br><a href="http://10.67.4.89/p/P10029">路径问题</a><br>问题来了，假如说我们要通过并查集判断一个有向图里面环的个数，每个环中任意节点出入度都是1，那么并查集由于其unite步骤，默认合并x的父节点到y的父节点下方，环的特殊性使得存在如下情况</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1-&gt;2  2-&gt;3  3-&gt;4  4-&gt;1</span><br><span class="line">f[1]=2;f[2]=3;f[3]=4;f[4]=1;</span><br><span class="line">//find步骤递归将无穷进行，也就是说，我们必须规定一个环中具有某特征的数在unite时固定充当父节点</span><br></pre></td></tr></table></figure>
+<p>最简单的就是找大小来比较，两个根节点合并的时候，大的合并到小的或小的合并到大的<br>至于same中为什么写find，其实都一样，无非少一遍自家人不认自家人的unite</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">void unite(int x,int y)&#123;</span><br><span class="line">    int tem1=find(x);</span><br><span class="line">    int tem2=find(y);</span><br><span class="line">	f[min(tem1,tem2)]=max(tem1,tem2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="f最终在跑完一整遍图之后，存的直接就是最终的父节点吗"><a href="#f最终在跑完一整遍图之后，存的直接就是最终的父节点吗" class="headerlink" title="f最终在跑完一整遍图之后，存的直接就是最终的父节点吗"></a>f最终在跑完一整遍图之后，存的直接就是最终的父节点吗</h4><center>
+<font color=red>  不是！！！ </font>
+</center>
+
+<p>f仅仅是处理过程中的路径压缩，只有在跑过去的时候才会压缩到，否则还是原根节点  </p>
+<p>举个例子，2的根节点是3，f[2]=3,之后进行了一次f[3]=f[4]的合并，f[2]依旧是3</p>
+<p>只有在最后存完之后</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(int i=1;i&lt;=n;i++)&#123;</span><br><span class="line">    f[i]=find(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>才能算是真正f[i]存的是根节点,实际前面做的都是建链，最后顺着链子跑一遍，才是真正把每个节点锚定到根节点。</p>
+<h2 id="满满遗憾"><a href="#满满遗憾" class="headerlink" title="满满遗憾"></a>满满遗憾</h2><p>最后当然是遗憾离场，这个题如果不一直在并查集上考虑其实有很多简单的方法 ，行列式那题很简单，n=4，可以说是一个小模拟，但被我安排到这个题写完再写了,没关注这题，也就没注意到n小，自然以为他要写递归…赛前更是一道图题都没写，倒是关注的背包和gcd一点没考….</p>
+<p>承队友之幸，省赛还有希望上场，加训，莫辜负。</p>
+<p>以后再也不会盯着一个题看那么长时间了，归根到底还是做题习惯，另外就是debug的问题<br>不要用ai debug！ 不要用ai debug！ 不要用ai debug！赛时会很drama（重要的事情说三遍）</p>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>并查集</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>字典树</title>
     <url>/2026/03/12/%E5%AD%97%E5%85%B8%E6%A0%91/</url>
     <content><![CDATA[<p>字符串的处理方式极多，字典树便是其中一种</p>
@@ -177,38 +209,6 @@
       </categories>
       <tags>
         <tag>随笔</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>并查集</title>
-    <url>/2026/03/16/%E5%B9%B6%E6%9F%A5%E9%9B%86/</url>
-    <content><![CDATA[<h2 id="并查集"><a href="#并查集" class="headerlink" title="并查集"></a>并查集</h2><p>青春猪头少年不会在赛时被并查集少一次遍历卡165min遗憾退场</p>
-<span id="more"></span>
-<p>并查集，核心在查询其公共根节点，即族长</p>
-<h3 id="搜寻公共根节点，合并，判是否同族"><a href="#搜寻公共根节点，合并，判是否同族" class="headerlink" title="搜寻公共根节点，合并，判是否同族"></a>搜寻公共根节点，合并，判是否同族</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//搜寻公共根节点，期间路径压缩，记录已经找到根节点的数据，省略其一步步查找的过程</span><br><span class="line">int f[100000]</span><br><span class="line">int find(int u)&#123;</span><br><span class="line">    <span class="built_in">return</span> f[u]==u?u:f[u]=find(f[u]);</span><br><span class="line">&#125;</span><br><span class="line">void unite(int x,int y)&#123;</span><br><span class="line">    f[find(x)]=find(y);</span><br><span class="line">&#125;</span><br><span class="line">bool same(int x,int y)&#123;</span><br><span class="line">    <span class="built_in">return</span> find(x)==find(y)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>核心就三点，查询，判别，合并</p>
-<h3 id="毒点"><a href="#毒点" class="headerlink" title="毒点"></a>毒点</h3><h4 id="带圈的并查集怎么解决"><a href="#带圈的并查集怎么解决" class="headerlink" title="带圈的并查集怎么解决"></a>带圈的并查集怎么解决</h4><p>os:所以这玩意为什么能卡我三个小时，道心破碎了吗（这个题其实很快就看出来思路了，但是卡在并查集了）<br><a href="http://10.67.4.89/p/P10029">路径问题</a><br>问题来了，假如说我们要通过并查集判断一个有向图里面环的个数，每个环中任意节点出入度都是1，那么并查集由于其unite步骤，默认合并x的父节点到y的父节点下方，环的特殊性使得存在如下情况</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1-&gt;2  2-&gt;3  3-&gt;4  4-&gt;1</span><br><span class="line">f[1]=2;f[2]=3;f[3]=4;f[4]=1;</span><br><span class="line">//find步骤递归将无穷进行，也就是说，我们必须规定一个环中具有某特征的数在unite时固定充当父节点</span><br></pre></td></tr></table></figure>
-<p>最简单的就是找大小来比较，两个根节点合并的时候，大的合并到小的或小的合并到大的<br>至于same中为什么写find，其实都一样，无非少一遍自家人不认自家人的unite</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">void unite(int x,int y)&#123;</span><br><span class="line">    int tem1=find(x);</span><br><span class="line">    int tem2=find(y);</span><br><span class="line">	f[min(tem1,tem2)]=max(tem1,tem2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="f最终在跑完一整遍图之后，存的直接就是最终的父节点吗"><a href="#f最终在跑完一整遍图之后，存的直接就是最终的父节点吗" class="headerlink" title="f最终在跑完一整遍图之后，存的直接就是最终的父节点吗"></a>f最终在跑完一整遍图之后，存的直接就是最终的父节点吗</h4><center>
-<font color=red>  不是！！！ </font>
-</center>
-
-<p>f仅仅是处理过程中的路径压缩，只有在跑过去的时候才会压缩到，否则还是原根节点  </p>
-<p>举个例子，2的根节点是3，f[2]=3,之后进行了一次f[3]=f[4]的合并，f[2]依旧是3</p>
-<p>只有在最后存完之后</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(int i=1;i&lt;=n;i++)&#123;</span><br><span class="line">    f[i]=find(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>才能算是真正f[i]存的是根节点,实际前面做的都是建链，最后顺着链子跑一遍，才是真正把每个节点锚定到根节点。</p>
-<h2 id="满满遗憾"><a href="#满满遗憾" class="headerlink" title="满满遗憾"></a>满满遗憾</h2><p>最后当然是遗憾离场，这个题如果不一直在并查集上考虑其实有很多简单的方法 ，行列式那题很简单，n=4，可以说是一个小模拟，但被我安排到这个题写完再写了,没关注这题，也就没注意到n小，自然以为他要写递归…赛前更是一道图题都没写，倒是关注的背包和gcd一点没考….</p>
-<p>承队友之幸，省赛还有希望上场，加训，莫辜负。</p>
-<p>以后再也不会盯着一个题看那么长时间了，归根到底还是做题习惯，另外就是debug的问题<br>不要用ai debug！ 不要用ai debug！ 不要用ai debug！赛时会很drama（重要的事情说三遍）</p>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>并查集</tag>
       </tags>
   </entry>
   <entry>
@@ -263,19 +263,6 @@
       </tags>
   </entry>
   <entry>
-    <title>首次团队赛回顾</title>
-    <url>/2026/03/22/%E9%A6%96%E6%AC%A1%E5%9B%A2%E9%98%9F%E8%B5%9B%E5%9B%9E%E9%A1%BE/</url>
-    <content><![CDATA[<p>浪潮完赛，杜神太强了最后20min成功冲出全场唯二的D题（<font color=orange>%%%</font>),最后rank8极限一等奖，这次总归没有遗憾离场。</p>
-<span id="more"></span>
-]]></content>
-      <categories>
-        <category>体悟</category>
-      </categories>
-      <tags>
-        <tag>随笔</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>蓝桥十日-day1</title>
     <url>/2026/04/03/%E8%93%9D%E6%A1%A5%E5%8D%81%E6%97%A5-day1/</url>
     <content><![CDATA[<p>在于队友的聊天中偶然发现很多人并不了解OI赛制是什么，故有此文。  </p>
@@ -296,10 +283,36 @@
 <li>检查细节与边界条件：由于一次细微的错误（如数组越界、变量未初始化、整数溢出）可能导致大部分测试点甚至全部测试点运行异常，在提交前必须反复检查代码逻辑和数据类型。</li>
 <li>合理分配时间：OI 赛制看重总分，合理的策略是先通读所有题目，优先编写并测试所有题目的基础部分分解法，然后再集中精力攻克自己最有把握获得满分的题目。总结OI 赛制不仅考察选手的算法设计能力和编程基本功，更强调工程的严谨性、本地独立测试的能力以及时间规划策略。理解并适应这种缺乏即时反馈且注重部分分累积的赛制，是参赛者取得优异成绩的基础。</li>
 </ul>
-<h2 id="蓝桥赛时编译器"><a href="#蓝桥赛时编译器" class="headerlink" title="蓝桥赛时编译器"></a>蓝桥赛时编译器</h2><p>赛场上能快速上手使用的编译器只有Dev-c++,建议提前适应，以避免赛时卡手慌乱。</p>
+<h2 id="蓝桥赛时编译器"><a href="#蓝桥赛时编译器" class="headerlink" title="蓝桥赛时编译器"></a>蓝桥赛时编译器</h2><p>对c/c++赛道而言，赛场上能快速上手使用的编译器只有Dev-c++,建议提前适应，以避免赛时卡手慌乱。</p>
+<blockquote>
+<p>如果你还有其他疑问，欢迎在评论区提出，预祝大家都能在蓝桥取得理想的成绩。</p>
+</blockquote>
 ]]></content>
       <categories>
         <category>算法</category>
+      </categories>
+      <tags>
+        <tag>随笔</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>首次团队赛回顾</title>
+    <url>/2026/03/22/%E9%A6%96%E6%AC%A1%E5%9B%A2%E9%98%9F%E8%B5%9B%E5%9B%9E%E9%A1%BE/</url>
+    <content><![CDATA[<p>浪潮完赛，杜神太强了最后20min成功冲出全场唯二的D题（<font color=orange>%%%</font>),最后rank8极限一等奖，这次总归没有遗憾离场。</p>
+<span id="more"></span>
+<h2 id="黄金"><a href="#黄金" class="headerlink" title="黄金"></a>黄金</h2><blockquote>
+<p>题面<br>题目描述<br>Laz 在寒假领了一大笔压岁钱，因为最近黄金价格的疯涨，现在她想利用这笔压岁钱去购买黄金，现在给定一个n天的时间周期，并给出黄金在这 n天内的价格变化，Laz 的压岁钱十分充足，可以支持她进行任意次交易。<br>Laz 选择在黑市购买黄金，但是想在黑市购买黄金需要遵循以下规则：<br>同一时间最多持有1份黄金，不然会引起其他人的关注；<br>卖出后必须冷却1天才能再次买入；<br>每次卖出需要支付固定手续费k。<br>现在Laz想让你规划，该采取怎样的方案购置黄金才能获得最大利润</p>
+</blockquote>
+<p>dp这一块实在是短板，这题主要是我在看，想到了记录买入和卖出的两种状态记录，没想到第三维保持当前状态的维度。  </p>
+<p>我们定义每天有三种状态<br>hold:手中持有黄金，且当天没有卖出操作。<br>sold:当天卖出黄金。<br>rest:手中没有黄金，且没有其他操作，继承上一天的状态。</p>
+<p>new_hold:新持有黄金或者说黄金没有卖出，故存在自rest转移过来新买黄金或自hold继续持有继承而来。<br>new_sold:欲卖出定持有，故只能由hold转移而来。<br>new_rest:手中无黄金的休整冷却期，可以由sold卖出后转移而来或原rest继承而来。  </p>
+<blockquote>
+<p>new_hold=max(rest-a[i],hold)<br>new_sold=hold+a[i]-k<br>new_rest=max(rest,sold)</p>
+</blockquote>
+<p>状态转移方程确定之后剩下的就简单了</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//初始化</span><br><span class="line">hold=-INF;</span><br><span class="line">sold=0;</span><br><span class="line">rest=0;</span><br><span class="line"><span class="keyword">for</span>()//遍历一遍，每次用new记录之后整体更新</span><br><span class="line">cout&lt;&lt;<span class="string">max(sold,rest)</span></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>体悟</category>
       </categories>
       <tags>
         <tag>随笔</tag>
