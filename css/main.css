@@ -1283,7 +1283,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #b96fc7;
+  background: #8bffff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2576,6 +2576,8 @@ body::before {
   opacity: 1;
   color: #080707;
   border-radius: 10px; /* 圆角 */
+  width: 100% !important;
+  box-sizing: border-box !important;
   margin: 40px auto 20px !important; /* 强制覆盖主题外边距，实现居中 */
   padding: 40px;
 /* 阴影效果，增加立体感 */
@@ -2605,30 +2607,24 @@ body::before {
   width: 100% !important;
 }
 .sidebar {
-  background-color: rgba(141,183,198,0.545); /* 半透明背景色 */
+  background-color: rgba(141,183,198,0.545) !important;
   background-size: cover;
   background-position: top;
   background-repeat: no-repeat;
-  box-shadow: inset 0 0 20px rgba(0,0,0,0.5); /* 内阴影 */
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
   border-radius: 15px;
-  position: fixed !important; /* 固定在左侧脱离文档流 */
-  left: 10px !important;
-  z-index: 1000; /* 置于上层 */
+  z-index: 1000;
   margin-top: 80px;
   height: auto !important;
-  max-height: 70vh; /* 限制最大高度，防止溢出屏幕 */
+  max-height: 70vh;
   bottom: auto !important;
   overflow: hidden !important;
-  transition: opacity 0.3s ease, visibility 0.3s ease !important;
+/* 恢复平滑滑动效果，不要覆盖 left 的 transition */
+  transition: left 0.2s ease-out, opacity 0.3s ease !important;
 }
-/* 隐藏侧边栏的过渡状态处理 */
-.sidebar[style*="width: 0"],
-.sidebar[style*="width:0"],
-.sidebar[style*="transform: translate"],
-.sidebar[style*="margin"] {
-  opacity: 0 !important;
-  pointer-events: none !important; /* 隐藏时禁止点击穿透 */
-  visibility: hidden !important;
+/* 核心修复：只有当侧边栏被点击展开 (active) 时，才给它 10px 的悬浮左边距 */
+.sidebar.sidebar-active {
+  left: 10px !important;
 }
 /* 侧边栏内部容器完全透明 */
 .sidebar-inner {
@@ -2846,16 +2842,18 @@ body,
 .footer {
   padding-left: 0 !important;
   padding-right: 0 !important;
-  transform: none !important;
+  transform: none !important; /* 封杀平移动画 */
 }
-/* 强制将页头、主容器、页脚限制最大宽度并水平居中 */
+/* 强制将页头、主容器、页脚限制最大宽度并绝对居中 */
 .header-inner,
 .main-inner,
 .footer-inner {
-  margin: 0 auto !important; /* 强制左右外边距自动 */
-  float: none !important; /* 强制清除浮动 */
-  width: 100% !important; /* 强制占满可用空间，由下面的 max-width 约束 */
-  max-width: 800px !important; /* 强制最大宽度 */
+  margin: 0 auto !important;
+  float: none !important;
+  width: 100% !important;
+  max-width: 800px !important;
+/* 核心修复：确保内边距不会撑破外部设定的 800px 宽度 */
+  box-sizing: border-box !important;
 }
 /* 移动端适配：屏幕小于767px时，主容器占屏幕95%宽度 */
 @media (max-width: 767px) {
