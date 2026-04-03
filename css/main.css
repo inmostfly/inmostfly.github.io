@@ -1283,7 +1283,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #8bffff;
+  background: #75bfe4;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2823,42 +2823,52 @@ blockquote {
    页脚与整体居中控制 (Footer & Global Alignment)
    ========================================================================= */
 /* 页脚文字颜色 */
+/* =========================================================================
+   页脚与整体居中控制及 DOM 树全链路居中 (Footer & Global Alignment)
+   ========================================================================= */
 .footer-inner {
   color: #030202;
 }
-/* 页脚"爱心"图标颜色 */
 .with-love .fa-heart {
   color: rgba(232,17,17,0.969);
 }
-/* 导航链接颜色 */
 .nav a {
   color: #030202;
 }
-/* 清除原有主题的左右内边距及偏移，为强行居中做准备 */
+/* 1. 彻底清除最外层全屏基础包裹层的推挤、浮动和偏移 */
 body,
 .container,
-.header,
 .main,
+.header,
 .footer {
   padding-left: 0 !important;
   padding-right: 0 !important;
-  transform: none !important; /* 封杀平移动画 */
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  transform: none !important;
+  width: 100% !important;
+  display: block !important; /* 阻断主题可能使用的弹性盒或网格偏移 */
 }
-/* 强制将页头、主容器、页脚限制最大宽度并绝对居中 */
+/* 2. 核心：将 DOM 树中所有的父级包裹层统一限制宽度并强制居中 */
 .header-inner,
 .main-inner,
+.content-wrap,
+.content,
 .footer-inner {
-  margin: 0 auto !important;
-  float: none !important;
   width: 100% !important;
-  max-width: 800px !important;
-/* 核心修复：确保内边距不会撑破外部设定的 800px 宽度 */
+  max-width: 800px !important; /* 你的文章阅读区域最大宽度 */
+  margin: 0 auto !important; /* 核心居中机制 */
+  float: none !important; /* 强行清除 Pisces/Gemini 布局自带的侧边浮动 */
   box-sizing: border-box !important;
+  padding-left: 0 !important; /* 清除可能残留的侧边内边距 */
+  padding-right: 0 !important;
 }
-/* 移动端适配：屏幕小于767px时，主容器占屏幕95%宽度 */
+/* 移动端适配：屏幕小于767px时，所有主容器占屏幕95%宽度 */
 @media (max-width: 767px) {
   .header-inner,
   .main-inner,
+  .content-wrap,
+  .content,
   .footer-inner {
     width: 95% !important;
   }
