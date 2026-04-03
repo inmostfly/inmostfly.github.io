@@ -95,6 +95,38 @@
       </tags>
   </entry>
   <entry>
+    <title>Hello World</title>
+    <url>/2026/02/09/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://inmostfly.github.io/">Hexo</a>! This is my very first blog.</p>
+<h2 id="Maybe-you-can-see"><a href="#Maybe-you-can-see" class="headerlink" title="Maybe you can see"></a>Maybe you can see</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">c c++ python java javascript </span><br><span class="line">机器学习，transformer框架浅谈，深度学习 and so on.</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
+    <title>字典树</title>
+    <url>/2026/03/12/%E5%AD%97%E5%85%B8%E6%A0%91/</url>
+    <content><![CDATA[<p>字符串的处理方式极多，字典树便是其中一种</p>
+<span id="more"></span>
+<h2 id="字典树基础"><a href="#字典树基础" class="headerlink" title="字典树基础"></a>字典树基础</h2><p>此篇重写，再无板子之谈  </p>
+<font color=red> 板子不理解的时候真能坑死人,还不如没有 </font>
+
+<p>常用二维数组存储，一般认为每个节点含有26个子节点，分别表示字符a到z，编号1-26. 定义$trie[u][id]=k$中,u表字典树的节点编号，id表示该节点中编号为id的字符，u在全局中唯一，唯一标识每个节点。k即表示u的id子节点的编号。  </p>
+<h3 id="插入字符串"><a href="#插入字符串" class="headerlink" title="插入字符串"></a>插入字符串</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int tot=0;//tot表示节点总数/节点编号</span><br><span class="line">void insert(string s)&#123;  </span><br><span class="line">    int pos=0;</span><br><span class="line">    <span class="keyword">for</span>(int i=0;i&lt;s.size();i++)&#123;</span><br><span class="line">      int <span class="built_in">id</span>=s[i]-<span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">      <span class="keyword">if</span>(tree[pos][<span class="built_in">id</span>]==0)&#123;</span><br><span class="line">        tree[pos][<span class="built_in">id</span>]=++tot;</span><br><span class="line">      &#125;</span><br><span class="line">      pos=tree[pos][<span class="built_in">id</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    tag[pos]=1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="查找字符串"><a href="#查找字符串" class="headerlink" title="查找字符串"></a>查找字符串</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int find(string s)&#123;</span><br><span class="line">    int pos=0;</span><br><span class="line">    <span class="keyword">for</span>(int i=0;i&lt;s.size();i++)&#123;</span><br><span class="line">      int <span class="built_in">id</span>=s[i]-<span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">      <span class="keyword">if</span>(tree[pos][<span class="built_in">id</span>]==0)&#123;</span><br><span class="line">        <span class="built_in">return</span> -1;</span><br><span class="line">      &#125;</span><br><span class="line">      pos=tree[pos][<span class="built_in">id</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(tag[pos]==1)&#123;</span><br><span class="line">      <span class="built_in">return</span> 1;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">      <span class="built_in">return</span> -1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="字典树的活用"><a href="#字典树的活用" class="headerlink" title="字典树的活用"></a>字典树的活用</h2><h3 id="求多项字符串的最大公共前缀长度之和"><a href="#求多项字符串的最大公共前缀长度之和" class="headerlink" title="求多项字符串的最大公共前缀长度之和"></a>求多项字符串的最大公共前缀长度之和</h3><p>此时需要记录每个节点有几个字符串经过了这个节点，即节点需记录通过自己的字符串数量。<br>实现：每次插入过程中pos更新时同时cnt[pos]++即可。  </p>
+<center>
+<font color=green>
+基础数据结构重在插入，即树的构建，剩下的就是其多样的用法。
+</font>
+</center>]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>树</tag>
+        <tag>字符串</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>gcd及其扩展</title>
     <url>/2026/03/06/gcd%E5%8F%8A%E5%85%B6%E6%89%A9%E5%B1%95/</url>
     <content><![CDATA[<h2 id="gcd运算严格满足结合率"><a href="#gcd运算严格满足结合率" class="headerlink" title="gcd运算严格满足结合率"></a>gcd运算严格满足结合率</h2><p>即有 $\gcd(a,b,c) = \gcd(\gcd(a,b),c) = \gcd(a,\gcd(b,c))$</p>
@@ -128,13 +160,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2026/02/09/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://inmostfly.github.io/">Hexo</a>! This is my very first blog.</p>
-<h2 id="Maybe-you-can-see"><a href="#Maybe-you-can-see" class="headerlink" title="Maybe you can see"></a>Maybe you can see</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">c c++ python java javascript </span><br><span class="line">机器学习，transformer框架浅谈，深度学习 and so on.</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
     <title>并查集</title>
     <url>/2026/03/16/%E5%B9%B6%E6%9F%A5%E9%9B%86/</url>
     <content><![CDATA[<h2 id="并查集"><a href="#并查集" class="headerlink" title="并查集"></a>并查集</h2><p>青春猪头少年不会在赛时被并查集少一次遍历卡165min遗憾退场</p>
@@ -164,31 +189,6 @@
       </categories>
       <tags>
         <tag>并查集</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>字典树</title>
-    <url>/2026/03/12/%E5%AD%97%E5%85%B8%E6%A0%91/</url>
-    <content><![CDATA[<p>字符串的处理方式极多，字典树便是其中一种</p>
-<span id="more"></span>
-<h2 id="字典树基础"><a href="#字典树基础" class="headerlink" title="字典树基础"></a>字典树基础</h2><p>此篇重写，再无板子之谈  </p>
-<font color=red> 板子不理解的时候真能坑死人,还不如没有 </font>
-
-<p>常用二维数组存储，一般认为每个节点含有26个子节点，分别表示字符a到z，编号1-26. 定义$trie[u][id]=k$中,u表字典树的节点编号，id表示该节点中编号为id的字符，u在全局中唯一，唯一标识每个节点。k即表示u的id子节点的编号。  </p>
-<h3 id="插入字符串"><a href="#插入字符串" class="headerlink" title="插入字符串"></a>插入字符串</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int tot=0;//tot表示节点总数/节点编号</span><br><span class="line">void insert(string s)&#123;  </span><br><span class="line">    int pos=0;</span><br><span class="line">    <span class="keyword">for</span>(int i=0;i&lt;s.size();i++)&#123;</span><br><span class="line">      int <span class="built_in">id</span>=s[i]-<span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">      <span class="keyword">if</span>(tree[pos][<span class="built_in">id</span>]==0)&#123;</span><br><span class="line">        tree[pos][<span class="built_in">id</span>]=++tot;</span><br><span class="line">      &#125;</span><br><span class="line">      pos=tree[pos][<span class="built_in">id</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    tag[pos]=1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="查找字符串"><a href="#查找字符串" class="headerlink" title="查找字符串"></a>查找字符串</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int find(string s)&#123;</span><br><span class="line">    int pos=0;</span><br><span class="line">    <span class="keyword">for</span>(int i=0;i&lt;s.size();i++)&#123;</span><br><span class="line">      int <span class="built_in">id</span>=s[i]-<span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">      <span class="keyword">if</span>(tree[pos][<span class="built_in">id</span>]==0)&#123;</span><br><span class="line">        <span class="built_in">return</span> -1;</span><br><span class="line">      &#125;</span><br><span class="line">      pos=tree[pos][<span class="built_in">id</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(tag[pos]==1)&#123;</span><br><span class="line">      <span class="built_in">return</span> 1;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">      <span class="built_in">return</span> -1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="字典树的活用"><a href="#字典树的活用" class="headerlink" title="字典树的活用"></a>字典树的活用</h2><h3 id="求多项字符串的最大公共前缀长度之和"><a href="#求多项字符串的最大公共前缀长度之和" class="headerlink" title="求多项字符串的最大公共前缀长度之和"></a>求多项字符串的最大公共前缀长度之和</h3><p>此时需要记录每个节点有几个字符串经过了这个节点，即节点需记录通过自己的字符串数量。<br>实现：每次插入过程中pos更新时同时cnt[pos]++即可。  </p>
-<center>
-<font color=green>
-基础数据结构重在插入，即树的构建，剩下的就是其多样的用法。
-</font>
-</center>]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>树</tag>
-        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
@@ -263,6 +263,29 @@
       </tags>
   </entry>
   <entry>
+    <title>首次团队赛回顾</title>
+    <url>/2026/03/22/%E9%A6%96%E6%AC%A1%E5%9B%A2%E9%98%9F%E8%B5%9B%E5%9B%9E%E9%A1%BE/</url>
+    <content><![CDATA[<p>浪潮完赛，杜神太强了最后20min成功冲出全场唯二的D题（<font color=orange>%%%</font>),最后rank8极限一等奖，这次总归没有遗憾离场。</p>
+<span id="more"></span>
+<h2 id="黄金"><a href="#黄金" class="headerlink" title="黄金"></a>黄金</h2><blockquote>
+<p>题面<br>题目描述<br>Laz 在寒假领了一大笔压岁钱，因为最近黄金价格的疯涨，现在她想利用这笔压岁钱去购买黄金，现在给定一个n天的时间周期，并给出黄金在这 n天内的价格变化，Laz 的压岁钱十分充足，可以支持她进行任意次交易。<br>Laz 选择在黑市购买黄金，但是想在黑市购买黄金需要遵循以下规则：<br>同一时间最多持有1份黄金，不然会引起其他人的关注；<br>卖出后必须冷却1天才能再次买入；<br>每次卖出需要支付固定手续费k。<br>现在Laz想让你规划，该采取怎样的方案购置黄金才能获得最大利润</p>
+</blockquote>
+<p>dp这一块实在是短板，这题主要是我在看，想到了记录买入和卖出的两种状态记录，没想到第三维保持当前状态的维度。  </p>
+<p>我们定义每天有三种状态<br>hold:手中持有黄金，且当天没有卖出操作。<br>sold:当天卖出黄金。<br>rest:手中没有黄金，且没有其他操作，继承上一天的状态。</p>
+<p>new_hold:新持有黄金或者说黄金没有卖出，故存在自rest转移过来新买黄金或自hold继续持有继承而来。<br>new_sold:欲卖出定持有，故只能由hold转移而来。<br>new_rest:手中无黄金的休整冷却期，可以由sold卖出后转移而来或原rest继承而来。  </p>
+<blockquote>
+<p>new_hold=max(rest-a[i],hold)<br>new_sold=hold+a[i]-k<br>new_rest=max(rest,sold)</p>
+</blockquote>
+<p>状态转移方程确定之后剩下的就简单了</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//初始化</span><br><span class="line">hold=-INF;</span><br><span class="line">sold=0;</span><br><span class="line">rest=0;</span><br><span class="line"><span class="keyword">for</span>()//遍历一遍，每次用new记录之后整体更新</span><br><span class="line">cout&lt;&lt;<span class="string">max(sold,rest)</span></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>体悟</category>
+      </categories>
+      <tags>
+        <tag>随笔</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>蓝桥十日-day1</title>
     <url>/2026/04/03/%E8%93%9D%E6%A1%A5%E5%8D%81%E6%97%A5-day1/</url>
     <content><![CDATA[<p>在于队友的聊天中偶然发现很多人并不了解OI赛制是什么，故有此文。  </p>
@@ -290,29 +313,6 @@
 ]]></content>
       <categories>
         <category>算法</category>
-      </categories>
-      <tags>
-        <tag>随笔</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>首次团队赛回顾</title>
-    <url>/2026/03/22/%E9%A6%96%E6%AC%A1%E5%9B%A2%E9%98%9F%E8%B5%9B%E5%9B%9E%E9%A1%BE/</url>
-    <content><![CDATA[<p>浪潮完赛，杜神太强了最后20min成功冲出全场唯二的D题（<font color=orange>%%%</font>),最后rank8极限一等奖，这次总归没有遗憾离场。</p>
-<span id="more"></span>
-<h2 id="黄金"><a href="#黄金" class="headerlink" title="黄金"></a>黄金</h2><blockquote>
-<p>题面<br>题目描述<br>Laz 在寒假领了一大笔压岁钱，因为最近黄金价格的疯涨，现在她想利用这笔压岁钱去购买黄金，现在给定一个n天的时间周期，并给出黄金在这 n天内的价格变化，Laz 的压岁钱十分充足，可以支持她进行任意次交易。<br>Laz 选择在黑市购买黄金，但是想在黑市购买黄金需要遵循以下规则：<br>同一时间最多持有1份黄金，不然会引起其他人的关注；<br>卖出后必须冷却1天才能再次买入；<br>每次卖出需要支付固定手续费k。<br>现在Laz想让你规划，该采取怎样的方案购置黄金才能获得最大利润</p>
-</blockquote>
-<p>dp这一块实在是短板，这题主要是我在看，想到了记录买入和卖出的两种状态记录，没想到第三维保持当前状态的维度。  </p>
-<p>我们定义每天有三种状态<br>hold:手中持有黄金，且当天没有卖出操作。<br>sold:当天卖出黄金。<br>rest:手中没有黄金，且没有其他操作，继承上一天的状态。</p>
-<p>new_hold:新持有黄金或者说黄金没有卖出，故存在自rest转移过来新买黄金或自hold继续持有继承而来。<br>new_sold:欲卖出定持有，故只能由hold转移而来。<br>new_rest:手中无黄金的休整冷却期，可以由sold卖出后转移而来或原rest继承而来。  </p>
-<blockquote>
-<p>new_hold=max(rest-a[i],hold)<br>new_sold=hold+a[i]-k<br>new_rest=max(rest,sold)</p>
-</blockquote>
-<p>状态转移方程确定之后剩下的就简单了</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//初始化</span><br><span class="line">hold=-INF;</span><br><span class="line">sold=0;</span><br><span class="line">rest=0;</span><br><span class="line"><span class="keyword">for</span>()//遍历一遍，每次用new记录之后整体更新</span><br><span class="line">cout&lt;&lt;<span class="string">max(sold,rest)</span></span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>体悟</category>
       </categories>
       <tags>
         <tag>随笔</tag>
