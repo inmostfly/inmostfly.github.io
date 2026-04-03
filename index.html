@@ -206,6 +206,104 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://inmostflyyy.xin/2026/04/03/%E8%93%9D%E6%A1%A5%E5%8D%81%E6%97%A5-day1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="inmost">
+      <meta itemprop="description" content="技术分享与随笔">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="inmost's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2026/04/03/%E8%93%9D%E6%A1%A5%E5%8D%81%E6%97%A5-day1/" class="post-title-link" itemprop="url">蓝桥十日-day1</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2026-04-03 15:35:04 / 修改时间：15:50:55" itemprop="dateCreated datePublished" datetime="2026-04-03T15:35:04+08:00">2026-04-03</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="什么是蓝桥杯的OI赛制"><a href="#什么是蓝桥杯的OI赛制" class="headerlink" title="什么是蓝桥杯的OI赛制"></a>什么是蓝桥杯的OI赛制</h2><blockquote>
+<p>大体上来说，类似于我们在pta上的实验，分为不同的测试点，题目会给你不同的数据，按测试点给分。唯一不同的是，蓝桥杯在赛时无法看到正确或错误的反馈，需要我们提交一次尽可能正确高效的做法。</p>
+</blockquote>
+<h3 id="规则、特点"><a href="#规则、特点" class="headerlink" title="规则、特点"></a>规则、特点</h3><p>OI赛制（Olympiad in Informatics）是信息学奥林匹克竞赛中采用的标准比赛形式。这种赛制广泛应用于国际信息学奥林匹克竞赛（IOI）、全国信息学奥林匹克竞赛（NOI）、CSP-J/S 以及各省省选等赛事中。核心特点与 ACM/ICPC 等其他编程竞赛赛制相比，OI 赛制具有几个显著的区别</p>
+<ul>
+<li>赛后评测（无即时反馈）：这是传统 OI 赛制最显著的特征。选手在比赛期间提交代码后，通常无法立即看到评测结果（如 AC、WA、TLE 等）。最终成绩将在比赛结束后统一进行评测并公布。(注：近年来部分赛事如 IOI 引入了实时评测机制，但国内多数传统 OI 赛事仍保留完全的赛后评测。)</li>
+<li>按测试点计分（部分分机制）： 题目的总分被划分到多个独立的测试点（Test Cases）中。如果代码未能完全正确解决问题，但通过了部分测试点，选手依然可以获得相应的分数。蓝桥与传统OI不同的是，其采用的都是标准输入输出，也就是掌握cin或scanf即可读入数据。</li>
+<li>最后一次提交为准： 如果选手对同一道题目进行了多次提交，评测系统通常只记录和评测最后一次提交的代码。计分与评测机制在 OI 赛制中，一道题目通常满分为 100 分。出题人会准备多组测试数据，并可能根据数据规模或特殊性质将这些数据分为不同的“子任务”（Subtasks）。评测情况计分方式完全正确通过所有测试点，获得满分（通常为 100 分）。部分正确仅通过部分测试点，获得这部分测试点对应的分数。超时/超内存对于超出时间限制（TLE）或空间限制（MLE）的测试点，得 0 分；其余通过的测试点正常得分。编译/文件错误无法通过编译，或未按要求进行文件读写，整题得 0 分。</li>
+</ul>
+<h3 id="常见应赛策略"><a href="#常见应赛策略" class="headerlink" title="常见应赛策略"></a>常见应赛策略</h3><p>由于 OI 赛制允许获取部分分且缺乏即时反馈，参赛者需要采用特定的策略来最大化总收益：</p>
+<ul>
+<li>重视基础算法（拿全部分分）：当遇到无法想出最优解（例如正解需要极低的时间复杂度）的题目时，编写一个能够处理小规模数据的穷举或基础程序是极其重要的。这通常能稳定获得 20% 到 60% 不等的部分分。</li>
+<li>对拍验证（本地测试）：因为比赛期间无法获知评测结果，选手需要依靠“对拍”来验证代码的正确性。具体做法是：编写一个绝对正确但较慢的程序，再编写一个数据生成器，将待提交的最优解程序与较慢程序的输出结果进行大量随机数据的比对，以排除逻辑错误。</li>
+<li>检查细节与边界条件：由于一次细微的错误（如数组越界、变量未初始化、整数溢出）可能导致大部分测试点甚至全部测试点运行异常，在提交前必须反复检查代码逻辑和数据类型。</li>
+<li>合理分配时间：OI 赛制看重总分，合理的策略是先通读所有题目，优先编写并测试所有题目的基础部分分解法，然后再集中精力攻克自己最有把握获得满分的题目。总结OI 赛制不仅考察选手的算法设计能力和编程基本功，更强调工程的严谨性、本地独立测试的能力以及时间规划策略。理解并适应这种缺乏即时反馈且注重部分分累积的赛制，是参赛者取得优异成绩的基础。</li>
+</ul>
+<h2 id="蓝桥赛时编译器"><a href="#蓝桥赛时编译器" class="headerlink" title="蓝桥赛时编译器"></a>蓝桥赛时编译器</h2><p>赛场上能快速上手使用的编译器只有Dev-c++,建议提前适应，以避免赛时卡手慌乱。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://inmostflyyy.xin/2026/03/22/%E9%A6%96%E6%AC%A1%E5%9B%A2%E9%98%9F%E8%B5%9B%E5%9B%9E%E9%A1%BE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1040,88 +1138,11 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://inmostflyyy.xin/2026/02/09/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="inmost">
-      <meta itemprop="description" content="技术分享与随笔">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="inmost's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2026/02/09/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2026-02-09 16:57:29" itemprop="dateCreated datePublished" datetime="2026-02-09T16:57:29+08:00">2026-02-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2026-02-11 11:06:07" itemprop="dateModified" datetime="2026-02-11T11:06:07+08:00">2026-02-11</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>109</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://inmostfly.github.io/">Hexo</a>! This is my very first blog.</p>
-<h2 id="Maybe-you-can-see"><a href="#Maybe-you-can-see" class="headerlink" title="Maybe you can see"></a>Maybe you can see</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">c c++ python java javascript </span><br><span class="line">机器学习，transformer框架浅谈，深度学习 and so on.</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
 
 
@@ -1188,7 +1209,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">11</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1251,12 +1272,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">15k</span>
+    <span title="站点总字数">17k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">28 分钟</span>
+    <span title="站点阅读时长">30 分钟</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-user-md"></i>
