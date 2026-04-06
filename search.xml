@@ -55,6 +55,13 @@
       </tags>
   </entry>
   <entry>
+    <title>Hello World</title>
+    <url>/2026/02/09/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://inmostfly.github.io/">Hexo</a>! This is my very first blog.</p>
+<h2 id="Maybe-you-can-see"><a href="#Maybe-you-can-see" class="headerlink" title="Maybe you can see"></a>Maybe you can see</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">c c++ python java javascript </span><br><span class="line">机器学习，transformer框架浅谈，深度学习 and so on.</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
     <title>JavaScript</title>
     <url>/2026/02/26/JavaScript/</url>
     <content><![CDATA[<p>前端学习笔记，HTML,CSS,JavaScript三者协同构成网页</p>
@@ -128,11 +135,29 @@
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2026/02/09/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://inmostfly.github.io/">Hexo</a>! This is my very first blog.</p>
-<h2 id="Maybe-you-can-see"><a href="#Maybe-you-can-see" class="headerlink" title="Maybe you can see"></a>Maybe you can see</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">c c++ python java javascript </span><br><span class="line">机器学习，transformer框架浅谈，深度学习 and so on.</span><br></pre></td></tr></table></figure>
-]]></content>
+    <title>字典树</title>
+    <url>/2026/03/12/%E5%AD%97%E5%85%B8%E6%A0%91/</url>
+    <content><![CDATA[<p>字符串的处理方式极多，字典树便是其中一种</p>
+<span id="more"></span>
+<h2 id="字典树基础"><a href="#字典树基础" class="headerlink" title="字典树基础"></a>字典树基础</h2><p>此篇重写，再无板子之谈  </p>
+<font color=red> 板子不理解的时候真能坑死人,还不如没有 </font>
+
+<p>常用二维数组存储，一般认为每个节点含有26个子节点，分别表示字符a到z，编号1-26. 定义$trie[u][id]=k$中,u表字典树的节点编号，id表示该节点中编号为id的字符，u在全局中唯一，唯一标识每个节点。k即表示u的id子节点的编号。  </p>
+<h3 id="插入字符串"><a href="#插入字符串" class="headerlink" title="插入字符串"></a>插入字符串</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int tot=0;//tot表示节点总数/节点编号</span><br><span class="line">void insert(string s)&#123;  </span><br><span class="line">    int pos=0;</span><br><span class="line">    <span class="keyword">for</span>(int i=0;i&lt;s.size();i++)&#123;</span><br><span class="line">      int <span class="built_in">id</span>=s[i]-<span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">      <span class="keyword">if</span>(tree[pos][<span class="built_in">id</span>]==0)&#123;</span><br><span class="line">        tree[pos][<span class="built_in">id</span>]=++tot;</span><br><span class="line">      &#125;</span><br><span class="line">      pos=tree[pos][<span class="built_in">id</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    tag[pos]=1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="查找字符串"><a href="#查找字符串" class="headerlink" title="查找字符串"></a>查找字符串</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int find(string s)&#123;</span><br><span class="line">    int pos=0;</span><br><span class="line">    <span class="keyword">for</span>(int i=0;i&lt;s.size();i++)&#123;</span><br><span class="line">      int <span class="built_in">id</span>=s[i]-<span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">      <span class="keyword">if</span>(tree[pos][<span class="built_in">id</span>]==0)&#123;</span><br><span class="line">        <span class="built_in">return</span> -1;</span><br><span class="line">      &#125;</span><br><span class="line">      pos=tree[pos][<span class="built_in">id</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(tag[pos]==1)&#123;</span><br><span class="line">      <span class="built_in">return</span> 1;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">      <span class="built_in">return</span> -1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="字典树的活用"><a href="#字典树的活用" class="headerlink" title="字典树的活用"></a>字典树的活用</h2><h3 id="求多项字符串的最大公共前缀长度之和"><a href="#求多项字符串的最大公共前缀长度之和" class="headerlink" title="求多项字符串的最大公共前缀长度之和"></a>求多项字符串的最大公共前缀长度之和</h3><p>此时需要记录每个节点有几个字符串经过了这个节点，即节点需记录通过自己的字符串数量。<br>实现：每次插入过程中pos更新时同时cnt[pos]++即可。  </p>
+<center>
+<font color=green>
+基础数据结构重在插入，即树的构建，剩下的就是其多样的用法。
+</font>
+</center>]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>树</tag>
+        <tag>字符串</tag>
+      </tags>
   </entry>
   <entry>
     <title>并查集</title>
@@ -167,27 +192,23 @@
       </tags>
   </entry>
   <entry>
-    <title>背包问题</title>
-    <url>/2026/03/08/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<p>搁置已久，今天来简单讨论下背包的基础性问题<br><span id="more"></span></p>
-<h2 id="01背包"><a href="#01背包" class="headerlink" title="01背包"></a>01背包</h2><blockquote>
-<p>有n件物品和一个最多能背重量为w 的背包。第i件物品的重量是weight[i]，得到的价值是value[i] 。每件物品只能用一次，求解将哪些物品装入背包里物品价值总和最大</p>
-</blockquote>
-<p>二维状态转移方程：$dp[i][j] = max(dp[i-1][j], dp[i-1][j-w[i]] + v[i])$<br>$dp[i][j]$表示前i件物品放入一个容量为j的背包可以获得的最大价值，v[i]可放可不放</p>
-<p>一维状态转移方程：$dp[j] = max(dp[j], dp[j-w[i]] + v[i])$<br>dp[j]表示容量恰为j的时候的最大价值</p>
-<h3 id="一维01背包为什么倒序"><a href="#一维01背包为什么倒序" class="headerlink" title="一维01背包为什么倒序"></a>一维01背包为什么倒序</h3><p>对二维背包来讲，i各种容量下的解依赖的是没有i这个物品时的最优解，即考虑前i-1件物品所产生的最优解  对于一维背包来讲，我们优化掉了存储的维度，如果正序遍历j，那么在更新dp[j]时，dp[j-w[i]]已经被物品i更新过了，依赖关系被破坏，即在更新时，由于 $j-w[i]&lt;j$ 会优先更新dp[j-w[i]-w[i]]，<br>而倒序遍历j则会保证较小的j-w[i]维持i-1次的状态，故而保证第i件物品在每次更新时不会重复使用。<br>（正是因为每次都是逐步考虑保证了前i次的最优解，故最终遍历到n时即保证全局最优解，即动态规划）</p>
-<h3 id="01背包核心代码"><a href="#01背包核心代码" class="headerlink" title="01背包核心代码"></a>01背包核心代码</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (int j = m; j &gt;= w[i]; j--) &#123;</span><br><span class="line">        dp[j] = max(dp[j], dp[j - w[i]] + v[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="完全背包"><a href="#完全背包" class="headerlink" title="完全背包"></a>完全背包</h2><p>其差别在于，完全背包不再有物品的数量限制，每件物品均有无穷件<br>那就好办了，我们刚刚说了之所以倒序，就是为了避免第i物品被考虑多次，那我们正着写，那就恰满足了每件物品被考虑多件的需求，我们每次从小开始遍历，在处理j的时候j-w[i]实际上已经考虑过有第i件物品情况下的最优解，依次类推即每件物品都没有了件数限制  </p>
-<h3 id="完全背包核心代码"><a href="#完全背包核心代码" class="headerlink" title="完全背包核心代码"></a>完全背包核心代码</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (int j = w[i]; j &lt;= m; j++) &#123;</span><br><span class="line">        dp[j] = max(dp[j], dp[j - w[i]] + v[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="多重背包"><a href="#多重背包" class="headerlink" title="多重背包"></a>多重背包</h2><h2 id="放上题目"><a href="#放上题目" class="headerlink" title="放上题目"></a>放上题目</h2><p>B2174 完全背包<a href="https://www.luogu.com.cn/problem/B2174">B2174 完全背包</a></p>
-<p>背包问题有时甚至会混淆视听<br>P7223 [RC-04] 01 背包(<a href="https://www.luogu.com.cn/problem/P7223">https://www.luogu.com.cn/problem/P7223</a>)</p>
+    <title>新的开始!!!</title>
+    <url>/2026/02/11/%E6%96%B0%E7%9A%84%E5%BC%80%E5%A7%8B/</url>
+    <content><![CDATA[<h2 id="谨以此贴，记录生活与工作"><a href="#谨以此贴，记录生活与工作" class="headerlink" title="谨以此贴，记录生活与工作"></a>谨以此贴，记录生活与工作</h2><h3 id="我为什么会想起来写博客"><a href="#我为什么会想起来写博客" class="headerlink" title="我为什么会想起来写博客"></a>我为什么会想起来写博客</h3><ul>
+<li>假期不需要在用大量时间去学不喜欢的课程，不需要为了绩点抽不开身，这就给我提供了自建网站的时间<br>（已经拖了很久了捏<em>^____^</em>）</li>
+<li>在读一些经典技术文章的过程中，总是读了忘，这就导致前面读了后面忘，一套<code>transformer</code>框架读了encoding忘了decoding，写博客也是对自己技术学习的阶段性总结</li>
+<li><code>八千代</code>是目标，趁当下无责一身轻，多多尝试，这也是对 <a href="https://github.com/inmostfly/wechatbot-1.1">catgirl</a> 的二次尝试!</li>
+<li>最早源自一次偶然的网上冲浪，看到了亚琪学长的个人博客，有羡慕也有向往。通过友链，又偶然看到了园长的博客，值此假期闲暇时，得以搭建。</li>
+</ul>
+<h2 id="inmost-的个人博客，自此启程"><a href="#inmost-的个人博客，自此启程" class="headerlink" title="inmost 的个人博客，自此启程"></a>inmost 的个人博客，自此启程</h2><ul>
+<li>后日谈</li>
+</ul>
 ]]></content>
       <categories>
-        <category>算法</category>
+        <category>体悟</category>
       </categories>
       <tags>
-        <tag>动态规划</tag>
-        <tag>背包</tag>
+        <tag>随笔</tag>
       </tags>
   </entry>
   <entry>
@@ -213,28 +234,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>动态规划</tag>
         <tag>筛</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>新的开始!!!</title>
-    <url>/2026/02/11/%E6%96%B0%E7%9A%84%E5%BC%80%E5%A7%8B/</url>
-    <content><![CDATA[<h2 id="谨以此贴，记录生活与工作"><a href="#谨以此贴，记录生活与工作" class="headerlink" title="谨以此贴，记录生活与工作"></a>谨以此贴，记录生活与工作</h2><h3 id="我为什么会想起来写博客"><a href="#我为什么会想起来写博客" class="headerlink" title="我为什么会想起来写博客"></a>我为什么会想起来写博客</h3><ul>
-<li>假期不需要在用大量时间去学不喜欢的课程，不需要为了绩点抽不开身，这就给我提供了自建网站的时间<br>（已经拖了很久了捏<em>^____^</em>）</li>
-<li>在读一些经典技术文章的过程中，总是读了忘，这就导致前面读了后面忘，一套<code>transformer</code>框架读了encoding忘了decoding，写博客也是对自己技术学习的阶段性总结</li>
-<li><code>八千代</code>是目标，趁当下无责一身轻，多多尝试，这也是对 <a href="https://github.com/inmostfly/wechatbot-1.1">catgirl</a> 的二次尝试!</li>
-<li>最早源自一次偶然的网上冲浪，看到了亚琪学长的个人博客，有羡慕也有向往。通过友链，又偶然看到了园长的博客，值此假期闲暇时，得以搭建。</li>
-</ul>
-<h2 id="inmost-的个人博客，自此启程"><a href="#inmost-的个人博客，自此启程" class="headerlink" title="inmost 的个人博客，自此启程"></a>inmost 的个人博客，自此启程</h2><ul>
-<li>后日谈</li>
-</ul>
-]]></content>
-      <categories>
-        <category>体悟</category>
-      </categories>
-      <tags>
-        <tag>随笔</tag>
+        <tag>动态规划</tag>
       </tags>
   </entry>
   <entry>
@@ -271,28 +272,32 @@
       </tags>
   </entry>
   <entry>
-    <title>字典树</title>
-    <url>/2026/03/12/%E5%AD%97%E5%85%B8%E6%A0%91/</url>
-    <content><![CDATA[<p>字符串的处理方式极多，字典树便是其中一种</p>
-<span id="more"></span>
-<h2 id="字典树基础"><a href="#字典树基础" class="headerlink" title="字典树基础"></a>字典树基础</h2><p>此篇重写，再无板子之谈  </p>
-<font color=red> 板子不理解的时候真能坑死人,还不如没有 </font>
-
-<p>常用二维数组存储，一般认为每个节点含有26个子节点，分别表示字符a到z，编号1-26. 定义$trie[u][id]=k$中,u表字典树的节点编号，id表示该节点中编号为id的字符，u在全局中唯一，唯一标识每个节点。k即表示u的id子节点的编号。  </p>
-<h3 id="插入字符串"><a href="#插入字符串" class="headerlink" title="插入字符串"></a>插入字符串</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int tot=0;//tot表示节点总数/节点编号</span><br><span class="line">void insert(string s)&#123;  </span><br><span class="line">    int pos=0;</span><br><span class="line">    <span class="keyword">for</span>(int i=0;i&lt;s.size();i++)&#123;</span><br><span class="line">      int <span class="built_in">id</span>=s[i]-<span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">      <span class="keyword">if</span>(tree[pos][<span class="built_in">id</span>]==0)&#123;</span><br><span class="line">        tree[pos][<span class="built_in">id</span>]=++tot;</span><br><span class="line">      &#125;</span><br><span class="line">      pos=tree[pos][<span class="built_in">id</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    tag[pos]=1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="查找字符串"><a href="#查找字符串" class="headerlink" title="查找字符串"></a>查找字符串</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int find(string s)&#123;</span><br><span class="line">    int pos=0;</span><br><span class="line">    <span class="keyword">for</span>(int i=0;i&lt;s.size();i++)&#123;</span><br><span class="line">      int <span class="built_in">id</span>=s[i]-<span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">      <span class="keyword">if</span>(tree[pos][<span class="built_in">id</span>]==0)&#123;</span><br><span class="line">        <span class="built_in">return</span> -1;</span><br><span class="line">      &#125;</span><br><span class="line">      pos=tree[pos][<span class="built_in">id</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(tag[pos]==1)&#123;</span><br><span class="line">      <span class="built_in">return</span> 1;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">      <span class="built_in">return</span> -1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="字典树的活用"><a href="#字典树的活用" class="headerlink" title="字典树的活用"></a>字典树的活用</h2><h3 id="求多项字符串的最大公共前缀长度之和"><a href="#求多项字符串的最大公共前缀长度之和" class="headerlink" title="求多项字符串的最大公共前缀长度之和"></a>求多项字符串的最大公共前缀长度之和</h3><p>此时需要记录每个节点有几个字符串经过了这个节点，即节点需记录通过自己的字符串数量。<br>实现：每次插入过程中pos更新时同时cnt[pos]++即可。  </p>
-<center>
-<font color=green>
-基础数据结构重在插入，即树的构建，剩下的就是其多样的用法。
-</font>
-</center>]]></content>
+    <title>背包问题</title>
+    <url>/2026/03/08/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>搁置已久，今天来简单讨论下背包的基础性问题<br><span id="more"></span></p>
+<h2 id="01背包"><a href="#01背包" class="headerlink" title="01背包"></a>01背包</h2><blockquote>
+<p>有n件物品和一个最多能背重量为w 的背包。第i件物品的重量是weight[i]，得到的价值是value[i] 。每件物品只能用一次，求解将哪些物品装入背包里物品价值总和最大</p>
+</blockquote>
+<p>二维状态转移方程：$dp[i][j] = max(dp[i-1][j], dp[i-1][j-w[i]] + v[i])$<br>$dp[i][j]$表示前i件物品放入一个容量为j的背包可以获得的最大价值，v[i]可放可不放</p>
+<p>一维状态转移方程：$dp[j] = max(dp[j], dp[j-w[i]] + v[i])$<br>dp[j]表示容量恰为j的时候的最大价值</p>
+<h3 id="一维01背包为什么倒序"><a href="#一维01背包为什么倒序" class="headerlink" title="一维01背包为什么倒序"></a>一维01背包为什么倒序</h3><p>对二维背包来讲，i各种容量下的解依赖的是没有i这个物品时的最优解，即考虑前i-1件物品所产生的最优解  对于一维背包来讲，我们优化掉了存储的维度，如果正序遍历j，那么在更新dp[j]时，dp[j-w[i]]已经被物品i更新过了，依赖关系被破坏，即在更新时，由于 $j-w[i]&lt;j$ 会优先更新dp[j-w[i]-w[i]]，<br>而倒序遍历j则会保证较小的j-w[i]维持i-1次的状态，故而保证第i件物品在每次更新时不会重复使用。<br>（正是因为每次都是逐步考虑保证了前i次的最优解，故最终遍历到n时即保证全局最优解，即动态规划）</p>
+<h3 id="01背包核心代码"><a href="#01背包核心代码" class="headerlink" title="01背包核心代码"></a>01背包核心代码</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (int j = m; j &gt;= w[i]; j--) &#123;</span><br><span class="line">        dp[j] = max(dp[j], dp[j - w[i]] + v[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="完全背包"><a href="#完全背包" class="headerlink" title="完全背包"></a>完全背包</h2><p>其差别在于，完全背包不再有物品的数量限制，每件物品均有无穷件<br>那就好办了，我们刚刚说了之所以倒序，就是为了避免第i物品被考虑多次，那我们正着写，那就恰满足了每件物品被考虑多件的需求，我们每次从小开始遍历，在处理j的时候j-w[i]实际上已经考虑过有第i件物品情况下的最优解，依次类推即每件物品都没有了件数限制  </p>
+<h3 id="完全背包核心代码"><a href="#完全背包核心代码" class="headerlink" title="完全背包核心代码"></a>完全背包核心代码</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (int j = w[i]; j &lt;= m; j++) &#123;</span><br><span class="line">        dp[j] = max(dp[j], dp[j - w[i]] + v[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="容量相同，要求物品尽可能少-装满情况下，价值尽可能小"><a href="#容量相同，要求物品尽可能少-装满情况下，价值尽可能小" class="headerlink" title="容量相同，要求物品尽可能少(装满情况下，价值尽可能小)"></a>容量相同，要求物品尽可能少(装满情况下，价值尽可能小)</h2><p>在这里以完全背包为例，这种统称为“零钱兑换”问题：一张纸币，要求兑换成尽可能少的其他的给定面值的纸币</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">memset(dp,0x3f,sizeof(dp));</span><br><span class="line">dp[0]=1;//作为下界，</span><br><span class="line"><span class="keyword">for</span> (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (int j = w[i]; j &lt;= m; j++) &#123;</span><br><span class="line">        dp[j] = min(dp[j], dp[j - w[i]] + v[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>即相同容量填满下我们希望价值尽可能少，那就dp初始化为最大值，dp[0]为下界，max-&gt;min即可<br>相关用法还有在v过大时，价值之和并不是特别大的标准01背包，将价值视作体积，从最高价值向小遍历，找最少需要多少体积，直到头一次$dp[当前遍历到的价值] &lt;= v $为止,即得当前容量下最大价值。</p>
+</blockquote>
+<h2 id="多重背包"><a href="#多重背包" class="headerlink" title="多重背包"></a>多重背包</h2><h2 id="放上题目"><a href="#放上题目" class="headerlink" title="放上题目"></a>放上题目</h2><p>B2174 完全背包<a href="https://www.luogu.com.cn/problem/B2174">B2174 完全背包</a></p>
+<p>背包问题有时甚至会混淆视听<br>P7223 [RC-04] 01 背包(<a href="https://www.luogu.com.cn/problem/P7223">https://www.luogu.com.cn/problem/P7223</a>)</p>
+]]></content>
       <categories>
         <category>算法</category>
       </categories>
       <tags>
-        <tag>树</tag>
-        <tag>字符串</tag>
+        <tag>动态规划</tag>
+        <tag>背包</tag>
       </tags>
   </entry>
   <entry>
