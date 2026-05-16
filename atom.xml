@@ -10,7 +10,24 @@
   <rights>All rights reserved 2026, inmost</rights>
   <subtitle>inmostsama</subtitle>
   <title>inmost's blog</title>
-  <updated>2026-04-03T08:14:42.391Z</updated>
+  <updated>2026-05-16T13:21:49.743Z</updated>
+  <entry>
+    <author>
+      <name>inmost</name>
+    </author>
+    <category term="算法" scheme="https://inmostflyyy.xin/categories/%E7%AE%97%E6%B3%95/"/>
+    <category term="HTTPS" scheme="https://inmostflyyy.xin/tags/HTTPS/"/>
+    <category term="WebSocket" scheme="https://inmostflyyy.xin/tags/WebSocket/"/>
+    <category term="Web" scheme="https://inmostflyyy.xin/tags/Web/"/>
+    <id>https://inmostflyyy.xin/2026/04/25/Web%E4%B8%8EAPI/</id>
+    <link href="https://inmostflyyy.xin/2026/04/25/Web%E4%B8%8EAPI/"/>
+    <published>2026-04-25T14:10:21.000Z</published>
+    <summary>
+      <![CDATA[<h2 id="Web与API调用相关学习笔记"><a href="#Web与API调用相关学习笔记" class="headerlink" title="Web与API调用相关学习笔记"></a>Web与API调用相关学习笔记</h2>]]>
+    </summary>
+    <title>We与API</title>
+    <updated>2026-05-16T13:21:49.743Z</updated>
+  </entry>
   <entry>
     <author>
       <name>inmost</name>

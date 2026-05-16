@@ -21,17 +21,22 @@
     var CONFIG = {"hostname":"inmostflyyy.xin","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":true,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="技术分享与随笔">
-<meta property="og:type" content="website">
-<meta property="og:title" content="inmost&#39;s blog">
-<meta property="og:url" content="https://inmostflyyy.xin/categories/%E7%AE%97%E6%B3%95/index.html">
+  <meta name="description" content="Web与API调用相关学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="We与API">
+<meta property="og:url" content="https://inmostflyyy.xin/2026/04/25/Web%E4%B8%8EAPI/index.html">
 <meta property="og:site_name" content="inmost&#39;s blog">
-<meta property="og:description" content="技术分享与随笔">
+<meta property="og:description" content="Web与API调用相关学习笔记">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-04-25T14:10:21.000Z">
+<meta property="article:modified_time" content="2026-05-16T13:21:49.743Z">
 <meta property="article:author" content="inmost">
+<meta property="article:tag" content="HTTPS">
+<meta property="article:tag" content="Web">
+<meta property="article:tag" content="WebSocket">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://inmostflyyy.xin/categories/%E7%AE%97%E6%B3%95/">
+<link rel="canonical" href="https://inmostflyyy.xin/2026/04/25/Web%E4%B8%8EAPI/">
 
 
 <script id="page-configurations">
@@ -39,12 +44,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>分类: 算法 | inmost's blog</title>
+  <title>We与API | inmost's blog</title>
   
 
 
@@ -200,177 +205,166 @@
         <div class="content-wrap">
           
 
-          <div class="content category">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">算法
-          <small>分类</small>
-        </h2>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://inmostflyyy.xin/2026/04/25/Web%E4%B8%8EAPI/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="inmost">
+      <meta itemprop="description" content="技术分享与随笔">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="inmost's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          We与API
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2026-04-25 22:10:21" itemprop="dateCreated datePublished" datetime="2026-04-25T22:10:21+08:00">2026-04-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2026-05-16 21:21:49" itemprop="dateModified" datetime="2026-05-16T21:21:49+08:00">2026-05-16</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2026</span>
+        <h2 id="Web与API调用相关学习笔记"><a href="#Web与API调用相关学习笔记" class="headerlink" title="Web与API调用相关学习笔记"></a>Web与API调用相关学习笔记</h2><span id="more"></span>
+<h2 id="网络通信协议层-Network-Protocols"><a href="#网络通信协议层-Network-Protocols" class="headerlink" title="网络通信协议层 (Network Protocols)"></a>网络通信协议层 (Network Protocols)</h2><p>OSI Open System Interconnection  </p>
+<h3 id="网络接口层"><a href="#网络接口层" class="headerlink" title="网络接口层"></a>网络接口层</h3><p>MAC地址：每块网卡出场时都有一个全球唯一的物理地址。<br>交换机：在LAN内，交换机通过维护一张MAC地址表，下发数据帧<br>ARP：用于将IP地址解析为局域网内MAC地址</p>
+<blockquote>
+<p>局域网内为什么要套一层IP<br>现代应用均使用Socket API来进行网络通信，核心参数是目标IP以及端口号<br>传输层协议依赖IP首部，MAC只负责相邻节点的数据帧交付，不提供可靠传输，流量控制以及端口(port 多路复用)功能<br>IP地址下具有层次结构，例如在家庭网络中将一个路由器新接入WAN并启动其DHCP功能，该路由器内分发下的地址就</p>
+</blockquote>
+<h3 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h3><p>核心协议 IPv4,IPv6 为互联网上每一台设备分配一个逻辑地址(公网IP地址)<br>核心工作：路由，互联网是由无数个路由器连接而成的网状结构，当一个数据包到达路由器时，路由器需要决定他的下一级跳去哪。<br>IP层只负责把数据送到，不保证不丢失，不保证按照顺序到达。</p>
+<h3 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h3><p>前面讲到，网络层把数据送到，但机器上同时运行几十个程序，传输层通过端口号将数据准确分发给具体的进程。  </p>
+<p>1.TCP(传输控制协议):</p>
+<ul>
+<li>可靠性：面向连接，保证数据不丢失不重复，按照顺序到达。</li>
+<li>三次握手：建立连接前，确认彼此的收发能力正常。  <ul>
+<li>第一次(SYN)：客户端发起，发送一个标有SYN=1的控制包，携带有自己的初始序列号Seq=x(我要连接你，我发给你的数据包从X编号开始算)，客户端方式转变CLOSED-&gt;SYN_SENT  </li>
+<li>第二次(SYN-ACK):服务端收到后，发现客户端发送正常，回复一个带有SYN=1和ACK=1的包，携带有自己的初始序列号Seq=1,以及确认序列号Ack=x+1(收到x，期待发送x+1,另外我的数据包编号将从y开始)，服务端状态转变LISTEN-&gt;SYN_RCVD</li>
+<li>第三次(ACK):客户端收到SYN_ACK，确认了服务端的发送和接收能力正常。它再发一个ACK=1的包给服务端，携带信息，Seq=x+1,Ack=y+1,双方状态转变ESTABLISHED。</li>
+</ul>
+</li>
+<li>四次挥手：断开时，保证双方的残余数据都已经发送完毕。</li>
+<li>滑动窗口与拥塞机制：一次发送多个确认请求，如果当前窗口中某些传输已经完成，那么窗口向后滑动；如果网络拥堵，TCP自动降低发送速率；如果网络通畅，逐渐提速。  </li>
+</ul>
+<p>2.UDP(用户数据报协议)</p>
+<ul>
+<li>不可靠性：无连接，把数据打包之后直接传出，不管对方是否收到。</li>
+<li>应用：没有握手重传的开销，极致低延迟，eg:视频通话，在线游戏，DNS解析等。</li>
+</ul>
+<h2 id="现代-Web-后端框架"><a href="#现代-Web-后端框架" class="headerlink" title="现代 Web 后端框架"></a>现代 Web 后端框架</h2><h2 id="异步-I-O-与高并发处理-Asynchronous-I-O"><a href="#异步-I-O-与高并发处理-Asynchronous-I-O" class="headerlink" title="异步 I/O 与高并发处理(Asynchronous I/O)"></a>异步 I/O 与高并发处理(Asynchronous I/O)</h2><h2 id="状态管理与数据持久化-State-amp-Data-Persistence"><a href="#状态管理与数据持久化-State-amp-Data-Persistence" class="headerlink" title="状态管理与数据持久化(State &amp; Data Persistence)"></a>状态管理与数据持久化(State &amp; Data Persistence)</h2><h2 id="服务部署与环境配置"><a href="#服务部署与环境配置" class="headerlink" title="服务部署与环境配置"></a>服务部署与环境配置</h2>
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
+        
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2026-04-25T22:10:21+08:00"
-              content="2026-04-25">
-          04-25
-        </time>
-      </div>
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>inmost
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://inmostflyyy.xin/2026/04/25/Web%E4%B8%8EAPI/" title="We与API">https://inmostflyyy.xin/2026/04/25/Web与API/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2026/04/25/Web%E4%B8%8EAPI/" itemprop="url">
-            <span itemprop="name">We与API</span>
-          </a>
-      </div>
 
-    </header>
-  </article>
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/HTTPS/" rel="tag"># HTTPS</a>
+              <a href="/tags/WebSocket/" rel="tag"># WebSocket</a>
+              <a href="/tags/Web/" rel="tag"># Web</a>
+          </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+        
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2026-04-03T15:35:04+08:00"
-              content="2026-04-03">
-          04-03
-        </time>
-      </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2026/04/03/%E8%93%9D%E6%A1%A5%E5%8D%81%E6%97%A5-day1/" itemprop="url">
-            <span itemprop="name">蓝桥十日-day1</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2026-03-16T16:28:34+08:00"
-              content="2026-03-16">
-          03-16
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2026/03/16/%E5%B9%B6%E6%9F%A5%E9%9B%86/" itemprop="url">
-            <span itemprop="name">并查集</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2026-03-12T20:52:35+08:00"
-              content="2026-03-12">
-          03-12
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2026/03/12/%E5%AD%97%E5%85%B8%E6%A0%91/" itemprop="url">
-            <span itemprop="name">字典树</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2026-03-08T12:33:25+08:00"
-              content="2026-03-08">
-          03-08
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2026/03/08/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/" itemprop="url">
-            <span itemprop="name">背包问题</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2026-03-06T00:57:03+08:00"
-              content="2026-03-06">
-          03-06
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2026/03/06/gcd%E5%8F%8A%E5%85%B6%E6%89%A9%E5%B1%95/" itemprop="url">
-            <span itemprop="name">gcd及其扩展</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2026-02-26T23:50:26+08:00"
-              content="2026-02-26">
-          02-26
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2026/02/26/%E6%AC%A7%E6%8B%89%E7%AD%9B/" itemprop="url">
-            <span itemprop="name">欧拉筛！</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2026/04/03/%E8%93%9D%E6%A1%A5%E5%8D%81%E6%97%A5-day1/" rel="prev" title="蓝桥十日-day1">
+      <i class="fa fa-chevron-left"></i> 蓝桥十日-day1
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-  </div>
+      </footer>
+    
+  </article>
   
   
-  
-
   
 
 
 
           </div>
           
+    <div class="comments" id="gitalk-container"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -417,6 +411,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Web%E4%B8%8EAPI%E8%B0%83%E7%94%A8%E7%9B%B8%E5%85%B3%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0"><span class="nav-number">1.</span> <span class="nav-text">Web与API调用相关学习笔记</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE%E5%B1%82-Network-Protocols"><span class="nav-number">2.</span> <span class="nav-text">网络通信协议层 (Network Protocols)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E6%8E%A5%E5%8F%A3%E5%B1%82"><span class="nav-number">2.1.</span> <span class="nav-text">网络接口层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E5%B1%82"><span class="nav-number">2.2.</span> <span class="nav-text">网络层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%A0%E8%BE%93%E5%B1%82"><span class="nav-number">2.3.</span> <span class="nav-text">传输层</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%B0%E4%BB%A3-Web-%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6"><span class="nav-number">3.</span> <span class="nav-text">现代 Web 后端框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%82%E6%AD%A5-I-O-%E4%B8%8E%E9%AB%98%E5%B9%B6%E5%8F%91%E5%A4%84%E7%90%86-Asynchronous-I-O"><span class="nav-number">4.</span> <span class="nav-text">异步 I&#x2F;O 与高并发处理(Asynchronous I&#x2F;O)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96-State-amp-Data-Persistence"><span class="nav-number">5.</span> <span class="nav-text">状态管理与数据持久化(State &amp; Data Persistence)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E9%83%A8%E7%BD%B2%E4%B8%8E%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">6.</span> <span class="nav-text">服务部署与环境配置</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -696,6 +691,25 @@ setInterval("createtime()",250);
 
   
 
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : 'Ov23liEOyF3lswEdobx3',
+      clientSecret: '50ee8810c54be32d6639666bac22947e97badc9b',
+      repo        : 'inmostfly.github.io',
+      owner       : 'inmostfly',
+      admin       : ['inmostfly'],
+      id          : '8099e1ac3695c9202b20e0e2c15023c8',
+        language: 'zh-CN',
+      distractionFreeMode: false
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
 
 </body>
 </html>
