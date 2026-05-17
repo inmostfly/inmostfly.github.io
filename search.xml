@@ -55,6 +55,44 @@
       </tags>
   </entry>
   <entry>
+    <title>Web与API</title>
+    <url>/2026/04/25/Web%E4%B8%8EAPI/</url>
+    <content><![CDATA[<h2 id="Web与API调用相关学习笔记"><a href="#Web与API调用相关学习笔记" class="headerlink" title="Web与API调用相关学习笔记"></a>Web与API调用相关学习笔记</h2><span id="more"></span>
+<h2 id="网络通信协议层-Network-Protocols"><a href="#网络通信协议层-Network-Protocols" class="headerlink" title="网络通信协议层 (Network Protocols)"></a>网络通信协议层 (Network Protocols)</h2><p>OSI Open System Interconnection  </p>
+<h3 id="网络接口层"><a href="#网络接口层" class="headerlink" title="网络接口层"></a>网络接口层</h3><p>MAC地址：每块网卡出场时都有一个全球唯一的物理地址。<br>交换机：在LAN内，交换机通过维护一张MAC地址表，下发数据帧<br>ARP：用于将IP地址解析为局域网内MAC地址</p>
+<blockquote>
+<p>局域网内为什么要套一层IP<br>现代应用均使用Socket API来进行网络通信，核心参数是目标IP以及端口号<br>传输层协议依赖IP首部，MAC只负责相邻节点的数据帧交付，不提供可靠传输，流量控制以及端口(port 多路复用)功能<br>IP地址下具有层次结构，例如在家庭网络中将一个路由器新接入WAN并启动其DHCP功能，该路由器内分发下的地址就</p>
+</blockquote>
+<h3 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h3><p>核心协议 IPv4,IPv6 为互联网上每一台设备分配一个逻辑地址(公网IP地址)<br>核心工作：路由，互联网是由无数个路由器连接而成的网状结构，当一个数据包到达路由器时，路由器需要决定他的下一级跳去哪。<br>IP层只负责把数据送到，不保证不丢失，不保证按照顺序到达。</p>
+<h3 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h3><p>前面讲到，网络层把数据送到，但机器上同时运行几十个程序，传输层通过端口号将数据准确分发给具体的进程。  </p>
+<p>1.TCP(传输控制协议):</p>
+<ul>
+<li>可靠性：面向连接，保证数据不丢失不重复，按照顺序到达。</li>
+<li>三次握手：建立连接前，确认彼此的收发能力正常。  <ul>
+<li>第一次(SYN)：客户端发起，发送一个标有SYN=1的控制包，携带有自己的初始序列号Seq=x(我要连接你，我发给你的数据包从X编号开始算)，客户端方式转变CLOSED-&gt;SYN_SENT  </li>
+<li>第二次(SYN-ACK):服务端收到后，发现客户端发送正常，回复一个带有SYN=1和ACK=1的包，携带有自己的初始序列号Seq=1,以及确认序列号Ack=x+1(收到x，期待发送x+1,另外我的数据包编号将从y开始)，服务端状态转变LISTEN-&gt;SYN_RCVD</li>
+<li>第三次(ACK):客户端收到SYN_ACK，确认了服务端的发送和接收能力正常。它再发一个ACK=1的包给服务端，携带信息，Seq=x+1,Ack=y+1,双方状态转变ESTABLISHED。</li>
+</ul>
+</li>
+<li>四次挥手：断开时，保证双方的残余数据都已经发送完毕。</li>
+<li>滑动窗口与拥塞机制：一次发送多个确认请求，如果当前窗口中某些传输已经完成，那么窗口向后滑动；如果网络拥堵，TCP自动降低发送速率；如果网络通畅，逐渐提速。  </li>
+</ul>
+<p>2.UDP(用户数据报协议)</p>
+<ul>
+<li>不可靠性：无连接，把数据打包之后直接传出，不管对方是否收到。</li>
+<li>应用：没有握手重传的开销，极致低延迟，eg:视频通话，在线游戏，DNS解析等。</li>
+</ul>
+<h2 id="现代-Web-后端框架"><a href="#现代-Web-后端框架" class="headerlink" title="现代 Web 后端框架"></a>现代 Web 后端框架</h2><h2 id="异步-I-O-与高并发处理-Asynchronous-I-O"><a href="#异步-I-O-与高并发处理-Asynchronous-I-O" class="headerlink" title="异步 I/O 与高并发处理(Asynchronous I/O)"></a>异步 I/O 与高并发处理(Asynchronous I/O)</h2><h2 id="状态管理与数据持久化-State-amp-Data-Persistence"><a href="#状态管理与数据持久化-State-amp-Data-Persistence" class="headerlink" title="状态管理与数据持久化(State &amp; Data Persistence)"></a>状态管理与数据持久化(State &amp; Data Persistence)</h2><h2 id="服务部署与环境配置"><a href="#服务部署与环境配置" class="headerlink" title="服务部署与环境配置"></a>服务部署与环境配置</h2>]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>HTTPS</tag>
+        <tag>WebSocket</tag>
+        <tag>Web</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JavaScript</title>
     <url>/2026/02/26/JavaScript/</url>
     <content><![CDATA[<p>前端学习笔记，HTML,CSS,JavaScript三者协同构成网页</p>
@@ -92,44 +130,6 @@
         <tag>JavaScript</tag>
         <tag>HTML</tag>
         <tag>CSS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Web与API</title>
-    <url>/2026/04/25/Web%E4%B8%8EAPI/</url>
-    <content><![CDATA[<h2 id="Web与API调用相关学习笔记"><a href="#Web与API调用相关学习笔记" class="headerlink" title="Web与API调用相关学习笔记"></a>Web与API调用相关学习笔记</h2><span id="more"></span>
-<h2 id="网络通信协议层-Network-Protocols"><a href="#网络通信协议层-Network-Protocols" class="headerlink" title="网络通信协议层 (Network Protocols)"></a>网络通信协议层 (Network Protocols)</h2><p>OSI Open System Interconnection  </p>
-<h3 id="网络接口层"><a href="#网络接口层" class="headerlink" title="网络接口层"></a>网络接口层</h3><p>MAC地址：每块网卡出场时都有一个全球唯一的物理地址。<br>交换机：在LAN内，交换机通过维护一张MAC地址表，下发数据帧<br>ARP：用于将IP地址解析为局域网内MAC地址</p>
-<blockquote>
-<p>局域网内为什么要套一层IP<br>现代应用均使用Socket API来进行网络通信，核心参数是目标IP以及端口号<br>传输层协议依赖IP首部，MAC只负责相邻节点的数据帧交付，不提供可靠传输，流量控制以及端口(port 多路复用)功能<br>IP地址下具有层次结构，例如在家庭网络中将一个路由器新接入WAN并启动其DHCP功能，该路由器内分发下的地址就</p>
-</blockquote>
-<h3 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h3><p>核心协议 IPv4,IPv6 为互联网上每一台设备分配一个逻辑地址(公网IP地址)<br>核心工作：路由，互联网是由无数个路由器连接而成的网状结构，当一个数据包到达路由器时，路由器需要决定他的下一级跳去哪。<br>IP层只负责把数据送到，不保证不丢失，不保证按照顺序到达。</p>
-<h3 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h3><p>前面讲到，网络层把数据送到，但机器上同时运行几十个程序，传输层通过端口号将数据准确分发给具体的进程。  </p>
-<p>1.TCP(传输控制协议):</p>
-<ul>
-<li>可靠性：面向连接，保证数据不丢失不重复，按照顺序到达。</li>
-<li>三次握手：建立连接前，确认彼此的收发能力正常。  <ul>
-<li>第一次(SYN)：客户端发起，发送一个标有SYN=1的控制包，携带有自己的初始序列号Seq=x(我要连接你，我发给你的数据包从X编号开始算)，客户端方式转变CLOSED-&gt;SYN_SENT  </li>
-<li>第二次(SYN-ACK):服务端收到后，发现客户端发送正常，回复一个带有SYN=1和ACK=1的包，携带有自己的初始序列号Seq=1,以及确认序列号Ack=x+1(收到x，期待发送x+1,另外我的数据包编号将从y开始)，服务端状态转变LISTEN-&gt;SYN_RCVD</li>
-<li>第三次(ACK):客户端收到SYN_ACK，确认了服务端的发送和接收能力正常。它再发一个ACK=1的包给服务端，携带信息，Seq=x+1,Ack=y+1,双方状态转变ESTABLISHED。</li>
-</ul>
-</li>
-<li>四次挥手：断开时，保证双方的残余数据都已经发送完毕。</li>
-<li>滑动窗口与拥塞机制：一次发送多个确认请求，如果当前窗口中某些传输已经完成，那么窗口向后滑动；如果网络拥堵，TCP自动降低发送速率；如果网络通畅，逐渐提速。  </li>
-</ul>
-<p>2.UDP(用户数据报协议)</p>
-<ul>
-<li>不可靠性：无连接，把数据打包之后直接传出，不管对方是否收到。</li>
-<li>应用：没有握手重传的开销，极致低延迟，eg:视频通话，在线游戏，DNS解析等。</li>
-</ul>
-<h2 id="现代-Web-后端框架"><a href="#现代-Web-后端框架" class="headerlink" title="现代 Web 后端框架"></a>现代 Web 后端框架</h2><h2 id="异步-I-O-与高并发处理-Asynchronous-I-O"><a href="#异步-I-O-与高并发处理-Asynchronous-I-O" class="headerlink" title="异步 I/O 与高并发处理(Asynchronous I/O)"></a>异步 I/O 与高并发处理(Asynchronous I/O)</h2><h2 id="状态管理与数据持久化-State-amp-Data-Persistence"><a href="#状态管理与数据持久化-State-amp-Data-Persistence" class="headerlink" title="状态管理与数据持久化(State &amp; Data Persistence)"></a>状态管理与数据持久化(State &amp; Data Persistence)</h2><h2 id="服务部署与环境配置"><a href="#服务部署与环境配置" class="headerlink" title="服务部署与环境配置"></a>服务部署与环境配置</h2>]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>HTTPS</tag>
-        <tag>WebSocket</tag>
-        <tag>Web</tag>
       </tags>
   </entry>
   <entry>
@@ -173,31 +173,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>字典树</title>
-    <url>/2026/03/12/%E5%AD%97%E5%85%B8%E6%A0%91/</url>
-    <content><![CDATA[<p>字符串的处理方式极多，字典树便是其中一种</p>
-<span id="more"></span>
-<h2 id="字典树基础"><a href="#字典树基础" class="headerlink" title="字典树基础"></a>字典树基础</h2><p>此篇重写，再无板子之谈  </p>
-<font color=red> 板子不理解的时候真能坑死人,还不如没有 </font>
-
-<p>常用二维数组存储，一般认为每个节点含有26个子节点，分别表示字符a到z，编号1-26. 定义$trie[u][id]=k$中,u表字典树的节点编号，id表示该节点中编号为id的字符，u在全局中唯一，唯一标识每个节点。k即表示u的id子节点的编号。  </p>
-<h3 id="插入字符串"><a href="#插入字符串" class="headerlink" title="插入字符串"></a>插入字符串</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int tot=0;//tot表示节点总数/节点编号</span><br><span class="line">void insert(string s)&#123;  </span><br><span class="line">    int pos=0;</span><br><span class="line">    <span class="keyword">for</span>(int i=0;i&lt;s.size();i++)&#123;</span><br><span class="line">      int <span class="built_in">id</span>=s[i]-<span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">      <span class="keyword">if</span>(tree[pos][<span class="built_in">id</span>]==0)&#123;</span><br><span class="line">        tree[pos][<span class="built_in">id</span>]=++tot;</span><br><span class="line">      &#125;</span><br><span class="line">      pos=tree[pos][<span class="built_in">id</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    tag[pos]=1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="查找字符串"><a href="#查找字符串" class="headerlink" title="查找字符串"></a>查找字符串</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int find(string s)&#123;</span><br><span class="line">    int pos=0;</span><br><span class="line">    <span class="keyword">for</span>(int i=0;i&lt;s.size();i++)&#123;</span><br><span class="line">      int <span class="built_in">id</span>=s[i]-<span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">      <span class="keyword">if</span>(tree[pos][<span class="built_in">id</span>]==0)&#123;</span><br><span class="line">        <span class="built_in">return</span> -1;</span><br><span class="line">      &#125;</span><br><span class="line">      pos=tree[pos][<span class="built_in">id</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(tag[pos]==1)&#123;</span><br><span class="line">      <span class="built_in">return</span> 1;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">      <span class="built_in">return</span> -1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="字典树的活用"><a href="#字典树的活用" class="headerlink" title="字典树的活用"></a>字典树的活用</h2><h3 id="求多项字符串的最大公共前缀长度之和"><a href="#求多项字符串的最大公共前缀长度之和" class="headerlink" title="求多项字符串的最大公共前缀长度之和"></a>求多项字符串的最大公共前缀长度之和</h3><p>此时需要记录每个节点有几个字符串经过了这个节点，即节点需记录通过自己的字符串数量。<br>实现：每次插入过程中pos更新时同时cnt[pos]++即可。  </p>
-<center>
-<font color=green>
-基础数据结构重在插入，即树的构建，剩下的就是其多样的用法。
-</font>
-</center>]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>树</tag>
-        <tag>字符串</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>并查集</title>
     <url>/2026/03/16/%E5%B9%B6%E6%9F%A5%E9%9B%86/</url>
     <content><![CDATA[<h2 id="并查集"><a href="#并查集" class="headerlink" title="并查集"></a>并查集</h2><p>青春猪头少年不会在赛时被并查集少一次遍历卡165min遗憾退场</p>
@@ -227,6 +202,31 @@
       </categories>
       <tags>
         <tag>并查集</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>字典树</title>
+    <url>/2026/03/12/%E5%AD%97%E5%85%B8%E6%A0%91/</url>
+    <content><![CDATA[<p>字符串的处理方式极多，字典树便是其中一种</p>
+<span id="more"></span>
+<h2 id="字典树基础"><a href="#字典树基础" class="headerlink" title="字典树基础"></a>字典树基础</h2><p>此篇重写，再无板子之谈  </p>
+<font color=red> 板子不理解的时候真能坑死人,还不如没有 </font>
+
+<p>常用二维数组存储，一般认为每个节点含有26个子节点，分别表示字符a到z，编号1-26. 定义$trie[u][id]=k$中,u表字典树的节点编号，id表示该节点中编号为id的字符，u在全局中唯一，唯一标识每个节点。k即表示u的id子节点的编号。  </p>
+<h3 id="插入字符串"><a href="#插入字符串" class="headerlink" title="插入字符串"></a>插入字符串</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int tot=0;//tot表示节点总数/节点编号</span><br><span class="line">void insert(string s)&#123;  </span><br><span class="line">    int pos=0;</span><br><span class="line">    <span class="keyword">for</span>(int i=0;i&lt;s.size();i++)&#123;</span><br><span class="line">      int <span class="built_in">id</span>=s[i]-<span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">      <span class="keyword">if</span>(tree[pos][<span class="built_in">id</span>]==0)&#123;</span><br><span class="line">        tree[pos][<span class="built_in">id</span>]=++tot;</span><br><span class="line">      &#125;</span><br><span class="line">      pos=tree[pos][<span class="built_in">id</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    tag[pos]=1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="查找字符串"><a href="#查找字符串" class="headerlink" title="查找字符串"></a>查找字符串</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int find(string s)&#123;</span><br><span class="line">    int pos=0;</span><br><span class="line">    <span class="keyword">for</span>(int i=0;i&lt;s.size();i++)&#123;</span><br><span class="line">      int <span class="built_in">id</span>=s[i]-<span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">      <span class="keyword">if</span>(tree[pos][<span class="built_in">id</span>]==0)&#123;</span><br><span class="line">        <span class="built_in">return</span> -1;</span><br><span class="line">      &#125;</span><br><span class="line">      pos=tree[pos][<span class="built_in">id</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(tag[pos]==1)&#123;</span><br><span class="line">      <span class="built_in">return</span> 1;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">      <span class="built_in">return</span> -1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="字典树的活用"><a href="#字典树的活用" class="headerlink" title="字典树的活用"></a>字典树的活用</h2><h3 id="求多项字符串的最大公共前缀长度之和"><a href="#求多项字符串的最大公共前缀长度之和" class="headerlink" title="求多项字符串的最大公共前缀长度之和"></a>求多项字符串的最大公共前缀长度之和</h3><p>此时需要记录每个节点有几个字符串经过了这个节点，即节点需记录通过自己的字符串数量。<br>实现：每次插入过程中pos更新时同时cnt[pos]++即可。  </p>
+<center>
+<font color=green>
+基础数据结构重在插入，即树的构建，剩下的就是其多样的用法。
+</font>
+</center>]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>树</tag>
+        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
@@ -274,39 +274,6 @@
       <tags>
         <tag>筛</tag>
         <tag>动态规划</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>蓝桥十日</title>
-    <url>/2026/04/03/%E8%93%9D%E6%A1%A5%E5%8D%81%E6%97%A5/</url>
-    <content><![CDATA[<p>在于队友的聊天中偶然发现很多人并不了解OI赛制是什么，故有此文。  </p>
-<span id="more"></span>
-<h2 id="什么是蓝桥杯的OI赛制"><a href="#什么是蓝桥杯的OI赛制" class="headerlink" title="什么是蓝桥杯的OI赛制"></a>什么是蓝桥杯的OI赛制</h2><blockquote>
-<p>大体上来说，类似于我们在pta上的实验，分为不同的测试点，题目会给你不同的数据，按测试点给分。唯一不同的是，蓝桥杯在赛时无法看到正确或错误的反馈，需要我们提交一次尽可能正确高效的做法。</p>
-</blockquote>
-<h3 id="规则、特点"><a href="#规则、特点" class="headerlink" title="规则、特点"></a>规则、特点</h3><p>OI赛制（Olympiad in Informatics）是信息学奥林匹克竞赛中采用的标准比赛形式。这种赛制广泛应用于国际信息学奥林匹克竞赛（IOI）、全国信息学奥林匹克竞赛（NOI）、CSP-J/S 以及各省省选等赛事中。核心特点与 ACM/ICPC 等其他编程竞赛赛制相比，OI 赛制具有几个显著的区别</p>
-<ul>
-<li>赛后评测（无即时反馈）：这是传统 OI 赛制最显著的特征。选手在比赛期间提交代码后，通常无法立即看到评测结果（如 AC、WA、TLE 等）。最终成绩将在比赛结束后统一进行评测并公布。(注：近年来部分赛事如 IOI 引入了实时评测机制，但国内多数传统 OI 赛事仍保留完全的赛后评测。)</li>
-<li>按测试点计分（部分分机制）： 题目的总分被划分到多个独立的测试点（Test Cases）中。如果代码未能完全正确解决问题，但通过了部分测试点，选手依然可以获得相应的分数。蓝桥与传统OI不同的是，其采用的都是标准输入输出，也就是掌握cin或scanf即可读入数据。</li>
-<li>最后一次提交为准： 如果选手对同一道题目进行了多次提交，评测系统通常只记录和评测最后一次提交的代码。计分与评测机制在 OI 赛制中，一道题目通常满分为 100 分。出题人会准备多组测试数据，并可能根据数据规模或特殊性质将这些数据分为不同的“子任务”（Subtasks）。评测情况计分方式完全正确通过所有测试点，获得满分（通常为 100 分）。部分正确仅通过部分测试点，获得这部分测试点对应的分数。超时/超内存对于超出时间限制（TLE）或空间限制（MLE）的测试点，得 0 分；其余通过的测试点正常得分。编译/文件错误无法通过编译，或未按要求进行文件读写，整题得 0 分。</li>
-</ul>
-<h3 id="常见应赛策略"><a href="#常见应赛策略" class="headerlink" title="常见应赛策略"></a>常见应赛策略</h3><p>由于 OI 赛制允许获取部分分且缺乏即时反馈，参赛者需要采用特定的策略来最大化总收益：</p>
-<ul>
-<li>重视基础算法（拿全部分分）：当遇到无法想出最优解（例如正解需要极低的时间复杂度）的题目时，编写一个能够处理小规模数据的穷举或基础程序是极其重要的。这通常能稳定获得 20% 到 60% 不等的部分分。</li>
-<li>对拍验证（本地测试）：因为比赛期间无法获知评测结果，选手需要依靠“对拍”来验证代码的正确性。具体做法是：编写一个绝对正确但较慢的程序，再编写一个数据生成器，将待提交的最优解程序与较慢程序的输出结果进行大量随机数据的比对，以排除逻辑错误。</li>
-<li>检查细节与边界条件：由于一次细微的错误（如数组越界、变量未初始化、整数溢出）可能导致大部分测试点甚至全部测试点运行异常，在提交前必须反复检查代码逻辑和数据类型。</li>
-<li>合理分配时间：OI 赛制看重总分，合理的策略是先通读所有题目，优先编写并测试所有题目的基础部分分解法，然后再集中精力攻克自己最有把握获得满分的题目。总结OI 赛制不仅考察选手的算法设计能力和编程基本功，更强调工程的严谨性、本地独立测试的能力以及时间规划策略。理解并适应这种缺乏即时反馈且注重部分分累积的赛制，是参赛者取得优异成绩的基础。</li>
-</ul>
-<h2 id="蓝桥赛时编译器"><a href="#蓝桥赛时编译器" class="headerlink" title="蓝桥赛时编译器"></a>蓝桥赛时编译器</h2><p>对c/c++赛道而言，赛场上能快速上手使用的编译器只有Dev-c++,建议提前适应，以避免赛时卡手慌乱。</p>
-<blockquote>
-<p>如果你还有其他疑问，欢迎在评论区提出，预祝大家都能在蓝桥取得理想的成绩。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>随笔</tag>
       </tags>
   </entry>
   <entry>
@@ -360,6 +327,39 @@
       <tags>
         <tag>动态规划</tag>
         <tag>背包</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>蓝桥十日</title>
+    <url>/2026/04/03/%E8%93%9D%E6%A1%A5%E5%8D%81%E6%97%A5/</url>
+    <content><![CDATA[<p>在于队友的聊天中偶然发现很多人并不了解OI赛制是什么，故有此文。  </p>
+<span id="more"></span>
+<h2 id="什么是蓝桥杯的OI赛制"><a href="#什么是蓝桥杯的OI赛制" class="headerlink" title="什么是蓝桥杯的OI赛制"></a>什么是蓝桥杯的OI赛制</h2><blockquote>
+<p>大体上来说，类似于我们在pta上的实验，分为不同的测试点，题目会给你不同的数据，按测试点给分。唯一不同的是，蓝桥杯在赛时无法看到正确或错误的反馈，需要我们提交一次尽可能正确高效的做法。</p>
+</blockquote>
+<h3 id="规则、特点"><a href="#规则、特点" class="headerlink" title="规则、特点"></a>规则、特点</h3><p>OI赛制（Olympiad in Informatics）是信息学奥林匹克竞赛中采用的标准比赛形式。这种赛制广泛应用于国际信息学奥林匹克竞赛（IOI）、全国信息学奥林匹克竞赛（NOI）、CSP-J/S 以及各省省选等赛事中。核心特点与 ACM/ICPC 等其他编程竞赛赛制相比，OI 赛制具有几个显著的区别</p>
+<ul>
+<li>赛后评测（无即时反馈）：这是传统 OI 赛制最显著的特征。选手在比赛期间提交代码后，通常无法立即看到评测结果（如 AC、WA、TLE 等）。最终成绩将在比赛结束后统一进行评测并公布。(注：近年来部分赛事如 IOI 引入了实时评测机制，但国内多数传统 OI 赛事仍保留完全的赛后评测。)</li>
+<li>按测试点计分（部分分机制）： 题目的总分被划分到多个独立的测试点（Test Cases）中。如果代码未能完全正确解决问题，但通过了部分测试点，选手依然可以获得相应的分数。蓝桥与传统OI不同的是，其采用的都是标准输入输出，也就是掌握cin或scanf即可读入数据。</li>
+<li>最后一次提交为准： 如果选手对同一道题目进行了多次提交，评测系统通常只记录和评测最后一次提交的代码。计分与评测机制在 OI 赛制中，一道题目通常满分为 100 分。出题人会准备多组测试数据，并可能根据数据规模或特殊性质将这些数据分为不同的“子任务”（Subtasks）。评测情况计分方式完全正确通过所有测试点，获得满分（通常为 100 分）。部分正确仅通过部分测试点，获得这部分测试点对应的分数。超时/超内存对于超出时间限制（TLE）或空间限制（MLE）的测试点，得 0 分；其余通过的测试点正常得分。编译/文件错误无法通过编译，或未按要求进行文件读写，整题得 0 分。</li>
+</ul>
+<h3 id="常见应赛策略"><a href="#常见应赛策略" class="headerlink" title="常见应赛策略"></a>常见应赛策略</h3><p>由于 OI 赛制允许获取部分分且缺乏即时反馈，参赛者需要采用特定的策略来最大化总收益：</p>
+<ul>
+<li>重视基础算法（拿全部分分）：当遇到无法想出最优解（例如正解需要极低的时间复杂度）的题目时，编写一个能够处理小规模数据的穷举或基础程序是极其重要的。这通常能稳定获得 20% 到 60% 不等的部分分。</li>
+<li>对拍验证（本地测试）：因为比赛期间无法获知评测结果，选手需要依靠“对拍”来验证代码的正确性。具体做法是：编写一个绝对正确但较慢的程序，再编写一个数据生成器，将待提交的最优解程序与较慢程序的输出结果进行大量随机数据的比对，以排除逻辑错误。</li>
+<li>检查细节与边界条件：由于一次细微的错误（如数组越界、变量未初始化、整数溢出）可能导致大部分测试点甚至全部测试点运行异常，在提交前必须反复检查代码逻辑和数据类型。</li>
+<li>合理分配时间：OI 赛制看重总分，合理的策略是先通读所有题目，优先编写并测试所有题目的基础部分分解法，然后再集中精力攻克自己最有把握获得满分的题目。总结OI 赛制不仅考察选手的算法设计能力和编程基本功，更强调工程的严谨性、本地独立测试的能力以及时间规划策略。理解并适应这种缺乏即时反馈且注重部分分累积的赛制，是参赛者取得优异成绩的基础。</li>
+</ul>
+<h2 id="蓝桥赛时编译器"><a href="#蓝桥赛时编译器" class="headerlink" title="蓝桥赛时编译器"></a>蓝桥赛时编译器</h2><p>对c/c++赛道而言，赛场上能快速上手使用的编译器只有Dev-c++,建议提前适应，以避免赛时卡手慌乱。</p>
+<blockquote>
+<p>如果你还有其他疑问，欢迎在评论区提出，预祝大家都能在蓝桥取得理想的成绩。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>随笔</tag>
       </tags>
   </entry>
 </search>
