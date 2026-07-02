@@ -29,7 +29,7 @@
 <meta property="og:description" content="Web与API调用相关学习笔记">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-04-25T14:10:21.000Z">
-<meta property="article:modified_time" content="2026-05-16T13:24:33.846Z">
+<meta property="article:modified_time" content="2026-07-02T10:04:20.515Z">
 <meta property="article:author" content="inmost">
 <meta property="article:tag" content="HTTPS">
 <meta property="article:tag" content="Web">
@@ -242,7 +242,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2026-05-16 21:24:33" itemprop="dateModified" datetime="2026-05-16T21:24:33+08:00">2026-05-16</time>
+                <time title="修改时间：2026-07-02 18:04:20" itemprop="dateModified" datetime="2026-07-02T18:04:20+08:00">2026-07-02</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -267,7 +267,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.2k</span>
+              <span>1.3k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -290,7 +290,7 @@
 <h2 id="网络通信协议层-Network-Protocols"><a href="#网络通信协议层-Network-Protocols" class="headerlink" title="网络通信协议层 (Network Protocols)"></a>网络通信协议层 (Network Protocols)</h2><p>OSI Open System Interconnection  </p>
 <h3 id="网络接口层"><a href="#网络接口层" class="headerlink" title="网络接口层"></a>网络接口层</h3><p>MAC地址：每块网卡出场时都有一个全球唯一的物理地址。<br>交换机：在LAN内，交换机通过维护一张MAC地址表，下发数据帧<br>ARP：用于将IP地址解析为局域网内MAC地址</p>
 <blockquote>
-<p>局域网内为什么要套一层IP<br>现代应用均使用Socket API来进行网络通信，核心参数是目标IP以及端口号<br>传输层协议依赖IP首部，MAC只负责相邻节点的数据帧交付，不提供可靠传输，流量控制以及端口(port 多路复用)功能<br>IP地址下具有层次结构，例如在家庭网络中将一个路由器新接入WAN并启动其DHCP功能，该路由器内分发下的地址就</p>
+<p>局域网内为什么要套一层IP<br>现代应用均使用Socket API来进行网络通信，核心参数是目标IP以及端口号<br>传输层协议依赖IP首部，MAC只负责相邻节点的数据帧交付，不提供可靠传输，流量控制以及端口(port 多路复用)功能。<br>IP地址下具有层次结构，例如在家庭网络中将一个路由器新接入WAN并启动其DHCP功能，该路由器内分发下的地址就构成了一个逻辑上完全独立的本地子网（通常是私有IP网段，如 192.168.1.x）。这种层次化的设计不仅将局域网内部的广播流量限制在本地，还使得内部设备的网络变更对上层WAN侧完全透明。同时，本地流量可以直接在子网内就地转发，只有跨网段的数据才需要经过路由器进行网络地址转换（NAT）和跨层路由。</p>
 </blockquote>
 <h3 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h3><p>核心协议 IPv4,IPv6 为互联网上每一台设备分配一个逻辑地址(公网IP地址)<br>核心工作：路由，互联网是由无数个路由器连接而成的网状结构，当一个数据包到达路由器时，路由器需要决定他的下一级跳去哪。<br>IP层只负责把数据送到，不保证不丢失，不保证按照顺序到达。</p>
 <h3 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h3><p>前面讲到，网络层把数据送到，但机器上同时运行几十个程序，传输层通过端口号将数据准确分发给具体的进程。  </p>
@@ -495,7 +495,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">34 分钟</span>
+    <span title="站点阅读时长">35 分钟</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-user-md"></i>
