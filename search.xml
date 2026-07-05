@@ -259,7 +259,7 @@
 <li>分层采样与权重采样不同，分层采样通常用于保证样本分布与原始总体分布完全一致，权重采样其采样样本由自设权重给出，不保证与原样本分布一致。</li>
 </ul>
 <blockquote>
-<p>X_train,X_test, y_train, y_test =sklearn.model_selection.train_test_split(train_data,train_target,test_size=0.4, random_state=0,stratify=stratify=train_target)  </p>
+<p>X_train,X_test,y_train,y_test =sklearn.model_selection.train_test_split(train_data,train_target,test_size=0.4, random_state=0,stratify=stratify=train_target)  </p>
 </blockquote>
 <p>输入：</p>
 <ul>
@@ -279,7 +279,7 @@
 <blockquote>
 <p>自助法在数据集较小，难以有效划分训练/测试集时很有用；此外，自助法还能从初始数据集中产生多个不同的训练集，这对集成学习等方法有很大好处。同时对样本数据集的抽取改变了其分布，这会产生估计误差。</p>
 </blockquote>
-<h2 id="性能度量"><a href="#性能度量" class="headerlink" title="性能度量"></a>性能度量</h2><p>TP:真正例<br>FN:假反例<br>FP:假正例<br>TN:真反例<br>查准率P:P=$\frac{TP}{TP+FP}$<br>查全率R:R=$\frac{TP}{TP+FN}$</p>
+<h2 id="性能度量"><a href="#性能度量" class="headerlink" title="性能度量"></a>性能度量</h2><p>TP:真正例；FN:假反例；FP:假正例；TN:真反例<br>查准率P:P=$\frac{TP}{TP+FP}$<br>查全率R:R=$\frac{TP}{TP+FN}$</p>
 <p>综合度量其性能：BEP(平衡点Break-Even Point)，当查准率等于查全率时的取值。  </p>
 <script type="math/tex; mode=display">F1=\frac{2*P*R}{P+R}(调和平均，1/F=(1/P+1/R)/2)</script><p>宏：分别计算各个混淆矩阵的查准率与查全率，再macro平均<br>微：直接在计算P和R之前将TP等值计算出之后计算TP等的平均值，再直接算出micro-P,micro-R  </p>
 <p>预测结果对样例进行排序：根据模型为每个测试样例输出的“预测概率”或“置信度得分”，将所有样例从高到低进行排列的过程。  </p>
@@ -288,6 +288,27 @@
 <script type="math/tex; mode=display">AUC = \frac{1}{|P| \cdot |N|} \sum_{x_i \in P} \sum_{x_j \in N} \mathbb{I}(f(x_i) > f(x_j))</script><p><img src="/uploads/ROC示意.png" alt="ROC"></p>
 <h3 id="期望总体代价曲线"><a href="#期望总体代价曲线" class="headerlink" title="期望总体代价曲线"></a>期望总体代价曲线</h3><p><img src="/uploads/期望总体代价曲线.png" alt="代价"></p>
 <p>所围成的面积即为在所有条件（不同阈值）下学习器的期望总体代价。</p>
+<h2 id="比较检验"><a href="#比较检验" class="headerlink" title="比较检验"></a>比较检验</h2><h3 id="假设检验"><a href="#假设检验" class="headerlink" title="假设检验"></a>假设检验</h3><p>原假设 $H_0$： 认为算法 A 和算法 B 的真实性能完全一样，它们跑分出来的差异纯粹是因为测试集抽样产生的随机波动。<br>目标： 通过收集数据（跑实验），计算出一个概率（$p$ 值）。如果 $p$ 值极小（比如 $&lt; 0.05$），说明在二者真的一样的情况下，出现这么大差距的概率比中彩票还低。此时，我们就可以拒绝原假设，宣布 A 和 B 确实存在显著差异。</p>
+<blockquote>
+<p>$P$ 值（P-value）是假设检验的最终宣判结果。它的全称是 Probability Value。<br>它的严格统计学定义是：在原假设（$H_0$）成立的前提下，观察到当前数据，甚至比当前数据更极端情况的概率。<br>$P$ 值并不是凭空捏造的，它就是利用刚刚算出来的 $t$ 值，在理论分布曲线上“切”出来的面积。具体计算步骤如下:</p>
+<ul>
+<li>确立基准（原假设 $H_0$）： 假设算法 A 和 B 完全一样（即它们真实的错误率差值为 $0$）。</li>
+<li>获取统计量（$t$ 值）： 把你跑实验得到的数据代入上面提到的公式，算出一个具体的 $t$ 值（比如 $t = 2.5$）。</li>
+<li>映射到概率分布： 统计学家早就证明了，如果 A 和 B 真的完全一样（原假设成立），那么在无数次重复抽样中，算出来的 $t$ 值会完美服从一个中间高、两边低的钟形曲线——$t$ 分布（t-distribution）。</li>
+<li>计算尾部面积（算积分）： 我们把刚才算出的 $t = 2.5$ 放在这根坐标轴上。因为 $t$ 分布是对称的，我们在右边找 $2.5$，在左边找 $-2.5$。这两根线往外侧一直延伸到无穷远，所覆盖的曲线下方面积之和，就是 $P$ 值。  </li>
+</ul>
+<p>判定规则：如果算出来的面积（$P$ 值）很小（通常设定阈值 $\alpha = 0.05$）：说明如果 A 和 B 真的一样，那么出现当前差距的概率不到 $5\%$,那这就太反常了。</p>
+</blockquote>
+<h3 id="交叉验证t检验"><a href="#交叉验证t检验" class="headerlink" title="交叉验证t检验"></a>交叉验证t检验</h3><p>痛点： 如果你只做一次划分（比如 70% 训练，30% 测试），偶然性太大。如果你做标准的 10 折交叉验证，由于每一折的训练集都有大量重叠，算出来的方差会被严重低估，导致你更容易“冤枉”原假设。<br>改进（$5 \times 2$ 交叉验证）： 专门为了机器学习设计的改进版。做 5 次 $2$ 折交叉验证。每次把数据劈成两半，轮流做训练和测试。这样既保证了数据的充分利用，又把训练集的重叠度降到了合理范围。最后套用标准的 $t$ 分布公式来计算显著性。</p>
+<blockquote>
+<p>为什么是 2 折？ 把数据拦腰砍断（A半，B半）。第一次用 A 训练、B 测试；第二次用 B 训练、A 测试。这两次实验的训练集和测试集是 100% 毫无交集的。 这完美保证了独立性！为什么要做 5 次？ 因为只做 1 次 2 折，数据太少，评估不稳定。所以我们要把数据重新打乱，重复 5 次，总共得到 10 个测试结果。Dietterich 在推导公式时，非常巧妙地只利用第一次 2 折的方差来作为代表，配合 10 次结果的均值，推导出了一个修正版的 $t$ 统计量。</p>
+</blockquote>
+<h3 id="McNemar-检验"><a href="#McNemar-检验" class="headerlink" title="McNemar 检验"></a>McNemar 检验</h3><p>McNemar 检验的视角非常清奇，它根本不看两个模型同时对或者同时错的样本，它只盯着发生分歧的样本。<br>假设 A 错了 10 个，B 错了 15 个。<br>McNemar 会画出一个 $2 \times 2$ 的列联表，专门考察：“A 预测对了但 B 预测错的样本数（记为 $e_{01}$）” 和 “A 预测错了但 B 预测对的样本数（记为 $e_{10}$）”。<br>如果这两个算法真的差不多，那么 $e_{01}$ 和 $e_{10}$ 的数量应该极其接近。如果 A 疯狂打脸 B，而 B 几乎无法反击，公式算出来的 $\chi^2$（卡方值）就会飙升，从而判定两者存在显著差异。</p>
+<h3 id="Friedman-检验"><a href="#Friedman-检验" class="headerlink" title="Friedman 检验"></a>Friedman 检验</h3><p>当你提出一个新算法，想要发顶会论文时，你不可能只在 1 个数据集上测，你通常要在 10 个不同的公开数据集上，和另外 4 个经典算法进行对比。这时候 $t$ 检验就失效了。<br>核心逻辑（非参数检验）： 不同数据集的难度天差地别（在数据集 A 上错误率是 10%，在数据集 B 上可能是 40%），直接把错误率加起来毫无意义。<br>Friedman 的做法： 在每一个数据集上，根据错误率给算法排座次（排名 1, 2, 3…）。最后统计每个算法在所有数据集上的平均排名。如果大家都差不多，平均排名应该都挤在中间；如果有个算法极其优秀，它的平均排名会非常接近 1。  </p>
+<blockquote>
+<p>t检验(比较两组数据的“平均值”，判断它们到底是真的有差异，还是仅仅因为抽样导致的随机波动。)：<script type="math/tex">t = \frac{\text{信号（Signal）}}{\text{噪声（Noise）}} = \frac{\bar{d}}{S_d / \sqrt{n}}</script>分子（信号）： $\bar{d}$ 是算法 A 和 B 在 $n$ 次测试中，错误率差值的平均数。如果 A 一直比 B 错得少，这个均值差就会很大。</p>
+</blockquote>
+<h3 id="Nemenyi-后续检验"><a href="#Nemenyi-后续检验" class="headerlink" title="Nemenyi 后续检验"></a>Nemenyi 后续检验</h3><p>Nemenyi 检验会计算出一个极其关键的指标：临界值距离 (Critical Difference, CD)。<br>拿着这个 CD 值，我们去对比任意两个算法的平均排名差距。<br>如果 $|平均排名_A - 平均排名_B| &gt; CD$，就说明它俩的差距大到无法用“运气”来解释，认定它俩有显著差异。<br>如果差距 $\le CD$，就算跑分不一样，在统计学上也只能当做它俩打成了平手。</p>
 <h2 id="偏差与方差"><a href="#偏差与方差" class="headerlink" title="偏差与方差"></a>偏差与方差</h2><p>泛化误差：E(f;D)=$bias^{2}(x)+var(x)+\varepsilon^{2}$<br>噪声：</p>
 <script type="math/tex; mode=display">\varepsilon^2 = \mathbb{E}_D[(y_D - y)^2]</script><p>偏差：</p>
 <script type="math/tex; mode=display">bias^2(x) = (\bar{f}(x) - y)^2</script><p>方差：</p>
