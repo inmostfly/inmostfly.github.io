@@ -21,17 +21,23 @@
     var CONFIG = {"hostname":"inmostflyyy.xin","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":true,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="技术分享与随笔">
-<meta property="og:type" content="website">
-<meta property="og:title" content="inmost&#39;s blog">
-<meta property="og:url" content="https://inmostflyyy.xin/tags/JavaScript/index.html">
+  <meta name="description" content="训练过程中，我们必然需要相应的指标来表明当前模型质量以继续提高模型质量。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="模型评估">
+<meta property="og:url" content="https://inmostflyyy.xin/2026/07/02/%E6%A8%A1%E5%9E%8B%E8%AF%84%E4%BC%B0/index.html">
 <meta property="og:site_name" content="inmost&#39;s blog">
-<meta property="og:description" content="技术分享与随笔">
+<meta property="og:description" content="训练过程中，我们必然需要相应的指标来表明当前模型质量以继续提高模型质量。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://inmostflyyy.xin/uploads/ROC%E7%A4%BA%E6%84%8F.png">
+<meta property="og:image" content="https://inmostflyyy.xin/uploads/%E6%9C%9F%E6%9C%9B%E6%80%BB%E4%BD%93%E4%BB%A3%E4%BB%B7%E6%9B%B2%E7%BA%BF.png">
+<meta property="article:published_time" content="2026-07-02T12:00:34.506Z">
+<meta property="article:modified_time" content="2026-07-05T09:26:04.085Z">
 <meta property="article:author" content="inmost">
+<meta property="article:tag" content="机器学习">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://inmostflyyy.xin/uploads/ROC%E7%A4%BA%E6%84%8F.png">
 
-<link rel="canonical" href="https://inmostflyyy.xin/tags/JavaScript/">
+<link rel="canonical" href="https://inmostflyyy.xin/2026/07/02/%E6%A8%A1%E5%9E%8B%E8%AF%84%E4%BC%B0/">
 
 
 <script id="page-configurations">
@@ -39,12 +45,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>标签: JavaScript | inmost's blog</title>
+  <title>模型评估 | inmost's blog</title>
   
 
 
@@ -200,57 +206,178 @@
         <div class="content-wrap">
           
 
-          <div class="content tag">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">JavaScript
-          <small>标签</small>
-        </h2>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://inmostflyyy.xin/2026/07/02/%E6%A8%A1%E5%9E%8B%E8%AF%84%E4%BC%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="inmost">
+      <meta itemprop="description" content="技术分享与随笔">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="inmost's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          模型评估
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2026-07-02 20:00:34" itemprop="dateCreated datePublished" datetime="2026-07-02T20:00:34+08:00">2026-07-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2026-07-05 17:26:04" itemprop="dateModified" datetime="2026-07-05T17:26:04+08:00">2026-07-05</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.7k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2026</span>
+        <p>训练过程中，我们必然需要相应的指标来表明当前模型质量以继续提高模型质量。</p>
+<span id="more"></span>
+<h2 id="评估方法"><a href="#评估方法" class="headerlink" title="评估方法"></a>评估方法</h2><h3 id="交叉验证法"><a href="#交叉验证法" class="headerlink" title="交叉验证法"></a>交叉验证法</h3><p>从数据集D中划分出k个互斥子集，从D中分层采样得到，每次用其中K-1个子集的并集作为训练集，余下的那个子集作为测试集。（k折交叉验证）</p>
+<ul>
+<li>分层采样与权重采样不同，分层采样通常用于保证样本分布与原始总体分布完全一致，权重采样其采样样本由自设权重给出，不保证与原样本分布一致。</li>
+</ul>
+<blockquote>
+<p>X_train,X_test, y_train, y_test =sklearn.model_selection.train_test_split(train_data,train_target,test_size=0.4, random_state=0,stratify=stratify=train_target)  </p>
+</blockquote>
+<p>输入：</p>
+<ul>
+<li>train_data：所有样本的输入特征矩阵（也就是 X）。  </li>
+<li>train_target：所有样本对应的真实预测结果或标签（也就是 Y）  </li>
+</ul>
+<p>输出：  </p>
+<ul>
+<li>X_train：训练集特征。  </li>
+<li>X_test：测试集特征  </li>
+<li>y_train：训练集标签。  </li>
+<li>y_test：测试集标签。</li>
+</ul>
+<p>然而数据集较大时，留一法（m个样本，令k=m）训练m个模型的计算开销难以忍受。</p>
+<h3 id="自助法"><a href="#自助法" class="headerlink" title="自助法"></a>自助法</h3><p>留出法和交叉验证发容易受样本规模的影响造成估计偏差，留一法计算复杂度太高，自助法是一个好的解决方案。  </p>
+<p>以自助采样法为基础，给定包含m个样本的数据集，我们对它进行采样产生数据集D’，每次随机从D中挑选一个样本，拷贝后放到D’，不去除；反复执行m次后，我们就得到了包含m个样本的数据集。一个样本一直不被取到的概率近似为$1/e$.这样划分出来的D’样本数量就与原样本数量相同，且还有没有出现过的近$\frac{1}{3}$的样本作为测试集（包外估计）</p>
+<blockquote>
+<p>自助法在数据集较小，难以有效划分训练/测试集时很有用；此外，自助法还能从初始数据集中产生多个不同的训练集，这对集成学习等方法有很大好处。同时对样本数据集的抽取改变了其分布，这会产生估计误差。</p>
+</blockquote>
+<h2 id="性能度量"><a href="#性能度量" class="headerlink" title="性能度量"></a>性能度量</h2><p>TP:真正例<br>FN:假反例<br>FP:假正例<br>TN:真反例<br>查准率P:P=$\frac{TP}{TP+FP}$<br>查全率R:R=$\frac{TP}{TP+FN}$</p>
+<p>综合度量其性能：BEP(平衡点Break-Even Point)，当查准率等于查全率时的取值。  </p>
+<script type="math/tex; mode=display">F1=\frac{2*P*R}{P+R}(调和平均，1/F=(1/P+1/R)/2)</script><p>宏：分别计算各个混淆矩阵的查准率与查全率，再macro平均<br>微：直接在计算P和R之前将TP等值计算出之后计算TP等的平均值，再直接算出micro-P,micro-R  </p>
+<p>预测结果对样例进行排序：根据模型为每个测试样例输出的“预测概率”或“置信度得分”，将所有样例从高到低进行排列的过程。  </p>
+<h3 id="ROC与AUC"><a href="#ROC与AUC" class="headerlink" title="ROC与AUC"></a>ROC与AUC</h3><p>ROC曲线：受试者工作特征曲线，纵轴是“真正例率”$TPR = \frac{TP}{TP+FN}$（在所有真实的正样本中，模型挑出了多少），纵轴是“假正例率” $FPR = \frac{FP}{FP+TN}$（在所有真实的负样本中，模型错认了多少）<br>主要受当前分类阈值（Threshold）的逐渐变化影响。</p>
+<p>AUC（Area Under ROC Curve）：即在ROC曲线下的面积。<br>PS:<script type="math/tex">\mathbb{I}( \cdot )</script><br>符号含义为：如果括号里的条件成立（即正例得分 大于 负例得分），它就输出 $1$。如果条件不成立（即正例得分 小于等于 负例得分），它就输出 $0$。</p>
+<script type="math/tex; mode=display">AUC = \frac{1}{|P| \cdot |N|} \sum_{x_i \in P} \sum_{x_j \in N} \mathbb{I}(f(x_i) > f(x_j))</script><p><img src="/uploads/ROC示意.png" alt="ROC"></p>
+<h3 id="期望总体代价曲线"><a href="#期望总体代价曲线" class="headerlink" title="期望总体代价曲线"></a>期望总体代价曲线</h3><p><img src="/uploads/期望总体代价曲线.png" alt="代价"></p>
+<p>所围成的面积即为在所有条件（不同阈值）下学习器的期望总体代价。</p>
+<h2 id="偏差与方差"><a href="#偏差与方差" class="headerlink" title="偏差与方差"></a>偏差与方差</h2><p>泛化误差：E(f;D)=$bias^{2}(x)+var(x)+\varepsilon^{2}$<br>噪声：</p>
+<script type="math/tex; mode=display">\varepsilon^2 = \mathbb{E}_D[(y_D - y)^2]</script><p>偏差：</p>
+<script type="math/tex; mode=display">bias^2(x) = (\bar{f}(x) - y)^2</script><p>方差：</p>
+<script type="math/tex; mode=display">var(x) = \mathbb{E}_D[(f(x; D) - \bar{f}(x))^2]</script>
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
+        
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2026-02-26T15:31:36+08:00"
-              content="2026-02-26">
-          02-26
-        </time>
-      </div>
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>inmost
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://inmostflyyy.xin/2026/07/02/%E6%A8%A1%E5%9E%8B%E8%AF%84%E4%BC%B0/" title="模型评估">https://inmostflyyy.xin/2026/07/02/模型评估/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2026/02/26/JavaScript/" itemprop="url">
-            <span itemprop="name">JavaScript</span>
-          </a>
-      </div>
 
-    </header>
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag"># 机器学习</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2026/04/25/Web%E4%B8%8EAPI/" rel="prev" title="Web与API">
+      <i class="fa fa-chevron-left"></i> Web与API
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
   </article>
-
-    </div>
-  </div>
   
   
-  
-
   
 
 
 
           </div>
           
+    <div class="comments" id="gitalk-container"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -297,6 +424,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%84%E4%BC%B0%E6%96%B9%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">评估方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%A4%E5%8F%89%E9%AA%8C%E8%AF%81%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">交叉验证法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%8A%A9%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">自助法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%A7%E8%83%BD%E5%BA%A6%E9%87%8F"><span class="nav-number">2.</span> <span class="nav-text">性能度量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ROC%E4%B8%8EAUC"><span class="nav-number">2.1.</span> <span class="nav-text">ROC与AUC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%9F%E6%9C%9B%E6%80%BB%E4%BD%93%E4%BB%A3%E4%BB%B7%E6%9B%B2%E7%BA%BF"><span class="nav-number">2.2.</span> <span class="nav-text">期望总体代价曲线</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%81%8F%E5%B7%AE%E4%B8%8E%E6%96%B9%E5%B7%AE"><span class="nav-number">3.</span> <span class="nav-text">偏差与方差</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -576,6 +704,25 @@ setInterval("createtime()",250);
 
   
 
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : 'Ov23liEOyF3lswEdobx3',
+      clientSecret: '50ee8810c54be32d6639666bac22947e97badc9b',
+      repo        : 'inmostfly.github.io',
+      owner       : 'inmostfly',
+      admin       : ['inmostfly'],
+      id          : 'cb92a4b968cf0a1d0690fda0a8b6d2b5',
+        language: 'zh-CN',
+      distractionFreeMode: false
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
 
 </body>
 </html>
