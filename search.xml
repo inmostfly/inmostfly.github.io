@@ -456,7 +456,8 @@
 <h3 id="广义线性模型"><a href="#广义线性模型" class="headerlink" title="广义线性模型"></a>广义线性模型</h3><script type="math/tex; mode=display">y = g^{-1}(\mathbf{w}^T\mathbf{x} + b)</script><ul>
 <li>第一阶段：线性组合（基础）$z = \mathbf{w}^T\mathbf{x} + b$<br>它将所有特征进行线性加权求和，输出一个连续的实数 $z$。其取值范围在数学上可以从 $-\infty$ 延伸到 $+\infty$。  </li>
 <li>第二阶段：非线性映射（核心）$y = g^{-1}(z)$<br>由于现实世界的目标变量 $y$ 并不总是从 $-\infty$ 到 $+\infty$ 的连续实数（比如概率只能在 0 到 1 之间，计数值只能是非负整数），我们需要一个函数对 $z$ 进行数学空间上的映射与转换。<br>$g(\cdot)$ 被称为联系函数（Link Function）。$g^{-1}(\cdot)$ 是它的反函数，被称为逆联系函数（Inverse Link Function）。在机器学习和深度学习领域，它有一个更著名的称呼：激活函数（Activation Function）。  <blockquote>
-<p>联系函数（Link Function）<br>$g(\cdot)$ 的基础定义是：<script type="math/tex">g(\mu) = z</script> 它的数学作用是：将目标变量所在的非线性空间，映射到线性空间。<br>逆联系函数（Inverse Link Function） $g^{-1}(\cdot)$ 的推导：<br>如果我们在上式两边同时取 $g$ 的反函数（解方程求 $\mu$），就得到了实际预测时使用的公式：<script type="math/tex">\mu = g^{-1}(z)</script>它的数学作用是：将计算出的线性结果，映射回目标变量原本的空间。  </p>
+<p>联系函数（Link Function）<br>$g(\cdot)$ 的基础定义是：<script type="math/tex">g(\mu) = z</script><br>它的数学作用是：将目标变量所在的非线性空间，映射到线性空间。<br>逆联系函数（Inverse Link Function） $g^{-1}(\cdot)$ 的推导：<br>如果我们在上式两边同时取 $g$ 的反函数（解方程求 $\mu$），就得到了实际预测时使用的公式：</p>
+<script type="math/tex; mode=display">\mu = g^{-1}(z)</script><p>它的数学作用是：将计算出的线性结果，映射回目标变量原本的空间。  </p>
 </blockquote>
 </li>
 </ul>
