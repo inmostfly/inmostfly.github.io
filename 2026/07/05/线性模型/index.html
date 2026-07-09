@@ -29,7 +29,7 @@
 <meta property="og:description" content="本章重点讨论线性模型在机器学习中的运用">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-07-05T14:22:03.914Z">
-<meta property="article:modified_time" content="2026-07-09T17:32:28.027Z">
+<meta property="article:modified_time" content="2026-07-09T18:08:34.411Z">
 <meta property="article:author" content="inmost">
 <meta property="article:tag" content="数学">
 <meta property="article:tag" content="机器学习">
@@ -241,7 +241,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2026-07-10 01:32:28" itemprop="dateModified" datetime="2026-07-10T01:32:28+08:00">2026-07-10</time>
+                <time title="修改时间：2026-07-10 02:08:34" itemprop="dateModified" datetime="2026-07-10T02:08:34+08:00">2026-07-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -294,7 +294,8 @@
 <script type="math/tex; mode=display">\mathbf{w}^* = (\mathbf{X}^T \mathbf{X})^{-1} \mathbf{X}^T \mathbf{y}</script><p>(注意：这个解析解存在的前提是矩阵 $\mathbf{X}^T \mathbf{X}$ 必须是可逆的/满秩的。)<br>然而在实际应用中由于不满秩或是运算复杂度过高通常无法做到直接对矩阵进行直接求解，这就引入了后面的梯度下降等迭代算法。  </p>
 <p>对数线性回归</p>
 <script type="math/tex; mode=display">\ln(y_i) = \mathbf{w}^T \mathbf{x}_i + b</script><p>如果我们想求出因变量 $y_i$ 本身的预测值，只需对等式两边同时取指数函数（即 $e$ 的次幂）：<script type="math/tex">y_i = e^{\mathbf{w}^T \mathbf{x}_i + b}</script>  </p>
-<script type="math/tex; mode=display">y_i = e^b \cdot e^{w_1 x_{i1}} \cdot e^{w_2 x_{i2}} \cdots e^{w_d x_{id}}</script><p>处理数值范围跨度极大的数据（长尾分布）：当因变量 $y$ 的取值跨越多个数量级时（例如，$10^1$ 到 $10^6$），标准均方误差（MSE）会被极少数的巨大数值主导。取对数可以有效压缩大数值的尺度，使得模型不会过度拟合那些极端大值。<br>消除异方差性（Heteroscedasticity）：在标准线性回归的前提假设中，要求所有样本点的误差方差是恒定的。但很多实际数据呈现“随着 $X$ 的增大，$Y$ 的波动幅度（方差）也随之急剧增大”的现象。对 $Y$ 取对数是一种经典的数学操作，能够有效稳定方差，使其满足线性回归的数学假设。<br>非负性约束：由于 $y = e^{\mathbf{w}^T \mathbf{x} + b}$ 恒大于 0，对数线性回归天然保证了预测结果绝对不会出现负数。</p>
+<script type="math/tex; mode=display">y_i = e^b \cdot e^{w_1 x_{i1}} \cdot e^{w_2 x_{i2}} \cdots e^{w_d x_{id}}</script><p>处理数值范围跨度极大的数据（长尾分布）：当因变量 $y$ 的取值跨越多个数量级时（例如，$10^1$ 到 $10^6$），标准均方误差（MSE）会被极少数的巨大数值主导。取对数可以有效压缩大数值的尺度，使得模型不会过度拟合那些极端大值。  </p>
+<p>消除异方差性（Heteroscedasticity）：在标准线性回归的前提假设中，要求所有样本点的误差方差是恒定的。但很多实际数据呈现“随着 $X$ 的增大，$Y$ 的波动幅度（方差）也随之急剧增大”的现象。对 $Y$ 取对数是一种经典的数学操作，能够有效稳定方差，使其满足线性回归的数学假设。<br>非负性约束：由于 $y = e^{\mathbf{w}^T \mathbf{x} + b}$ 恒大于 0，对数线性回归天然保证了预测结果绝对不会出现负数。</p>
 <h3 id="广义线性模型"><a href="#广义线性模型" class="headerlink" title="广义线性模型"></a>广义线性模型</h3><script type="math/tex; mode=display">y = g^{-1}(\mathbf{w}^T\mathbf{x} + b)</script><ul>
 <li>第一阶段：线性组合（基础）$z = \mathbf{w}^T\mathbf{x} + b$<br>它将所有特征进行线性加权求和，输出一个连续的实数 $z$。其取值范围在数学上可以从 $-\infty$ 延伸到 $+\infty$。  </li>
 <li>第二阶段：非线性映射（核心）$y = g^{-1}(z)$<br>由于现实世界的目标变量 $y$ 并不总是从 $-\infty$ 到 $+\infty$ 的连续实数（比如概率只能在 0 到 1 之间，计数值只能是非负整数），我们需要一个函数对 $z$ 进行数学空间上的映射与转换。<br>$g(\cdot)$ 被称为联系函数（Link Function）。$g^{-1}(\cdot)$ 是它的反函数，被称为逆联系函数（Inverse Link Function）。在机器学习和深度学习领域，它有一个更著名的称呼：激活函数（Activation Function）。  <blockquote>
@@ -319,28 +320,48 @@
 <li>非对角线： 其他位置的元素是不同变量之间的协方差。  </li>
 <li>对称性： 因为变量 $X$ 和 $Y$ 的协方差等于 $Y$ 和 $X$ 的协方差（即 $Cov(X,Y) = Cov(Y,X)$），所以协方差矩阵永远是一个对称矩阵。  </li>
 </ul>
-<h2 id="线性判别分析"><a href="#线性判别分析" class="headerlink" title="线性判别分析"></a>线性判别分析</h2><p>线性判别分析（Linear Discriminant Analysis, 简称 LDA）是一种经典的线性学习方法。在机器学习中，它既可以被用作分类器，也是一种非常常用的数据降维技术。<br>设想在一个二维平面上有两类数据点。LDA 的目标是找到一条直线（即一个投影方向 $\boldsymbol{w}$），将所有的二维数据点垂直投影到这条直线上，从而将二维数据降为一维。为了达到最好的分类效果，这条直线必须满足两个条件：类内散度小：属于同一类的样本，在直线上的投影点要尽可能紧凑、挨在一起。类间散度大：不同类的样本中心，在直线上的投影点要尽可能相距遥远。一句话概括就是：投影后，同类样本尽可能近，异类样本尽可能远。<br>数学推导与目标函数<br>给定一个二分类数据集，两类样本的集合分别为 $X_0$ 和 $X_1$。<br>设 $\boldsymbol{\mu}_0$ 和 $\boldsymbol{\mu}_1$ 为两类样本的均值向量。<br>设 $\boldsymbol{\Sigma}_0$ 和 $\boldsymbol{\Sigma}_1$ 为两类样本的协方差矩阵。我们希望将数据投影到方向为 $\boldsymbol{w}$ 的直线上。一个样本 $\boldsymbol{x}$ 在该方向上的投影值为 $\boldsymbol{w}^T \boldsymbol{x}$。<br>步骤一：最大化类间距离投影后，两类样本中心的距离为：<script type="math/tex">\| \boldsymbol{w}^T \boldsymbol{\mu}_0 - \boldsymbol{w}^T \boldsymbol{\mu}_1 \|_2^2 = \boldsymbol{w}^T (\boldsymbol{\mu}_0 - \boldsymbol{\mu}_1)(\boldsymbol{\mu}_0 - \boldsymbol{\mu}_1)^T \boldsymbol{w}</script>我们定义类间散度矩阵 (Between-class scatter matrix) 为：<script type="math/tex">\boldsymbol{S}_b = (\boldsymbol{\mu}_0 - \boldsymbol{\mu}_1)(\boldsymbol{\mu}_0 - \boldsymbol{\mu}_1)^T</script>所以类间距离可以写为 $\boldsymbol{w}^T \boldsymbol{S}_b \boldsymbol{w}$。<br>步骤二：最小化类内方差投影后，两类样本各自的方差分别为 $\boldsymbol{w}^T \boldsymbol{\Sigma}_0 \boldsymbol{w}$ 和 $\boldsymbol{w}^T \boldsymbol{\Sigma}_1 \boldsymbol{w}$。我们希望这两者之和尽可能小。我们定义类内散度矩阵 (Within-class scatter matrix) 为：<script type="math/tex">\boldsymbol{S}_w = \boldsymbol{\Sigma}_0 + \boldsymbol{\Sigma}_1</script>所以投影后的总类内方差可以写为 $\boldsymbol{w}^T \boldsymbol{S}_w \boldsymbol{w}$。<br>步骤三：构建目标函数综合以上两点，LDA 的优化目标是最大化类间距离与类内方差的比值。这个目标函数 $J$ 在数学上被称为广义瑞利商 (Generalized Rayleigh Quotient)：<script type="math/tex">J(\boldsymbol{W}) = \frac{Tr(\boldsymbol{W}^T \boldsymbol{S}_b \boldsymbol{W})}{Tr(\boldsymbol{W}^T \boldsymbol{S}_w \boldsymbol{W})}</script>优化这个问题（通常通过对 $\boldsymbol{w}$ 求导并令其为零，结合拉格朗日乘子法），可以求得最优的投影方向 $\boldsymbol{w}$。在二分类问题中，其闭式解的解析表达为：<script type="math/tex">\boldsymbol{w} = \boldsymbol{S}_w^{-1} (\boldsymbol{\mu}_0 - \boldsymbol{\mu}_1)</script>  </p>
-<p>$\boldsymbol{S}_t$ 代表的是总散度矩阵<br>衡量的是整个数据集（忽略所有类别标签）在空间中的总体分散程度。假设我们有 $N$ 个样本，集合为 $X = \{\boldsymbol{x}_1, \boldsymbol{x}_2, \dots, \boldsymbol{x}_N\}$。首先，我们计算所有这 $N$ 个样本的全局均值向量 (Global Mean)，记为 $\boldsymbol{\mu}$：<script type="math/tex">\boldsymbol{\mu} = \frac{1}{N} \sum_{i=1}^N \boldsymbol{x}_i</script><br>那么，总散度矩阵 $\boldsymbol{S}_t$ 的定义为所有样本点到全局均值点距离的平方和（以外积形式表示）：<script type="math/tex">\boldsymbol{S}_t = \sum_{i=1}^N (\boldsymbol{x}_i - \boldsymbol{\mu})(\boldsymbol{x}_i - \boldsymbol{\mu})^T</script>  </p>
-<p>如果将其除以 $N-1$，它就是整个数据集的全局协方差矩阵。<br>方差分解定理：<script type="math/tex">\boldsymbol{S}_t = \boldsymbol{S}_w + \boldsymbol{S}_b</script>  </p>
-<p>总而言之：  </p>
+<h2 id="线性判别分析"><a href="#线性判别分析" class="headerlink" title="线性判别分析"></a>线性判别分析</h2><p>线性判别分析（Linear Discriminant Analysis, 简称 LDA）是一种经典的线性学习方法。在机器学习中，它既可以被用作分类器，也是一种非常常用的数据降维技术。<br>设想在一个二维平面上有两类数据点。LDA 的目标是找到一条直线（即一个投影方向 $\boldsymbol{w}$），将所有的二维数据点垂直投影到这条直线上，从而将二维数据降为一维。为了达到最好的分类效果，这条直线必须满足两个条件：类内散度小：属于同一类的样本，在直线上的投影点要尽可能紧凑、挨在一起。类间散度大：不同类的样本中心，在直线上的投影点要尽可能相距遥远。一句话概括就是：投影后，同类样本尽可能近，异类样本尽可能远。<br>数学推导与目标函数<br>给定一个二分类数据集，两类样本的集合分别为 $X_0$ 和 $X_1$。<br>设 $\boldsymbol{\mu}_0$ 和 $\boldsymbol{\mu}_1$ 为两类样本的均值向量。<br>设 $\boldsymbol{\Sigma}_0$ 和 $\boldsymbol{\Sigma}_1$ 为两类样本的协方差矩阵。<br>我们希望将数据投影到方向为 $\boldsymbol{w}$ 的直线上。一个样本 $\boldsymbol{x}$ 在该方向上的投影值为 $\boldsymbol{w}^T \boldsymbol{x}$。<br>步骤一：最大化类间距离投影后，两类样本中心的距离为：</p>
+<script type="math/tex; mode=display">\| \boldsymbol{w}^T \boldsymbol{\mu}_0 - \boldsymbol{w}^T \boldsymbol{\mu}_1 \|_2^2 = \boldsymbol{w}^T (\boldsymbol{\mu}_0 - \boldsymbol{\mu}_1)(\boldsymbol{\mu}_0 - \boldsymbol{\mu}_1)^T \boldsymbol{w}</script><p>我们定义类间散度矩阵 (Between-class scatter matrix) 为：</p>
+<script type="math/tex; mode=display">\boldsymbol{S}_b = (\boldsymbol{\mu}_0 - \boldsymbol{\mu}_1)(\boldsymbol{\mu}_0 - \boldsymbol{\mu}_1)^T</script><p>所以类间距离可以写为 $\boldsymbol{w}^T \boldsymbol{S}_b \boldsymbol{w}$。  </p>
+<p>步骤二：最小化类内方差投影后，两类样本各自的方差分别为 $\boldsymbol{w}^T \boldsymbol{\Sigma}_0 \boldsymbol{w}$ 和 $\boldsymbol{w}^T \boldsymbol{\Sigma}_1 \boldsymbol{w}$。我们希望这两者之和尽可能小。我们定义类内散度矩阵 (Within-class scatter matrix) 为：</p>
+<script type="math/tex; mode=display">\boldsymbol{S}_w = \boldsymbol{\Sigma}_0 + \boldsymbol{\Sigma}_1</script><p>所以投影后的总类内方差可以写为 $\boldsymbol{w}^T \boldsymbol{S}_w \boldsymbol{w}$。  </p>
+<p>步骤三：构建目标函数综合以上两点，LDA 的优化目标是最大化类间距离与类内方差的比值。这个目标函数 $J$ 在数学上被称为广义瑞利商 (Generalized Rayleigh Quotient)：</p>
+<script type="math/tex; mode=display">J(\boldsymbol{W}) = \frac{Tr(\boldsymbol{W}^T \boldsymbol{S}_b \boldsymbol{W})}{Tr(\boldsymbol{W}^T \boldsymbol{S}_w \boldsymbol{W})}</script><p>优化这个问题（通常通过对 $\boldsymbol{w}$ 求导并令其为零，结合拉格朗日乘子法），可以求得最优的投影方向 $\boldsymbol{w}$。在二分类问题中，其闭式解的解析表达为：</p>
+<script type="math/tex; mode=display">\boldsymbol{w} = \boldsymbol{S}_w^{-1} (\boldsymbol{\mu}_0 - \boldsymbol{\mu}_1)</script><p>$\boldsymbol{S}_t$ 代表的是总散度矩阵  </p>
+<p>衡量的是整个数据集（忽略所有类别标签）在空间中的总体分散程度。假设我们有 $N$ 个样本，集合为 $X = \{\boldsymbol{x}_1, \boldsymbol{x}_2, \dots, \boldsymbol{x}_N\}$。<br>首先，我们计算所有这 $N$ 个样本的全局均值向量 (Global Mean)，记为 $\boldsymbol{\mu}$：</p>
+<script type="math/tex; mode=display">\boldsymbol{\mu} = \frac{1}{N} \sum_{i=1}^N \boldsymbol{x}_i</script><p>那么，总散度矩阵 $\boldsymbol{S}_t$ 的定义为所有样本点到全局均值点距离的平方和（以外积形式表示）：</p>
+<script type="math/tex; mode=display">\boldsymbol{S}_t = \sum_{i=1}^N (\boldsymbol{x}_i - \boldsymbol{\mu})(\boldsymbol{x}_i - \boldsymbol{\mu})^T</script><p>如果将其除以 $N-1$，它就是整个数据集的全局协方差矩阵。  </p>
+<p>方差分解定理：</p>
+<script type="math/tex; mode=display">\boldsymbol{S}_t = \boldsymbol{S}_w + \boldsymbol{S}_b</script><p>总而言之：  </p>
 <ul>
 <li>$\boldsymbol{S}_w$ (类内散度)：衡量每个样本点到其所属类别的均值点的距离。代表了分类无法解释的内部波动。  </li>
 <li>$\boldsymbol{S}_b$ (类间散度)：衡量各个类别的均值点到全局均值点的距离。代表了由不同类别差异带来的波动。  </li>
 <li>$\boldsymbol{S}_t$ (总散度)：衡量每个样本点到全局均值点的距离。</li>
 </ul>
-<p>矩阵的迹：<br>从定义上看，对于一个 $n \times n$ 的方阵 $A$，它的迹是主对角线元素的累加：<script type="math/tex">Tr(A) = \sum_{i=1}^n a_{ii}= \sum_{i=1}^n \lambda_i</script><br>矩阵的迹等于它所有特征值之和。<br>特征值（$\lambda$）的意义： 代表了线性变换在各个主要特征方向上的拉伸或压缩比例。<br>迹的物理意义： 它衡量了这个矩阵在所有特征方向上“总的拉伸程度”，迹最核心的性质——相似不变性。<script type="math/tex">Tr(P^{-1}AP) = Tr(A)</script></p>
-<p>向量的内积：<script type="math/tex">\boldsymbol{v}^T \boldsymbol{v} = \begin{bmatrix} v_1 & v_2 \end{bmatrix} \begin{bmatrix} v_1 \\ v_2 \end{bmatrix} = v_1 \cdot v_1 + v_2 \cdot v_2 = v_1^2 + v_2^2</script>  </p>
-<p>向量的外积：<script type="math/tex">\boldsymbol{v} \boldsymbol{v}^T = \begin{bmatrix} v_1 \\ v_2 \end{bmatrix} \begin{bmatrix} v_1 & v_2 \end{bmatrix} = \begin{bmatrix} v_1^2 & v_1v_2 \\ v_2v_1 & v_2^2 \end{bmatrix}</script><br>内积只保留了各个维度自身的纯粹平方（长度信息），而外积则把不同维度之间的交叉关系（协方差信息）全部记录了下来。  </p>
-<p>矩阵迹的循环置换性质 (Cyclic Permutation Property):<br>这是矩阵代数中一个极其核心的定理。它的基础定义是：对于两个矩阵 $A$ 和 $B$（只要它们的维度满足相乘条件），调换相乘的顺序，迹的值不变：<script type="math/tex">Tr(AB) = Tr(BA)</script>即使扩展到多个矩阵相乘，只要保持相对顺序的“循环”移动，迹依然不变：<script type="math/tex">Tr(ABC) = Tr(BCA) = Tr(CAB)</script>(注意：必须是首尾相接的循环移位，通常 $Tr(ABC) \neq Tr(BAC)$)</p>
+<p>矩阵的迹：<br>从定义上看，对于一个 $n \times n$ 的方阵 $A$，它的迹是主对角线元素的累加：</p>
+<script type="math/tex; mode=display">Tr(A) = \sum_{i=1}^n a_{ii}= \sum_{i=1}^n \lambda_i</script><p>矩阵的迹等于它所有特征值之和。  </p>
+<p>特征值（$\lambda$）的意义： 代表了线性变换在各个主要特征方向上的拉伸或压缩比例。  </p>
+<p>迹的物理意义： 它衡量了这个矩阵在所有特征方向上“总的拉伸程度”，迹最核心的性质——相似不变性。</p>
+<script type="math/tex; mode=display">Tr(P^{-1}AP) = Tr(A)</script><p>向量的内积：</p>
+<script type="math/tex; mode=display">\boldsymbol{v}^T \boldsymbol{v} = \begin{bmatrix} v_1 & v_2 \end{bmatrix} \begin{bmatrix} v_1 \\ v_2 \end{bmatrix} = v_1 \cdot v_1 + v_2 \cdot v_2 = v_1^2 + v_2^2</script><p>向量的外积：</p>
+<script type="math/tex; mode=display">\boldsymbol{v} \boldsymbol{v}^T = \begin{bmatrix} v_1 \\ v_2 \end{bmatrix} \begin{bmatrix} v_1 & v_2 \end{bmatrix} = \begin{bmatrix} v_1^2 & v_1v_2 \\ v_2v_1 & v_2^2 \end{bmatrix}</script><p>内积只保留了各个维度自身的纯粹平方（长度信息），而外积则把不同维度之间的交叉关系（协方差信息）全部记录了下来。  </p>
+<p>矩阵迹的循环置换性质 (Cyclic Permutation Property):<br>这是矩阵代数中一个极其核心的定理。它的基础定义是：对于两个矩阵 $A$ 和 $B$（只要它们的维度满足相乘条件），调换相乘的顺序，迹的值不变：<script type="math/tex">Tr(AB) = Tr(BA)</script>即使扩展到多个矩阵相乘，只要保持相对顺序的“循环”移动，迹依然不变：<script type="math/tex">Tr(ABC) = Tr(BCA) = Tr(CAB)</script></p>
+<p>(注意：必须是首尾相接的循环移位，通常 $Tr(ABC) \neq Tr(BAC)$)</p>
 <h2 id="多分类学习"><a href="#多分类学习" class="headerlink" title="多分类学习"></a>多分类学习</h2><p>多分类学习（Multi-class Classification）是机器学习中的一个核心任务，旨在将样本划分到多个（大于两个）互斥的类别中。形式化地，假设特征空间为$\mathcal{X}$，标签空间为$\mathcal{Y} = {c_1, c_2, \dots, c_N}$，其中$N&gt;2$，我们的目标是学习一个映射函数$f: \mathcal{X} \rightarrow \mathcal{Y}$<br>解决多分类问题通常有两种主流技术路线：将多分类任务拆分为多个二分类任务，以及直接使用原生支持多分类的算法。  </p>
 <ul>
 <li>一对一 (One-vs-One, OvO)<br>机制：将$N$个类别两两配对，训练$\frac{N(N-1)}{2}$个二分类器。测试时，新样本提交给所有分类器，得到$\frac{N(N-1)}{2}$个预测结果，最终通过投票法（Voting）决定最终类别。特点：每个分类器只使用两个类别的训练数据。虽然分类器数量多，但在类别数量$N$较大时，单个分类器的训练时间通常较短。  </li>
 <li>一对其余 (One-vs-Rest, OvR / One-vs-All, OvA)<br>机制：针对每个类别$c_i$，训练一个二分类器，将$c_i$视为正例，其余所有类别视为反例。共需训练$N$个分类器。测试时，若只有一个分类器预测为正类，则对应的类别即为最终结果；若有多个，则通常考虑各分类器的预测置信度，选择置信度最大的类别。特点：分类器数量少于OvO，但每个分类器在训练时需要使用全部训练数据，且容易面临严重的类别不平衡（Class Imbalance）问题。  </li>
-<li>多对多 (Many-vs-Many, MvM)机制：每次将若干个类作为正类，若干个其他类作为反类。最典型的技术是纠错输出码 (Error Correcting Output Codes, ECOC)。过程：编码：对$N$个类别进行$M$次划分，形成一个长度为$M$的编码矩阵。每次划分训练一个二分类器。解码：测试时，样本经过$M$个分类器得到一个预测编码，计算该预测编码与各个类别标准编码之间的距离（如海明距离(两个等长字符串或二进制序列在相同位置上不同字符的个数)或欧氏距离），距离最小的类别即为预测结果。特点：具有一定的容错能力。如果某个分类器预测错误，只要编码足够长且距离足够大，最终仍可能解码出正确的类别。<br>(多对多用大白话来讲，就是M多个分类器，对N个类别有自己的划分判断，最终每个类别会有M个被分类器划分出来的指标，也就是编码，输入测试样例，多个分类器同样会对其进行预测，观察当前编码和哪个类编码距离最近)</li>
+<li>多对多 (Many-vs-Many, MvM)机制：每次将若干个类作为正类，若干个其他类作为反类。最典型的技术是纠错输出码 (Error Correcting Output Codes, ECOC)。过程：编码：对$N$个类别进行$M$次划分，形成一个长度为$M$的编码矩阵。每次划分训练一个二分类器。解码：测试时，样本经过$M$个分类器得到一个预测编码，计算该预测编码与各个类别标准编码之间的距离（如海明距离(两个等长字符串或二进制序列在相同位置上不同字符的个数)或欧氏距离），距离最小的类别即为预测结果。特点：具有一定的容错能力。如果某个分类器预测错误，只要编码足够长且距离足够大，最终仍可能解码出正确的类别。  </li>
 </ul>
-<blockquote>
-<p>关于投票法：<br> 硬投票 (Hard Voting)原理：只看每个分类器预测的最终类别标签，得票最多的类别即为最终预测结果。公式：若有 $K$ 个类别 $C_1, C_2, \dots, C_K$，投票规则可表示为：$\^{y}=\arg \max _{c}\sum _{i=1}^{T}\mathbb{I}(h_{i}(x)=c)$(其中 $T$ 为基模型数量，$\mathbb{I}$ 为指示函数，当预测正确时为 1，否则为 0)<br> 软投票 (Soft Voting)原理：不仅看最终类别，还看每个分类器给出的预测概率（置信度）。它将所有分类器对同一类别的概率进行平均，概率之和最大的类别胜出。优势：充分利用了分类器的置信度信息，通常比硬投票表现更精确。公式：$\^{y}=\arg \max _{c}\sum _{i=1}^{T}P_{i}(y=c|x)$</p>
-</blockquote>
+<p>(多对多用大白话来讲，就是M多个分类器，对N个类别有自己的划分判断，最终每个类别会有M个被分类器划分出来的指标，也就是编码，输入测试样例，多个分类器同样会对其进行预测，观察当前编码和哪个类编码距离最近)</p>
+<p>关于投票法：  </p>
+<ul>
+<li><p>硬投票 (Hard Voting)原理：只看每个分类器预测的最终类别标签，得票最多的类别即为最终预测结果。公式：若有 $K$ 个类别 $C_1, C_2, \dots, C_K$，投票规则可表示为：</p>
+<p>${y}=\arg \max _{c}\sum _{i=1}^{T}\mathbb{I}(h_{i}(x)=c)$(其中 $T$ 为基模型数量，$\mathbb{I}$ 为指示函数，当预测正确时为 1，否则为 0)  </p>
+</li>
+<li><p>软投票 (Soft Voting)原理：不仅看最终类别，还看每个分类器给出的预测概率（置信度）。它将所有分类器对同一类别的概率进行平均，概率之和最大的类别胜出。优势：充分利用了分类器的置信度信息，通常比硬投票表现更精确。公式：${y}=\arg \max _{c}\sum _{i=1}^{T}P_{i}(y=c|x)$</p>
+</li>
+</ul>
 <h2 id="类别不平衡问题"><a href="#类别不平衡问题" class="headerlink" title="类别不平衡问题"></a>类别不平衡问题</h2><p>类别不平衡（Class Imbalance）是机器学习和深度学习中极常见的现象，指的是分类任务中不同类别的样本数量存在显著差异。例如，在欺诈检测、罕见病诊断或工业缺陷检测中，正类（少数类，通常是我们关心的目标）可能仅占总体数据的1%，而负类（多数类）占据99%。  </p>
 <p>类别不平衡会导致如下两个问题：  </p>
 <p>准确率悖论 (Accuracy Paradox)<br>大多数标准分类算法（如SVM、逻辑回归、标准神经网络）的优化目标是最小化全局错误率。在1:99的不平衡数据中，模型哪怕不提取任何特征，直接将所有样本预测为多数类，其准确率（Accuracy）也能达到99%。模型学到的不是特征与标签的映射关系，而是数据的先验概率。<br>梯度被多数类主导<br>在神经网络的反向传播中，损失函数（如标准交叉熵）是所有样本损失的累加。由于多数类样本数量极大，其产生的累积梯度会主导网络权重的更新方向，导致少数类特征的提取网络层“得不到足够的更新信号”，从而被淹没。</p>
@@ -353,12 +374,18 @@
 </ul>
 <h2 id="范数"><a href="#范数" class="headerlink" title="范数"></a>范数</h2><p>范数（Norm）是一个用于衡量向量“大小”或“长度”的函数。它将向量空间中的每一个向量映射为一个非负实数。<br>一个函数 $f(x)$ 如果能被称为范数，记作 $||x||$，必须满足以下三个数学性质：  </p>
 <ul>
-<li>非负性与正定性：对于任意向量 $x$，都有 $||x|| \ge 0$，且 $||x|| = 0$ 当且仅当 $x = \mathbf{0}$。  </li>
+<li>非负性与正定性：对于任意向量 $x$，都有 $||x|| \ge 0$，且 $||x|| = 0$ 当且仅当 $x = \mathbf{0}$  </li>
 <li>齐次性：对于任意实数 $a$ 和向量 $x$，有 $||ax|| = |a| \cdot ||x||$。  </li>
 <li>三角不等式：对于任意向量 $x$ 和 $y$，有 $||x + y|| \le ||x|| + ||y||$。<br>最通用的范数定义是 $L_p$ 范数，给定一个 $n$ 维向量 $x = [x_1, x_2, \dots, x_n]^T$，其定义为：  <script type="math/tex; mode=display">||x||_p = \left( \sum_{i=1}^n |x_i|^p \right)^{\frac{1}{p}}</script></li>
 </ul>
-<h3 id="L-0-范数"><a href="#L-0-范数" class="headerlink" title="$L_0$ 范数"></a>$L_0$ 范数</h3><p>定义：向量中非零元素的个数。<br>数学表达：<script type="math/tex">||x||_0 = \sum_{i=1}^n \mathbb{I}(x_i \neq 0)</script><br>其中 $\mathbb{I}$ 是指示函数，条件成立时为 1，否则为 0。<br>实际意义与应用：$L_0$ 范数直接度量了向量的稀疏度（Sparsity）。在机器学习特征选择中，我们希望模型的权重向量尽可能稀疏（即大部分特征权重为 0，只保留最关键的特征）。<br>最小化 $L_0$ 范数就是寻找最稀疏的最优解。计算难点：由于 $L_0$ 范数是离散的，最小化 $L_0$ 范数是一个 NP-hard 问题。在连续空间中对其求导和优化是极度困难的。</p>
-<h3 id="L-1-范数"><a href="#L-1-范数" class="headerlink" title="$L_1$ 范数"></a>$L_1$ 范数</h3><p>$L_1$ 范数是向量中各个元素绝对值之和，即为曼哈顿距离（Manhattan Distance）。<br>定义：向量中所有元素绝对值的和。数学表达：<script type="math/tex">||x||_1 = \sum_{i=1}^n |x_i|</script>实际意义与应用：$L_1$ 范数在机器学习中最著名的是在回归模型中作为正则化项，被称为 Lasso 回归。<br>为什么常用 $L_1$：$L_1$ 范数是 $L_0$ 范数的最优凸近似。它不仅是一个连续的凸函数（易于通过梯度下降等数学方法求解），而且天然具有产生稀疏解的特性。在约束优化问题中，$L_1$ 范数的几何形状使得最优解极易落在坐标轴上，从而强制某些参数精确为 0。理解范数特性（尤其是为何产生稀疏性）的最佳方式是观察它们的“单位球”（Unit Ball），即满足 $||x||_p = 1$ 的所有点在空间中的几何分布。</p>
+<h3 id="L-0-范数"><a href="#L-0-范数" class="headerlink" title="$L_0$ 范数"></a>$L_0$ 范数</h3><p>定义：向量中非零元素的个数。<br>数学表达：<script type="math/tex">||x||_0 = \sum_{i=1}^n \mathbb{I}(x_i \neq 0)</script></p>
+<p>其中 $\mathbb{I}$ 是指示函数，条件成立时为 1，否则为 0。  </p>
+<p>实际意义与应用：$L_0$ 范数直接度量了向量的稀疏度（Sparsity）。在机器学习特征选择中，我们希望模型的权重向量尽可能稀疏（即大部分特征权重为 0，只保留最关键的特征）。  </p>
+<p>最小化 $L_0$ 范数就是寻找最稀疏的最优解。计算难点：由于 $L_0$ 范数是离散的，最小化 $L_0$ 范数是一个 NP-hard 问题。在连续空间中对其求导和优化是极度困难的。</p>
+<h3 id="L-1-范数"><a href="#L-1-范数" class="headerlink" title="$L_1$ 范数"></a>$L_1$ 范数</h3><p>$L_1$ 范数是向量中各个元素绝对值之和，即为曼哈顿距离（Manhattan Distance）。  </p>
+<p>定义：向量中所有元素绝对值的和。数学表达：<script type="math/tex">||x||_1 = \sum_{i=1}^n |x_i|</script>实际意义与应用：$L_1$ 范数在机器学习中最著名的是在回归模型中作为正则化项，被称为 Lasso 回归。  </p>
+<p>为什么常用 $L_1$：</p>
+<p>$L_1$ 范数是 $L_0$ 范数的最优凸近似。它不仅是一个连续的凸函数（易于通过梯度下降等数学方法求解），而且天然具有产生稀疏解的特性。在约束优化问题中，$L_1$ 范数的几何形状使得最优解极易落在坐标轴上，从而强制某些参数精确为 0。理解范数特性（尤其是为何产生稀疏性）的最佳方式是观察它们的“单位球”（Unit Ball），即满足 $||x||_p = 1$ 的所有点在空间中的几何分布。</p>
 
     </div>
 
