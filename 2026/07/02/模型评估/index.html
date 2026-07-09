@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://inmostflyyy.xin/uploads/ROC%E7%A4%BA%E6%84%8F.png">
 <meta property="og:image" content="https://inmostflyyy.xin/uploads/%E6%9C%9F%E6%9C%9B%E6%80%BB%E4%BD%93%E4%BB%A3%E4%BB%B7%E6%9B%B2%E7%BA%BF.png">
 <meta property="article:published_time" content="2026-07-02T12:00:34.506Z">
-<meta property="article:modified_time" content="2026-07-05T17:04:37.831Z">
+<meta property="article:modified_time" content="2026-07-09T10:31:58.863Z">
 <meta property="article:author" content="inmost">
 <meta property="article:tag" content="机器学习">
 <meta name="twitter:card" content="summary">
@@ -243,7 +243,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2026-07-06 01:04:37" itemprop="dateModified" datetime="2026-07-06T01:04:37+08:00">2026-07-06</time>
+                <time title="修改时间：2026-07-09 18:31:58" itemprop="dateModified" datetime="2026-07-09T18:31:58+08:00">2026-07-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -268,7 +268,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>3.9k</span>
+              <span>4.1k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -314,15 +314,16 @@
 <blockquote>
 <p>自助法在数据集较小，难以有效划分训练/测试集时很有用；此外，自助法还能从初始数据集中产生多个不同的训练集，这对集成学习等方法有很大好处。同时对样本数据集的抽取改变了其分布，这会产生估计误差。</p>
 </blockquote>
-<h2 id="性能度量"><a href="#性能度量" class="headerlink" title="性能度量"></a>性能度量</h2><p>TP:真正例；FN:假反例；FP:假正例；TN:真反例<br>查准率P:P=$\frac{TP}{TP+FP}$<br>查全率R:R=$\frac{TP}{TP+FN}$</p>
+<h2 id="性能度量"><a href="#性能度量" class="headerlink" title="性能度量"></a>性能度量</h2><p>TP:真正例；FN:假反例；FP:假正例；TN:真反例<br>查准率P:P=$\frac{TP}{TP+FP}$<br>查全率/召回率R:R=$\frac{TP}{TP+FN}$</p>
 <p>综合度量其性能：BEP(平衡点Break-Even Point)，当查准率等于查全率时的取值。  </p>
-<script type="math/tex; mode=display">F1=\frac{2*P*R}{P+R}(调和平均，1/F=(1/P+1/R)/2)</script><p>宏：分别计算各个混淆矩阵的查准率与查全率，再macro平均<br>微：直接在计算P和R之前将TP等值计算出之后计算TP等的平均值，再直接算出micro-P,micro-R  </p>
+<script type="math/tex; mode=display">F1=\frac{2*P*R}{P+R}(调和平均，1/F=(1/P+1/R)/2)</script><p>宏：分别计算各个混淆矩阵的查准率与查全率，再宏平均<br>微：直接在计算P和R之前将TP等值计算出之后计算TP等的平均值，再直接算出micro-P,micro-R  </p>
 <p>预测结果对样例进行排序：根据模型为每个测试样例输出的“预测概率”或“置信度得分”，将所有样例从高到低进行排列的过程。  </p>
 <h3 id="ROC与AUC"><a href="#ROC与AUC" class="headerlink" title="ROC与AUC"></a>ROC与AUC</h3><p>ROC曲线：受试者工作特征曲线，纵轴是“真正例率”$TPR = \frac{TP}{TP+FN}$（在所有真实的正样本中，模型挑出了多少），纵轴是“假正例率” $FPR = \frac{FP}{FP+TN}$（在所有真实的负样本中，模型错认了多少）<br>主要受当前分类阈值（Threshold）的逐渐变化影响。</p>
 <p>AUC（Area Under ROC Curve）：即在ROC曲线下的面积。<br>PS:<script type="math/tex">\mathbb{I}( \cdot )</script><br>符号含义为：如果括号里的条件成立（即正例得分 大于 负例得分），它就输出 $1$。如果条件不成立（即正例得分 小于等于 负例得分），它就输出 $0$。</p>
 <script type="math/tex; mode=display">AUC = \frac{1}{|P| \cdot |N|} \sum_{x_i \in P} \sum_{x_j \in N} \mathbb{I}(f(x_i) > f(x_j))</script><p><img src="/uploads/ROC示意.png" alt="ROC"></p>
-<h3 id="期望总体代价曲线"><a href="#期望总体代价曲线" class="headerlink" title="期望总体代价曲线"></a>期望总体代价曲线</h3><p><img src="/uploads/期望总体代价曲线.png" alt="代价"></p>
+<h3 id="期望总体代价与代价曲线"><a href="#期望总体代价与代价曲线" class="headerlink" title="期望总体代价与代价曲线"></a>期望总体代价与代价曲线</h3><p><img src="/uploads/期望总体代价曲线.png" alt="代价"></p>
 <p>所围成的面积即为在所有条件（不同阈值）下学习器的期望总体代价。</p>
+<h3 id="PR曲线"><a href="#PR曲线" class="headerlink" title="PR曲线"></a>PR曲线</h3><p>PR曲线（Precision-Recall Curve）是机器学习中用于评估二分类模型性能的重要工具。它以召回率（Recall）为横轴，精确率（Precision）为纵坐标，直观展示了模型在不同分类阈值下的精确率与召回率的平衡关系。<br>与 ROC 曲线下的面积（AUC-ROC）类似，PR 曲线下的面积被称为 AUC-PR（或 Average Precision, AP）。AUC-PR 值越接近 1，代表模型综合性能越好。</p>
 <h2 id="比较检验"><a href="#比较检验" class="headerlink" title="比较检验"></a>比较检验</h2><h3 id="假设检验"><a href="#假设检验" class="headerlink" title="假设检验"></a>假设检验</h3><p>原假设 $H_0$： 认为算法 A 和算法 B 的真实性能完全一样，它们跑分出来的差异纯粹是因为测试集抽样产生的随机波动。<br>目标： 通过收集数据（跑实验），计算出一个概率（$p$ 值）。如果 $p$ 值极小（比如 $&lt; 0.05$），说明在二者真的一样的情况下，出现这么大差距的概率比中彩票还低。此时，我们就可以拒绝原假设，宣布 A 和 B 确实存在显著差异。</p>
 <blockquote>
 <p>$P$ 值（P-value）是假设检验的最终宣判结果。它的全称是 Probability Value。<br>它的严格统计学定义是：在原假设（$H_0$）成立的前提下，观察到当前数据，甚至比当前数据更极端情况的概率。<br>$P$ 值并不是凭空捏造的，它就是利用刚刚算出来的 $t$ 值，在理论分布曲线上“切”出来的面积。具体计算步骤如下:</p>
@@ -342,7 +343,7 @@
 <h3 id="Friedman-检验"><a href="#Friedman-检验" class="headerlink" title="Friedman 检验"></a>Friedman 检验</h3><p>当你提出一个新算法，想要发顶会论文时，你不可能只在 1 个数据集上测，你通常要在 10 个不同的公开数据集上，和另外 4 个经典算法进行对比。这时候 $t$ 检验就失效了。<br>核心逻辑（非参数检验）： 不同数据集的难度天差地别（在数据集 A 上错误率是 10%，在数据集 B 上可能是 40%），直接把错误率加起来毫无意义。<br>Friedman 的做法： 在每一个数据集上，根据错误率给算法排座次（排名 1, 2, 3…）。最后统计每个算法在所有数据集上的平均排名。如果大家都差不多，平均排名应该都挤在中间；如果有个算法极其优秀，它的平均排名会非常接近 1。  </p>
 <blockquote>
 <p>t检验(比较两组数据的“平均值”，判断它们到底是真的有差异，还是仅仅因为抽样导致的随机波动。)：  </p>
-<script type="math/tex; mode=display">t = \frac{\text{信号（Signal）}}{\text{噪声（Noise）}} = \frac{\bar{d}}{S_d / \sqrt{n}}$$ $$或t = \frac{Z}{\sqrt{\chi^2 / df}}</script><p>分子（信号）： $\bar{d}$ 是算法 A 和 B 在 $n$ 次测试中，错误率差值的平均数。如果 A 一直比 B 错得少，这个均值差就会很大。</p>
+<script type="math/tex; mode=display">t = \frac{\text{信号（Signal）}}{\text{噪声（Noise）}} = \frac{\bar{d}}{S_d / \sqrt{n}}= \frac{Z}{\sqrt{\chi^2 / df}}</script><p>分子（信号）： $\bar{d}$ 是算法 A 和 B 在 $n$ 次测试中，错误率差值的平均数。如果 A 一直比 B 错得少，这个均值差就会很大。</p>
 </blockquote>
 <h3 id="Nemenyi-后续检验"><a href="#Nemenyi-后续检验" class="headerlink" title="Nemenyi 后续检验"></a>Nemenyi 后续检验</h3><p>Nemenyi 检验会计算出一个极其关键的指标：临界值距离 (Critical Difference, CD)。<br>拿着这个 CD 值，我们去对比任意两个算法的平均排名差距。<br>如果 $|平均排名_A - 平均排名_B| &gt; CD$，就说明它俩的差距大到无法用“运气”来解释，认定它俩有显著差异。<br>如果差距 $\le CD$，就算跑分不一样，在统计学上也只能当做它俩打成了平手。</p>
 <h2 id="偏差与方差"><a href="#偏差与方差" class="headerlink" title="偏差与方差"></a>偏差与方差</h2><p>泛化误差：E(f;D)=$bias^{2}(x)+var(x)+\varepsilon^{2}$<br>噪声：</p>
@@ -447,7 +448,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%84%E4%BC%B0%E6%96%B9%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">评估方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%A4%E5%8F%89%E9%AA%8C%E8%AF%81%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">交叉验证法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%8A%A9%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">自助法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%A7%E8%83%BD%E5%BA%A6%E9%87%8F"><span class="nav-number">2.</span> <span class="nav-text">性能度量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ROC%E4%B8%8EAUC"><span class="nav-number">2.1.</span> <span class="nav-text">ROC与AUC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%9F%E6%9C%9B%E6%80%BB%E4%BD%93%E4%BB%A3%E4%BB%B7%E6%9B%B2%E7%BA%BF"><span class="nav-number">2.2.</span> <span class="nav-text">期望总体代价曲线</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AF%94%E8%BE%83%E6%A3%80%E9%AA%8C"><span class="nav-number">3.</span> <span class="nav-text">比较检验</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C"><span class="nav-number">3.1.</span> <span class="nav-text">假设检验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%A4%E5%8F%89%E9%AA%8C%E8%AF%81t%E6%A3%80%E9%AA%8C"><span class="nav-number">3.2.</span> <span class="nav-text">交叉验证t检验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#McNemar-%E6%A3%80%E9%AA%8C"><span class="nav-number">3.3.</span> <span class="nav-text">McNemar 检验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Friedman-%E6%A3%80%E9%AA%8C"><span class="nav-number">3.4.</span> <span class="nav-text">Friedman 检验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Nemenyi-%E5%90%8E%E7%BB%AD%E6%A3%80%E9%AA%8C"><span class="nav-number">3.5.</span> <span class="nav-text">Nemenyi 后续检验</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%81%8F%E5%B7%AE%E4%B8%8E%E6%96%B9%E5%B7%AE"><span class="nav-number">4.</span> <span class="nav-text">偏差与方差</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A1%A5%E5%85%85"><span class="nav-number">5.</span> <span class="nav-text">补充</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%84%E4%BC%B0%E6%96%B9%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">评估方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%A4%E5%8F%89%E9%AA%8C%E8%AF%81%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">交叉验证法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%8A%A9%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">自助法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%A7%E8%83%BD%E5%BA%A6%E9%87%8F"><span class="nav-number">2.</span> <span class="nav-text">性能度量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ROC%E4%B8%8EAUC"><span class="nav-number">2.1.</span> <span class="nav-text">ROC与AUC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%9F%E6%9C%9B%E6%80%BB%E4%BD%93%E4%BB%A3%E4%BB%B7%E4%B8%8E%E4%BB%A3%E4%BB%B7%E6%9B%B2%E7%BA%BF"><span class="nav-number">2.2.</span> <span class="nav-text">期望总体代价与代价曲线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PR%E6%9B%B2%E7%BA%BF"><span class="nav-number">2.3.</span> <span class="nav-text">PR曲线</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AF%94%E8%BE%83%E6%A3%80%E9%AA%8C"><span class="nav-number">3.</span> <span class="nav-text">比较检验</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C"><span class="nav-number">3.1.</span> <span class="nav-text">假设检验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%A4%E5%8F%89%E9%AA%8C%E8%AF%81t%E6%A3%80%E9%AA%8C"><span class="nav-number">3.2.</span> <span class="nav-text">交叉验证t检验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#McNemar-%E6%A3%80%E9%AA%8C"><span class="nav-number">3.3.</span> <span class="nav-text">McNemar 检验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Friedman-%E6%A3%80%E9%AA%8C"><span class="nav-number">3.4.</span> <span class="nav-text">Friedman 检验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Nemenyi-%E5%90%8E%E7%BB%AD%E6%A3%80%E9%AA%8C"><span class="nav-number">3.5.</span> <span class="nav-text">Nemenyi 后续检验</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%81%8F%E5%B7%AE%E4%B8%8E%E6%96%B9%E5%B7%AE"><span class="nav-number">4.</span> <span class="nav-text">偏差与方差</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A1%A5%E5%85%85"><span class="nav-number">5.</span> <span class="nav-text">补充</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
