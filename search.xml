@@ -279,8 +279,11 @@
 <blockquote>
 <p>自助法在数据集较小，难以有效划分训练/测试集时很有用；此外，自助法还能从初始数据集中产生多个不同的训练集，这对集成学习等方法有很大好处。同时对样本数据集的抽取改变了其分布，这会产生估计误差。</p>
 </blockquote>
-<h2 id="性能度量"><a href="#性能度量" class="headerlink" title="性能度量"></a>性能度量</h2><p>TP:真正例；FN:假反例；FP:假正例；TN:真反例<br>查准率P:P=$\frac{TP}{TP+FP}$<br>查全率/召回率R:R=$\frac{TP}{TP+FN}$</p>
+<h2 id="性能度量"><a href="#性能度量" class="headerlink" title="性能度量"></a>性能度量</h2><p>TP:真正例；FN:假反例；FP:假正例；TN:真反例  </p>
+<p>查准率P:P=$\frac{TP}{TP+FP}$  </p>
+<p>查全率/召回率R:R=$\frac{TP}{TP+FN}$</p>
 <p>综合度量其性能：BEP(平衡点Break-Even Point)，当查准率等于查全率时的取值。  </p>
+<p>F1-score:</p>
 <script type="math/tex; mode=display">F1=\frac{2*P*R}{P+R}(调和平均，1/F=(1/P+1/R)/2)</script><p>宏：分别计算各个混淆矩阵的查准率与查全率，再宏平均<br>微：直接在计算P和R之前将TP等值计算出之后计算TP等的平均值，再直接算出micro-P,micro-R  </p>
 <p>预测结果对样例进行排序：根据模型为每个测试样例输出的“预测概率”或“置信度得分”，将所有样例从高到低进行排列的过程。  </p>
 <h3 id="ROC与AUC"><a href="#ROC与AUC" class="headerlink" title="ROC与AUC"></a>ROC与AUC</h3><p>ROC曲线：受试者工作特征曲线，纵轴是“真正例率”$TPR = \frac{TP}{TP+FN}$（在所有真实的正样本中，模型挑出了多少），纵轴是“假正例率” $FPR = \frac{FP}{FP+TN}$（在所有真实的负样本中，模型错认了多少）<br>主要受当前分类阈值（Threshold）的逐渐变化影响。</p>
@@ -434,6 +437,84 @@
       <tags>
         <tag>动态规划</tag>
         <tag>筛</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>线性模型</title>
+    <url>/2026/07/05/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/</url>
+    <content><![CDATA[<p>本章重点讨论线性模型在机器学习中的运用<br><span id="more"></span></p>
+<h2 id="线性回归"><a href="#线性回归" class="headerlink" title="线性回归"></a>线性回归</h2><h3 id="最小二乘法"><a href="#最小二乘法" class="headerlink" title="最小二乘法"></a>最小二乘法</h3><p>假设我们有 $n$ 个数据点 $(x_1, y_1), (x_2, y_2), \dots, (x_n, y_n)$，我们想用一条直线 $y = wx + b$ 来拟合它们。对于每一个点 $x_i$，直线给出的预测值是 $\hat{y}_i = wx_i + b$。预测值与真实值之间的误差（残差）是 $e_i = y_i - \hat{y}_i$。最小二乘法的目标，就是找到最佳的参数 $w$（斜率）和 $b$（截距），使得误差平方和（Sum of Squared Errors, SSE） $L$ 尽可能小：<script type="math/tex">L = \sum_{i=1}^{n} e_i^2 = \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 = \sum_{i=1}^{n} (y_i - (wx_i + b))^2</script></p>
+<script type="math/tex; mode=display">\hat{\theta} = \underset{\theta}{\text{arg min}} \sum_{i=1}^{n} (y_i - f(x_i; \theta))^2</script><p>$\text{arg min} f(x)$：指的是使函数达到最小值时对应的 $x$ 的取值。它的结果是一个自变量（输入值）。</p>
+<p>eg：考虑函数 $f(x) = (x - 3)^2 + 2$。$\min f(x) = 2$ （这是函数能达到的最小值）。$\text{arg min}_{x} f(x) = 3$ （当 $x=3$ 时，函数取得最小值）。</p>
+<h3 id="多元线性回归"><a href="#多元线性回归" class="headerlink" title="多元线性回归"></a>多元线性回归</h3><script type="math/tex; mode=display">f(\mathbf{x}_i; \mathbf{w}, b)=\hat{y}_i = w_1 x_{i1} + w_2 x_{i2} + \dots + w_d x_{id} + b</script><p>为了表达更简洁且便于计算机进行矩阵运算，我们通常将公式写成向量点积的形式。令权重向量 $\mathbf{w} = [w_1, w_2, \dots, w_d]^T$：</p>
+<script type="math/tex; mode=display">\hat{y}_i = \mathbf{w}^T \mathbf{x}_i + b</script><p>与简单线性回归完全一致，多元线性回归依然使用均方误差（MSE）作为损失函数。我们的目标是寻找一组最优的参数组合 $\theta = \{\mathbf{w}, b\}$，使得所有样本点的预测值 $\hat{y}_i$ 与真实值 $y_i$ 之间的误差平方和最小：<script type="math/tex">\hat{\mathbf{w}}, \hat{b} = \underset{\mathbf{w}, b}{\text{arg min}} \frac{1}{n} \sum_{i=1}^{n} (y_i - (\mathbf{w}^T \mathbf{x}_i + b))^2</script><br>在多元的情况下，通过微积分对损失函数求导并令导数为 0（最小二乘法的解析解过程），可以推导出一个非常优雅的矩阵形式的闭式解（Closed-form solution）。如果我们将所有 $n$ 个样本的特征拼接成一个 $n \times d$ 的设计矩阵 $\mathbf{X}$（通常会在矩阵第一列补充全 1 以吸收偏置项 $b$），并将真实标签拼接成列向量 $\mathbf{y}$，那么最优解的矩阵计算公式为：</p>
+<script type="math/tex; mode=display">\mathbf{w}^* = (\mathbf{X}^T \mathbf{X})^{-1} \mathbf{X}^T \mathbf{y}</script><p>(注意：这个解析解存在的前提是矩阵 $\mathbf{X}^T \mathbf{X}$ 必须是可逆的/满秩的。)<br>然而在实际应用中由于不满秩或是运算复杂度过高通常无法做到直接对矩阵进行直接求解，这就引入了后面的梯度下降等迭代算法。  </p>
+<p>对数线性回归</p>
+<script type="math/tex; mode=display">\ln(y_i) = \mathbf{w}^T \mathbf{x}_i + b</script><p>如果我们想求出因变量 $y_i$ 本身的预测值，只需对等式两边同时取指数函数（即 $e$ 的次幂）：<script type="math/tex">y_i = e^{\mathbf{w}^T \mathbf{x}_i + b}</script>  </p>
+<script type="math/tex; mode=display">y_i = e^b \cdot e^{w_1 x_{i1}} \cdot e^{w_2 x_{i2}} \cdots e^{w_d x_{id}}</script><p>处理数值范围跨度极大的数据（长尾分布）：当因变量 $y$ 的取值跨越多个数量级时（例如，$10^1$ 到 $10^6$），标准均方误差（MSE）会被极少数的巨大数值主导。取对数可以有效压缩大数值的尺度，使得模型不会过度拟合那些极端大值。<br>消除异方差性（Heteroscedasticity）：在标准线性回归的前提假设中，要求所有样本点的误差方差是恒定的。但很多实际数据呈现“随着 $X$ 的增大，$Y$ 的波动幅度（方差）也随之急剧增大”的现象。对 $Y$ 取对数是一种经典的数学操作，能够有效稳定方差，使其满足线性回归的数学假设。<br>非负性约束：由于 $y = e^{\mathbf{w}^T \mathbf{x} + b}$ 恒大于 0，对数线性回归天然保证了预测结果绝对不会出现负数。</p>
+<h3 id="广义线性模型"><a href="#广义线性模型" class="headerlink" title="广义线性模型"></a>广义线性模型</h3><script type="math/tex; mode=display">y = g^{-1}(\mathbf{w}^T\mathbf{x} + b)</script><ul>
+<li>第一阶段：线性组合（基础）$z = \mathbf{w}^T\mathbf{x} + b$<br>它将所有特征进行线性加权求和，输出一个连续的实数 $z$。其取值范围在数学上可以从 $-\infty$ 延伸到 $+\infty$。  </li>
+<li>第二阶段：非线性映射（核心）$y = g^{-1}(z)$<br>由于现实世界的目标变量 $y$ 并不总是从 $-\infty$ 到 $+\infty$ 的连续实数（比如概率只能在 0 到 1 之间，计数值只能是非负整数），我们需要一个函数对 $z$ 进行数学空间上的映射与转换。<br>$g(\cdot)$ 被称为联系函数（Link Function）。$g^{-1}(\cdot)$ 是它的反函数，被称为逆联系函数（Inverse Link Function）。在机器学习和深度学习领域，它有一个更著名的称呼：激活函数（Activation Function）。  <blockquote>
+<p>联系函数（Link Function）<br>$g(\cdot)$ 的基础定义是：<script type="math/tex">g(\mu) = z</script> 它的数学作用是：将目标变量所在的非线性空间，映射到线性空间。<br>逆联系函数（Inverse Link Function） $g^{-1}(\cdot)$ 的推导：<br>如果我们在上式两边同时取 $g$ 的反函数（解方程求 $\mu$），就得到了实际预测时使用的公式：<script type="math/tex">\mu = g^{-1}(z)</script>它的数学作用是：将计算出的线性结果，映射回目标变量原本的空间。  </p>
+</blockquote>
+</li>
+</ul>
+<h2 id="对数几率回归"><a href="#对数几率回归" class="headerlink" title="对数几率回归"></a>对数几率回归</h2><h3 id="从线性回归到概率映射"><a href="#从线性回归到概率映射" class="headerlink" title="从线性回归到概率映射"></a>从线性回归到概率映射</h3><p>线性回归模型的输出是一个不受限制的实数值：  </p>
+<script type="math/tex; mode=display">z = \boldsymbol{w}^T \boldsymbol{x} + b</script><p>但在二分类问题中，我们需要输出一个属于正类的概率，这个值必须严格落在 $(0, 1)$ 区间内。为了将实数域的 $z$ 映射到 $(0, 1)$，引入了 Sigmoid 函数（也叫对数几率函数）：<script type="math/tex">y = \frac{1}{1 + e^{-z}}</script><br>将线性回归的输出 $z$ 代入其中，我们就得到了对数几率回归的基本预测模型：<script type="math/tex">y = \frac{1}{1 + e^{-(\boldsymbol{w}^T \boldsymbol{x} + b)}}</script><br>此时的输出 $y$，在数学上就可以被解释为样本 $\boldsymbol{x}$ 属于正例的概率，即 $P(Y=1 | \boldsymbol{x})$。</p>
+<h3 id="什么是对数几率"><a href="#什么是对数几率" class="headerlink" title="什么是对数几率"></a>什么是对数几率</h3><p>我们将上面的 Sigmoid 预测公式进行推导：<br>首先取倒数：<script type="math/tex">\frac{1}{y} = 1 + e^{-(\boldsymbol{w}^T \boldsymbol{x} + b)}</script><br>移项：<script type="math/tex">\frac{1-y}{y} = e^{-(\boldsymbol{w}^T \boldsymbol{x} + b)}</script><br>再次取倒数：<script type="math/tex">\frac{y}{1-y} = e^{\boldsymbol{w}^T \boldsymbol{x} + b}</script><br>在等式两边同时取自然对数 $\ln$：<script type="math/tex">\ln\left(\frac{y}{1-y}\right) = \boldsymbol{w}^T \boldsymbol{x} + b</script><br>在这里，$\frac{y}{1-y}$ 代表的是正例概率与反例概率的比值，在统计学中被称为几率 (Odds)。<br>对其取对数 $\ln$，得到的就是对数几率 (Log-odds)。  </p>
+<blockquote>
+<p>核心结论： 对数几率回归的数学本质，就是用线性回归模型的预测结果去逼近真实标记的对数几率。</p>
+</blockquote>
+<p>概率 $P(x | \theta)$：参数 $\theta$ 是已知常量，变量是未知的观测数据 $x$。它描述的是在一个确定的模型（参数已定）下，产生各种不同数据的可能性。<br>似然 $L(\theta | x)$：数据 $x$ 是已知常量（已经观测到的客观事实），变量是未知的模型参数 $\theta$。它描述的是在已知现有数据的情况下，各个不同的参数 $\theta$ 能够产生这组客观数据的“合理程度”或“似然度”。  </p>
+<p>协方差（Covariance）： 衡量两个变量如何协同变化。<br>假设有两个变量 X 和 Y，其样本观测值为 $(x_i, y_i)，样本均值为 \={x} 和 \={y}$，样本容量为 n。样本协方差的计算公式为：<script type="math/tex">Cov(X, Y) = \frac{\sum_{i=1}^{n} (x_i - \bar{x})(y_i - \bar{y})}{n - 1}</script></p>
+<p>正协方差： 两个变量同向变动。一个变大，另一个也倾向于变大（比如身高和体重）。</p>
+<p>负协方差： 两个变量反向变动。一个变大，另一个倾向于变小（比如某种商品的供应量和价格）。</p>
+<p>接近 0： 两个变量相对独立，没有明显的线性关系。</p>
+<h3 id="协方差矩阵"><a href="#协方差矩阵" class="headerlink" title="协方差矩阵"></a>协方差矩阵</h3><p>当我们的数据不仅仅有两个变量，而是有多个（比如 $n$ 个）变量时，两两之间的协方差就会非常多。为了整洁和方便矩阵运算，数学家把这些值排成了一个 $n \times n$ 的方阵，这就是协方差矩阵，通常用大写字母 $\Sigma$ （Sigma）表示。<br>以二维数据（包含变量 $X$ 和 $Y$）为例，其协方差矩阵如下：<script type="math/tex">\Sigma = \begin{bmatrix} Var(X) & Cov(X,Y) \\ Cov(Y,X) & Var(Y) \end{bmatrix}</script>  </p>
+<ul>
+<li>主对角线： 矩阵从左上到右下的对角线元素（$Var(X)$ 和 $Var(Y)$）就是各个变量自身的方差。  </li>
+<li>非对角线： 其他位置的元素是不同变量之间的协方差。  </li>
+<li>对称性： 因为变量 $X$ 和 $Y$ 的协方差等于 $Y$ 和 $X$ 的协方差（即 $Cov(X,Y) = Cov(Y,X)$），所以协方差矩阵永远是一个对称矩阵。  </li>
+</ul>
+<h2 id="线性判别分析"><a href="#线性判别分析" class="headerlink" title="线性判别分析"></a>线性判别分析</h2><p>线性判别分析（Linear Discriminant Analysis, 简称 LDA）是一种经典的线性学习方法。在机器学习中，它既可以被用作分类器，也是一种非常常用的数据降维技术。<br>设想在一个二维平面上有两类数据点。LDA 的目标是找到一条直线（即一个投影方向 $\boldsymbol{w}$），将所有的二维数据点垂直投影到这条直线上，从而将二维数据降为一维。为了达到最好的分类效果，这条直线必须满足两个条件：类内散度小：属于同一类的样本，在直线上的投影点要尽可能紧凑、挨在一起。类间散度大：不同类的样本中心，在直线上的投影点要尽可能相距遥远。一句话概括就是：投影后，同类样本尽可能近，异类样本尽可能远。<br>数学推导与目标函数<br>给定一个二分类数据集，两类样本的集合分别为 $X_0$ 和 $X_1$。<br>设 $\boldsymbol{\mu}_0$ 和 $\boldsymbol{\mu}_1$ 为两类样本的均值向量。<br>设 $\boldsymbol{\Sigma}_0$ 和 $\boldsymbol{\Sigma}_1$ 为两类样本的协方差矩阵。我们希望将数据投影到方向为 $\boldsymbol{w}$ 的直线上。一个样本 $\boldsymbol{x}$ 在该方向上的投影值为 $\boldsymbol{w}^T \boldsymbol{x}$。<br>步骤一：最大化类间距离投影后，两类样本中心的距离为：<script type="math/tex">\| \boldsymbol{w}^T \boldsymbol{\mu}_0 - \boldsymbol{w}^T \boldsymbol{\mu}_1 \|_2^2 = \boldsymbol{w}^T (\boldsymbol{\mu}_0 - \boldsymbol{\mu}_1)(\boldsymbol{\mu}_0 - \boldsymbol{\mu}_1)^T \boldsymbol{w}</script>我们定义类间散度矩阵 (Between-class scatter matrix) 为：<script type="math/tex">\boldsymbol{S}_b = (\boldsymbol{\mu}_0 - \boldsymbol{\mu}_1)(\boldsymbol{\mu}_0 - \boldsymbol{\mu}_1)^T</script>所以类间距离可以写为 $\boldsymbol{w}^T \boldsymbol{S}_b \boldsymbol{w}$。<br>步骤二：最小化类内方差投影后，两类样本各自的方差分别为 $\boldsymbol{w}^T \boldsymbol{\Sigma}_0 \boldsymbol{w}$ 和 $\boldsymbol{w}^T \boldsymbol{\Sigma}_1 \boldsymbol{w}$。我们希望这两者之和尽可能小。我们定义类内散度矩阵 (Within-class scatter matrix) 为：<script type="math/tex">\boldsymbol{S}_w = \boldsymbol{\Sigma}_0 + \boldsymbol{\Sigma}_1</script>所以投影后的总类内方差可以写为 $\boldsymbol{w}^T \boldsymbol{S}_w \boldsymbol{w}$。<br>步骤三：构建目标函数综合以上两点，LDA 的优化目标是最大化类间距离与类内方差的比值。这个目标函数 $J$ 在数学上被称为广义瑞利商 (Generalized Rayleigh Quotient)：<script type="math/tex">J(\boldsymbol{W}) = \frac{Tr(\boldsymbol{W}^T \boldsymbol{S}_b \boldsymbol{W})}{Tr(\boldsymbol{W}^T \boldsymbol{S}_w \boldsymbol{W})}</script>优化这个问题（通常通过对 $\boldsymbol{w}$ 求导并令其为零，结合拉格朗日乘子法），可以求得最优的投影方向 $\boldsymbol{w}$。在二分类问题中，其闭式解的解析表达为：<script type="math/tex">\boldsymbol{w} = \boldsymbol{S}_w^{-1} (\boldsymbol{\mu}_0 - \boldsymbol{\mu}_1)</script>  </p>
+<p>$\boldsymbol{S}_t$ 代表的是总散度矩阵<br>衡量的是整个数据集（忽略所有类别标签）在空间中的总体分散程度。假设我们有 $N$ 个样本，集合为 $X = \{\boldsymbol{x}_1, \boldsymbol{x}_2, \dots, \boldsymbol{x}_N\}$。首先，我们计算所有这 $N$ 个样本的全局均值向量 (Global Mean)，记为 $\boldsymbol{\mu}$：<script type="math/tex">\boldsymbol{\mu} = \frac{1}{N} \sum_{i=1}^N \boldsymbol{x}_i</script><br>那么，总散度矩阵 $\boldsymbol{S}_t$ 的定义为所有样本点到全局均值点距离的平方和（以外积形式表示）：<script type="math/tex">\boldsymbol{S}_t = \sum_{i=1}^N (\boldsymbol{x}_i - \boldsymbol{\mu})(\boldsymbol{x}_i - \boldsymbol{\mu})^T</script>  </p>
+<p>如果将其除以 $N-1$，它就是整个数据集的全局协方差矩阵。<br>方差分解定理：<script type="math/tex">\boldsymbol{S}_t = \boldsymbol{S}_w + \boldsymbol{S}_b</script>  </p>
+<p>总而言之：  </p>
+<ul>
+<li>$\boldsymbol{S}_w$ (类内散度)：衡量每个样本点到其所属类别的均值点的距离。代表了分类无法解释的内部波动。  </li>
+<li>$\boldsymbol{S}_b$ (类间散度)：衡量各个类别的均值点到全局均值点的距离。代表了由不同类别差异带来的波动。  </li>
+<li>$\boldsymbol{S}_t$ (总散度)：衡量每个样本点到全局均值点的距离。</li>
+</ul>
+<p>矩阵的迹：<br>从定义上看，对于一个 $n \times n$ 的方阵 $A$，它的迹是主对角线元素的累加：<script type="math/tex">Tr(A) = \sum_{i=1}^n a_{ii}= \sum_{i=1}^n \lambda_i</script><br>矩阵的迹等于它所有特征值之和。<br>特征值（$\lambda$）的意义： 代表了线性变换在各个主要特征方向上的拉伸或压缩比例。<br>迹的物理意义： 它衡量了这个矩阵在所有特征方向上“总的拉伸程度”，迹最核心的性质——相似不变性。<script type="math/tex">Tr(P^{-1}AP) = Tr(A)</script></p>
+<p>向量的内积：<script type="math/tex">\boldsymbol{v}^T \boldsymbol{v} = \begin{bmatrix} v_1 & v_2 \end{bmatrix} \begin{bmatrix} v_1 \\ v_2 \end{bmatrix} = v_1 \cdot v_1 + v_2 \cdot v_2 = v_1^2 + v_2^2</script>  </p>
+<p>向量的外积：<script type="math/tex">\boldsymbol{v} \boldsymbol{v}^T = \begin{bmatrix} v_1 \\ v_2 \end{bmatrix} \begin{bmatrix} v_1 & v_2 \end{bmatrix} = \begin{bmatrix} v_1^2 & v_1v_2 \\ v_2v_1 & v_2^2 \end{bmatrix}</script><br>内积只保留了各个维度自身的纯粹平方（长度信息），而外积则把不同维度之间的交叉关系（协方差信息）全部记录了下来。  </p>
+<p>矩阵迹的循环置换性质 (Cyclic Permutation Property):<br>这是矩阵代数中一个极其核心的定理。它的基础定义是：对于两个矩阵 $A$ 和 $B$（只要它们的维度满足相乘条件），调换相乘的顺序，迹的值不变：<script type="math/tex">Tr(AB) = Tr(BA)</script>即使扩展到多个矩阵相乘，只要保持相对顺序的“循环”移动，迹依然不变：<script type="math/tex">Tr(ABC) = Tr(BCA) = Tr(CAB)</script>(注意：必须是首尾相接的循环移位，通常 $Tr(ABC) \neq Tr(BAC)$)</p>
+<h2 id="多分类学习"><a href="#多分类学习" class="headerlink" title="多分类学习"></a>多分类学习</h2><p>多分类学习（Multi-class Classification）是机器学习中的一个核心任务，旨在将样本划分到多个（大于两个）互斥的类别中。形式化地，假设特征空间为$\mathcal{X}$，标签空间为$\mathcal{Y} = {c_1, c_2, \dots, c_N}$，其中$N&gt;2$，我们的目标是学习一个映射函数$f: \mathcal{X} \rightarrow \mathcal{Y}$<br>解决多分类问题通常有两种主流技术路线：将多分类任务拆分为多个二分类任务，以及直接使用原生支持多分类的算法。  </p>
+<ul>
+<li>一对一 (One-vs-One, OvO)<br>机制：将$N$个类别两两配对，训练$\frac{N(N-1)}{2}$个二分类器。测试时，新样本提交给所有分类器，得到$\frac{N(N-1)}{2}$个预测结果，最终通过投票法（Voting）决定最终类别。特点：每个分类器只使用两个类别的训练数据。虽然分类器数量多，但在类别数量$N$较大时，单个分类器的训练时间通常较短。  </li>
+<li>一对其余 (One-vs-Rest, OvR / One-vs-All, OvA)<br>机制：针对每个类别$c_i$，训练一个二分类器，将$c_i$视为正例，其余所有类别视为反例。共需训练$N$个分类器。测试时，若只有一个分类器预测为正类，则对应的类别即为最终结果；若有多个，则通常考虑各分类器的预测置信度，选择置信度最大的类别。特点：分类器数量少于OvO，但每个分类器在训练时需要使用全部训练数据，且容易面临严重的类别不平衡（Class Imbalance）问题。  </li>
+<li>多对多 (Many-vs-Many, MvM)机制：每次将若干个类作为正类，若干个其他类作为反类。最典型的技术是纠错输出码 (Error Correcting Output Codes, ECOC)。过程：编码：对$N$个类别进行$M$次划分，形成一个长度为$M$的编码矩阵。每次划分训练一个二分类器。解码：测试时，样本经过$M$个分类器得到一个预测编码，计算该预测编码与各个类别标准编码之间的距离（如海明距离(两个等长字符串或二进制序列在相同位置上不同字符的个数)或欧氏距离），距离最小的类别即为预测结果。特点：具有一定的容错能力。如果某个分类器预测错误，只要编码足够长且距离足够大，最终仍可能解码出正确的类别。<br>(多对多用大白话来讲，就是M多个分类器，对N个类别有自己的划分判断，最终每个类别会有M个被分类器划分出来的指标，也就是编码，输入测试样例，多个分类器同样会对其进行预测，观察当前编码和哪个类编码距离最近)</li>
+</ul>
+<blockquote>
+<p>关于投票法：<br> 硬投票 (Hard Voting)原理：只看每个分类器预测的最终类别标签，得票最多的类别即为最终预测结果。公式：若有 $K$ 个类别 $C_1, C_2, \dots, C_K$，投票规则可表示为：$\^{y}=\arg \max _{c}\sum _{i=1}^{T}\mathbb{I}(h_{i}(x)=c)$(其中 $T$ 为基模型数量，$\mathbb{I}$ 为指示函数，当预测正确时为 1，否则为 0)<br> 软投票 (Soft Voting)原理：不仅看最终类别，还看每个分类器给出的预测概率（置信度）。它将所有分类器对同一类别的概率进行平均，概率之和最大的类别胜出。优势：充分利用了分类器的置信度信息，通常比硬投票表现更精确。公式：$\^{y}=\arg \max _{c}\sum _{i=1}^{T}P_{i}(y=c|x)$</p>
+</blockquote>
+<h2 id="类别不平衡问题"><a href="#类别不平衡问题" class="headerlink" title="类别不平衡问题"></a>类别不平衡问题</h2><p>类别不平衡（Class Imbalance）是机器学习和深度学习中极常见的现象，指的是分类任务中不同类别的样本数量存在显著差异。例如，在欺诈检测、罕见病诊断或工业缺陷检测中，正类（少数类，通常是我们关心的目标）可能仅占总体数据的1%，而负类（多数类）占据99%。  </p>
+<p>类别不平衡会导致如下两个问题：  </p>
+<p>准确率悖论 (Accuracy Paradox)<br>大多数标准分类算法（如SVM、逻辑回归、标准神经网络）的优化目标是最小化全局错误率。在1:99的不平衡数据中，模型哪怕不提取任何特征，直接将所有样本预测为多数类，其准确率（Accuracy）也能达到99%。模型学到的不是特征与标签的映射关系，而是数据的先验概率。<br>梯度被多数类主导<br>在神经网络的反向传播中，损失函数（如标准交叉熵）是所有样本损失的累加。由于多数类样本数量极大，其产生的累积梯度会主导网络权重的更新方向，导致少数类特征的提取网络层“得不到足够的更新信号”，从而被淹没。</p>
+<p>解决方案：</p>
+<ul>
+<li><p>重采样 (Resampling)<br>通过改变训练集的数据分布，强制达到平衡。<br>欠采样 (Undersampling)：随机或通过启发式算法（如 Tomek Links 剔除边界重叠样本）减少多数类的数量。缺点是会丢失多数类的大量结构信息。<br>过采样 (Oversampling)：增加少数类样本。最经典的是 SMOTE (Synthetic Minority Over-sampling Technique) 算法。它不仅仅是简单复制样本（这会导致严重过拟合），而是在少数类样本及其K近邻之间进行线性插值，合成生成全新的少数类数据点。<br>K近邻：当需要判断一个未知数据属于哪一类时，系统会寻找离它最近的 K 个已知数据，通过这 K 个“邻居”的类别来决定未知数据的归属。用于分类：将该样本归类为这 K 个邻居中出现次数最多的类别。用于回归：将该样本的预测值设定为这 K 个邻居数值的平均值。</p>
+</li>
+<li><p>阈值移动<br>数学本质：再缩放 (Rescaling)在线性分类器或逻辑回归中，模型输出的预测值 $y$ 代表了样本属于正类的概率。我们通常默认使用 $0.5$ 作为分类阈值，其背后的逻辑是比较正例和反例的几率（Odds）：如果 $\frac{y}{1-y} &gt; 1$，则预测为正类。当数据正例和反例不平衡时我们可以对预测值进行修改，“再缩放”，使得分类决策规则变为：$\frac{y}{1-y} &gt; \frac{m^+}{m^-}$，我们得到新的判定阈值：$y &gt; \frac{m^+}{m^+ + m^-}$。</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>数学</tag>
+        <tag>机器学习</tag>
       </tags>
   </entry>
 </search>

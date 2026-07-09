@@ -10,7 +10,23 @@
   <rights>All rights reserved 2026, inmost</rights>
   <subtitle>inmostsama</subtitle>
   <title>inmost's blog</title>
-  <updated>2026-07-09T10:31:58.863Z</updated>
+  <updated>2026-07-09T17:22:28.043Z</updated>
+  <entry>
+    <author>
+      <name>inmost</name>
+    </author>
+    <category term="机器学习" scheme="https://inmostflyyy.xin/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    <category term="数学" scheme="https://inmostflyyy.xin/tags/%E6%95%B0%E5%AD%A6/"/>
+    <category term="机器学习" scheme="https://inmostflyyy.xin/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    <id>https://inmostflyyy.xin/2026/07/05/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/</id>
+    <link href="https://inmostflyyy.xin/2026/07/05/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/"/>
+    <published>2026-07-05T14:22:03.914Z</published>
+    <summary>
+      <![CDATA[<p>本章重点讨论线性模型在机器学习中的运用<br>]]>
+    </summary>
+    <title>线性模型</title>
+    <updated>2026-07-09T17:22:28.043Z</updated>
+  </entry>
   <entry>
     <author>
       <name>inmost</name>
@@ -24,7 +40,7 @@
       <![CDATA[<p>训练过程中，我们必然需要相应的指标来表明当前模型质量以继续提高模型质量。</p>]]>
     </summary>
     <title>模型评估</title>
-    <updated>2026-07-09T10:31:58.863Z</updated>
+    <updated>2026-07-09T17:03:05.749Z</updated>
   </entry>
   <entry>
     <author>

@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://inmostflyyy.xin/uploads/ROC%E7%A4%BA%E6%84%8F.png">
 <meta property="og:image" content="https://inmostflyyy.xin/uploads/%E6%9C%9F%E6%9C%9B%E6%80%BB%E4%BD%93%E4%BB%A3%E4%BB%B7%E6%9B%B2%E7%BA%BF.png">
 <meta property="article:published_time" content="2026-07-02T12:00:34.506Z">
-<meta property="article:modified_time" content="2026-07-09T10:31:58.863Z">
+<meta property="article:modified_time" content="2026-07-09T17:03:05.749Z">
 <meta property="article:author" content="inmost">
 <meta property="article:tag" content="机器学习">
 <meta name="twitter:card" content="summary">
@@ -243,7 +243,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2026-07-09 18:31:58" itemprop="dateModified" datetime="2026-07-09T18:31:58+08:00">2026-07-09</time>
+                <time title="修改时间：2026-07-10 01:03:05" itemprop="dateModified" datetime="2026-07-10T01:03:05+08:00">2026-07-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -314,8 +314,11 @@
 <blockquote>
 <p>自助法在数据集较小，难以有效划分训练/测试集时很有用；此外，自助法还能从初始数据集中产生多个不同的训练集，这对集成学习等方法有很大好处。同时对样本数据集的抽取改变了其分布，这会产生估计误差。</p>
 </blockquote>
-<h2 id="性能度量"><a href="#性能度量" class="headerlink" title="性能度量"></a>性能度量</h2><p>TP:真正例；FN:假反例；FP:假正例；TN:真反例<br>查准率P:P=$\frac{TP}{TP+FP}$<br>查全率/召回率R:R=$\frac{TP}{TP+FN}$</p>
+<h2 id="性能度量"><a href="#性能度量" class="headerlink" title="性能度量"></a>性能度量</h2><p>TP:真正例；FN:假反例；FP:假正例；TN:真反例  </p>
+<p>查准率P:P=$\frac{TP}{TP+FP}$  </p>
+<p>查全率/召回率R:R=$\frac{TP}{TP+FN}$</p>
 <p>综合度量其性能：BEP(平衡点Break-Even Point)，当查准率等于查全率时的取值。  </p>
+<p>F1-score:</p>
 <script type="math/tex; mode=display">F1=\frac{2*P*R}{P+R}(调和平均，1/F=(1/P+1/R)/2)</script><p>宏：分别计算各个混淆矩阵的查准率与查全率，再宏平均<br>微：直接在计算P和R之前将TP等值计算出之后计算TP等的平均值，再直接算出micro-P,micro-R  </p>
 <p>预测结果对样例进行排序：根据模型为每个测试样例输出的“预测概率”或“置信度得分”，将所有样例从高到低进行排列的过程。  </p>
 <h3 id="ROC与AUC"><a href="#ROC与AUC" class="headerlink" title="ROC与AUC"></a>ROC与AUC</h3><p>ROC曲线：受试者工作特征曲线，纵轴是“真正例率”$TPR = \frac{TP}{TP+FN}$（在所有真实的正样本中，模型挑出了多少），纵轴是“假正例率” $FPR = \frac{FP}{FP+TN}$（在所有真实的负样本中，模型错认了多少）<br>主要受当前分类阈值（Threshold）的逐渐变化影响。</p>
@@ -388,7 +391,10 @@
     <a href="/2026/04/25/Web%E4%B8%8EAPI/" rel="prev" title="Web与API">
       <i class="fa fa-chevron-left"></i> Web与API
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2026/07/05/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/" rel="next" title="线性模型">
+      线性模型 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -464,7 +470,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">14</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -527,12 +533,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">23k</span>
+    <span title="站点总字数">33k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">42 分钟</span>
+    <span title="站点阅读时长">1:01</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-user-md"></i>
