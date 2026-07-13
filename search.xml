@@ -618,4 +618,141 @@
         <tag>机器学习</tag>
       </tags>
   </entry>
+  <entry>
+    <title>支持向量机</title>
+    <url>/2026/07/11/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/</url>
+    <content><![CDATA[<p>支持向量机（Support Vector Machine, SVM）是一种基于统计学习理论的监督学习算法，主要用于二分类问题（也可扩展至多分类和回归）。它的核心优化目标是在特征空间中寻找一个能够将不同类别样本完全分开，且间隔（Margin）最大的超平面。</p>
+<span id="more"></span>
+<h2 id="间隔与支持向量"><a href="#间隔与支持向量" class="headerlink" title="间隔与支持向量"></a>间隔与支持向量</h2><h3 id="间隔：函数间隔与几何间隔"><a href="#间隔：函数间隔与几何间隔" class="headerlink" title="间隔：函数间隔与几何间隔"></a>间隔：函数间隔与几何间隔</h3><p>在 $d$ 维特征空间中，线性分类超平面由方程 $w^T x + b = 0$ 确定。对于给定的训练样本集，我们不仅要求超平面能将正负类分开，还希望分类的结果足够确信。  </p>
+<p>平面方程 $w^T x + b = 0$ 里的 $w$ 之是该超平面的法向量，决定了超平面的方向；b是位移项，决定了超平面与原点之间的距离。一个 $n$ 维空间中，超平面的法向量 $w$ 应该有 $n$ 个特征值（即 $n$ 个分量）。</p>
+<blockquote>
+<p>在 $n$ 维特征空间中，任意一个样本点（特征向量）$x$ 都有 $n$ 个维度，表示为列向量 $x = [x^{(1)}, x^{(2)}, \dots, x^{(n)}]^T$。超平面的方程是 $w^T x + b = 0$。为了使矩阵乘法（向量内积）能够合法计算，并且最终得到一个标量结果，权重向量 $w$ 的维度必须与 $x$ 完全一致。因此，$w$ 也必须是一个包含 $n$ 个分量的列向量：</p>
+<script type="math/tex; mode=display">w = \begin{bmatrix} w^{(1)} \\ w^{(2)} \\ \vdots \\ w^{(n)} \end{bmatrix}</script></blockquote>
+<p>空间中任意一点 $x$ 到超平面的几何距离可以表示为：</p>
+<script type="math/tex; mode=display">r = \frac{\vert{}w^T x + b\vert{}}{\vert{}\vert{}w\vert{}\vert{}}</script><p>前面说到要使分类结果具有最强的鲁棒性，SVM 要求所有样本点距离超平面越远越好,现在要求$y_i(w^T x_i + b) \ge 1$。我们可以通过缩放 $w$ 和 $b$，使得距离超平面最近的样本点满足 $\vert{}w^T x + b\vert{} = 1$。此时，两个异类支持向量到超平面的距离之和（即间隔 Margin）为：</p>
+<script type="math/tex; mode=display">\gamma = \frac{2}{\vert{}\vert{}w\vert{}\vert{}}</script><p>为了最大化间隔 $\frac{2}{\vert{}\vert{}w\vert{}\vert{}}$，等价于最小化 $\frac{1}{2}\vert{}\vert{}w\vert{}\vert{}^2$。</p>
+<script type="math/tex; mode=display">\begin{aligned} \min_{w,b} \quad & \frac{1}{2}\vert{}\vert{}w\vert{}\vert{}^2 \\ \text{s.t.} \quad & y_i(w^T x_i + b) \ge 1, \quad i = 1, 2, \dots, n \end{aligned}</script><blockquote>
+<p>s.t.==subject to（受限于，服从于）,也就是约束条件</p>
+</blockquote>
+<h3 id="支持向量"><a href="#支持向量" class="headerlink" title="支持向量"></a>支持向量</h3><p>$y_i(w^T x_i + b) - 1 = 0$，即几何间隔正好等于 $\frac{1}{\vert{}\vert{}w\vert{}\vert{}}$ 的样本点，就是支持向量。<br>它们在空间中恰好坐落在间隔边界（最大间隔对应的两条平行超平面）上。</p>
+<h2 id="对偶问题"><a href="#对偶问题" class="headerlink" title="对偶问题"></a>对偶问题</h2><p>在最优化理论中，任何一个带有约束的优化问题（我们称之为主问题，Primal Problem）都可以通过严格的代数变换，构造出另一个与之对应且紧密相关的优化问题。这个新构造出来的问题，就被称为对偶问题（Dual Problem）。</p>
+<p>对偶问题的本质，是通过引入拉格朗日乘子，将原问题中的“约束条件”转化为目标函数中的“惩罚项”，进而交换求解变量的顺序。</p>
+<h3 id="从主问题到拉格朗日函数"><a href="#从主问题到拉格朗日函数" class="headerlink" title="从主问题到拉格朗日函数"></a>从主问题到拉格朗日函数</h3><p>假设我们有一个标准的主问题（包含不等式约束）：</p>
+<script type="math/tex; mode=display">\begin{aligned} \min_{x} \quad & f(x) \\ \text{s.t.} \quad & g_i(x) \le 0, \quad i = 1, \dots, m \end{aligned}</script><p>为了将约束条件融入目标函数，我们为每一个约束引入一个非负的拉格朗日乘子 $\alpha_i \ge 0$，构造拉格朗日函数：</p>
+<script type="math/tex; mode=display">L(x, \alpha) = f(x) + \sum_{i=1}^m \alpha_i g_i(x)</script><p>代数逻辑：如果 $x$ 违反了约束（即 $g_i(x) &gt; 0$），那么内部的 $\max_{\alpha}$ 会让 $\alpha_i \to \infty$，导致整个函数值趋于无穷大（施加无限大的惩罚）；如果 $x$ 满足约束（$g_i(x) \le 0$），内部的 $\max$ 会迫使 $\alpha_i g_i(x) = 0$，此时 $L(x, \alpha)$ 退化回原始目标 $f(x)$。</p>
+<h3 id="对偶问题的诞生：交换-Min-和-Max"><a href="#对偶问题的诞生：交换-Min-和-Max" class="headerlink" title="对偶问题的诞生：交换 Min 和 Max"></a>对偶问题的诞生：交换 Min 和 Max</h3><p>对偶问题的数学定义非常直接：就是将上述主问题中的 $\min$ 和 $\max$ 交换顺序，变成一个极大极小问题（Max-Min Problem）：</p>
+<script type="math/tex; mode=display">\max_{\alpha \ge 0} \min_{x} L(x, \alpha)</script><p>在这个视角下，求解顺序发生了根本改变：  </p>
+<ul>
+<li>先求内部最小化：把 $\alpha$ 看作常数，对变量 $x$ 求无约束的极小值。这一步通常可以通过求导令导数为 0 来完成，从而将 $x$ 用 $\alpha$ 表示出来，直接消去 $x$。</li>
+<li>再求外部最大化：此时目标函数中只剩下变量 $\alpha$，我们再去求能使该函数最大的 $\alpha$。</li>
+</ul>
+<h3 id="弱对偶与强对偶"><a href="#弱对偶与强对偶" class="headerlink" title="弱对偶与强对偶"></a>弱对偶与强对偶</h3><p>弱对偶性（Weak Duality）：在任何优化问题中，$\max \min$ 总是小于或等于 $\min \max$。即对偶问题的最优解，永远是主问题最优解的一个下界。</p>
+<p>强对偶性（Strong Duality）：当主问题满足某些特定的数学条件（如 Slater 条件：主问题是凸优化问题，且存在严格满足不等式约束的内点）时，两者严格相等。</p>
+<p>SVM 完美满足强对偶性。 它的主问题是凸二次规划，且约束是线性的。这意味着，我们在对偶问题中求出的最优 $\alpha$，能百分之百推导出现实中那个最优的划分超平面（法向量 $w$ 和偏置 $b$）。</p>
+<h2 id="核函数"><a href="#核函数" class="headerlink" title="核函数"></a>核函数</h2><h3 id="解决非线性问题"><a href="#解决非线性问题" class="headerlink" title="解决非线性问题"></a>解决非线性问题</h3><p>特征映射 $\phi(x)$在现实中，数据往往不是线性可分的（比如二维平面上，一圈红点包围着一圈蓝点，你无法用一条直线把它们切开）。</p>
+<p>为了使用线性 SVM，我们需要把低维数据映射到高维空间。比如，把二维的 $(x_1, x_2)$ 映射成三维的 $(x_1^2, \sqrt{2}x_1 x_2, x_2^2)$。在低维空间里扭曲的边界，在高维空间里可能只需一个平平整整的二维平面就能切开。我们假设这个映射函数为 $\phi(x)$。将 $\phi(x)$ 代入到我们之前推导出的 SVM 对偶问题中，目标函数变成了：</p>
+<script type="math/tex; mode=display">\max_{\alpha} \quad \sum_{i=1}^n \alpha_i - \frac{1}{2} \sum_{i=1}^n \sum_{j=1}^n \alpha_i \alpha_j y_i y_j \mathbf{\big(\phi(x_i)^T \phi(x_j)\big)}</script><h3 id="维数灾难与核技巧"><a href="#维数灾难与核技巧" class="headerlink" title="维数灾难与核技巧"></a>维数灾难与核技巧</h3><p>注意看上面公式 $\big(\phi(x_i)^T \phi(x_j)\big)$。在求解对偶问题时，我们并不需要知道映射后的高维点 $\phi(x)$ 具体在哪里，我们唯一需要计算的，只是映射后两个高维向量的内积。</p>
+<p>如果映射后的空间是极高维（甚至是无限维的，如高斯核），直接计算 $\phi(x_i)$ 和 $\phi(x_j)$，然后再做内积，计算量将是灾难性的（维数灾难）。</p>
+<p>核函数的定义由此诞生：有没有一种现成的函数 $K(x_i, x_j)$，能够使得在原始低维空间中直接计算这个函数的结果，刚好等于这两个点被映射到高维空间后计算内积的结果？</p>
+<p>即：</p>
+<script type="math/tex; mode=display">K(x_i, x_j) = \phi(x_i)^T \phi(x_j)</script><p>如果有，我们就彻底跳过了映射的步骤！不需要显式定义 $\phi(x)$，不需要算高维坐标，直接拿着低维原始数据 $(x_i, x_j)$ 代入 $K$，算出来的结果就等效于我们在高维空间里做完了内积。</p>
+<h3 id="常用的核函数"><a href="#常用的核函数" class="headerlink" title="常用的核函数"></a>常用的核函数</h3><p>最常用的有三种：</p>
+<p>线性核（Linear Kernel）</p>
+<script type="math/tex; mode=display">K(x_i, x_j) = x_i^T x_j</script><p>这是不进行任何映射的原始状态，适用于本来就线性可分的数据。</p>
+<p>多项式核（Polynomial Kernel）</p>
+<script type="math/tex; mode=display">K(x_i, x_j) = (x_i^T x_j + c)^d</script><p>它能将数据映射到有限的多维空间。参数 $d$ 控制多项式的阶数。</p>
+<p>高斯核 / 径向基核（RBF Kernel）</p>
+<script type="math/tex; mode=display">K(x_i, x_j) = \exp\left(-\frac{\vert{}\vert{}x_i - x_j\vert{}\vert{}^2}{2\sigma^2}\right)</script><blockquote>
+<p>高斯核是最强大的核函数。泰勒展开可以证明，高斯核实际上是将数据映射到了无限维空间。  </p>
+<p>其物理直觉是度量两个样本之间的相似度：如果 $x_i$ 和 $x_j$ 距离极近，结果趋于 1；如果相距甚远，结果趋于 0。参数 $\sigma$ 控制了单个样本的影响范围（类似于地形起伏的平缓程度）。</p>
+</blockquote>
+<h2 id="软间隔与正则化"><a href="#软间隔与正则化" class="headerlink" title="软间隔与正则化"></a>软间隔与正则化</h2><p>在前面的讨论中，我们构建的都是硬间隔（Hard Margin） SVM。它有一个极其严苛的前提条件：训练数据必须在特征空间中绝对线性可分。</p>
+<p>但在实际的工程数据中，几乎不可避免地存在噪声点或异常值（Outliers）。如果强行要求所有点都必须分对且在间隔边界之外，会导致两个问题：</p>
+<ul>
+<li><p>无解：如果两类数据有交叉，硬间隔的优化问题直接无可行解。</p>
+</li>
+<li><p>过拟合：即使极个别异常值没有导致无解，超平面也会为了迁就这几个异常点而发生剧烈偏转，导致间隔极度缩窄，模型的泛化能力崩溃。</p>
+</li>
+</ul>
+<p>为了解决这个问题，我们引入软间隔（Soft Margin）机制。从机器学习的统一视角来看，软间隔的本质就是向 SVM 引入了正则化（Regularization）</p>
+<h3 id="软间隔的代数构造"><a href="#软间隔的代数构造" class="headerlink" title="软间隔的代数构造"></a>软间隔的代数构造</h3><p>引入松弛变量硬间隔的约束条件是铁律：$y_i(w^T x_i + b) \ge 1$。为了允许某些样本出错，我们为每一个样本点 $x_i$ 引入一个非负的松弛变量（Slack Variable） $\xi_i \ge 0$。将松弛变量加入约束条件中：</p>
+<script type="math/tex; mode=display">y_i(w^T x_i + b) \ge 1 - \xi_i</script><p>这里的 $\xi_i$ 有非常明确的几何意义：$\xi_i = 0$：样本完全合规，位于间隔边界上或边界之外。$0 &lt; \xi_i &lt; 1$：样本分类正确，但落入了间隔的内部缓冲区（确信度不足）。$\xi_i = 1$：样本刚好落在中间的划分超平面上。$\xi_i &gt; 1$：样本跨过了中间超平面，被错误分类。</p>
+<h3 id="目标函数的重构"><a href="#目标函数的重构" class="headerlink" title="目标函数的重构"></a>目标函数的重构</h3><p>经验风险与结构风险的博弈虽然我们允许犯错，但犯错是需要付出代价的。如果不对 $\xi_i$ 加以限制，模型会让所有的 $\xi_i \to \infty$，从而把所有约束条件架空。因此，必须把松弛变量作为“惩罚项”加入到目标函数中。软间隔 SVM 的完整优化问题变为：</p>
+<script type="math/tex; mode=display">\begin{aligned} \min_{w,b,\xi} \quad & \frac{1}{2}\vert{}\vert{}w\vert{}\vert{}^2 + C \sum_{i=1}^n \xi_i \\ \text{s.t.} \quad & y_i(w^T x_i + b) \ge 1 - \xi_i \\ & \xi_i \ge 0, \quad i = 1, 2, \dots, n \end{aligned}</script><p>这已经是一个非常标准的机器学习目标函数范式：目标函数 = 正则化项 + 损失函数。</p>
+<blockquote>
+<p>结构风险（正则化项）：$\frac{1}{2}\vert{}\vert{}w\vert{}\vert{}^2 \quad$我们在之前的文章中讲过，最小化 $\vert{}\vert{}w\vert{}\vert{}$ 等价于最大化几何间隔。这一项的作用是压制模型的复杂度，让分类边界尽可能平滑、间隔尽可能宽，从而提高泛化能力。在代数上，它就是标准的 L2 正则化。</p>
+<p>经验风险（训练误差）：$\sum \xi_i \quad$这一项统计了所有违规样本的偏差总和。最小化这一项，就是在逼迫模型尽可能少犯错。</p>
+<p>惩罚参数（正则化系数）：$C \quad$ $C &gt; 0$ 是一个由用户指定的超参数，用来调节结构风险和经验风险之间的权重。</p>
+</blockquote>
+<h3 id="参数C的极限控制"><a href="#参数C的极限控制" class="headerlink" title="参数C的极限控制"></a>参数C的极限控制</h3><p>当 $C$ 很大时（倾向于过拟合）：损失项在目标函数中占据主导地位。模型对违规行为（$\xi_i &gt; 0$）的容忍度极低，宁愿把间隔压缩得非常窄（即允许 $\vert{}\vert{}w\vert{}\vert{}$ 变大），也要把那些游离的异常点强行划分正确。</p>
+<p>当 $C \to \infty$ 时，软间隔退化为硬间隔。当 $C$ 很小时（倾向于欠拟合）：正则化项占据主导地位。模型对违规样本非常宽容，它宁愿让很多点分类错误（允许 $\xi_i$ 变大），也要维持一个极宽的分类间隔（保持 $\vert{}\vert{}w\vert{}\vert{}$ 极小）。</p>
+<h2 id="KKT条件（Karush-Kuhn-Tucker-Conditions）"><a href="#KKT条件（Karush-Kuhn-Tucker-Conditions）" class="headerlink" title="KKT条件（Karush-Kuhn-Tucker Conditions）"></a>KKT条件（Karush-Kuhn-Tucker Conditions）</h2><p>在凸优化问题（如 SVM）中，KKT 条件是判断一个解是否为全局最优解的充分且必要条件。只要一组变量满足了 KKT 条件，它们就必定是该问题的最优解。</p>
+<p>假设我们有一个标准的非线性优化问题：</p>
+<script type="math/tex; mode=display">\begin{aligned} \min_{x} \quad & f(x) \\ \text{s.t.} \quad & g_i(x) \le 0, \quad i = 1, \dots, m \quad \text{(不等式约束)} \\ & h_j(x) = 0, \quad j = 1, \dots, p \quad \text{(等式约束)} \end{aligned}</script><p>我们为其构造广义拉格朗日函数，引入乘子 $\alpha_i$ 和 $\beta_j$：</p>
+<script type="math/tex; mode=display">L(x, \alpha, \beta) = f(x) + \sum_{i=1}^m \alpha_i g_i(x) + \sum_{j=1}^p \beta_j h_j(x)</script><p>假设 $x^<em>$ 是该优化问题的最优解，且 $(\alpha^</em>, \beta^*)$ 是对应的最优拉格朗日乘子。要使得这组解成立，它们必须严格满足以下四个核心的 KKT 条件：</p>
+<p>平稳性条件 (Stationarity)在最优解处，拉格朗日函数对原变量 $x$ 的梯度（偏导数）必须为零。这意味着目标函数的下降方向与约束条件的法向量达到了力学上的平衡。</p>
+<script type="math/tex; mode=display">\nabla_x L(x^*, \alpha^*, \beta^*) = \nabla f(x^*) + \sum_{i=1}^m \alpha_i^* \nabla g_i(x^*) + \sum_{j=1}^p \beta_j^* \nabla h_j(x^*) = 0</script><p>原问题可行性 (Primal Feasibility)最优解 $x^*$ 必须始终在原优化问题的可行域内，即严格满足最初设定的所有等式和不等式约束。</p>
+<script type="math/tex; mode=display">g_i(x^*) \le 0, \quad \forall i = 1, \dots, m</script><script type="math/tex; mode=display">h_j(x^*) = 0, \quad \forall j = 1, \dots, p</script><p>对偶可行性 (Dual Feasibility)引入的不等式约束乘子 $\alpha_i^<em>$ 必须大于或等于零。这是因为目标是求极小值，如果乘子为负，拉格朗日函数的值可以通过无限制地调整使得该项趋于负无穷，从而无法找到最优解。（注：等式约束的乘子 $\beta_j^</em>$ 没有非负限制）。</p>
+<script type="math/tex; mode=display">\alpha_i^* \ge 0, \quad \forall i = 1, \dots, m</script><p>互补松弛性 (Complementary Slackness)拉格朗日乘子与对应的不等式约束函数的乘积必须恒为零。</p>
+<script type="math/tex; mode=display">\alpha_i^* g_i(x^*) = 0, \quad \forall i = 1, \dots, m</script><h2 id="支持向量回归"><a href="#支持向量回归" class="headerlink" title="支持向量回归"></a>支持向量回归</h2><p>支持向量回归 (Support Vector Regression, SVR) 是 SVM 在连续数值预测（回归）任务上的扩展。传统的回归模型（例如普通最小二乘法）会计算所有样本点的残差，并对每一个误差都进行惩罚。而 SVR 的核心逻辑是：容忍一定范围内的误差，只惩罚超出该范围的偏差，并在满足这一条件的前提下追求模型参数的极小化（即回归函数的平滑性）</p>
+<h3 id="核心数学模型：-epsilon-不敏感损失与原问题"><a href="#核心数学模型：-epsilon-不敏感损失与原问题" class="headerlink" title="核心数学模型：$\epsilon$-不敏感损失与原问题"></a>核心数学模型：$\epsilon$-不敏感损失与原问题</h3><p>SVR 构建了一个以回归函数 $f(x) = w^T x + b$ 为中心，宽度为 $2\epsilon$ 的间隔带（常被称为 $\epsilon$-tube）。如果样本点落在这个带子内部，模型认为预测是精确的，损失为 0；只有落在带子外面的点才会产生损失。</p>
+<p>由于并非所有数据都能完美落入这个误差带，我们需要引入松弛变量 (Slack Variables) $\xi_i$ 和 $\xi_i^*$ 来量化数据点超出上下边界的幅度。由此，SVR 的标准原问题（Primal Problem）被建模为如下凸优化问题：</p>
+<script type="math/tex; mode=display">\begin{aligned} \min_{w, b, \xi, \xi^*} \quad & \frac{1}{2}\Vert{}w\Vert{}^2 + C \sum_{i=1}^n (\xi_i + \xi_i^*) \\ \text{s.t.} \quad & y_i - (w^T x_i + b) \le \epsilon + \xi_i, \quad \forall i = 1, \dots, n \\ & (w^T x_i + b) - y_i \le \epsilon + \xi_i^*, \quad \forall i = 1, \dots, n \\ & \xi_i \ge 0, \quad \xi_i^* \ge 0, \quad \forall i = 1, \dots, n \end{aligned}</script><p>$\frac{1}{2}\Vert{}w\Vert{}^2$：正则化项，用于最小化超平面的法向量长度，使模型尽可能平坦。</p>
+<p>$C$：惩罚系数，用于控制模型平坦度与容忍误差之间的权衡。</p>
+<p>$\xi_i$ 与 $\xi_i^*$：分别表示第 $i$ 个样本在 $\epsilon$-带上方和下方的偏差。</p>
+<h3 id="SVR-的对偶问题与-KKT-条件的应用"><a href="#SVR-的对偶问题与-KKT-条件的应用" class="headerlink" title="SVR 的对偶问题与 KKT 条件的应用"></a>SVR 的对偶问题与 KKT 条件的应用</h3><p>基于我们之前讨论的 KKT 条件原理，为了求解上述带约束的优化问题，我们引入四组非负的拉格朗日乘子：</p>
+<p>$\alpha_i, \alpha_i^*$：对应 $\epsilon$-带边界的两个不等式约束。</p>
+<p>$\eta_i, \eta_i^*$：对应松弛变量非负的约束。</p>
+<p>构造广义拉格朗日函数 $L$ 后，根据 平稳性条件 (Stationarity) 对 $w, b, \xi_i, \xi_i^*$ 求偏导并令其等于 0，可以得到几个关键等式：</p>
+<ul>
+<li>$w = \sum_{i=1}^n (\alpha_i - \alpha_i^*)x_i$ （参数 $w$ 是样本特征的线性组合）</li>
+<li>$\sum_{i=1}^n (\alpha_i - \alpha_i^*) = 0$</li>
+<li>$C = \alpha_i + \eta_i$ 且 $C = \alpha_i^<em> + \eta_i^</em>$</li>
+</ul>
+<p>将这些平稳性结果代回拉格朗日函数中，可以消除原变量，推导出 SVR 的对偶问题 (Dual Problem)：</p>
+<script type="math/tex; mode=display">\begin{aligned} \max_{\alpha, \alpha^*} \quad & -\frac{1}{2} \sum_{i,j=1}^n (\alpha_i - \alpha_i^*)(\alpha_j - \alpha_j^*) x_i^T x_j - \epsilon \sum_{i=1}^n (\alpha_i + \alpha_i^*) + \sum_{i=1}^n y_i(\alpha_i - \alpha_i^*) \\ \text{s.t.} \quad & \sum_{i=1}^n (\alpha_i - \alpha_i^*) = 0 \\ & 0 \le \alpha_i, \alpha_i^* \le C \end{aligned}</script><p>对偶问题将所有的计算都转化为了样本点之间的内积 $x_i^T x_j$，这就为后续引入核函数（Kernel Trick）处理非线性映射奠定了直接的数学基础。</p>
+<h3 id="KKT-互补松弛性与支持向量的物理意义"><a href="#KKT-互补松弛性与支持向量的物理意义" class="headerlink" title="KKT 互补松弛性与支持向量的物理意义"></a>KKT 互补松弛性与支持向量的物理意义</h3><p>在 SVR 中，KKT 条件中的互补松弛性 (Complementary Slackness) 体现得尤为深刻：</p>
+<script type="math/tex; mode=display">\alpha_i (y_i - w^T x_i - b - \epsilon - \xi_i) = 0</script><script type="math/tex; mode=display">\alpha_i^* (w^T x_i + b - y_i - \epsilon - \xi_i^*) = 0</script><p>这两个等式严格决定了数据点在模型中的状态和地位，也就是为什么称其为“支持向量”回归：</p>
+<ul>
+<li><p>非支持向量 ($\alpha_i = 0, \alpha_i^ = 0$)*：若数据点严格位于 $\epsilon$-带内部，对应的约束条件未被激活，乘子必为 0。这意味着这些数据点在计算参数 $w$ 时被直接消去，对最终的回归面没有任何贡献。</p>
+</li>
+<li><p>边界支持向量 ($0 &lt; \alpha_i &lt; C$ 或 $0 &lt; \alpha_i^ &lt; C$)*：数据点恰好落在 $\epsilon$-带的边界上，此时 $\xi_i = 0$。它们共同决定了回归面的位置。</p>
+</li>
+<li><p>越界支持向量 ($\alpha_i = C$ 或 $\alpha_i^ = C$)*：数据点落在边界之外（$\xi_i &gt; 0$），受到惩罚。</p>
+</li>
+</ul>
+<h2 id="核方法"><a href="#核方法" class="headerlink" title="核方法"></a>核方法</h2><h3 id="核心数学模型：特征映射"><a href="#核心数学模型：特征映射" class="headerlink" title="核心数学模型：特征映射"></a>核心数学模型：特征映射</h3><p>设原始数据的输入空间为 $\mathcal{X}$（通常是 $\mathbb{R}^d$ 空间），为了解决非线性问题，我们需要寻找一个非线性映射函数 $\phi$，将数据映射到一个更高维（甚至是无穷维）的内积空间（通常为希尔伯特空间）$\mathcal{H}$ 中：</p>
+<script type="math/tex; mode=display">\phi: \mathcal{X} \rightarrow \mathcal{H}</script><script type="math/tex; mode=display">x \mapsto \phi(x)</script><p>通过这种映射，原空间中的非线性分类或回归问题，就可以转化为高维空间 $\mathcal{H}$ 中的线性问题来求解。</p>
+<h3 id="核心机制：核技巧"><a href="#核心机制：核技巧" class="headerlink" title="核心机制：核技巧"></a>核心机制：核技巧</h3><p>如果在高维空间 $\mathcal{H}$ 中直接计算 $\phi(x)$，由于维度极高（例如高斯核对应无穷维），会导致极大的计算量甚至引起“维度灾难”。</p>
+<p>核技巧的数学依据在于，许多线性算法（如我们在 KKT 条件中讨论过的 SVM/SVR 对偶问题）在形式上最终只依赖于样本点之间的内积 (Inner Product)。当数据被映射到高维空间后，算法所需的计算变为 $\langle \phi(x_i), \phi(x_j) \rangle$。</p>
+<p>我们引入核函数 (Kernel Function) $K(x_i, x_j)$，要求其在低维空间中的计算结果，严格等于高维映射后的内积：</p>
+<script type="math/tex; mode=display">K(x_i, x_j) = \langle \phi(x_i), \phi(x_j) \rangle</script><p>这意味着，不需要知道具体的映射函数 $\phi(x)$ 到底是什么，也不需要显式地将数据转换为高维向量。只要给定适当的核函数，就可以直接在低维的原始空间中进行计算，等价地得到高维空间中的内积结果。这在不增加计算复杂度的情况下，完成了高维特征空间的运算。</p>
+<h3 id="Mercer-条件：核函数的合法性判据"><a href="#Mercer-条件：核函数的合法性判据" class="headerlink" title="Mercer 条件：核函数的合法性判据"></a>Mercer 条件：核函数的合法性判据</h3><p>核技巧的前提是 $K(x_i, x_j)$ 必然对应着某个特征空间中的内积。但问题在于：不是随便写一个二元函数，背后就一定存在映射 $\phi(x)$。如果函数本身不合法，核技巧就是空中楼阁。</p>
+<p>Mercer 定理给出了严格的判定准则。</p>
+<p>对于任意 $n$ 个样本点 $\{x_1, x_2, \ldots, x_n\}$，定义 Gram 矩阵：</p>
+<script type="math/tex; mode=display">\mathbf{K} = \begin{bmatrix} K(x_1, x_1) & K(x_1, x_2) & \cdots & K(x_1, x_n) \\ K(x_2, x_1) & K(x_2, x_2) & \cdots & K(x_2, x_n) \\ \vdots & \vdots & \ddots & \vdots \\ K(x_n, x_1) & K(x_n, x_2) & \cdots & K(x_n, x_n) \end{bmatrix}</script><p>Mercer 定理的核心结论是：一个连续对称函数 $K(x_i, x_j)$ 是合法的核函数（即存在特征映射 $\phi$ 使得 $K(x_i, x_j) = \langle \phi(x_i), \phi(x_j) \rangle$），<strong>当且仅当</strong> 对任意有限样本集，其 Gram 矩阵 $\mathbf{K}$ 都是半正定的。</p>
+<blockquote>
+<p>半正定 (Positive Semi-Definite) 的判定条件：对任意非零列向量 $v \in \mathbb{R}^n$，都有 $v^T \mathbf{K} v \ge 0$。</p>
+</blockquote>
+<p>这条定理让我们可以在不显式构造 $\phi(x)$ 的情况下验证函数的合法性。以 RBF 核 $K(x_i, x_j) = \exp\left(-\frac{\Vert x_i - x_j \Vert^2}{2\sigma^2}\right)$ 为例——对指数函数做泰勒展开：</p>
+<script type="math/tex; mode=display">\exp\left(-\frac{\Vert x_i - x_j \Vert^2}{2\sigma^2}\right) = \exp\left(-\frac{\Vert x_i \Vert^2}{2\sigma^2}\right) \exp\left(-\frac{\Vert x_j \Vert^2}{2\sigma^2}\right) \exp\left(\frac{x_i^T x_j}{\sigma^2}\right)</script><p>将最后一个指数项展开为幂级数后，每一项都对应一个半正定 Gram 矩阵的 Hadamard 积，因此整个 RBF 核的 Gram 矩阵也是半正定的。这从数学上保证了 RBF 核确实将数据映射到了一个（无穷维的）特征空间。</p>
+<h3 id="核方法下的-SVM-决策函数"><a href="#核方法下的-SVM-决策函数" class="headerlink" title="核方法下的 SVM 决策函数"></a>核方法下的 SVM 决策函数</h3><p>一旦确认了核函数的合法性，将其代入 SVM 对偶问题后，优化问题的凸性保持不变，标准的 SMO 等求解器无需修改即可直接求解。训练完成后，分类决策函数变为：</p>
+<script type="math/tex; mode=display">f(x) = \mathrm{sign}\left( \sum_{i=1}^{n} \alpha_i^* y_i K(x_i, x) + b \right)</script><p>其中 $\alpha_i^*$ 是对偶问题的最优解。这一形式揭示了核方法的几个关键性质：</p>
+<ul>
+<li><p><strong>稀疏性得以保留</strong>：根据 KKT 互补松弛条件，绝大多数训练样本的 $\alpha_i^<em> = 0$。只有支持向量（$\alpha_i^</em> &gt; 0$）实际参与预测求和。训练数据规模可能极大，但最终模型仅由少数支持向量支撑。</p>
+</li>
+<li><p><strong>算法与映射彻底解耦</strong>：优化问题中唯一涉及数据的地方是 $K(x_i, x_j)$。你不需要改算法，只需要换核函数，模型就能适配从线性到高度非线性的各种数据分布。</p>
+</li>
+<li><p><strong>预测时同样无需显式升维</strong>：对新样本 $x$ 的预测只需求 $x$ 与各支持向量 $x_i$ 的核函数值 $K(x_i, x)$，完全不涉及高维空间中的坐标运算。</p>
+</li>
+</ul>
+<p>正是这种”在低维空间中完成高维运算”的能力，使得核方法从 SVM 的一种技巧，上升为一类通用的学习范式。</p>
+]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+      </tags>
+  </entry>
 </search>
