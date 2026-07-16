@@ -10,7 +10,37 @@
   <rights>All rights reserved 2026, inmost</rights>
   <subtitle>inmostsama</subtitle>
   <title>inmost's blog</title>
-  <updated>2026-07-13T19:19:45.186Z</updated>
+  <updated>2026-07-15T14:09:16.665Z</updated>
+  <entry>
+    <author>
+      <name>inmost</name>
+    </author>
+    <category term="机器学习" scheme="https://inmostflyyy.xin/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    <category term="机器学习" scheme="https://inmostflyyy.xin/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    <id>https://inmostflyyy.xin/2026/07/15/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/</id>
+    <link href="https://inmostflyyy.xin/2026/07/15/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/"/>
+    <published>2026-07-15T13:55:24.849Z</published>
+    <summary>
+      <![CDATA[<p>集成学习通过构建并结合多个学习器来完成学习任务，常可获得比单一学习器显著优越的泛化性能。本章讨论Boosting、Bagging两大流派、随机森林、结合策略与多样性度量。</p>]]>
+    </summary>
+    <title>集成学习</title>
+    <updated>2026-07-15T14:09:16.665Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>inmost</name>
+    </author>
+    <category term="机器学习" scheme="https://inmostflyyy.xin/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    <category term="机器学习" scheme="https://inmostflyyy.xin/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    <id>https://inmostflyyy.xin/2026/07/15/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/</id>
+    <link href="https://inmostflyyy.xin/2026/07/15/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/"/>
+    <published>2026-07-15T13:51:28.854Z</published>
+    <summary>
+      <![CDATA[<p>贝叶斯分类器是一类基于贝叶斯定理的概率分类方法。它从概率视角出发，通过先验知识和观测数据推断后验概率，进而做出最优分类决策。本章从贝叶斯决策论出发，逐步引出朴素贝叶斯、半朴素贝叶斯、贝叶斯网和EM算法。</p>]]>
+    </summary>
+    <title>贝叶斯分类器</title>
+    <updated>2026-07-15T14:18:26.913Z</updated>
+  </entry>
   <entry>
     <author>
       <name>inmost</name>
@@ -55,7 +85,7 @@
       <![CDATA[<p>本章重点讨论线性模型在机器学习中的运用<br>]]>
     </summary>
     <title>线性模型</title>
-    <updated>2026-07-10T08:49:05.084Z</updated>
+    <updated>2026-07-15T14:24:49.426Z</updated>
   </entry>
   <entry>
     <author>
@@ -71,6 +101,21 @@
     </summary>
     <title>模型评估</title>
     <updated>2026-07-09T17:03:05.749Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>inmost</name>
+    </author>
+    <category term="机器学习" scheme="https://inmostflyyy.xin/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    <category term="机器学习" scheme="https://inmostflyyy.xin/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    <id>https://inmostflyyy.xin/2026/07/02/%E8%81%9A%E7%B1%BB%E5%AD%A6%E4%B9%A0/</id>
+    <link href="https://inmostflyyy.xin/2026/07/02/%E8%81%9A%E7%B1%BB%E5%AD%A6%E4%B9%A0/"/>
+    <published>2026-07-02T03:44:22.048Z</published>
+    <summary>
+      <![CDATA[<p>聚类是无监督学习的核心任务，目标是将数据集中的样本划分为若干个通常不相交的子集（簇），使得同一簇内样本尽可能相似、不同簇间样本尽可能不同。本章从距离度量出发，逐步讨论原型聚类、密度聚类和层次聚类三大范式。</p>]]>
+    </summary>
+    <title>聚类</title>
+    <updated>2026-07-15T14:08:13.603Z</updated>
   </entry>
   <entry>
     <author>

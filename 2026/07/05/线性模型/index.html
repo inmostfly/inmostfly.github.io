@@ -29,7 +29,7 @@
 <meta property="og:description" content="本章重点讨论线性模型在机器学习中的运用">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-07-05T14:22:03.914Z">
-<meta property="article:modified_time" content="2026-07-10T08:49:05.084Z">
+<meta property="article:modified_time" content="2026-07-15T14:24:49.426Z">
 <meta property="article:author" content="inmost">
 <meta property="article:tag" content="数学">
 <meta property="article:tag" content="机器学习">
@@ -241,7 +241,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2026-07-10 16:49:05" itemprop="dateModified" datetime="2026-07-10T16:49:05+08:00">2026-07-10</time>
+                <time title="修改时间：2026-07-15 22:24:49" itemprop="dateModified" datetime="2026-07-15T22:24:49+08:00">2026-07-15</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -371,7 +371,10 @@
 <p>准确率悖论 (Accuracy Paradox)<br>大多数标准分类算法（如SVM、逻辑回归、标准神经网络）的优化目标是最小化全局错误率。在1:99的不平衡数据中，模型哪怕不提取任何特征，直接将所有样本预测为多数类，其准确率（Accuracy）也能达到99%。模型学到的不是特征与标签的映射关系，而是数据的先验概率。<br>梯度被多数类主导<br>在神经网络的反向传播中，损失函数（如标准交叉熵）是所有样本损失的累加。由于多数类样本数量极大，其产生的累积梯度会主导网络权重的更新方向，导致少数类特征的提取网络层“得不到足够的更新信号”，从而被淹没。</p>
 <p>解决方案：</p>
 <ul>
-<li><p>重采样 (Resampling)<br>通过改变训练集的数据分布，强制达到平衡。<br>欠采样 (Undersampling)：随机或通过启发式算法（如 Tomek Links 剔除边界重叠样本）减少多数类的数量。缺点是会丢失多数类的大量结构信息。<br>过采样 (Oversampling)：增加少数类样本。最经典的是 SMOTE (Synthetic Minority Over-sampling Technique) 算法。它不仅仅是简单复制样本（这会导致严重过拟合），而是在少数类样本及其K近邻之间进行线性插值，合成生成全新的少数类数据点。<br>K近邻：当需要判断一个未知数据属于哪一类时，系统会寻找离它最近的 K 个已知数据，通过这 K 个“邻居”的类别来决定未知数据的归属。用于分类：将该样本归类为这 K 个邻居中出现次数最多的类别。用于回归：将该样本的预测值设定为这 K 个邻居数值的平均值。</p>
+<li><p>重采样 (Resampling)<br>通过改变训练集的数据分布，强制达到平衡。<br>欠采样 (Undersampling)：随机或通过启发式算法（如 Tomek Links 剔除边界重叠样本）减少多数类的数量。缺点是会丢失多数类的大量结构信息。<br>过采样 (Oversampling)：增加少数类样本。最经典的是 SMOTE (Synthetic Minority Over-sampling Technique) 算法。它不仅仅是简单复制样本（这会导致严重过拟合），而是在少数类样本及其K近邻之间进行线性插值，合成生成全新的少数类数据点。  </p>
+<blockquote>
+<p>K近邻：当需要判断一个未知数据属于哪一类时，系统会寻找离它最近的 K 个已知数据，通过这 K 个“邻居”的类别来决定未知数据的归属。用于分类：将该样本归类为这 K 个邻居中出现次数最多的类别。用于回归：将该样本的预测值设定为这 K 个邻居数值的平均值。</p>
+</blockquote>
 </li>
 <li><p>阈值移动<br>数学本质：再缩放 (Rescaling)在线性分类器或逻辑回归中，模型输出的预测值 $y$ 代表了样本属于正类的概率。我们通常默认使用 $0.5$ 作为分类阈值，其背后的逻辑是比较正例和反例的几率（Odds）：如果 $\frac{y}{1-y} &gt; 1$，则预测为正类。当数据正例和反例不平衡时我们可以对预测值进行修改，“再缩放”，使得分类决策规则变为：$\frac{y}{1-y} &gt; \frac{m^+}{m^-}$，我们得到新的判定阈值：$y &gt; \frac{m^+}{m^+ + m^-}$。</p>
 </li>
@@ -508,7 +511,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-count">19</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -571,12 +574,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">48k</span>
+    <span title="站点总字数">55k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:26</span>
+    <span title="站点阅读时长">1:39</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-user-md"></i>

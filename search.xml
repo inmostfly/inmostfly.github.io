@@ -528,7 +528,10 @@
 <p>准确率悖论 (Accuracy Paradox)<br>大多数标准分类算法（如SVM、逻辑回归、标准神经网络）的优化目标是最小化全局错误率。在1:99的不平衡数据中，模型哪怕不提取任何特征，直接将所有样本预测为多数类，其准确率（Accuracy）也能达到99%。模型学到的不是特征与标签的映射关系，而是数据的先验概率。<br>梯度被多数类主导<br>在神经网络的反向传播中，损失函数（如标准交叉熵）是所有样本损失的累加。由于多数类样本数量极大，其产生的累积梯度会主导网络权重的更新方向，导致少数类特征的提取网络层“得不到足够的更新信号”，从而被淹没。</p>
 <p>解决方案：</p>
 <ul>
-<li><p>重采样 (Resampling)<br>通过改变训练集的数据分布，强制达到平衡。<br>欠采样 (Undersampling)：随机或通过启发式算法（如 Tomek Links 剔除边界重叠样本）减少多数类的数量。缺点是会丢失多数类的大量结构信息。<br>过采样 (Oversampling)：增加少数类样本。最经典的是 SMOTE (Synthetic Minority Over-sampling Technique) 算法。它不仅仅是简单复制样本（这会导致严重过拟合），而是在少数类样本及其K近邻之间进行线性插值，合成生成全新的少数类数据点。<br>K近邻：当需要判断一个未知数据属于哪一类时，系统会寻找离它最近的 K 个已知数据，通过这 K 个“邻居”的类别来决定未知数据的归属。用于分类：将该样本归类为这 K 个邻居中出现次数最多的类别。用于回归：将该样本的预测值设定为这 K 个邻居数值的平均值。</p>
+<li><p>重采样 (Resampling)<br>通过改变训练集的数据分布，强制达到平衡。<br>欠采样 (Undersampling)：随机或通过启发式算法（如 Tomek Links 剔除边界重叠样本）减少多数类的数量。缺点是会丢失多数类的大量结构信息。<br>过采样 (Oversampling)：增加少数类样本。最经典的是 SMOTE (Synthetic Minority Over-sampling Technique) 算法。它不仅仅是简单复制样本（这会导致严重过拟合），而是在少数类样本及其K近邻之间进行线性插值，合成生成全新的少数类数据点。  </p>
+<blockquote>
+<p>K近邻：当需要判断一个未知数据属于哪一类时，系统会寻找离它最近的 K 个已知数据，通过这 K 个“邻居”的类别来决定未知数据的归属。用于分类：将该样本归类为这 K 个邻居中出现次数最多的类别。用于回归：将该样本的预测值设定为这 K 个邻居数值的平均值。</p>
+</blockquote>
 </li>
 <li><p>阈值移动<br>数学本质：再缩放 (Rescaling)在线性分类器或逻辑回归中，模型输出的预测值 $y$ 代表了样本属于正类的概率。我们通常默认使用 $0.5$ 作为分类阈值，其背后的逻辑是比较正例和反例的几率（Odds）：如果 $\frac{y}{1-y} &gt; 1$，则预测为正类。当数据正例和反例不平衡时我们可以对预测值进行修改，“再缩放”，使得分类决策规则变为：$\frac{y}{1-y} &gt; \frac{m^+}{m^-}$，我们得到新的判定阈值：$y &gt; \frac{m^+}{m^+ + m^-}$。</p>
 </li>
@@ -747,6 +750,299 @@
 </li>
 </ul>
 <p>正是这种”在低维空间中完成高维运算”的能力，使得核方法从 SVM 的一种技巧，上升为一类通用的学习范式。</p>
+]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>聚类</title>
+    <url>/2026/07/02/%E8%81%9A%E7%B1%BB%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<p>聚类是无监督学习的核心任务，目标是将数据集中的样本划分为若干个通常不相交的子集（簇），使得同一簇内样本尽可能相似、不同簇间样本尽可能不同。本章从距离度量出发，逐步讨论原型聚类、密度聚类和层次聚类三大范式。</p>
+<span id="more"></span>
+<h1 id="第九章-聚类"><a href="#第九章-聚类" class="headerlink" title="第九章 聚类"></a>第九章 聚类</h1><h2 id="聚类任务与性能度量"><a href="#聚类任务与性能度量" class="headerlink" title="聚类任务与性能度量"></a>聚类任务与性能度量</h2><p>聚类属于无监督学习——训练样本没有标记信息，算法依靠数据的内在结构自动分组。</p>
+<p><strong>聚类性能度量</strong>分两大类：</p>
+<ul>
+<li><strong>外部指标</strong>（有参考模型）：Jaccard系数、FM指数、Rand指数 → 越高越好</li>
+<li><strong>内部指标</strong>（无参考模型）：DB指数（越小越好）、Dunn指数（越大越好）</li>
+</ul>
+<p><strong>轮廓系数 (Silhouette Coefficient)</strong>：综合衡量凝聚度和分离度，$s(i) = \frac{b(i) - a(i)}{\max\{a(i), b(i)\}}$，其中 $a(i)$ 为样本 $i$ 到同簇其他样本的平均距离，$b(i)$ 为到最近异簇的平均距离。$s(i)$ 接近1表示聚类效果好。</p>
+<h2 id="距离度量"><a href="#距离度量" class="headerlink" title="距离度量"></a>距离度量</h2><p>闵可夫斯基距离族统一了三种常用距离：</p>
+<script type="math/tex; mode=display">D(X,Y) = \left( \sum_{i=1}^n |x_i - y_i|^p \right)^{\frac{1}{p}}</script><ul>
+<li>$p=1$：曼哈顿距离（城市街区距离）$D = \sum |x_i - y_i|$</li>
+<li>$p=2$：欧几里得距离（直线距离）$D = \sqrt{\sum (x_i - y_i)^2}$</li>
+<li>$p \to \infty$：切比雪夫距离 $D = \max_i |x_i - y_i|$</li>
+</ul>
+<blockquote>
+<p>切比雪夫距离在多维异常检测中尤其有用——它只关注变化最大的那个维度，相当于用”最短板”衡量距离。</p>
+</blockquote>
+<p><strong>有序属性 vs 无序属性</strong>：有序属性（如”高&gt;中&gt;低”）可用闵氏距离；无序属性（如”红、蓝、绿”）需用VDM。</p>
+<h2 id="原型聚类：K-means"><a href="#原型聚类：K-means" class="headerlink" title="原型聚类：K-means"></a>原型聚类：K-means</h2><p>K-means是原型聚类的最经典代表——每个簇用一个<strong>均值向量</strong>（原型）来代表。核心是<strong>最小化平方误差</strong>：</p>
+<script type="math/tex; mode=display">E = \sum_{i=1}^k \sum_{\mathbf{x} \in C_i} \|\mathbf{x} - \boldsymbol{\mu}_i\|_2^2</script><p>算法流程：</p>
+<ol>
+<li>随机选 $k$ 个样本作为初始均值向量</li>
+<li>将每个样本分配到最近均值向量的簇</li>
+<li>重新计算每个簇的均值向量</li>
+<li>重复2-3直到收敛（均值向量不再变化）</li>
+</ol>
+<blockquote>
+<p>K-means的三大局限性：<strong>k需预设</strong>、<strong>对初始值敏感</strong>（不同初始化可能收敛到不同局部最优）、<strong>仅发现球形簇</strong>。实践中常用K-means++初始化来缓解初始值敏感问题——让初始中心点尽可能分散。</p>
+</blockquote>
+<h3 id="LVQ（学习向量量化）"><a href="#LVQ（学习向量量化）" class="headerlink" title="LVQ（学习向量量化）"></a>LVQ（学习向量量化）</h3><p>LVQ是K-means的有监督变体：利用样本的类别标签辅助聚类，使原型向量向同类样本靠近、远离异类样本。适合有部分标记信息的场景。</p>
+<h3 id="高斯混合聚类-GMM"><a href="#高斯混合聚类-GMM" class="headerlink" title="高斯混合聚类 (GMM)"></a>高斯混合聚类 (GMM)</h3><p>用多个高斯分布的线性组合拟合数据，每个样本以概率归属于各高斯分量——属于<strong>软聚类</strong>。</p>
+<script type="math/tex; mode=display">P(\mathbf{x}) = \sum_{i=1}^k \alpha_i \cdot \mathcal{N}(\mathbf{x} | \boldsymbol{\mu}_i, \boldsymbol{\Sigma}_i)</script><p>参数估计使用EM算法：E步计算样本属于各分量的后验概率，M步更新 $\alpha_i, \boldsymbol{\mu}_i, \boldsymbol{\Sigma}_i$。</p>
+<h2 id="密度聚类：DBSCAN"><a href="#密度聚类：DBSCAN" class="headerlink" title="密度聚类：DBSCAN"></a>密度聚类：DBSCAN</h2><p>DBSCAN基于密度的空间聚类，不预设簇的数量、能发现任意形状的簇、自动识别噪声。</p>
+<p><strong>核心概念</strong>：</p>
+<ul>
+<li><strong>$\varepsilon$-邻域</strong>：以样本为中心、$\varepsilon$ 为半径的超球体区域</li>
+<li><strong>核心点</strong>：$\varepsilon$-邻域内包含至少 MinPts 个样本</li>
+<li><strong>边界点</strong>：在核心点的邻域内，但自身不满足核心点条件</li>
+<li><strong>噪声点</strong>：既非核心也非边界</li>
+<li><strong>密度直达 / 密度可达 / 密度相连</strong>：递进式的点间关系，用于定义簇</li>
+</ul>
+<blockquote>
+<p>DBSCAN的一个簇 = 所有密度相连的核心点及其边界点。参数选择：$\varepsilon$ 可用k-距离图确定拐点，MinPts通常取 $\geq$ 维度+1。</p>
+</blockquote>
+<p><strong>优缺点</strong>：自动识别噪声、发现任意形状 → 但高维数据效果差（维度灾难导致密度概念退化）、$\varepsilon$ 和 MinPts 敏感。</p>
+<h2 id="层次聚类"><a href="#层次聚类" class="headerlink" title="层次聚类"></a>层次聚类</h2><p>层次聚类构建树状簇结构（Dendrogram），无需预设 $k$。</p>
+<ul>
+<li><strong>自底向上 (AGNES)</strong>：初始每个样本各为一簇，每次合并距离最近的两簇</li>
+<li><strong>自顶向下 (DIANA)</strong>：初始所有样本为一簇，每次分裂</li>
+</ul>
+<p>簇间距离度量决定了合并/分裂策略：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">策略</th>
+<th style="text-align:left">定义</th>
+<th style="text-align:left">特点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">最小距离（单链接）</td>
+<td style="text-align:left">$d_{\min}(C_i, C_j)=\min_{\mathbf{x}\in C_i,\mathbf{y}\in C_j}\Vert\mathbf{x}-\mathbf{y}\Vert$</td>
+<td style="text-align:left">对噪声敏感</td>
+</tr>
+<tr>
+<td style="text-align:left">最大距离（全链接）</td>
+<td style="text-align:left">$d_{\max}(C_i, C_j)=\max_{\mathbf{x}\in C_i,\mathbf{y}\in C_j}\Vert\mathbf{x}-\mathbf{y}\Vert$</td>
+<td style="text-align:left">倾向发现紧凑簇</td>
+</tr>
+<tr>
+<td style="text-align:left">平均距离（均链接）</td>
+<td style="text-align:left">$d_{\text{avg}}(C_i, C_j)=\frac{1}{\lvert C_i\rvert\lvert C_j\rvert}\sum_{\mathbf{x}\in C_i}\sum_{\mathbf{y}\in C_j}\Vert\mathbf{x}-\mathbf{y}\Vert$</td>
+<td style="text-align:left">折中方案</td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<p>层次聚类的计算复杂度为 $O(n^3)$（朴素实现）或 $O(n^2 \log n)$（优化实现），不适用于超大规模数据。但Dendrogram可视化在探索性数据分析中极具价值。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>贝叶斯分类器</title>
+    <url>/2026/07/15/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/</url>
+    <content><![CDATA[<p>贝叶斯分类器是一类基于贝叶斯定理的概率分类方法。它从概率视角出发，通过先验知识和观测数据推断后验概率，进而做出最优分类决策。本章从贝叶斯决策论出发，逐步引出朴素贝叶斯、半朴素贝叶斯、贝叶斯网和EM算法。</p>
+<span id="more"></span>
+<h1 id="贝叶斯分类器"><a href="#贝叶斯分类器" class="headerlink" title="贝叶斯分类器"></a>贝叶斯分类器</h1><h2 id="贝叶斯决策论"><a href="#贝叶斯决策论" class="headerlink" title="贝叶斯决策论"></a>贝叶斯决策论</h2><p>贝叶斯决策论是概率框架下实施决策的基本方法。在所有相关概率都已知的理想情况下，它考虑如何基于这些概率和误判损失来选择最优的类别标记。</p>
+<p>假设有N种可能的类别标记 $c_1, c_2, \dots, c_N$，$\lambda_{ij}$ 是将真实标记为 $c_j$ 的样本误分类为 $c_i$ 所产生的损失。则样本 $\mathbf{x}$ 分类为 $c_i$ 的条件风险为：</p>
+<script type="math/tex; mode=display">R(c_i | \mathbf{x}) = \sum_{j=1}^N \lambda_{ij} P(c_j | \mathbf{x})</script><p>贝叶斯判定准则：最小化总体风险等价于对每个样本选择条件风险最小的类别：</p>
+<script type="math/tex; mode=display">h^*(\mathbf{x}) = \arg \min_{c \in \mathcal{Y}} R(c | \mathbf{x})</script><p>$h^<em>$ 称为贝叶斯最优分类器，对应的 $R(h^</em>)$ 为贝叶斯风险——这是分类器性能的理论上限。</p>
+<blockquote>
+<p>若目标是<strong>最小化分类错误率</strong>，则 $\lambda_{ij} = 0\ (i=j)$，否则 $\lambda_{ij} = 1$。此时 $R(c|\mathbf{x}) = 1-P(c|\mathbf{x})$，贝叶斯最优分类器简化为：$h^*(\mathbf{x}) = \arg \max_c P(c | \mathbf{x})$ —— 选择后验概率最大的类别。</p>
+</blockquote>
+<h3 id="贝叶斯公式与两种模型范式"><a href="#贝叶斯公式与两种模型范式" class="headerlink" title="贝叶斯公式与两种模型范式"></a>贝叶斯公式与两种模型范式</h3><p>后验概率由贝叶斯定理给出：</p>
+<script type="math/tex; mode=display">P(c | \mathbf{x}) = \frac{P(c) P(\mathbf{x} | c)}{P(\mathbf{x})}</script><ul>
+<li><strong>先验概率 $P(c)$</strong>：各类样本在空间中的比例，直接通过频率估算</li>
+<li><strong>似然 $P(\mathbf{x} | c)$</strong>：类条件概率——真正的难点。假设d个二值属性，样本空间大小为 $2^d$，直接估计不可行</li>
+</ul>
+<p>由此引出两种建模路线：</p>
+<ul>
+<li><strong>判别式模型</strong>：直接建模后验 $P(c|\mathbf{x})$（逻辑回归、SVM、决策树）</li>
+<li><strong>生成式模型</strong>：先建模联合分布 $P(\mathbf{x},c)$，再推出 $P(c|\mathbf{x})$（朴素贝叶斯）</li>
+</ul>
+<h2 id="极大似然估计-MLE"><a href="#极大似然估计-MLE" class="headerlink" title="极大似然估计 (MLE)"></a>极大似然估计 (MLE)</h2><p>估计 $P(\mathbf{x}|c)$ 的常用策略：先假定概率分布形式（如正态分布），再估计参数 $\boldsymbol{\theta}_c$。令 $D_c$ 为第c类样本集，对数似然为：</p>
+<script type="math/tex; mode=display">\ell(\boldsymbol{\theta}_c) = \sum_{\mathbf{x} \in D_c} \log P(\mathbf{x} | \boldsymbol{\theta}_c)</script><p>极大似然估计：$\hat{\boldsymbol{\theta}}_c = \arg \max \ell(\boldsymbol{\theta}_c)$ —— 选择使观测数据”最可能发生”的参数。</p>
+<blockquote>
+<p>频率主义 vs 贝叶斯主义：频率主义认为参数是未知常量，通过优化似然估计；贝叶斯主义认为参数是随机变量，有自己的先验分布，需要计算参数的后验。MLE是频率主义的代表方法。</p>
+</blockquote>
+<h2 id="朴素贝叶斯分类器"><a href="#朴素贝叶斯分类器" class="headerlink" title="朴素贝叶斯分类器"></a>朴素贝叶斯分类器</h2><p><strong>属性条件独立性假设</strong>（最核心、最大胆的假设）：</p>
+<script type="math/tex; mode=display">P(\mathbf{x} | c) = \prod_{i=1}^d P(x_i | c)</script><p>代入贝叶斯公式得到朴素贝叶斯分类器：</p>
+<script type="math/tex; mode=display">h_{nb}(\mathbf{x}) = \arg \max_c P(c) \prod_{i=1}^d P(x_i | c)</script><h3 id="概率估计"><a href="#概率估计" class="headerlink" title="概率估计"></a>概率估计</h3><ul>
+<li>先验：$P(c) = |D_c| / |D|$</li>
+<li>离散属性：$P(x_i | c) = |D_{c, x_i}| / |D_c|$</li>
+<li>连续属性（假设正态）：$P(x_i|c) \sim \mathcal{N}(\mu_{c,i}, \sigma_{c,i}^2)$</li>
+</ul>
+<h3 id="拉普拉斯修正"><a href="#拉普拉斯修正" class="headerlink" title="拉普拉斯修正"></a>拉普拉斯修正</h3><p>若某属性值从未在训练集中出现 → 概率估为0 → 连乘归零。拉普拉斯修正为每个取值”预置”一个虚拟样本，从根本上解决零概率问题：</p>
+<script type="math/tex; mode=display">\hat{P}(c) = \frac{|D_c| + 1}{|D| + N}, \quad \hat{P}(x_i | c) = \frac{|D_{c, x_i}| + 1}{|D_c| + N_i}</script><blockquote>
+<p><strong>朴素却有效的原因</strong>：分类决策只关心后验概率的<strong>相对排序</strong>，而非绝对值。即使 $P(\mathbf{x}|c)$ 不精确，只要各类别的相对排序正确，分类结果就不受影响。在高维场景（如文本分类）中，独立性假设的偏差会被”高维稀释”。</p>
+</blockquote>
+<h2 id="半朴素贝叶斯分类器"><a href="#半朴素贝叶斯分类器" class="headerlink" title="半朴素贝叶斯分类器"></a>半朴素贝叶斯分类器</h2><p>适当放松独立性假设——独依赖估计 (ODE)：每个属性最多依赖一个父属性 $pa_i$：</p>
+<script type="math/tex; mode=display">P(c | \mathbf{x}) \propto P(c) \prod_{i=1}^d P(x_i | c, pa_i)</script><p>三种典型策略：</p>
+<ul>
+<li><strong>SPODE</strong>：所有属性依赖同一个”超父”属性，通过交叉验证选择</li>
+<li><strong>TAN</strong>：基于条件互信息 $I(x_i, x_j | y)$ 构建最大带权生成树作为依赖结构</li>
+<li><strong>AODE</strong>：尝试所有可能的超父，对多个SPODE取平均（集成思路）</li>
+</ul>
+<h2 id="贝叶斯网"><a href="#贝叶斯网" class="headerlink" title="贝叶斯网"></a>贝叶斯网</h2><p>贝叶斯网用有向无环图 (DAG) 刻画属性依赖关系。结构 $G$ + 条件概率表 $\Theta$ 共同定义联合分布：</p>
+<script type="math/tex; mode=display">P_B(x_1, \dots, x_d) = \prod_{i=1}^d P_B(x_i | \pi_i)</script><p>其中 $\pi_i$ 为节点 $x_i$ 的父节点集合。</p>
+<p><strong>三种典型依赖结构</strong>（理解推断的关键）：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">结构</th>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">条件独立关系</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">$x_1 \leftarrow c \rightarrow x_2$</td>
+<td style="text-align:left">同父结构</td>
+<td style="text-align:left">c已知 → $x_1 \perp x_2 \mid c$</td>
+</tr>
+<tr>
+<td style="text-align:left">$x_1 \rightarrow c \leftarrow x_2$</td>
+<td style="text-align:left">V型结构</td>
+<td style="text-align:left">c已知 → $x_1 \not\perp x_2 \mid c$（解释消除）</td>
+</tr>
+<tr>
+<td style="text-align:left">$x_1 \rightarrow m \rightarrow x_2$</td>
+<td style="text-align:left">顺序结构</td>
+<td style="text-align:left">m已知 → $x_1 \perp x_2 \mid m$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>符号解释：</p>
+<p>$\perp \quad$:垂直，正交符号</p>
+<p>$X \perp Y$</p>
+<p>读作”X 与 Y 独立”——X 和 Y 没有统计依赖关系。</p>
+<p>$X \perp Y \mid Z$</p>
+<p>读作”给定 Z 的条件下，X 与 Y 条件独立”——一旦知道了 Z，X 和 Y 之间就没有额外的关联了。</p>
+<p>带否定：$X \not\perp Y \mid Z$</p>
+<p>读作”给定 Z 时，X 与 Y 不条件独立”——知道了 Z 反而让 X 和 Y 产生了关联。</p>
+<blockquote>
+<p>V型结构最反直觉：两个独立原因，一旦知道了共同结果，反而变得相关。例如：堵车（c）可能由交通事故（x1）或暴雨（x2）引起。如果已知”堵车了”，而你又听说”没有交通事故”，那么暴雨的可能性就急剧上升——这就是”解释消除”效应。</p>
+</blockquote>
+<p>贝叶斯网学习：结构已知时参数学习简单；结构未知（NP难）需评分搜索（BIC/AIC）或约束方法（独立性检验）。</p>
+<h2 id="EM算法"><a href="#EM算法" class="headerlink" title="EM算法"></a>EM算法</h2><p>处理含有隐变量 $Z$ 的不完整数据，迭代执行：</p>
+<ul>
+<li><strong>E步 (Expectation)</strong>：基于当前参数 $\Theta^t$，计算隐变量的期望 $Q(\Theta | \Theta^t) = \mathbb{E}_{Z|X,\Theta^t}[\log P(X,Z|\Theta)]$</li>
+<li><strong>M步 (Maximization)</strong>：最大化Q函数更新参数 $\Theta^{t+1} = \arg \max Q(\Theta | \Theta^t)$</li>
+</ul>
+<blockquote>
+<p>EM算法的精髓是”以退为进”：不直接优化复杂的边际似然，而是构造一个辅助Q函数逐步逼近。可以严格证明每次迭代边际似然不降——但不能保证收敛到全局最优。K-means也可以用EM视角来理解：E步分配簇，M步更新中心。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>集成学习</title>
+    <url>/2026/07/15/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<p>集成学习通过构建并结合多个学习器来完成学习任务，常可获得比单一学习器显著优越的泛化性能。本章讨论Boosting、Bagging两大流派、随机森林、结合策略与多样性度量。</p>
+<span id="more"></span>
+<h1 id="第八章-集成学习"><a href="#第八章-集成学习" class="headerlink" title="第八章 集成学习"></a>第八章 集成学习</h1><h2 id="个体与集成"><a href="#个体与集成" class="headerlink" title="个体与集成"></a>个体与集成</h2><p><strong>核心直觉</strong>：多个弱学习器互补，”三个臭皮匠顶个诸葛亮”。但要集成有效，个体学习器必须”好而不同”——既要有一定准确性，又要有<strong>多样性</strong>。</p>
+<p>两类集成方法：</p>
+<ul>
+<li><strong>并行化（Bagging派）</strong>：个体学习器独立生成，降低<strong>方差</strong></li>
+<li><strong>串行化（Boosting派）</strong>：个体学习器依赖生成，降低<strong>偏差</strong></li>
+</ul>
+<blockquote>
+<p>经验法则：Bagging适合高方差模型（如深度决策树），Boosting适合高偏差模型（如浅层决策树）。这也是为什么两者都以决策树为基学习器——决策树的方差/偏差可通过深度灵活调整。</p>
+</blockquote>
+<h2 id="Boosting"><a href="#Boosting" class="headerlink" title="Boosting"></a>Boosting</h2><p>Boosting将弱学习器提升为强学习器。核心机制：串行训练，每轮根据前一轮的表现<strong>调整训练样本的分布</strong>，使后续学习器聚焦于前面的错误。</p>
+<h3 id="AdaBoost"><a href="#AdaBoost" class="headerlink" title="AdaBoost"></a>AdaBoost</h3><p>最经典的Boosting算法：</p>
+<ol>
+<li>初始化样本权重：$w_i = 1/m$</li>
+<li>对 $t = 1, \dots, T$：<ul>
+<li>在加权分布上训练基学习器 $h_t$</li>
+<li>计算误差 $\epsilon_t = \sum_{i: h_t(x_i)\neq y_i} w_i$</li>
+<li>计算学习器权重 $\alpha_t = \frac{1}{2}\ln\frac{1-\epsilon_t}{\epsilon_t}$</li>
+<li>更新样本权重：$w_i \leftarrow w_i \cdot \exp(-\alpha_t y_i h_t(x_i))$，归一化</li>
+</ul>
+</li>
+<li>最终分类器：$H(x) = \text{sign}\left(\sum_{t=1}^T \alpha_t h_t(x)\right)$</li>
+</ol>
+<blockquote>
+<p>AdaBoost的指数损失函数：$\ell_{\exp}(H|D) = \mathbb{E}_{x\sim D}[e^{-yH(x)}]$。可以证明，AdaBoost每步优化的是指数损失，且最终模型等价于对数几率回归的加性模型。</p>
+</blockquote>
+<h3 id="GBDT-梯度提升决策树"><a href="#GBDT-梯度提升决策树" class="headerlink" title="GBDT (梯度提升决策树)"></a>GBDT (梯度提升决策树)</h3><p>AdaBoost通过调整样本权重间接优化损失，GBDT更直接——每棵树<strong>直接拟合上一轮的负梯度（残差）</strong>：</p>
+<script type="math/tex; mode=display">r_{ti} = -\left[\frac{\partial L(y_i, f(x_i))}{\partial f(x_i)}\right]_{f(x)=f_{t-1}(x)}</script><p>第 $t$ 棵回归树拟合 $\{(x_i, r_{ti})\}$，最终模型为所有树输出的累加。</p>
+<h3 id="XGBoost与LightGBM"><a href="#XGBoost与LightGBM" class="headerlink" title="XGBoost与LightGBM"></a>XGBoost与LightGBM</h3><ul>
+<li><strong>XGBoost</strong>：对损失函数做二阶泰勒展开（用到Hessian信息）+ 显式正则化项控制复杂度</li>
+<li><strong>LightGBM</strong>：基于直方图的决策树算法 + 叶子优先生长策略（Leaf-wise），训练更快、内存更省</li>
+</ul>
+<h2 id="Bagging与随机森林"><a href="#Bagging与随机森林" class="headerlink" title="Bagging与随机森林"></a>Bagging与随机森林</h2><h3 id="Bagging-Bootstrap-Aggregating"><a href="#Bagging-Bootstrap-Aggregating" class="headerlink" title="Bagging (Bootstrap Aggregating)"></a>Bagging (Bootstrap Aggregating)</h3><p>自助采样产生 $T$ 个含 $m$ 个样本的训练集 → 训练 $T$ 个基学习器 → 分类投票 / 回归平均。</p>
+<p>每个基学习器仅用到约63.2%的原始数据，剩下36.8%作为<strong>包外估计</strong> (OOB) 用于泛化评估。</p>
+<blockquote>
+<p>Bagging的核心价值在于<strong>降低方差</strong>，尤其适合容易受数据扰动影响的模型（如未剪枝决策树）。对于稳定模型（如KNN、朴素贝叶斯），Bagging提升有限。</p>
+</blockquote>
+<h3 id="随机森林-Random-Forest"><a href="#随机森林-Random-Forest" class="headerlink" title="随机森林 (Random Forest)"></a>随机森林 (Random Forest)</h3><p>随机森林 = Bagging + <strong>属性随机选择</strong>：</p>
+<ul>
+<li>传统决策树：从全部 $d$ 个属性中选最优划分</li>
+<li>随机森林：先从 $d$ 个属性中随机选 $k$ 个，再从这 $k$ 个中选最优划分</li>
+<li>推荐 $k = \log_2 d$（分类）或 $k = \sqrt{d}$</li>
+</ul>
+<p><strong>双重随机性</strong> = 样本扰动（自助采样）+ 属性扰动（随机子集）→ 多样性极大化，泛化能力远超单棵决策树。</p>
+<h2 id="结合策略"><a href="#结合策略" class="headerlink" title="结合策略"></a>结合策略</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">策略</th>
+<th style="text-align:left">方法</th>
+<th style="text-align:left">适用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">平均法</td>
+<td style="text-align:left">简单平均 / 加权平均</td>
+<td style="text-align:left">回归任务</td>
+</tr>
+<tr>
+<td style="text-align:left">投票法</td>
+<td style="text-align:left">绝对多数 / 相对多数 / 加权投票</td>
+<td style="text-align:left">分类任务</td>
+</tr>
+<tr>
+<td style="text-align:left">学习法 (Stacking)</td>
+<td style="text-align:left">用次级学习器结合初级学习器的输出</td>
+<td style="text-align:left">异构模型组合</td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<p>Stacking的精妙之处：初级学习器的输出（类别概率）成为次级学习器的特征。训练次级学习器时，必须用初级学习器<strong>从未见过的数据</strong>，否则过拟合风险极高。标准做法是用交叉验证生成”干净”的次级训练数据。</p>
+</blockquote>
+<h2 id="多样性"><a href="#多样性" class="headerlink" title="多样性"></a>多样性</h2><p><strong>误差-分歧分解</strong>：集成泛化误差 = 个体平均误差 − 平均分歧（$E = \bar{E} - \bar{A}$）。多样性越大，集成提升越大。</p>
+<p>多样性度量方法：</p>
+<ul>
+<li><strong>不合度量</strong>：统计基学习器预测不一致的比例</li>
+<li><strong>相关系数</strong>：两两学习器输出的皮尔逊相关系数</li>
+<li><strong>$\kappa$ 统计量</strong>：去除随机一致后的分类一致性</li>
+</ul>
+<p>增强多样性的常用手段：数据样本扰动、输入属性扰动、输出表示扰动、算法参数扰动。</p>
 ]]></content>
       <categories>
         <category>机器学习</category>
