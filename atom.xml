@@ -54,7 +54,7 @@
       <![CDATA[<p>支持向量机（Support Vector Machine, SVM）是一种基于统计学习理论的监督学习算法，主要用于二分类问题（也可扩展至多分类和回归）。它的核心优化目标是在特征空间中寻找一个能够将不同类别样本完全分开，且间隔（Margin）最大的超平面。</p>]]>
     </summary>
     <title>支持向量机</title>
-    <updated>2026-07-13T19:19:45.186Z</updated>
+    <updated>2026-07-16T01:27:07.330Z</updated>
   </entry>
   <entry>
     <author>
