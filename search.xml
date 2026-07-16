@@ -695,7 +695,7 @@
 <script type="math/tex; mode=display">L(x, \alpha, \beta) = f(x) + \sum_{i=1}^m \alpha_i g_i(x) + \sum_{j=1}^p \beta_j h_j(x)</script><p>假设 $ x^<em> $ 是该优化问题的最优解，且 $(\alpha^</em>, \beta^*)$ 是对应的最优拉格朗日乘子。要使得这组解成立，它们必须严格满足以下四个核心的 KKT 条件：</p>
 <p>平稳性条件 (Stationarity)在最优解处，拉格朗日函数对原变量 $x$ 的梯度（偏导数）必须为零。这意味着目标函数的下降方向与约束条件的法向量达到了力学上的平衡。</p>
 <script type="math/tex; mode=display">\nabla_x L(x^*, \alpha^*, \beta^*) = \nabla f(x^*) + \sum_{i=1}^m \alpha_i^* \nabla g_i(x^*) + \sum_{j=1}^p \beta_j^* \nabla h_j(x^*) = 0</script><p>原问题可行性 (Primal Feasibility)最优解 $x^*$ 必须始终在原优化问题的可行域内，即严格满足最初设定的所有等式和不等式约束。</p>
-<script type="math/tex; mode=display">g_i(x^*) \le 0, \quad \forall i = 1, \dots, m</script><script type="math/tex; mode=display">h_j(x^*) = 0, \quad \forall j = 1, \dots, p</script><p>对偶可行性 (Dual Feasibility)引入的不等式约束乘子 $\alpha_i^<em>$ 必须大于或等于零。这是因为目标是求极小值，如果乘子为负，拉格朗日函数的值可以通过无限制地调整使得该项趋于负无穷，从而无法找到最优解。（注：等式约束的乘子 $\beta_j^</em>$ 没有非负限制）。</p>
+<script type="math/tex; mode=display">g_i(x^*) \le 0, \quad \forall i = 1, \dots, m</script><script type="math/tex; mode=display">h_j(x^*) = 0, \quad \forall j = 1, \dots, p</script><p>对偶可行性 (Dual Feasibility)引入的不等式约束乘子 $\alpha_i$ 必须大于或等于零。这是因为目标是求极小值，如果乘子为负，拉格朗日函数的值可以通过无限制地调整使得该项趋于负无穷，从而无法找到最优解。（注：等式约束的乘子 $\beta_j$ 没有非负限制）。</p>
 <script type="math/tex; mode=display">\alpha_i^* \ge 0, \quad \forall i = 1, \dots, m</script><p>互补松弛性 (Complementary Slackness)拉格朗日乘子与对应的不等式约束函数的乘积必须恒为零。</p>
 <script type="math/tex; mode=display">\alpha_i^* g_i(x^*) = 0, \quad \forall i = 1, \dots, m</script><h2 id="支持向量回归"><a href="#支持向量回归" class="headerlink" title="支持向量回归"></a>支持向量回归</h2><p>支持向量回归 (Support Vector Regression, SVR) 是 SVM 在连续数值预测（回归）任务上的扩展。传统的回归模型（例如普通最小二乘法）会计算所有样本点的残差，并对每一个误差都进行惩罚。而 SVR 的核心逻辑是：容忍一定范围内的误差，只惩罚超出该范围的偏差，并在满足这一条件的前提下追求模型参数的极小化（即回归函数的平滑性）</p>
 <h3 id="核心数学模型：-epsilon-不敏感损失与原问题"><a href="#核心数学模型：-epsilon-不敏感损失与原问题" class="headerlink" title="核心数学模型：$\epsilon$-不敏感损失与原问题"></a>核心数学模型：$\epsilon$-不敏感损失与原问题</h3><p>SVR 构建了一个以回归函数 $f(x) = w^T x + b$ 为中心，宽度为 $2\epsilon$ 的间隔带（常被称为 $\epsilon$-tube）。如果样本点落在这个带子内部，模型认为预测是精确的，损失为 0；只有落在带子外面的点才会产生损失。</p>
@@ -742,7 +742,7 @@
 <h3 id="核方法下的-SVM-决策函数"><a href="#核方法下的-SVM-决策函数" class="headerlink" title="核方法下的 SVM 决策函数"></a>核方法下的 SVM 决策函数</h3><p>一旦确认了核函数的合法性，将其代入 SVM 对偶问题后，优化问题的凸性保持不变，标准的 SMO 等求解器无需修改即可直接求解。训练完成后，分类决策函数变为：</p>
 <script type="math/tex; mode=display">f(x) = \mathrm{sign}\left( \sum_{i=1}^{n} \alpha_i^* y_i K(x_i, x) + b \right)</script><p>其中 $\alpha_i^*$ 是对偶问题的最优解。这一形式揭示了核方法的几个关键性质：</p>
 <ul>
-<li><p><strong>稀疏性得以保留</strong>：根据 KKT 互补松弛条件，绝大多数训练样本的 $\alpha_i^<em> = 0$。只有支持向量（$\alpha_i^</em> &gt; 0$）实际参与预测求和。训练数据规模可能极大，但最终模型仅由少数支持向量支撑。</p>
+<li><p><strong>稀疏性得以保留</strong>：根据 KKT 互补松弛条件，绝大多数训练样本的 $\alpha_i^<em> = 0$ 。只有支持向量（ $\alpha_i^</em> &gt; 0$）实际参与预测求和。训练数据规模可能极大，但最终模型仅由少数支持向量支撑。</p>
 </li>
 <li><p><strong>算法与映射彻底解耦</strong>：优化问题中唯一涉及数据的地方是 $K(x_i, x_j)$。你不需要改算法，只需要换核函数，模型就能适配从线性到高度非线性的各种数据分布。</p>
 </li>
