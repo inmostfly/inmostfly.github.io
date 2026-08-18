@@ -231,7 +231,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2026-08-18 16:13:52 / 修改时间：16:19:31" itemprop="dateCreated datePublished" datetime="2026-08-18T16:13:52+08:00">2026-08-18</time>
+              <time title="创建时间：2026-08-18 16:13:52 / 修改时间：16:30:19" itemprop="dateCreated datePublished" datetime="2026-08-18T16:13:52+08:00">2026-08-18</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -249,7 +249,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>889</span>
+              <span>929</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -268,60 +268,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="Wechat-astrbot"><a href="#Wechat-astrbot" class="headerlink" title="Wechat_astrbot"></a><a target="_blank" rel="noopener" href="https://github.com/inmostfly/wechat_astrbot">Wechat_astrbot</a></h1><h2 id="1-架构演进与重构背景"><a href="#1-架构演进与重构背景" class="headerlink" title="1. 架构演进与重构背景"></a>1. 架构演进与重构背景</h2><p>早期方案依赖 <code>wxauto</code> 及 Windows 句柄注入/UI Automation，存在三大痛点：</p>
-<ul>
-<li><strong>依赖桌面会话</strong>：必须维持 Windows 桌面处于活跃状态；</li>
-<li><strong>多账号与风控</strong>：需专用小号登录，维护繁琐且易掉线；</li>
-<li><strong>高维护成本</strong>：微信 UI 层级频繁变动导致抓取逻辑极易失效。</li>
-</ul>
-<p>新版本统一归档旧代码，全面切至 <strong>iLink 协议</strong>与微信开放第三方接口对接，无需复杂中间件，更轻量稳定。</p>
-<hr>
-<h2 id="2-核心功能与特性"><a href="#2-核心功能与特性" class="headerlink" title="2. 核心功能与特性"></a>2. 核心功能与特性</h2><ul>
-<li><strong>轻量鉴权</strong>：扫码授权生成 <code>session.json</code>，无客户端窗口依赖。</li>
-<li><strong>MCP 工具生态</strong>：<ul>
-<li><strong>实时天气</strong>：基于和风天气 API 查询。</li>
-<li><strong>联网检索</strong>：实时补充外部检索知识。</li>
-<li><strong>任务定时调度</strong>：本地数据库存储待办事项，定时主动向微信推送提醒。</li>
-</ul>
-</li>
-<li><strong>人设定制</strong>：在 <code>聊天助手.txt</code>、<code>定时提醒开场白.txt</code>、<code>主动问候语.txt</code> 中自定义 Prompt。</li>
-<li><strong>高性价比模型接入</strong>：兼容 DeepSeek（如 <code>deepseek-v4-flash</code>）等低成本 API。</li>
-</ul>
-<hr>
-<h2 id="3-本地与服务器快速起步"><a href="#3-本地与服务器快速起步" class="headerlink" title="3. 本地与服务器快速起步"></a>3. 本地与服务器快速起步</h2><h3 id="依赖与配置"><a href="#依赖与配置" class="headerlink" title="依赖与配置"></a>依赖与配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pip install -r ilink_catgirl/requirements.txt</span><br><span class="line"><span class="built_in">cp</span> .env.example .<span class="built_in">env</span>  <span class="comment"># 填入大模型 API Key 与和风天气 Key</span></span><br><span class="line">python main.py        <span class="comment"># 扫码授权登录</span></span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="4-Linux-云服务器持久化部署（Screen）"><a href="#4-Linux-云服务器持久化部署（Screen）" class="headerlink" title="4. Linux 云服务器持久化部署（Screen）"></a>4. Linux 云服务器持久化部署（Screen）</h2><p>为保证 24 小时后台稳定运行，使用 <code>screen</code> 进行会话托管：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 安装 screen</span></span><br><span class="line"><span class="built_in">sudo</span> apt update &amp;&amp; <span class="built_in">sudo</span> apt install -y screen</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 新建并进入虚拟终端</span></span><br><span class="line">screen -S bot</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 运行程序</span></span><br><span class="line">python3 main.py</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. 挂起会话（保持后台运行）</span></span><br><span class="line"><span class="comment"># 依次按下：Ctrl + A，然后按 D（终端提示 [detached] 即可安全关闭 SSH）</span></span><br></pre></td></tr></table></figure>
-<h3 id="运维管理常用命令"><a href="#运维管理常用命令" class="headerlink" title="运维管理常用命令"></a>运维管理常用命令</h3><div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:left">操作</th>
-<th style="text-align:left">命令</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><strong>查看后台会话</strong></td>
-<td style="text-align:left"><code>screen -ls</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>重连会话</strong></td>
-<td style="text-align:left"><code>screen -r bot</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>强占/踢掉已占用会话并重连</strong></td>
-<td style="text-align:left"><code>screen -d -r bot</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>彻底关闭会话</strong></td>
-<td style="text-align:left"><code>screen -X -S bot quit</code></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>可用的全新版本以发布release版本，如果你感兴趣，留下您的star，这对我是一份非常重要的鼓励。</p>
-
+          <h1 id="Wechat-astrbot"><a href="#Wechat-astrbot" class="headerlink" title="Wechat_astrbot"></a><a target="_blank" rel="noopener" href="https://github.com/inmostfly/wechat_astrbot">Wechat_astrbot</a></h1><p>基于微信openclaw-weixin接口，接入多个mcp实现的轻量化微信助手。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2026/08/18/wechat_astrbot/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
