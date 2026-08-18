@@ -396,8 +396,8 @@
 <p>预测结果对样例进行排序：根据模型为每个测试样例输出的“预测概率”或“置信度得分”，将所有样例从高到低进行排列的过程。  </p>
 <h3 id="ROC与AUC"><a href="#ROC与AUC" class="headerlink" title="ROC与AUC"></a>ROC与AUC</h3><p>ROC曲线：受试者工作特征曲线，纵轴是“真正例率”$TPR = \frac{TP}{TP+FN}$（在所有真实的正样本中，模型挑出了多少），纵轴是“假正例率” $FPR = \frac{FP}{FP+TN}$（在所有真实的负样本中，模型错认了多少）<br>主要受当前分类阈值（Threshold）的逐渐变化影响。</p>
 <p>AUC（Area Under ROC Curve）：即在ROC曲线下的面积。<br>PS:<script type="math/tex">\mathbb{I}( \cdot )</script><br>符号含义为：如果括号里的条件成立（即正例得分 大于 负例得分），它就输出 $1$。如果条件不成立（即正例得分 小于等于 负例得分），它就输出 $0$。</p>
-<script type="math/tex; mode=display">AUC = \frac{1}{|P| \cdot |N|} \sum_{x_i \in P} \sum_{x_j \in N} \mathbb{I}(f(x_i) > f(x_j))</script><p><img src="/uploads/ROC示意.png" alt="ROC"></p>
-<h3 id="期望总体代价与代价曲线"><a href="#期望总体代价与代价曲线" class="headerlink" title="期望总体代价与代价曲线"></a>期望总体代价与代价曲线</h3><p><img src="/uploads/期望总体代价曲线.png" alt="代价"></p>
+<script type="math/tex; mode=display">AUC = \frac{1}{|P| \cdot |N|} \sum_{x_i \in P} \sum_{x_j \in N} \mathbb{I}(f(x_i) > f(x_j))</script><!-- ![ROC](/uploads/ROC示意.png) -->
+<h3 id="期望总体代价与代价曲线"><a href="#期望总体代价与代价曲线" class="headerlink" title="期望总体代价与代价曲线"></a>期望总体代价与代价曲线</h3><!-- ![代价](/uploads/期望总体代价曲线.png) -->
 <p>所围成的面积即为在所有条件（不同阈值）下学习器的期望总体代价。</p>
 <h3 id="PR曲线"><a href="#PR曲线" class="headerlink" title="PR曲线"></a>PR曲线</h3><p>PR曲线（Precision-Recall Curve）是机器学习中用于评估二分类模型性能的重要工具。它以召回率（Recall）为横轴，精确率（Precision）为纵坐标，直观展示了模型在不同分类阈值下的精确率与召回率的平衡关系。<br>与 ROC 曲线下的面积（AUC-ROC）类似，PR 曲线下的面积被称为 AUC-PR（或 Average Precision, AP）。AUC-PR 值越接近 1，代表模型综合性能越好。</p>
 <h2 id="比较检验"><a href="#比较检验" class="headerlink" title="比较检验"></a>比较检验</h2><h3 id="假设检验"><a href="#假设检验" class="headerlink" title="假设检验"></a>假设检验</h3><p>原假设 $H_0$： 认为算法 A 和算法 B 的真实性能完全一样，它们跑分出来的差异纯粹是因为测试集抽样产生的随机波动。<br>目标： 通过收集数据（跑实验），计算出一个概率（$p$ 值）。如果 $p$ 值极小（比如 $&lt; 0.05$），说明在二者真的一样的情况下，出现这么大差距的概率比中彩票还低。此时，我们就可以拒绝原假设，宣布 A 和 B 确实存在显著差异。</p>
