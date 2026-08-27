@@ -1283,7 +1283,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #03309f;
+  background: #ffe27c;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2546,6 +2546,10 @@ embed {
 /* =========================================================================
    全局基础设置与背景
    ========================================================================= */
+html,
+body {
+  overflow-x: hidden;
+}
 body {
   position: relative;
   margin: 0;
@@ -2871,6 +2875,238 @@ body,
   .content,
   .footer-inner {
     width: 95% !important;
+  }
+}
+/* =========================================================================
+   友链页：轻量玻璃面板与响应式站点卡片
+   ========================================================================= */
+.friend-links-page {
+  --links-ink: #172331;
+  --links-muted: #5d6c79;
+  --links-accent: #3189a8;
+  --links-accent-deep: #1e607b;
+  color: var(--links-ink);
+  margin: -8px 0 0;
+}
+.friend-links-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 34px 36px 30px;
+  border: 1px solid rgba(255,255,255,0.72);
+  border-radius: 22px;
+  background: radial-gradient(circle at 88% 18%, rgba(80,189,211,0.32), transparent 28%), linear-gradient(135deg, rgba(255,255,255,0.94), rgba(229,247,250,0.82));
+  box-shadow: 0 16px 40px rgba(30,79,101,0.14);
+}
+.friend-links-hero::after {
+  content: '↗';
+  position: absolute;
+  right: 28px;
+  bottom: -30px;
+  color: rgba(49,137,168,0.1);
+  font: 700 126px/1 Arial, sans-serif;
+  transform: rotate(4deg);
+}
+.friend-links-eyebrow {
+  display: inline-block;
+  color: var(--links-accent-deep);
+  font: 700 11px/1.2 Arial, sans-serif;
+  letter-spacing: 0.18em;
+}
+.friend-links-hero h2 {
+  position: relative;
+  z-index: 1;
+  margin: 12px 0 10px;
+  border: 0;
+  color: var(--links-ink);
+  font-size: 30px;
+  line-height: 1.25;
+}
+.friend-links-hero h2::before,
+.friend-links-hero h2::after {
+  display: none;
+}
+.friend-links-hero p {
+  position: relative;
+  z-index: 1;
+  max-width: 560px;
+  margin: 0;
+  color: var(--links-muted);
+  font-size: 15px;
+  line-height: 1.85;
+}
+.friend-links-meta {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 22px;
+  margin-top: 22px;
+  color: #526674;
+  font-size: 12px;
+}
+.friend-links-meta i {
+  width: 16px;
+  color: var(--links-accent);
+  text-align: center;
+}
+.friend-links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 16px;
+  margin: 22px 0;
+}
+.friend-link-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 64px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 16px;
+  min-height: 104px;
+  padding: 18px 20px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.78);
+  border-radius: 18px;
+  background: rgba(255,255,255,0.86);
+  box-shadow: 0 10px 28px rgba(31,69,86,0.12);
+  color: var(--links-ink) !important;
+  text-decoration: none !important;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.friend-link-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: linear-gradient(180deg, #4eb4c8, #2d7595);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.25s ease;
+}
+.friend-link-card:hover {
+  border-color: rgba(78,180,200,0.55);
+  box-shadow: 0 16px 34px rgba(26,76,98,0.2);
+  color: var(--links-ink) !important;
+  transform: translateY(-5px);
+}
+.friend-link-card:hover::before {
+  transform: scaleY(1);
+}
+.friend-link-number {
+  align-self: start;
+  color: #9aabb5;
+  font: 700 10px/1 Arial, sans-serif;
+  letter-spacing: 0.12em;
+}
+.friend-link-avatar {
+  display: block;
+  width: 60px;
+  height: 60px;
+  padding: 3px;
+  border-radius: 18px;
+  background: url("/uploads/icon.jpg") center/cover no-repeat padding-box, linear-gradient(135deg, #77cedb, #277696) border-box;
+  border: 3px solid transparent;
+  box-shadow: 0 7px 16px rgba(38,111,141,0.22);
+  box-sizing: border-box;
+}
+.friend-link-content {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 6px;
+}
+.friend-link-content strong {
+  color: var(--links-ink);
+  font-size: 17px;
+  letter-spacing: 0.02em;
+}
+.friend-link-content > span {
+  overflow: hidden;
+  color: var(--links-muted);
+  font-size: 13px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.friend-link-arrow {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border-radius: 50%;
+  background: #edf6f8;
+  color: var(--links-accent-deep);
+  font-size: 18px;
+  transition: color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+}
+.friend-link-card:hover .friend-link-arrow {
+  background: var(--links-accent);
+  color: #fff;
+  transform: rotate(8deg);
+}
+.friend-links-invite {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  border: 1px dashed rgba(48,122,151,0.42);
+  border-radius: 18px;
+  background: rgba(239,250,251,0.76);
+}
+.friend-links-invite-icon {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+  place-items: center;
+  border-radius: 14px;
+  background: rgba(49,137,168,0.12);
+  color: var(--links-accent-deep);
+}
+.friend-links-invite strong {
+  font-size: 15px;
+}
+.friend-links-invite p {
+  margin: 4px 0 0;
+  color: var(--links-muted);
+  font-size: 13px;
+}
+.friend-links-invite a {
+  color: var(--links-accent-deep);
+  font-weight: 600;
+}
+@media (max-width: 767px) {
+  .friend-links-hero {
+    padding: 26px 22px 24px;
+    border-radius: 18px;
+  }
+  .friend-links-hero h2 {
+    font-size: 25px;
+  }
+  .friend-links-grid {
+    grid-template-columns: 1fr;
+  }
+  .friend-link-card {
+    grid-template-columns: 54px minmax(0, 1fr) auto;
+    gap: 13px;
+    padding: 16px;
+  }
+  .friend-link-number {
+    display: none;
+  }
+  .friend-link-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 15px;
+  }
+  .friend-links-invite {
+    align-items: flex-start;
+    padding: 18px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .friend-link-card,
+  .friend-link-card::before,
+  .friend-link-arrow {
+    transition: none;
   }
 }
 @-moz-keyframes typedjsBlink {

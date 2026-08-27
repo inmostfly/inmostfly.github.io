@@ -55,6 +55,46 @@
       </tags>
   </entry>
   <entry>
+    <title>JavaScript</title>
+    <url>/2026/02/26/JavaScript/</url>
+    <content><![CDATA[<p>前端学习笔记，HTML,CSS,JavaScript三者协同构成网页</p>
+<span id="more"></span>
+<h2 id="动态弱类型，解释型语言，前端核心"><a href="#动态弱类型，解释型语言，前端核心" class="headerlink" title="动态弱类型，解释型语言，前端核心"></a>动态弱类型，解释型语言，前端核心</h2><h3 id="首先解释一个误区"><a href="#首先解释一个误区" class="headerlink" title="首先解释一个误区"></a>首先解释一个误区</h3><p>Java 与 JavaScript 的关系：没有任何直接的技术继承关系</p>
+<blockquote>
+<p>命名历史：JavaScript 最初由 Netscape（网景）公司开发，原名为LiveScript。当时 Java 语言非常火爆，Netscape 为了市场营销蹭热度，与 Sun 公司（Java 的开发商）达成协议，将其改名为 JavaScript。</p>
+</blockquote>
+<h3 id="爬虫-脚本"><a href="#爬虫-脚本" class="headerlink" title="爬虫,脚本"></a>爬虫,脚本</h3><p>看懂网页，才能分析网页，不至于像本蒟蒻一样在github上找到脚本之后还要摸索半天找cookie 😭</p>
+<h3 id="HTML学习"><a href="#HTML学习" class="headerlink" title="HTML学习"></a>HTML学习</h3><h4 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h4><p>使用vsc学习过程中推荐插件Live Server Preview，按下F1输入live之后将在右侧实时显示，不用反复跳转浏览器</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt; </span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;<span class="built_in">head</span>&gt;</span><br><span class="line">        &lt;meta charset=<span class="string">&quot;utf-8&quot;</span>&gt;</span><br><span class="line">        &lt;title&gt;Study HTML&lt;/title&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line"></span><br><span class="line">        &lt;h1&gt;我的第一个标题&lt;/h1&gt;</span><br><span class="line">        </span><br><span class="line">        &lt;p&gt;我的第一个段落&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">        &lt;p&gt;我的第二个段落&lt;/p&gt;</span><br><span class="line">        </span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- &lt;!DOCTYPE html&gt; 声明为 HTML5 文档</span><br><span class="line">&lt;html&gt; 元素是 HTML 页面的根元素</span><br><span class="line">&lt;<span class="built_in">head</span>&gt; 元素包含了文档的元（meta）数据，如 &lt;meta charset=<span class="string">&quot;utf-8&quot;</span>&gt; 定义网页编码格式为 utf-8。</span><br><span class="line">&lt;title&gt; 元素描述了文档的标题</span><br><span class="line">&lt;body&gt; 元素包含了可见的页面内容</span><br><span class="line">&lt;h1&gt; 元素定义一个大标题</span><br><span class="line">&lt;p&gt; 元素定义一个段落 --&gt;</span><br></pre></td></tr></table></figure>
+<p>html标签通常是成对出现的，第一个是开始，第二个是结束<br>“HTML 标签” 和 “HTML 元素” 通常都是描述同样的意思.<br>但是严格来讲, 一个 HTML 元素包含了开始标签与结束标签</p>
+<h4 id="html文件的读取"><a href="#html文件的读取" class="headerlink" title="html文件的读取"></a>html文件的读取</h4><p>Web浏览器可以直接渲染，我们定义的标签决定了HTML页面如何呈现内容给用户</p>
+<h4 id="lt-DOCTYPE-gt-声明"><a href="#lt-DOCTYPE-gt-声明" class="headerlink" title="&lt;!DOCTYPE&gt;声明"></a>&lt;!DOCTYPE&gt;声明</h4><blockquote>
+<p>&lt;!DOCTYPE&gt;声明有助于浏览器中正确显示网页.网络上有很多不同的文件，如果能够正确声明HTML的版本，浏览器就能正确显示网页内容。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE HTML&gt;</span><br><span class="line"></span><br><span class="line">&lt;!doctype html&gt;</span><br><span class="line"></span><br><span class="line">&lt;!Doctype Html&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="HTML基础"><a href="#HTML基础" class="headerlink" title="HTML基础"></a>HTML基础</h4><h5 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h5><p>通过h1-h6,六级标签来定义，相当于word几级标题</p>
+<h5 id="段落"><a href="#段落" class="headerlink" title="段落"></a>段落</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">通过标签&lt;p&gt;来定义</span><br><span class="line">&lt;p&gt;这是一个段落&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;a href=<span class="string">&quot;https://inmostfly.github.io/&quot;</span>&gt;这是一个链接&lt;/a&gt;</span><br><span class="line">在href属性中指定链接的地址</span><br><span class="line">os:这里踩过几个坑，在.styl里面定义的时候链接通常需要特殊的指定才能生效，如.menu-item a&#123;  &#125;</span><br><span class="line">查询到是：&gt;&gt;链接自带默认强制色，继承被阻断 在 CSS 规范中，任何直接作用于元素的样式，其优先级都高于继承的样式，即使继承的样式带有 !important。</span><br></pre></td></tr></table></figure>
+<h5 id="图像"><a href="#图像" class="headerlink" title="图像"></a>图像</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;img src=<span class="string">&quot;/images/logo.png&quot;</span> width=<span class="string">&quot;258&quot;</span> height=<span class="string">&quot;39&quot;</span> /&gt;</span><br><span class="line">通过&lt;img&gt;来定义，名称和尺寸是以属性的形式提供的，src传递位置，后面两个同理</span><br></pre></td></tr></table></figure>
+<h5 id="元素"><a href="#元素" class="headerlink" title="元素"></a>元素</h5><p>开始&lt;&gt;与结尾&lt;&gt;放在一起，与中间的主体一起构成元素</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;br/&gt;无结束符，换行 是空元素的一种 空元素以/更稳妥</span><br></pre></td></tr></table></figure>
+<h5 id="嵌套的元素"><a href="#嵌套的元素" class="headerlink" title="嵌套的元素"></a>嵌套的元素</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">    &lt;html&gt;</span><br><span class="line">        &lt;body&gt;</span><br><span class="line">            &lt;p&gt;这是第一个段落。&lt;/p&gt;</span><br><span class="line">        &lt;/body&gt;</span><br><span class="line">    &lt;/html&gt;</span><br><span class="line"></span><br><span class="line">包含了三个元素</span><br></pre></td></tr></table></figure>
+<h5 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h5><p>属性是 HTML 元素提供的附加信息。<br>属性通常出现在 HTML 标签的开始标签中，用于定义元素的行为、样式、内容或其他特性。属性总是以 name=”value” 的形式写在标签内，name 是属性的名称，value 是属性的值。<em>属性一般描述于开始标签</em></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;a href=<span class="string">&quot;https://inmostfly.github.io/&quot;</span>&gt;这是一个链接&lt;/a&gt;</span><br><span class="line">href是属性名称，后面是值</span><br><span class="line">在某些个别的情况下，比如属性值本身就含有双引号，那么您必须使用单引号</span><br><span class="line">HTML 提示：使用小写属性</span><br><span class="line">属性名	 适用元素	说明</span><br><span class="line"><span class="built_in">id</span>	    所有元素	为元素指定唯一的标识符。</span><br><span class="line">class	所有元素	为元素指定一个或多个类名，用于 CSS 或 JavaScript 选择。</span><br><span class="line">style	所有元素	直接在元素上应用 CSS 样式。</span><br><span class="line">title	所有元素	为元素提供额外的提示信息，通常在鼠标悬停时显示。</span><br><span class="line">data-*	所有元素	用于存储自定义数据，通常通过 JavaScript 访问。</span><br><span class="line">href	&lt;a&gt;, &lt;<span class="built_in">link</span>&gt;	指定链接的目标 URL。</span><br><span class="line">src	    &lt;img&gt;, &lt;script&gt;, &lt;iframe&gt;	指定外部资源（如图片、脚本、框架）的 URL。</span><br><span class="line">alt	    &lt;img&gt;	为图像提供替代文本，当图像无法显示时显示。</span><br><span class="line"><span class="built_in">type</span>	&lt;input&gt;, &lt;button&gt;	指定输入控件的类型（如 text, password, checkbox 等）。</span><br><span class="line">value	&lt;input&gt;, &lt;button&gt;, &lt;option&gt;	指定元素的初始值。</span><br><span class="line">disabled	表单元素	禁用元素，使其不可交互。</span><br><span class="line">checked	&lt;input <span class="built_in">type</span>=<span class="string">&quot;checkbox&quot;</span>&gt;, &lt;input <span class="built_in">type</span>=<span class="string">&quot;radio&quot;</span>&gt;	指定复选框或单选按钮是否被选中。</span><br><span class="line">placeholder	&lt;input&gt;, &lt;textarea&gt;	在输入框中显示提示文本。</span><br><span class="line">target	&lt;a&gt;, &lt;form&gt;	指定链接或表单提交的目标窗口或框架（如 _blank 表示新标签页）。</span><br><span class="line"><span class="built_in">readonly</span>	表单元素	使输入框只读。</span><br><span class="line">required	表单元素	指定输入字段为必填项。</span><br><span class="line">autoplay	&lt;audio&gt;, &lt;video&gt;	自动播放媒体。</span><br><span class="line">onclick	    所有元素	当用户点击元素时触发 JavaScript 事件。</span><br><span class="line">onmouseover	所有元素	当用户将鼠标悬停在元素上时触发 JavaScript 事件。</span><br><span class="line">onchange	表单元素	当元素的值发生变化时触发 JavaScript 事件。</span><br></pre></td></tr></table></figure>
+<p>更多属性请移步至<a href="https://www.runoob.com/html/html-attributes.html">Runoob</a>.</p>
+<p>更新到标题，稍后继续更新</p>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+        <tag>JavaScript</tag>
+        <tag>HTML</tag>
+        <tag>CSS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Web与API</title>
     <url>/2026/04/25/Web%E4%B8%8EAPI/</url>
     <content><![CDATA[<h2 id="Web与API调用相关学习笔记"><a href="#Web与API调用相关学习笔记" class="headerlink" title="Web与API调用相关学习笔记"></a>Web与API调用相关学习笔记</h2><span id="more"></span>
@@ -93,6 +133,13 @@
       </tags>
   </entry>
   <entry>
+    <title>Hello World</title>
+    <url>/2026/02/09/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://inmostfly.github.io/">Hexo</a>! This is my very first blog.</p>
+<h2 id="Maybe-you-can-see"><a href="#Maybe-you-can-see" class="headerlink" title="Maybe you can see"></a>Maybe you can see</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">c c++ python java javascript </span><br><span class="line">机器学习，transformer框架浅谈，深度学习 and so on.</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
     <title>gcd及其扩展</title>
     <url>/2026/03/06/gcd%E5%8F%8A%E5%85%B6%E6%89%A9%E5%B1%95/</url>
     <content><![CDATA[<h2 id="gcd运算严格满足结合率"><a href="#gcd运算严格满足结合率" class="headerlink" title="gcd运算严格满足结合率"></a>gcd运算严格满足结合率</h2><p>即有 $\gcd(a,b,c) = \gcd(\gcd(a,b),c) = \gcd(a,\gcd(b,c))$</p>
@@ -123,6 +170,31 @@
       <tags>
         <tag>数论</tag>
         <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>字典树</title>
+    <url>/2026/03/12/%E5%AD%97%E5%85%B8%E6%A0%91/</url>
+    <content><![CDATA[<p>字符串的处理方式极多，字典树便是其中一种</p>
+<span id="more"></span>
+<h2 id="字典树基础"><a href="#字典树基础" class="headerlink" title="字典树基础"></a>字典树基础</h2><p>此篇重写，再无板子之谈  </p>
+<font color=red> 板子不理解的时候真能坑死人,还不如没有 </font>
+
+<p>常用二维数组存储，一般认为每个节点含有26个子节点，分别表示字符a到z，编号1-26. 定义$trie[u][id]=k$中,u表字典树的节点编号，id表示该节点中编号为id的字符，u在全局中唯一，唯一标识每个节点。k即表示u的id子节点的编号。  </p>
+<h3 id="插入字符串"><a href="#插入字符串" class="headerlink" title="插入字符串"></a>插入字符串</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int tot=0;//tot表示节点总数/节点编号</span><br><span class="line">void insert(string s)&#123;  </span><br><span class="line">    int pos=0;</span><br><span class="line">    <span class="keyword">for</span>(int i=0;i&lt;s.size();i++)&#123;</span><br><span class="line">      int <span class="built_in">id</span>=s[i]-<span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">      <span class="keyword">if</span>(tree[pos][<span class="built_in">id</span>]==0)&#123;</span><br><span class="line">        tree[pos][<span class="built_in">id</span>]=++tot;</span><br><span class="line">      &#125;</span><br><span class="line">      pos=tree[pos][<span class="built_in">id</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    tag[pos]=1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="查找字符串"><a href="#查找字符串" class="headerlink" title="查找字符串"></a>查找字符串</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int find(string s)&#123;</span><br><span class="line">    int pos=0;</span><br><span class="line">    <span class="keyword">for</span>(int i=0;i&lt;s.size();i++)&#123;</span><br><span class="line">      int <span class="built_in">id</span>=s[i]-<span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">      <span class="keyword">if</span>(tree[pos][<span class="built_in">id</span>]==0)&#123;</span><br><span class="line">        <span class="built_in">return</span> -1;</span><br><span class="line">      &#125;</span><br><span class="line">      pos=tree[pos][<span class="built_in">id</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(tag[pos]==1)&#123;</span><br><span class="line">      <span class="built_in">return</span> 1;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">      <span class="built_in">return</span> -1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="字典树的活用"><a href="#字典树的活用" class="headerlink" title="字典树的活用"></a>字典树的活用</h2><h3 id="求多项字符串的最大公共前缀长度之和"><a href="#求多项字符串的最大公共前缀长度之和" class="headerlink" title="求多项字符串的最大公共前缀长度之和"></a>求多项字符串的最大公共前缀长度之和</h3><p>此时需要记录每个节点有几个字符串经过了这个节点，即节点需记录通过自己的字符串数量。<br>实现：每次插入过程中pos更新时同时cnt[pos]++即可。  </p>
+<center>
+<font color=green>
+基础数据结构重在插入，即树的构建，剩下的就是其多样的用法。
+</font>
+</center>]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>树</tag>
+        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
@@ -192,53 +264,6 @@
       </tags>
   </entry>
   <entry>
-    <title>JavaScript</title>
-    <url>/2026/02/26/JavaScript/</url>
-    <content><![CDATA[<p>前端学习笔记，HTML,CSS,JavaScript三者协同构成网页</p>
-<span id="more"></span>
-<h2 id="动态弱类型，解释型语言，前端核心"><a href="#动态弱类型，解释型语言，前端核心" class="headerlink" title="动态弱类型，解释型语言，前端核心"></a>动态弱类型，解释型语言，前端核心</h2><h3 id="首先解释一个误区"><a href="#首先解释一个误区" class="headerlink" title="首先解释一个误区"></a>首先解释一个误区</h3><p>Java 与 JavaScript 的关系：没有任何直接的技术继承关系</p>
-<blockquote>
-<p>命名历史：JavaScript 最初由 Netscape（网景）公司开发，原名为LiveScript。当时 Java 语言非常火爆，Netscape 为了市场营销蹭热度，与 Sun 公司（Java 的开发商）达成协议，将其改名为 JavaScript。</p>
-</blockquote>
-<h3 id="爬虫-脚本"><a href="#爬虫-脚本" class="headerlink" title="爬虫,脚本"></a>爬虫,脚本</h3><p>看懂网页，才能分析网页，不至于像本蒟蒻一样在github上找到脚本之后还要摸索半天找cookie 😭</p>
-<h3 id="HTML学习"><a href="#HTML学习" class="headerlink" title="HTML学习"></a>HTML学习</h3><h4 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h4><p>使用vsc学习过程中推荐插件Live Server Preview，按下F1输入live之后将在右侧实时显示，不用反复跳转浏览器</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt; </span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;<span class="built_in">head</span>&gt;</span><br><span class="line">        &lt;meta charset=<span class="string">&quot;utf-8&quot;</span>&gt;</span><br><span class="line">        &lt;title&gt;Study HTML&lt;/title&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line"></span><br><span class="line">        &lt;h1&gt;我的第一个标题&lt;/h1&gt;</span><br><span class="line">        </span><br><span class="line">        &lt;p&gt;我的第一个段落&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">        &lt;p&gt;我的第二个段落&lt;/p&gt;</span><br><span class="line">        </span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- &lt;!DOCTYPE html&gt; 声明为 HTML5 文档</span><br><span class="line">&lt;html&gt; 元素是 HTML 页面的根元素</span><br><span class="line">&lt;<span class="built_in">head</span>&gt; 元素包含了文档的元（meta）数据，如 &lt;meta charset=<span class="string">&quot;utf-8&quot;</span>&gt; 定义网页编码格式为 utf-8。</span><br><span class="line">&lt;title&gt; 元素描述了文档的标题</span><br><span class="line">&lt;body&gt; 元素包含了可见的页面内容</span><br><span class="line">&lt;h1&gt; 元素定义一个大标题</span><br><span class="line">&lt;p&gt; 元素定义一个段落 --&gt;</span><br></pre></td></tr></table></figure>
-<p>html标签通常是成对出现的，第一个是开始，第二个是结束<br>“HTML 标签” 和 “HTML 元素” 通常都是描述同样的意思.<br>但是严格来讲, 一个 HTML 元素包含了开始标签与结束标签</p>
-<h4 id="html文件的读取"><a href="#html文件的读取" class="headerlink" title="html文件的读取"></a>html文件的读取</h4><p>Web浏览器可以直接渲染，我们定义的标签决定了HTML页面如何呈现内容给用户</p>
-<h4 id="lt-DOCTYPE-gt-声明"><a href="#lt-DOCTYPE-gt-声明" class="headerlink" title="&lt;!DOCTYPE&gt;声明"></a>&lt;!DOCTYPE&gt;声明</h4><blockquote>
-<p>&lt;!DOCTYPE&gt;声明有助于浏览器中正确显示网页.网络上有很多不同的文件，如果能够正确声明HTML的版本，浏览器就能正确显示网页内容。</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE HTML&gt;</span><br><span class="line"></span><br><span class="line">&lt;!doctype html&gt;</span><br><span class="line"></span><br><span class="line">&lt;!Doctype Html&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="HTML基础"><a href="#HTML基础" class="headerlink" title="HTML基础"></a>HTML基础</h4><h5 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h5><p>通过h1-h6,六级标签来定义，相当于word几级标题</p>
-<h5 id="段落"><a href="#段落" class="headerlink" title="段落"></a>段落</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">通过标签&lt;p&gt;来定义</span><br><span class="line">&lt;p&gt;这是一个段落&lt;/p&gt;</span><br></pre></td></tr></table></figure>
-<h5 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;a href=<span class="string">&quot;https://inmostfly.github.io/&quot;</span>&gt;这是一个链接&lt;/a&gt;</span><br><span class="line">在href属性中指定链接的地址</span><br><span class="line">os:这里踩过几个坑，在.styl里面定义的时候链接通常需要特殊的指定才能生效，如.menu-item a&#123;  &#125;</span><br><span class="line">查询到是：&gt;&gt;链接自带默认强制色，继承被阻断 在 CSS 规范中，任何直接作用于元素的样式，其优先级都高于继承的样式，即使继承的样式带有 !important。</span><br></pre></td></tr></table></figure>
-<h5 id="图像"><a href="#图像" class="headerlink" title="图像"></a>图像</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;img src=<span class="string">&quot;/images/logo.png&quot;</span> width=<span class="string">&quot;258&quot;</span> height=<span class="string">&quot;39&quot;</span> /&gt;</span><br><span class="line">通过&lt;img&gt;来定义，名称和尺寸是以属性的形式提供的，src传递位置，后面两个同理</span><br></pre></td></tr></table></figure>
-<h5 id="元素"><a href="#元素" class="headerlink" title="元素"></a>元素</h5><p>开始&lt;&gt;与结尾&lt;&gt;放在一起，与中间的主体一起构成元素</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;br/&gt;无结束符，换行 是空元素的一种 空元素以/更稳妥</span><br></pre></td></tr></table></figure>
-<h5 id="嵌套的元素"><a href="#嵌套的元素" class="headerlink" title="嵌套的元素"></a>嵌套的元素</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">    &lt;html&gt;</span><br><span class="line">        &lt;body&gt;</span><br><span class="line">            &lt;p&gt;这是第一个段落。&lt;/p&gt;</span><br><span class="line">        &lt;/body&gt;</span><br><span class="line">    &lt;/html&gt;</span><br><span class="line"></span><br><span class="line">包含了三个元素</span><br></pre></td></tr></table></figure>
-<h5 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h5><p>属性是 HTML 元素提供的附加信息。<br>属性通常出现在 HTML 标签的开始标签中，用于定义元素的行为、样式、内容或其他特性。属性总是以 name=”value” 的形式写在标签内，name 是属性的名称，value 是属性的值。<em>属性一般描述于开始标签</em></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;a href=<span class="string">&quot;https://inmostfly.github.io/&quot;</span>&gt;这是一个链接&lt;/a&gt;</span><br><span class="line">href是属性名称，后面是值</span><br><span class="line">在某些个别的情况下，比如属性值本身就含有双引号，那么您必须使用单引号</span><br><span class="line">HTML 提示：使用小写属性</span><br><span class="line">属性名	 适用元素	说明</span><br><span class="line"><span class="built_in">id</span>	    所有元素	为元素指定唯一的标识符。</span><br><span class="line">class	所有元素	为元素指定一个或多个类名，用于 CSS 或 JavaScript 选择。</span><br><span class="line">style	所有元素	直接在元素上应用 CSS 样式。</span><br><span class="line">title	所有元素	为元素提供额外的提示信息，通常在鼠标悬停时显示。</span><br><span class="line">data-*	所有元素	用于存储自定义数据，通常通过 JavaScript 访问。</span><br><span class="line">href	&lt;a&gt;, &lt;<span class="built_in">link</span>&gt;	指定链接的目标 URL。</span><br><span class="line">src	    &lt;img&gt;, &lt;script&gt;, &lt;iframe&gt;	指定外部资源（如图片、脚本、框架）的 URL。</span><br><span class="line">alt	    &lt;img&gt;	为图像提供替代文本，当图像无法显示时显示。</span><br><span class="line"><span class="built_in">type</span>	&lt;input&gt;, &lt;button&gt;	指定输入控件的类型（如 text, password, checkbox 等）。</span><br><span class="line">value	&lt;input&gt;, &lt;button&gt;, &lt;option&gt;	指定元素的初始值。</span><br><span class="line">disabled	表单元素	禁用元素，使其不可交互。</span><br><span class="line">checked	&lt;input <span class="built_in">type</span>=<span class="string">&quot;checkbox&quot;</span>&gt;, &lt;input <span class="built_in">type</span>=<span class="string">&quot;radio&quot;</span>&gt;	指定复选框或单选按钮是否被选中。</span><br><span class="line">placeholder	&lt;input&gt;, &lt;textarea&gt;	在输入框中显示提示文本。</span><br><span class="line">target	&lt;a&gt;, &lt;form&gt;	指定链接或表单提交的目标窗口或框架（如 _blank 表示新标签页）。</span><br><span class="line"><span class="built_in">readonly</span>	表单元素	使输入框只读。</span><br><span class="line">required	表单元素	指定输入字段为必填项。</span><br><span class="line">autoplay	&lt;audio&gt;, &lt;video&gt;	自动播放媒体。</span><br><span class="line">onclick	    所有元素	当用户点击元素时触发 JavaScript 事件。</span><br><span class="line">onmouseover	所有元素	当用户将鼠标悬停在元素上时触发 JavaScript 事件。</span><br><span class="line">onchange	表单元素	当元素的值发生变化时触发 JavaScript 事件。</span><br></pre></td></tr></table></figure>
-<p>更多属性请移步至<a href="https://www.runoob.com/html/html-attributes.html">Runoob</a>.</p>
-<p>更新到标题，稍后继续更新</p>
-]]></content>
-      <categories>
-        <category>笔记</category>
-      </categories>
-      <tags>
-        <tag>前端</tag>
-        <tag>JavaScript</tag>
-        <tag>HTML</tag>
-        <tag>CSS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2026/02/09/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://inmostfly.github.io/">Hexo</a>! This is my very first blog.</p>
-<h2 id="Maybe-you-can-see"><a href="#Maybe-you-can-see" class="headerlink" title="Maybe you can see"></a>Maybe you can see</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">c c++ python java javascript </span><br><span class="line">机器学习，transformer框架浅谈，深度学习 and so on.</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
     <title>并查集</title>
     <url>/2026/03/16/%E5%B9%B6%E6%9F%A5%E9%9B%86/</url>
     <content><![CDATA[<h2 id="并查集"><a href="#并查集" class="headerlink" title="并查集"></a>并查集</h2><p>青春猪头少年不会在赛时被并查集少一次遍历卡165min遗憾退场</p>
@@ -268,311 +293,6 @@
       </categories>
       <tags>
         <tag>并查集</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>字典树</title>
-    <url>/2026/03/12/%E5%AD%97%E5%85%B8%E6%A0%91/</url>
-    <content><![CDATA[<p>字符串的处理方式极多，字典树便是其中一种</p>
-<span id="more"></span>
-<h2 id="字典树基础"><a href="#字典树基础" class="headerlink" title="字典树基础"></a>字典树基础</h2><p>此篇重写，再无板子之谈  </p>
-<font color=red> 板子不理解的时候真能坑死人,还不如没有 </font>
-
-<p>常用二维数组存储，一般认为每个节点含有26个子节点，分别表示字符a到z，编号1-26. 定义$trie[u][id]=k$中,u表字典树的节点编号，id表示该节点中编号为id的字符，u在全局中唯一，唯一标识每个节点。k即表示u的id子节点的编号。  </p>
-<h3 id="插入字符串"><a href="#插入字符串" class="headerlink" title="插入字符串"></a>插入字符串</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int tot=0;//tot表示节点总数/节点编号</span><br><span class="line">void insert(string s)&#123;  </span><br><span class="line">    int pos=0;</span><br><span class="line">    <span class="keyword">for</span>(int i=0;i&lt;s.size();i++)&#123;</span><br><span class="line">      int <span class="built_in">id</span>=s[i]-<span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">      <span class="keyword">if</span>(tree[pos][<span class="built_in">id</span>]==0)&#123;</span><br><span class="line">        tree[pos][<span class="built_in">id</span>]=++tot;</span><br><span class="line">      &#125;</span><br><span class="line">      pos=tree[pos][<span class="built_in">id</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    tag[pos]=1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="查找字符串"><a href="#查找字符串" class="headerlink" title="查找字符串"></a>查找字符串</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int find(string s)&#123;</span><br><span class="line">    int pos=0;</span><br><span class="line">    <span class="keyword">for</span>(int i=0;i&lt;s.size();i++)&#123;</span><br><span class="line">      int <span class="built_in">id</span>=s[i]-<span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">      <span class="keyword">if</span>(tree[pos][<span class="built_in">id</span>]==0)&#123;</span><br><span class="line">        <span class="built_in">return</span> -1;</span><br><span class="line">      &#125;</span><br><span class="line">      pos=tree[pos][<span class="built_in">id</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(tag[pos]==1)&#123;</span><br><span class="line">      <span class="built_in">return</span> 1;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">      <span class="built_in">return</span> -1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="字典树的活用"><a href="#字典树的活用" class="headerlink" title="字典树的活用"></a>字典树的活用</h2><h3 id="求多项字符串的最大公共前缀长度之和"><a href="#求多项字符串的最大公共前缀长度之和" class="headerlink" title="求多项字符串的最大公共前缀长度之和"></a>求多项字符串的最大公共前缀长度之和</h3><p>此时需要记录每个节点有几个字符串经过了这个节点，即节点需记录通过自己的字符串数量。<br>实现：每次插入过程中pos更新时同时cnt[pos]++即可。  </p>
-<center>
-<font color=green>
-基础数据结构重在插入，即树的构建，剩下的就是其多样的用法。
-</font>
-</center>]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>树</tag>
-        <tag>字符串</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>神经网络</title>
-    <url>/2026/07/10/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</url>
-    <content><![CDATA[<p>神经网络相关学习笔记<br><span id="more"></span></p>
-<h2 id="M-P神经元模型"><a href="#M-P神经元模型" class="headerlink" title="M-P神经元模型"></a>M-P神经元模型</h2><p>最经典的，在这个模型中，神经元接收到来自n哥其他神经元传过来的输入信号，这些输入信号通过带权重的连接进行传递，神经元接收到的总数入值将与神经元的阈值进行比较，然后通过激活函数处理以产生神经元的输出。</p>
-<p>把许多个这样的神经元按照一定的层次结构连接起来，就得到了神经网络。</p>
-<h2 id="误差逆传播算法"><a href="#误差逆传播算法" class="headerlink" title="误差逆传播算法"></a>误差逆传播算法</h2><h3 id="误差逆传播算法（Backpropagation，简称-BP-算法）是深度学习中用于训练神经网络的核心算法"><a href="#误差逆传播算法（Backpropagation，简称-BP-算法）是深度学习中用于训练神经网络的核心算法" class="headerlink" title="误差逆传播算法（Backpropagation，简称 BP 算法）是深度学习中用于训练神经网络的核心算法"></a>误差逆传播算法（Backpropagation，简称 BP 算法）是深度学习中用于训练神经网络的核心算法</h3><p>它的本质是微积分中链式法则（Chain Rule）在多层复合函数梯度计算中的工程实现。  </p>
-<p>在神经网络中，我们通过前向传播计算出模型的预测值，并计算其与真实标签之间的差距（损失值 $E$）。BP 算法的核心任务，就是高效地将这个全局损失误差分配到网络中的每一个权重参数 $w$ 和偏置 $b$ 上，计算出梯度 $\frac{\partial E}{\partial w}$，从而利用梯度下降法更新参数。</p>
-<h3 id="核心数学机制"><a href="#核心数学机制" class="headerlink" title="核心数学机制"></a>核心数学机制</h3><p>为了在计算图（Computational Graph）中实现最高效的计算，BP 算法引入了一个关键的中间变量——误差项（Error Term，通常用 $\delta$ 表示）。它定义为损失函数对某一层净输入（未激活的加权和 $z$）的偏导数。</p>
-<p>假设一个多层网络中，某神经元当前的净输入为 $z = \sum w_i a_i + b$，激活后的输出为 $a = f(z)$。</p>
-<p>1.输出层的误差项 $\delta^L$</p>
-<p>对于最终的输出层 $L$，其误差信号直接来源于损失函数 $E$。</p>
-<p>根据链式法则：</p>
-<script type="math/tex; mode=display">\delta^L = \frac{\partial E}{\partial z^L} = \frac{\partial E}{\partial a^L} \cdot \frac{\partial E}{\partial z^L} = \frac{\partial E}{\partial a^L} \cdot f'(z^L)</script><p>$\frac{\partial E}{\partial a^L}$ 取决于你选择的损失函数（如均方误差或交叉熵）。$f’(z^L)$ 是输出层激活函数的导数。</p>
-<p>2.隐藏层的误差项 $\delta^l$（逆传播的核心）</p>
-<p>对于任意一个隐藏层 $l$，它并没有直接连接损失函数，它的误差是从它后面的那一层（$l+1$ 层）传回来的。<br>通过链式法则展开：</p>
-<script type="math/tex; mode=display">\delta^l = \frac{\partial E}{\partial z^l} = \sum \left( \frac{\partial E}{\partial z^{l+1}} \cdot \frac{\partial z^{l+1}}{\partial a^l} \right) \cdot \frac{\partial a^l}{\partial z^l}</script><p>因为 $z^{l+1} = W^{l+1} a^l + b^{l+1}$，所以 $\frac{\partial z^{l+1}}{\partial a^l} = W^{l+1}$。带入后得到 BP 算法的经典递推公式：</p>
-<script type="math/tex; mode=display">\delta^l = \left( (W^{l+1})^T \delta^{l+1} \right) \odot f'(z^l)</script><p>含义：后一层的误差项 $\delta^{l+1}$ 通过权重矩阵 $W^{l+1}$ 进行反向投影，然后与当前层激活函数的导数 $f’(z^l)$ 进行按元素相乘（$\odot$）。这是误差“逆传播”的几何与代数图景。</p>
-<p>3.计算最终的参数梯度</p>
-<p>一旦计算出了每一层的误差项 $\delta^l$，任意一层参数的梯度就可以通过极其简单的局部乘法得到：</p>
-<p>权重的梯度：$\frac{\partial E}{\partial W^l} = \delta^l (a^{l-1})^T$ （当前层的误差项 $\times$ 前一层的输入信号）</p>
-<p>偏置的梯度：$\frac{\partial E}{\partial b^l} = \delta^l$</p>
-<blockquote>
-<ol>
-<li>梯度的计算：严格逐层向后推导根据多元微积分的链式法则，参数梯度 $\frac{\partial E}{\partial W}$ 的计算过程必须是逐层反向的。你必须先求出第 $L$ 层的误差项 $\delta^L$，才能利用当前的权重矩阵反向投影出第 $L-1$ 层的误差项 $\delta^{l-1}$。在这个阶段，计算图的数据流向是逐层递进的，但网络中的任何权重参数都没有发生改变。计算出的每一层梯度都会被暂时保存在内存（或寄存器/显存）中。  </li>
-<li>参数的更新：全局同步执行当反向传播计算完成，网络中所有层的所有参数梯度都已计算完毕并被缓存后，优化算法（如随机梯度下降 SGD）才会读取这些缓存的梯度，统一对所有层执行更新计算：<script type="math/tex; mode=display">W^{l}_{new} = W^{l}_{old} - \eta \cdot \frac{\partial E}{\partial W^{l}_{old}}</script></li>
-</ol>
-</blockquote>
-<h2 id="深度学习"><a href="#深度学习" class="headerlink" title="深度学习"></a>深度学习</h2><h3 id="端到端的表征学习-Representation-Learning"><a href="#端到端的表征学习-Representation-Learning" class="headerlink" title="端到端的表征学习 (Representation Learning)"></a>端到端的表征学习 (Representation Learning)</h3><blockquote>
-<p>端到端学习(End-to-End Learning)，也称端到端训练，是指在学习过程中不进行分模块或分阶段训练，直接优化任务的总体目标。 在端到端学习中，一般不需要明确地给出不同模块或阶段的功能，中间过程不需要人为干预。 端到端学习的训练数据为“输入-输出”对的形式，无须提供其他额外信息。</p>
-</blockquote>
-<p>在深度学习中，网络的多个隐藏层充当了自动特征提取器的角色。它们将原始输入进行逐层、非线性的空间变换：</p>
-<p>浅层：提取底层的局部特征（例如图像中的边缘轮廓，或音频中的基础频段）。</p>
-<p>中层：将局部特征组合成更高维的模式（例如几何形状）。</p>
-<p>深层：抽象出具有高度语义信息的特征（例如识别出具体的物体概念）。</p>
-<p>网络中的每一步 $y = \sigma(Wx + b)$（其中 $\sigma$ 为非线性激活函数），都在将数据从一个纠缠不清的特征空间，映射折叠到一个更容易被线性分类的全新空间中。层数越“深”，网络能够表达的非线性拓扑变换就越复杂。</p>
-<h3 id="CNN（卷积神经网络）"><a href="#CNN（卷积神经网络）" class="headerlink" title="CNN（卷积神经网络）"></a>CNN（卷积神经网络）</h3><p>卷积神经网络 (CNN, Convolutional Neural Network) 是一种专门用来处理具有已知网格状拓扑结构数据的前馈神经网络。最典型的例子就是时间序列数据（1D 网格）和图像数据（2D 像素网格）。</p>
-<p>底层的数学运算就是二维互相关（通常称为卷积）。我们定义一个很小的权重矩阵（比如 3x3），称为卷积核 (Filter / Kernel)。让这个小矩阵像一个放大镜一样，在整张图片上从左到右、从上到下滑动。每滑动到一个位置，就将卷积核的值与图片对应像素的值进行逐元素相乘并求和（点积运算），得出一个新的数值。</p>
-<p>CNN 不再让隐藏层的神经元与上一层的所有节点相连（全连接），而是强制要求它们只连接到一个局部的空间区域，这个区域被称为感受野 (Receptive Field)。</p>
-<p>权值共享：滑动的过程中，同一个卷积核在滑动扫过整张图片时，它的权重参数是不变的。</p>
-<p>CNN 的核心机制就是局部感受野（Local Receptive Fields）和权值共享（Weight Sharing），主要处理具有空间拓扑结构的数据（如图像）。</p>
-<p>典型的 CNN 架构流水线结合这三个机制，一个标准的 CNN 就像一条流水线：</p>
-<blockquote>
-<p>输入图像 $\to$[卷积层 $\to$ ReLU 激活 $\to$ 池化层] (这一组操作可能会堆叠和重复很多次，特征图变得越来越小，但通道数/厚度越来越深) $\to$展平 (Flatten)：将三维的特征图压平为一维向量 $\to$全连接层 (Dense)：利用提取出的高度抽象特征进行最终的逻辑判断 $\to$输出层：输出分类概率。</p>
-</blockquote>
-<p>在现代深度学习中，CNN 几乎不再使用逐层无监督预训练了，原因在于工程底层架构和数学工具的突破：</p>
-<ul>
-<li>ReLU 激活函数：数学上极其简单的 $f(x) = \max(0, x)$ 直接让正半轴的梯度恒为 1，从根本上缓解了 Sigmoid 带来的梯度消失。</li>
-<li>Batch Normalization (批归一化)：强制将每一层的输入数据分布拉回标准正态分布，让网络极其容易收敛。</li>
-<li>残差连接 (ResNet)：引入了跳跃连接（Skip Connection），让梯度可以直接跨层反向流动。</li>
-</ul>
-<blockquote>
-<p>PS:<br>卷积神经网络的理解仍不透彻，将持续更新。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>机器学习</category>
-      </categories>
-      <tags>
-        <tag>机器学习</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>模型评估</title>
-    <url>/2026/07/02/%E6%A8%A1%E5%9E%8B%E8%AF%84%E4%BC%B0/</url>
-    <content><![CDATA[<p>训练过程中，我们必然需要相应的指标来表明当前模型质量以继续提高模型质量。</p>
-<span id="more"></span>
-<h2 id="评估方法"><a href="#评估方法" class="headerlink" title="评估方法"></a>评估方法</h2><h3 id="交叉验证法"><a href="#交叉验证法" class="headerlink" title="交叉验证法"></a>交叉验证法</h3><p>从数据集D中划分出k个互斥子集，从D中分层采样得到，每次用其中K-1个子集的并集作为训练集，余下的那个子集作为测试集。（k折交叉验证）</p>
-<ul>
-<li>分层采样与权重采样不同，分层采样通常用于保证样本分布与原始总体分布完全一致，权重采样其采样样本由自设权重给出，不保证与原样本分布一致。</li>
-</ul>
-<blockquote>
-<p>X_train,X_test,y_train,y_test =sklearn.model_selection.train_test_split(train_data,train_target,test_size=0.4, random_state=0,stratify=stratify=train_target)  </p>
-</blockquote>
-<p>输入：</p>
-<ul>
-<li>train_data：所有样本的输入特征矩阵（也就是 X）。  </li>
-<li>train_target：所有样本对应的真实预测结果或标签（也就是 Y）  </li>
-</ul>
-<p>输出：  </p>
-<ul>
-<li>X_train：训练集特征。  </li>
-<li>X_test：测试集特征  </li>
-<li>y_train：训练集标签。  </li>
-<li>y_test：测试集标签。</li>
-</ul>
-<p>然而数据集较大时，留一法（m个样本，令k=m）训练m个模型的计算开销难以忍受。</p>
-<h3 id="自助法"><a href="#自助法" class="headerlink" title="自助法"></a>自助法</h3><p>留出法和交叉验证发容易受样本规模的影响造成估计偏差，留一法计算复杂度太高，自助法是一个好的解决方案。  </p>
-<p>以自助采样法为基础，给定包含m个样本的数据集，我们对它进行采样产生数据集D’，每次随机从D中挑选一个样本，拷贝后放到D’，不去除；反复执行m次后，我们就得到了包含m个样本的数据集。一个样本一直不被取到的概率近似为$1/e$.这样划分出来的D’样本数量就与原样本数量相同，且还有没有出现过的近$\frac{1}{3}$的样本作为测试集（包外估计）</p>
-<blockquote>
-<p>自助法在数据集较小，难以有效划分训练/测试集时很有用；此外，自助法还能从初始数据集中产生多个不同的训练集，这对集成学习等方法有很大好处。同时对样本数据集的抽取改变了其分布，这会产生估计误差。</p>
-</blockquote>
-<h2 id="性能度量"><a href="#性能度量" class="headerlink" title="性能度量"></a>性能度量</h2><p>TP:真正例；FN:假反例；FP:假正例；TN:真反例  </p>
-<p>查准率P:P=$\frac{TP}{TP+FP}$  </p>
-<p>查全率/召回率R:R=$\frac{TP}{TP+FN}$</p>
-<p>综合度量其性能：BEP(平衡点Break-Even Point)，当查准率等于查全率时的取值。  </p>
-<p>F1-score:</p>
-<script type="math/tex; mode=display">F1=\frac{2*P*R}{P+R}(调和平均，1/F=(1/P+1/R)/2)</script><p>宏：分别计算各个混淆矩阵的查准率与查全率，再宏平均<br>微：直接在计算P和R之前将TP等值计算出之后计算TP等的平均值，再直接算出micro-P,micro-R  </p>
-<p>预测结果对样例进行排序：根据模型为每个测试样例输出的“预测概率”或“置信度得分”，将所有样例从高到低进行排列的过程。  </p>
-<h3 id="ROC与AUC"><a href="#ROC与AUC" class="headerlink" title="ROC与AUC"></a>ROC与AUC</h3><p>ROC曲线：受试者工作特征曲线，纵轴是“真正例率”$TPR = \frac{TP}{TP+FN}$（在所有真实的正样本中，模型挑出了多少），纵轴是“假正例率” $FPR = \frac{FP}{FP+TN}$（在所有真实的负样本中，模型错认了多少）<br>主要受当前分类阈值（Threshold）的逐渐变化影响。</p>
-<p>AUC（Area Under ROC Curve）：即在ROC曲线下的面积。<br>PS:<script type="math/tex">\mathbb{I}( \cdot )</script><br>符号含义为：如果括号里的条件成立（即正例得分 大于 负例得分），它就输出 $1$。如果条件不成立（即正例得分 小于等于 负例得分），它就输出 $0$。</p>
-<script type="math/tex; mode=display">AUC = \frac{1}{|P| \cdot |N|} \sum_{x_i \in P} \sum_{x_j \in N} \mathbb{I}(f(x_i) > f(x_j))</script><!-- ![ROC](/uploads/ROC示意.png) -->
-<h3 id="期望总体代价与代价曲线"><a href="#期望总体代价与代价曲线" class="headerlink" title="期望总体代价与代价曲线"></a>期望总体代价与代价曲线</h3><!-- ![代价](/uploads/期望总体代价曲线.png) -->
-<p>所围成的面积即为在所有条件（不同阈值）下学习器的期望总体代价。</p>
-<h3 id="PR曲线"><a href="#PR曲线" class="headerlink" title="PR曲线"></a>PR曲线</h3><p>PR曲线（Precision-Recall Curve）是机器学习中用于评估二分类模型性能的重要工具。它以召回率（Recall）为横轴，精确率（Precision）为纵坐标，直观展示了模型在不同分类阈值下的精确率与召回率的平衡关系。<br>与 ROC 曲线下的面积（AUC-ROC）类似，PR 曲线下的面积被称为 AUC-PR（或 Average Precision, AP）。AUC-PR 值越接近 1，代表模型综合性能越好。</p>
-<h2 id="比较检验"><a href="#比较检验" class="headerlink" title="比较检验"></a>比较检验</h2><h3 id="假设检验"><a href="#假设检验" class="headerlink" title="假设检验"></a>假设检验</h3><p>原假设 $H_0$： 认为算法 A 和算法 B 的真实性能完全一样，它们跑分出来的差异纯粹是因为测试集抽样产生的随机波动。<br>目标： 通过收集数据（跑实验），计算出一个概率（$p$ 值）。如果 $p$ 值极小（比如 $&lt; 0.05$），说明在二者真的一样的情况下，出现这么大差距的概率比中彩票还低。此时，我们就可以拒绝原假设，宣布 A 和 B 确实存在显著差异。</p>
-<blockquote>
-<p>$P$ 值（P-value）是假设检验的最终宣判结果。它的全称是 Probability Value。<br>它的严格统计学定义是：在原假设（$H_0$）成立的前提下，观察到当前数据，甚至比当前数据更极端情况的概率。<br>$P$ 值并不是凭空捏造的，它就是利用刚刚算出来的 $t$ 值，在理论分布曲线上“切”出来的面积。具体计算步骤如下:</p>
-<ul>
-<li>确立基准（原假设 $H_0$）： 假设算法 A 和 B 完全一样（即它们真实的错误率差值为 $0$）。</li>
-<li>获取统计量（$t$ 值）： 把你跑实验得到的数据代入上面提到的公式，算出一个具体的 $t$ 值（比如 $t = 2.5$）。</li>
-<li>映射到概率分布： 统计学家早就证明了，如果 A 和 B 真的完全一样（原假设成立），那么在无数次重复抽样中，算出来的 $t$ 值会完美服从一个中间高、两边低的钟形曲线——$t$ 分布（t-distribution）。</li>
-<li>计算尾部面积（算积分）： 我们把刚才算出的 $t = 2.5$ 放在这根坐标轴上。因为 $t$ 分布是对称的，我们在右边找 $2.5$，在左边找 $-2.5$。这两根线往外侧一直延伸到无穷远，所覆盖的曲线下方面积之和，就是 $P$ 值。  </li>
-</ul>
-<p>判定规则：如果算出来的面积（$P$ 值）很小（通常设定阈值 $\alpha = 0.05$）：说明如果 A 和 B 真的一样，那么出现当前差距的概率不到 $5\%$,那这就太反常了。</p>
-</blockquote>
-<h3 id="交叉验证t检验"><a href="#交叉验证t检验" class="headerlink" title="交叉验证t检验"></a>交叉验证t检验</h3><p>痛点： 如果你只做一次划分（比如 70% 训练，30% 测试），偶然性太大。如果你做标准的 10 折交叉验证，由于每一折的训练集都有大量重叠，算出来的方差会被严重低估，导致你更容易“冤枉”原假设。<br>改进（$5 \times 2$ 交叉验证）： 专门为了机器学习设计的改进版。做 5 次 $2$ 折交叉验证。每次把数据劈成两半，轮流做训练和测试。这样既保证了数据的充分利用，又把训练集的重叠度降到了合理范围。最后套用标准的 $t$ 分布公式来计算显著性。</p>
-<blockquote>
-<p>为什么是 2 折？ 把数据拦腰砍断（A半，B半）。第一次用 A 训练、B 测试；第二次用 B 训练、A 测试。这两次实验的训练集和测试集是 100% 毫无交集的。 这完美保证了独立性！为什么要做 5 次？ 因为只做 1 次 2 折，数据太少，评估不稳定。所以我们要把数据重新打乱，重复 5 次，总共得到 10 个测试结果。Dietterich 在推导公式时，非常巧妙地只利用第一次 2 折的方差来作为代表，配合 10 次结果的均值，推导出了一个修正版的 $t$ 统计量。</p>
-</blockquote>
-<h3 id="McNemar-检验"><a href="#McNemar-检验" class="headerlink" title="McNemar 检验"></a>McNemar 检验</h3><p>McNemar 检验的视角非常清奇，它根本不看两个模型同时对或者同时错的样本，它只盯着发生分歧的样本。<br>假设 A 错了 10 个，B 错了 15 个。<br>McNemar 会画出一个 $2 \times 2$ 的列联表，专门考察：“A 预测对了但 B 预测错的样本数（记为 $e_{01}$）” 和 “A 预测错了但 B 预测对的样本数（记为 $e_{10}$）”。<br>如果这两个算法真的差不多，那么 $e_{01}$ 和 $e_{10}$ 的数量应该极其接近。如果 A 疯狂打脸 B，而 B 几乎无法反击，公式算出来的 $\chi^2$（卡方值）就会飙升，从而判定两者存在显著差异。</p>
-<h3 id="Friedman-检验"><a href="#Friedman-检验" class="headerlink" title="Friedman 检验"></a>Friedman 检验</h3><p>当你提出一个新算法，想要发顶会论文时，你不可能只在 1 个数据集上测，你通常要在 10 个不同的公开数据集上，和另外 4 个经典算法进行对比。这时候 $t$ 检验就失效了。<br>核心逻辑（非参数检验）： 不同数据集的难度天差地别（在数据集 A 上错误率是 10%，在数据集 B 上可能是 40%），直接把错误率加起来毫无意义。<br>Friedman 的做法： 在每一个数据集上，根据错误率给算法排座次（排名 1, 2, 3…）。最后统计每个算法在所有数据集上的平均排名。如果大家都差不多，平均排名应该都挤在中间；如果有个算法极其优秀，它的平均排名会非常接近 1。  </p>
-<blockquote>
-<p>t检验(比较两组数据的“平均值”，判断它们到底是真的有差异，还是仅仅因为抽样导致的随机波动。)：  </p>
-<script type="math/tex; mode=display">t = \frac{\text{信号（Signal）}}{\text{噪声（Noise）}} = \frac{\bar{d}}{S_d / \sqrt{n}}= \frac{Z}{\sqrt{\chi^2 / df}}</script><p>分子（信号）： $\bar{d}$ 是算法 A 和 B 在 $n$ 次测试中，错误率差值的平均数。如果 A 一直比 B 错得少，这个均值差就会很大。</p>
-</blockquote>
-<h3 id="Nemenyi-后续检验"><a href="#Nemenyi-后续检验" class="headerlink" title="Nemenyi 后续检验"></a>Nemenyi 后续检验</h3><p>Nemenyi 检验会计算出一个极其关键的指标：临界值距离 (Critical Difference, CD)。<br>拿着这个 CD 值，我们去对比任意两个算法的平均排名差距。<br>如果 $|平均排名_A - 平均排名_B| &gt; CD$，就说明它俩的差距大到无法用“运气”来解释，认定它俩有显著差异。<br>如果差距 $\le CD$，就算跑分不一样，在统计学上也只能当做它俩打成了平手。</p>
-<h2 id="偏差与方差"><a href="#偏差与方差" class="headerlink" title="偏差与方差"></a>偏差与方差</h2><p>泛化误差：E(f;D)=$bias^{2}(x)+var(x)+\varepsilon^{2}$<br>噪声：</p>
-<script type="math/tex; mode=display">\varepsilon^2 = \mathbb{E}_D[(y_D - y)^2]</script><p>偏差：</p>
-<script type="math/tex; mode=display">bias^2(x) = (\bar{f}(x) - y)^2</script><p>方差：</p>
-<script type="math/tex; mode=display">var(x) = \mathbb{E}_D[(f(x; D) - \bar{f}(x))^2]</script><h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><script type="math/tex; mode=display">二项分布 \xrightarrow{n\rightarrow \infty } 正态分布 \xrightarrow{标准化变量平方求和} 卡方分布</script><p>二项分布：</p>
-<script type="math/tex; mode=display">P(X = k) = \binom{n}{k} p^k (1-p)^{n-k}, \quad k = 0, 1, 2, \ldots, n</script>]]></content>
-      <categories>
-        <category>机器学习</category>
-      </categories>
-      <tags>
-        <tag>机器学习</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>新的开始!!!</title>
-    <url>/2026/02/11/%E6%96%B0%E7%9A%84%E5%BC%80%E5%A7%8B/</url>
-    <content><![CDATA[<h2 id="谨以此贴，记录生活与工作"><a href="#谨以此贴，记录生活与工作" class="headerlink" title="谨以此贴，记录生活与工作"></a>谨以此贴，记录生活与工作</h2><h3 id="我为什么会想起来写博客"><a href="#我为什么会想起来写博客" class="headerlink" title="我为什么会想起来写博客"></a>我为什么会想起来写博客</h3><ul>
-<li>假期不需要在用大量时间去学不喜欢的课程，不需要为了绩点抽不开身，这就给我提供了自建网站的时间<br>（已经拖了很久了捏<em>^____^</em>）</li>
-<li>在读一些经典技术文章的过程中，总是读了忘，这就导致前面读了后面忘，一套<code>transformer</code>框架读了encoding忘了decoding，写博客也是对自己技术学习的阶段性总结</li>
-<li><code>八千代</code>是目标，趁当下无责一身轻，多多尝试，这也是对 <a href="https://github.com/inmostfly/wechatbot-1.1">catgirl</a> 的二次尝试!</li>
-<li>最早源自一次偶然的网上冲浪，看到了亚琪学长的个人博客，有羡慕也有向往。通过友链，又偶然看到了园长的博客，值此假期闲暇时，得以搭建。</li>
-</ul>
-<h2 id="inmost-的个人博客，自此启程"><a href="#inmost-的个人博客，自此启程" class="headerlink" title="inmost 的个人博客，自此启程"></a>inmost 的个人博客，自此启程</h2><ul>
-<li>后日谈</li>
-</ul>
-]]></content>
-      <categories>
-        <category>体悟</category>
-      </categories>
-      <tags>
-        <tag>随笔</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>欧拉筛！</title>
-    <url>/2026/02/26/%E6%AC%A7%E6%8B%89%E7%AD%9B/</url>
-    <content><![CDATA[<h2 id="欧拉筛"><a href="#欧拉筛" class="headerlink" title="欧拉筛"></a><a href="https://codeforces.com/contest/2200/problem/E">欧拉筛</a></h2><p>于CF1080_E题遇到对欧拉筛的活用，从新总结用法及原理</p>
-<span id="more"></span>
-<h2 id="欧拉筛-1"><a href="#欧拉筛-1" class="headerlink" title="欧拉筛"></a>欧拉筛</h2><h3 id="欧拉筛-线性筛：核心是利用一个质数筛掉其他合数"><a href="#欧拉筛-线性筛：核心是利用一个质数筛掉其他合数" class="headerlink" title="欧拉筛/线性筛：核心是利用一个质数筛掉其他合数"></a>欧拉筛/线性筛：核心是利用一个质数筛掉其他合数</h3><p>动态规划的思想</p>
-<p>任何一个合数C，能且只能被分解为唯一的 $C=i \cdot p_{min}$ ,其中 $p_{min}$ 是C的最小质因数，i是某个确定的整数。</p>
-<p>算法外层循环遍历所有整数i，内层循环从小到大遍历已知质数集合p。我们把 $i \cdot p_{min}$ 当作已知的合数，把他标记为被筛出。</p>
-<p>外层遍历i的过程中，若i是合数，那么其一定可以被分解为比自己小的倍数$i_{last}$与比他小的素数的积(比他小保证了在遍历到他之前已经被处理过)，其会在处理i之前被处理为is_prime[$p_{min}*i_{last}$]=1；反之则说明其不是合数，我们直接将其添加到is_prime中即可</p>
-<h3 id="最关键的逻辑：-if-i-p-0-break"><a href="#最关键的逻辑：-if-i-p-0-break" class="headerlink" title="最关键的逻辑： if(i%p==0) break"></a>最关键的逻辑： if(i%p==0) break</h3><p>当i%p==0成立时，意味着质数p已经是整数i的质因数之一，且由于我们从小到大遍历质数，p就是i的最小质因数。此时我们不难考虑到，此时如果再进行合数的计算，就使得 $p_{next} \cdot i$ 的最小质因数不再是 $p_{next}$ 而是p，不满足我们在前面设定的最小质因数的合数条件，故break，等待后面的遍历来计算，防止重复。</p>
-<h3 id="欧拉筛模板代码"><a href="#欧拉筛模板代码" class="headerlink" title="欧拉筛模板代码"></a>欧拉筛模板代码</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vector&lt;int&gt; primes;</span><br><span class="line">bool is_prime[1000005];</span><br><span class="line"></span><br><span class="line">void <span class="function"><span class="title">count_primes</span></span>()&#123;</span><br><span class="line">    <span class="keyword">for</span>(int i=2;i&lt;=1000005;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!is_prime[i]) </span><br><span class="line">        primes.push_back(i);</span><br><span class="line">        <span class="keyword">for</span>(auto p:primes)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i*p&gt;1000005) <span class="built_in">break</span>;</span><br><span class="line">            is_prime[i*p]=1;</span><br><span class="line">            <span class="keyword">if</span>(i%p==0) <span class="built_in">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">primes存所有质数，is_prime用位置的值反应是否是素数，0是素数，1是合数。</span><br></pre></td></tr></table></figure>
-<h2 id="E-Divisive-Battle"><a href="#E-Divisive-Battle" class="headerlink" title="E. Divisive Battle"></a>E. Divisive Battle</h2><p>对本题而言，题目核心及解出数列内的数的最小素因数和最大素因数，关键在于理解，若当前数的不同的素因数个数大于1，则Alice必定胜利(分解后内部有序，故需判断两个相邻的数分解后是否保持有序)</p>
-<p>对上述计量方法插入对最大最小素因数的统计，及统计其个数。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int max_p[1000005];</span><br><span class="line">vector&lt;int&gt; primes;</span><br><span class="line">bool is_prime[1000005];</span><br><span class="line">int min_p[1000005];</span><br><span class="line"></span><br><span class="line">inline int gcd(int x,int y)&#123;</span><br><span class="line">    <span class="keyword">while</span>(y)&#123;int t=x%y;x=y;y=t;&#125;<span class="built_in">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int cnt[1000005];//某个数的质数个数</span><br><span class="line">void <span class="function"><span class="title">count_primes</span></span>()&#123;</span><br><span class="line">    min_p[1]=1;</span><br><span class="line">    max_p[1]=1;</span><br><span class="line">    cnt[1]=0;</span><br><span class="line">    <span class="keyword">for</span>(int i=2;i&lt;=1000000;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!is_prime[i])&#123;</span><br><span class="line">            primes.push_back(i);</span><br><span class="line">            min_p[i]=i;</span><br><span class="line">            max_p[i]=i;</span><br><span class="line">            cnt[i]=1;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(auto p:primes)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i*p&gt;1000000) <span class="built_in">break</span>;</span><br><span class="line">            is_prime[i*p]=1;</span><br><span class="line">            min_p[i*p]=p;</span><br><span class="line">            max_p[i*p]=max(max_p[i],p);</span><br><span class="line">            <span class="keyword">if</span>(i%p==0)&#123;</span><br><span class="line">                cnt[i*p]=cnt[i];//可以不写，未来还会来处理</span><br><span class="line">                <span class="built_in">break</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                cnt[i*p]=cnt[i]+1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>cnt[i]的计算是两种状态转移<br>A.当i%p==0,可以不做处理，当前产生的合数无法增加素因数个数<br>B.当i%p!=0，此时合数在i的素因数基础上再+p，及素因数个数+1</p>
-<p>当我们先手一次性处理完之后，即可直接判断</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(cnt[a[i]]&gt;1)&#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;Alice&quot;</span>&lt;&lt;<span class="string">endl;</span></span><br><span class="line"><span class="string">    return;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">//若某个数素因数个数多于1，直接判定Alice胜利</span></span><br><span class="line"><span class="string">if(i&lt;n &amp;&amp; max_p[a[i]]&gt;min_p[a[i+1]])&#123;</span></span><br><span class="line"><span class="string">    cout&lt;&lt;&quot;Alice&quot;&lt;&lt;endl</span>;</span><br><span class="line">    <span class="built_in">return</span>;</span><br><span class="line">&#125;</span><br><span class="line">//若在拆分过程中发现相邻两个数不满足拆分后素数last_max&lt;=next_min,即不满足非递减，则Alice胜利</span><br><span class="line">//除此之外，Bob胜利</span><br></pre></td></tr></table></figure>
-<p><img src="/uploads/重庆.jpg" alt="重庆"></p>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>筛</tag>
-        <tag>动态规划</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>聚类</title>
-    <url>/2026/07/02/%E8%81%9A%E7%B1%BB%E5%AD%A6%E4%B9%A0/</url>
-    <content><![CDATA[<p>聚类是无监督学习的核心任务，目标是将数据集中的样本划分为若干个通常不相交的子集（簇），使得同一簇内样本尽可能相似、不同簇间样本尽可能不同。本章从距离度量出发，逐步讨论原型聚类、密度聚类和层次聚类三大范式。</p>
-<span id="more"></span>
-<h1 id="第九章-聚类"><a href="#第九章-聚类" class="headerlink" title="第九章 聚类"></a>第九章 聚类</h1><h2 id="聚类任务与性能度量"><a href="#聚类任务与性能度量" class="headerlink" title="聚类任务与性能度量"></a>聚类任务与性能度量</h2><p>聚类属于无监督学习——训练样本没有标记信息，算法依靠数据的内在结构自动分组。</p>
-<p><strong>聚类性能度量</strong>分两大类：</p>
-<ul>
-<li><strong>外部指标</strong>（有参考模型）：Jaccard系数、FM指数、Rand指数 → 越高越好</li>
-<li><strong>内部指标</strong>（无参考模型）：DB指数（越小越好）、Dunn指数（越大越好）</li>
-</ul>
-<p><strong>轮廓系数 (Silhouette Coefficient)</strong>：综合衡量凝聚度和分离度，$s(i) = \frac{b(i) - a(i)}{\max\{a(i), b(i)\}}$，其中 $a(i)$ 为样本 $i$ 到同簇其他样本的平均距离，$b(i)$ 为到最近异簇的平均距离。$s(i)$ 接近1表示聚类效果好。</p>
-<h2 id="距离度量"><a href="#距离度量" class="headerlink" title="距离度量"></a>距离度量</h2><p>闵可夫斯基距离族统一了三种常用距离：</p>
-<script type="math/tex; mode=display">D(X,Y) = \left( \sum_{i=1}^n |x_i - y_i|^p \right)^{\frac{1}{p}}</script><ul>
-<li>$p=1$：曼哈顿距离（城市街区距离）$D = \sum |x_i - y_i|$</li>
-<li>$p=2$：欧几里得距离（直线距离）$D = \sqrt{\sum (x_i - y_i)^2}$</li>
-<li>$p \to \infty$：切比雪夫距离 $D = \max_i |x_i - y_i|$</li>
-</ul>
-<blockquote>
-<p>切比雪夫距离在多维异常检测中尤其有用——它只关注变化最大的那个维度，相当于用”最短板”衡量距离。</p>
-</blockquote>
-<p><strong>有序属性 vs 无序属性</strong>：有序属性（如”高&gt;中&gt;低”）可用闵氏距离；无序属性（如”红、蓝、绿”）需用VDM。</p>
-<h2 id="原型聚类：K-means"><a href="#原型聚类：K-means" class="headerlink" title="原型聚类：K-means"></a>原型聚类：K-means</h2><p>K-means是原型聚类的最经典代表——每个簇用一个<strong>均值向量</strong>（原型）来代表。核心是<strong>最小化平方误差</strong>：</p>
-<script type="math/tex; mode=display">E = \sum_{i=1}^k \sum_{\mathbf{x} \in C_i} \|\mathbf{x} - \boldsymbol{\mu}_i\|_2^2</script><p>算法流程：</p>
-<ol>
-<li>随机选 $k$ 个样本作为初始均值向量</li>
-<li>将每个样本分配到最近均值向量的簇</li>
-<li>重新计算每个簇的均值向量</li>
-<li>重复2-3直到收敛（均值向量不再变化）</li>
-</ol>
-<blockquote>
-<p>K-means的三大局限性：<strong>k需预设</strong>、<strong>对初始值敏感</strong>（不同初始化可能收敛到不同局部最优）、<strong>仅发现球形簇</strong>。实践中常用K-means++初始化来缓解初始值敏感问题——让初始中心点尽可能分散。</p>
-</blockquote>
-<h3 id="LVQ（学习向量量化）"><a href="#LVQ（学习向量量化）" class="headerlink" title="LVQ（学习向量量化）"></a>LVQ（学习向量量化）</h3><p>LVQ是K-means的有监督变体：利用样本的类别标签辅助聚类，使原型向量向同类样本靠近、远离异类样本。适合有部分标记信息的场景。</p>
-<h3 id="高斯混合聚类-GMM"><a href="#高斯混合聚类-GMM" class="headerlink" title="高斯混合聚类 (GMM)"></a>高斯混合聚类 (GMM)</h3><p>用多个高斯分布的线性组合拟合数据，每个样本以概率归属于各高斯分量——属于<strong>软聚类</strong>。</p>
-<script type="math/tex; mode=display">P(\mathbf{x}) = \sum_{i=1}^k \alpha_i \cdot \mathcal{N}(\mathbf{x} | \boldsymbol{\mu}_i, \boldsymbol{\Sigma}_i)</script><p>参数估计使用EM算法：E步计算样本属于各分量的后验概率，M步更新 $\alpha_i, \boldsymbol{\mu}_i, \boldsymbol{\Sigma}_i$。</p>
-<h2 id="密度聚类：DBSCAN"><a href="#密度聚类：DBSCAN" class="headerlink" title="密度聚类：DBSCAN"></a>密度聚类：DBSCAN</h2><p>DBSCAN基于密度的空间聚类，不预设簇的数量、能发现任意形状的簇、自动识别噪声。</p>
-<p><strong>核心概念</strong>：</p>
-<ul>
-<li><strong>$\varepsilon$-邻域</strong>：以样本为中心、$\varepsilon$ 为半径的超球体区域</li>
-<li><strong>核心点</strong>：$\varepsilon$-邻域内包含至少 MinPts 个样本</li>
-<li><strong>边界点</strong>：在核心点的邻域内，但自身不满足核心点条件</li>
-<li><strong>噪声点</strong>：既非核心也非边界</li>
-<li><strong>密度直达 / 密度可达 / 密度相连</strong>：递进式的点间关系，用于定义簇</li>
-</ul>
-<blockquote>
-<p>DBSCAN的一个簇 = 所有密度相连的核心点及其边界点。参数选择：$\varepsilon$ 可用k-距离图确定拐点，MinPts通常取 $\geq$ 维度+1。</p>
-</blockquote>
-<p><strong>优缺点</strong>：自动识别噪声、发现任意形状 → 但高维数据效果差（维度灾难导致密度概念退化）、$\varepsilon$ 和 MinPts 敏感。</p>
-<h2 id="层次聚类"><a href="#层次聚类" class="headerlink" title="层次聚类"></a>层次聚类</h2><p>层次聚类构建树状簇结构（Dendrogram），无需预设 $k$。</p>
-<ul>
-<li><strong>自底向上 (AGNES)</strong>：初始每个样本各为一簇，每次合并距离最近的两簇</li>
-<li><strong>自顶向下 (DIANA)</strong>：初始所有样本为一簇，每次分裂</li>
-</ul>
-<p>簇间距离度量决定了合并/分裂策略：</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:left">策略</th>
-<th style="text-align:left">定义</th>
-<th style="text-align:left">特点</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">最小距离（单链接）</td>
-<td style="text-align:left">$d_{\min}(C_i, C_j)=\min_{\mathbf{x}\in C_i,\mathbf{y}\in C_j}\Vert\mathbf{x}-\mathbf{y}\Vert$</td>
-<td style="text-align:left">对噪声敏感</td>
-</tr>
-<tr>
-<td style="text-align:left">最大距离（全链接）</td>
-<td style="text-align:left">$d_{\max}(C_i, C_j)=\max_{\mathbf{x}\in C_i,\mathbf{y}\in C_j}\Vert\mathbf{x}-\mathbf{y}\Vert$</td>
-<td style="text-align:left">倾向发现紧凑簇</td>
-</tr>
-<tr>
-<td style="text-align:left">平均距离（均链接）</td>
-<td style="text-align:left">$d_{\text{avg}}(C_i, C_j)=\frac{1}{\lvert C_i\rvert\lvert C_j\rvert}\sum_{\mathbf{x}\in C_i}\sum_{\mathbf{y}\in C_j}\Vert\mathbf{x}-\mathbf{y}\Vert$</td>
-<td style="text-align:left">折中方案</td>
-</tr>
-</tbody>
-</table>
-</div>
-<blockquote>
-<p>层次聚类的计算复杂度为 $O(n^3)$（朴素实现）或 $O(n^2 \log n)$（优化实现），不适用于超大规模数据。但Dendrogram可视化在探索性数据分析中极具价值。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>机器学习</category>
-      </categories>
-      <tags>
-        <tag>机器学习</tag>
       </tags>
   </entry>
   <entry>
@@ -713,100 +433,155 @@
       </tags>
   </entry>
   <entry>
-    <title>贝叶斯分类器</title>
-    <url>/2026/07/15/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/</url>
-    <content><![CDATA[<p>贝叶斯分类器是一类基于贝叶斯定理的概率分类方法。它从概率视角出发，通过先验知识和观测数据推断后验概率，进而做出最优分类决策。本章从贝叶斯决策论出发，逐步引出朴素贝叶斯、半朴素贝叶斯、贝叶斯网和EM算法。</p>
+    <title>新的开始!!!</title>
+    <url>/2026/02/11/%E6%96%B0%E7%9A%84%E5%BC%80%E5%A7%8B/</url>
+    <content><![CDATA[<h2 id="谨以此贴，记录生活与工作"><a href="#谨以此贴，记录生活与工作" class="headerlink" title="谨以此贴，记录生活与工作"></a>谨以此贴，记录生活与工作</h2><h3 id="我为什么会想起来写博客"><a href="#我为什么会想起来写博客" class="headerlink" title="我为什么会想起来写博客"></a>我为什么会想起来写博客</h3><ul>
+<li>假期不需要在用大量时间去学不喜欢的课程，不需要为了绩点抽不开身，这就给我提供了自建网站的时间<br>（已经拖了很久了捏<em>^____^</em>）</li>
+<li>在读一些经典技术文章的过程中，总是读了忘，这就导致前面读了后面忘，一套<code>transformer</code>框架读了encoding忘了decoding，写博客也是对自己技术学习的阶段性总结</li>
+<li><code>八千代</code>是目标，趁当下无责一身轻，多多尝试，这也是对 <a href="https://github.com/inmostfly/wechatbot-1.1">catgirl</a> 的二次尝试!</li>
+<li>最早源自一次偶然的网上冲浪，看到了亚琪学长的个人博客，有羡慕也有向往。通过友链，又偶然看到了园长的博客，值此假期闲暇时，得以搭建。</li>
+</ul>
+<h2 id="inmost-的个人博客，自此启程"><a href="#inmost-的个人博客，自此启程" class="headerlink" title="inmost 的个人博客，自此启程"></a>inmost 的个人博客，自此启程</h2><ul>
+<li>后日谈</li>
+</ul>
+]]></content>
+      <categories>
+        <category>体悟</category>
+      </categories>
+      <tags>
+        <tag>随笔</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>模型评估</title>
+    <url>/2026/07/02/%E6%A8%A1%E5%9E%8B%E8%AF%84%E4%BC%B0/</url>
+    <content><![CDATA[<p>训练过程中，我们必然需要相应的指标来表明当前模型质量以继续提高模型质量。</p>
 <span id="more"></span>
-<h1 id="贝叶斯分类器"><a href="#贝叶斯分类器" class="headerlink" title="贝叶斯分类器"></a>贝叶斯分类器</h1><h2 id="贝叶斯决策论"><a href="#贝叶斯决策论" class="headerlink" title="贝叶斯决策论"></a>贝叶斯决策论</h2><p>贝叶斯决策论是概率框架下实施决策的基本方法。在所有相关概率都已知的理想情况下，它考虑如何基于这些概率和误判损失来选择最优的类别标记。</p>
-<p>假设有N种可能的类别标记 $c_1, c_2, \dots, c_N$，$\lambda_{ij}$ 是将真实标记为 $c_j$ 的样本误分类为 $c_i$ 所产生的损失。则样本 $\mathbf{x}$ 分类为 $c_i$ 的条件风险为：</p>
-<script type="math/tex; mode=display">R(c_i | \mathbf{x}) = \sum_{j=1}^N \lambda_{ij} P(c_j | \mathbf{x})</script><p>贝叶斯判定准则：最小化总体风险等价于对每个样本选择条件风险最小的类别：</p>
-<script type="math/tex; mode=display">h^*(\mathbf{x}) = \arg \min_{c \in \mathcal{Y}} R(c | \mathbf{x})</script><p>$h^<em>$ 称为贝叶斯最优分类器，对应的 $R(h^</em>)$ 为贝叶斯风险——这是分类器性能的理论上限。</p>
-<blockquote>
-<p>若目标是<strong>最小化分类错误率</strong>，则 $\lambda_{ij} = 0\ (i=j)$，否则 $\lambda_{ij} = 1$。此时 $R(c|\mathbf{x}) = 1-P(c|\mathbf{x})$，贝叶斯最优分类器简化为：$h^*(\mathbf{x}) = \arg \max_c P(c | \mathbf{x})$ —— 选择后验概率最大的类别。</p>
-</blockquote>
-<h3 id="贝叶斯公式与两种模型范式"><a href="#贝叶斯公式与两种模型范式" class="headerlink" title="贝叶斯公式与两种模型范式"></a>贝叶斯公式与两种模型范式</h3><p>后验概率由贝叶斯定理给出：</p>
-<script type="math/tex; mode=display">P(c | \mathbf{x}) = \frac{P(c) P(\mathbf{x} | c)}{P(\mathbf{x})}</script><ul>
-<li><strong>先验概率 $P(c)$</strong>：各类样本在空间中的比例，直接通过频率估算</li>
-<li><strong>似然 $P(\mathbf{x} | c)$</strong>：类条件概率——真正的难点。假设d个二值属性，样本空间大小为 $2^d$，直接估计不可行</li>
-</ul>
-<p>由此引出两种建模路线：</p>
+<h2 id="评估方法"><a href="#评估方法" class="headerlink" title="评估方法"></a>评估方法</h2><h3 id="交叉验证法"><a href="#交叉验证法" class="headerlink" title="交叉验证法"></a>交叉验证法</h3><p>从数据集D中划分出k个互斥子集，从D中分层采样得到，每次用其中K-1个子集的并集作为训练集，余下的那个子集作为测试集。（k折交叉验证）</p>
 <ul>
-<li><strong>判别式模型</strong>：直接建模后验 $P(c|\mathbf{x})$（逻辑回归、SVM、决策树）</li>
-<li><strong>生成式模型</strong>：先建模联合分布 $P(\mathbf{x},c)$，再推出 $P(c|\mathbf{x})$（朴素贝叶斯）</li>
+<li>分层采样与权重采样不同，分层采样通常用于保证样本分布与原始总体分布完全一致，权重采样其采样样本由自设权重给出，不保证与原样本分布一致。</li>
 </ul>
-<h2 id="极大似然估计-MLE"><a href="#极大似然估计-MLE" class="headerlink" title="极大似然估计 (MLE)"></a>极大似然估计 (MLE)</h2><p>估计 $P(\mathbf{x}|c)$ 的常用策略：先假定概率分布形式（如正态分布），再估计参数 $\boldsymbol{\theta}_c$。令 $D_c$ 为第c类样本集，对数似然为：</p>
-<script type="math/tex; mode=display">\ell(\boldsymbol{\theta}_c) = \sum_{\mathbf{x} \in D_c} \log P(\mathbf{x} | \boldsymbol{\theta}_c)</script><p>极大似然估计：$\hat{\boldsymbol{\theta}}_c = \arg \max \ell(\boldsymbol{\theta}_c)$ —— 选择使观测数据”最可能发生”的参数。</p>
 <blockquote>
-<p>频率主义 vs 贝叶斯主义：频率主义认为参数是未知常量，通过优化似然估计；贝叶斯主义认为参数是随机变量，有自己的先验分布，需要计算参数的后验。MLE是频率主义的代表方法。</p>
+<p>X_train,X_test,y_train,y_test =sklearn.model_selection.train_test_split(train_data,train_target,test_size=0.4, random_state=0,stratify=stratify=train_target)  </p>
 </blockquote>
-<h2 id="朴素贝叶斯分类器"><a href="#朴素贝叶斯分类器" class="headerlink" title="朴素贝叶斯分类器"></a>朴素贝叶斯分类器</h2><p><strong>属性条件独立性假设</strong>（最核心、最大胆的假设）：</p>
-<script type="math/tex; mode=display">P(\mathbf{x} | c) = \prod_{i=1}^d P(x_i | c)</script><p>代入贝叶斯公式得到朴素贝叶斯分类器：</p>
-<script type="math/tex; mode=display">h_{nb}(\mathbf{x}) = \arg \max_c P(c) \prod_{i=1}^d P(x_i | c)</script><h3 id="概率估计"><a href="#概率估计" class="headerlink" title="概率估计"></a>概率估计</h3><ul>
-<li>先验：$P(c) = |D_c| / |D|$</li>
-<li>离散属性：$P(x_i | c) = |D_{c, x_i}| / |D_c|$</li>
-<li>连续属性（假设正态）：$P(x_i|c) \sim \mathcal{N}(\mu_{c,i}, \sigma_{c,i}^2)$</li>
-</ul>
-<h3 id="拉普拉斯修正"><a href="#拉普拉斯修正" class="headerlink" title="拉普拉斯修正"></a>拉普拉斯修正</h3><p>若某属性值从未在训练集中出现 → 概率估为0 → 连乘归零。拉普拉斯修正为每个取值”预置”一个虚拟样本，从根本上解决零概率问题：</p>
-<script type="math/tex; mode=display">\hat{P}(c) = \frac{|D_c| + 1}{|D| + N}, \quad \hat{P}(x_i | c) = \frac{|D_{c, x_i}| + 1}{|D_c| + N_i}</script><blockquote>
-<p><strong>朴素却有效的原因</strong>：分类决策只关心后验概率的<strong>相对排序</strong>，而非绝对值。即使 $P(\mathbf{x}|c)$ 不精确，只要各类别的相对排序正确，分类结果就不受影响。在高维场景（如文本分类）中，独立性假设的偏差会被”高维稀释”。</p>
-</blockquote>
-<h2 id="半朴素贝叶斯分类器"><a href="#半朴素贝叶斯分类器" class="headerlink" title="半朴素贝叶斯分类器"></a>半朴素贝叶斯分类器</h2><p>适当放松独立性假设——独依赖估计 (ODE)：每个属性最多依赖一个父属性 $pa_i$：</p>
-<script type="math/tex; mode=display">P(c | \mathbf{x}) \propto P(c) \prod_{i=1}^d P(x_i | c, pa_i)</script><p>三种典型策略：</p>
+<p>输入：</p>
 <ul>
-<li><strong>SPODE</strong>：所有属性依赖同一个”超父”属性，通过交叉验证选择</li>
-<li><strong>TAN</strong>：基于条件互信息 $I(x_i, x_j | y)$ 构建最大带权生成树作为依赖结构</li>
-<li><strong>AODE</strong>：尝试所有可能的超父，对多个SPODE取平均（集成思路）</li>
+<li>train_data：所有样本的输入特征矩阵（也就是 X）。  </li>
+<li>train_target：所有样本对应的真实预测结果或标签（也就是 Y）  </li>
 </ul>
-<h2 id="贝叶斯网"><a href="#贝叶斯网" class="headerlink" title="贝叶斯网"></a>贝叶斯网</h2><p>贝叶斯网用有向无环图 (DAG) 刻画属性依赖关系。结构 $G$ + 条件概率表 $\Theta$ 共同定义联合分布：</p>
-<script type="math/tex; mode=display">P_B(x_1, \dots, x_d) = \prod_{i=1}^d P_B(x_i | \pi_i)</script><p>其中 $\pi_i$ 为节点 $x_i$ 的父节点集合。</p>
-<p><strong>三种典型依赖结构</strong>（理解推断的关键）：</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:left">结构</th>
-<th style="text-align:left">名称</th>
-<th style="text-align:left">条件独立关系</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">$x_1 \leftarrow c \rightarrow x_2$</td>
-<td style="text-align:left">同父结构</td>
-<td style="text-align:left">c已知 → $x_1 \perp x_2 \mid c$</td>
-</tr>
-<tr>
-<td style="text-align:left">$x_1 \rightarrow c \leftarrow x_2$</td>
-<td style="text-align:left">V型结构</td>
-<td style="text-align:left">c已知 → $x_1 \not\perp x_2 \mid c$（解释消除）</td>
-</tr>
-<tr>
-<td style="text-align:left">$x_1 \rightarrow m \rightarrow x_2$</td>
-<td style="text-align:left">顺序结构</td>
-<td style="text-align:left">m已知 → $x_1 \perp x_2 \mid m$</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>符号解释：</p>
-<p>$\perp \quad$:垂直，正交符号</p>
-<p>$X \perp Y$</p>
-<p>读作”X 与 Y 独立”——X 和 Y 没有统计依赖关系。</p>
-<p>$X \perp Y \mid Z$</p>
-<p>读作”给定 Z 的条件下，X 与 Y 条件独立”——一旦知道了 Z，X 和 Y 之间就没有额外的关联了。</p>
-<p>带否定：$X \not\perp Y \mid Z$</p>
-<p>读作”给定 Z 时，X 与 Y 不条件独立”——知道了 Z 反而让 X 和 Y 产生了关联。</p>
-<blockquote>
-<p>V型结构最反直觉：两个独立原因，一旦知道了共同结果，反而变得相关。例如：堵车（c）可能由交通事故（x1）或暴雨（x2）引起。如果已知”堵车了”，而你又听说”没有交通事故”，那么暴雨的可能性就急剧上升——这就是”解释消除”效应。</p>
-</blockquote>
-<p>贝叶斯网学习：结构已知时参数学习简单；结构未知（NP难）需评分搜索（BIC/AIC）或约束方法（独立性检验）。</p>
-<h2 id="EM算法"><a href="#EM算法" class="headerlink" title="EM算法"></a>EM算法</h2><p>处理含有隐变量 $Z$ 的不完整数据，迭代执行：</p>
+<p>输出：  </p>
 <ul>
-<li><strong>E步 (Expectation)</strong>：基于当前参数 $\Theta^t$，计算隐变量的期望 $Q(\Theta | \Theta^t) = \mathbb{E}_{Z|X,\Theta^t}[\log P(X,Z|\Theta)]$</li>
-<li><strong>M步 (Maximization)</strong>：最大化Q函数更新参数 $\Theta^{t+1} = \arg \max Q(\Theta | \Theta^t)$</li>
+<li>X_train：训练集特征。  </li>
+<li>X_test：测试集特征  </li>
+<li>y_train：训练集标签。  </li>
+<li>y_test：测试集标签。</li>
+</ul>
+<p>然而数据集较大时，留一法（m个样本，令k=m）训练m个模型的计算开销难以忍受。</p>
+<h3 id="自助法"><a href="#自助法" class="headerlink" title="自助法"></a>自助法</h3><p>留出法和交叉验证发容易受样本规模的影响造成估计偏差，留一法计算复杂度太高，自助法是一个好的解决方案。  </p>
+<p>以自助采样法为基础，给定包含m个样本的数据集，我们对它进行采样产生数据集D’，每次随机从D中挑选一个样本，拷贝后放到D’，不去除；反复执行m次后，我们就得到了包含m个样本的数据集。一个样本一直不被取到的概率近似为$1/e$.这样划分出来的D’样本数量就与原样本数量相同，且还有没有出现过的近$\frac{1}{3}$的样本作为测试集（包外估计）</p>
+<blockquote>
+<p>自助法在数据集较小，难以有效划分训练/测试集时很有用；此外，自助法还能从初始数据集中产生多个不同的训练集，这对集成学习等方法有很大好处。同时对样本数据集的抽取改变了其分布，这会产生估计误差。</p>
+</blockquote>
+<h2 id="性能度量"><a href="#性能度量" class="headerlink" title="性能度量"></a>性能度量</h2><p>TP:真正例；FN:假反例；FP:假正例；TN:真反例  </p>
+<p>查准率P:P=$\frac{TP}{TP+FP}$  </p>
+<p>查全率/召回率R:R=$\frac{TP}{TP+FN}$</p>
+<p>综合度量其性能：BEP(平衡点Break-Even Point)，当查准率等于查全率时的取值。  </p>
+<p>F1-score:</p>
+<script type="math/tex; mode=display">F1=\frac{2*P*R}{P+R}(调和平均，1/F=(1/P+1/R)/2)</script><p>宏：分别计算各个混淆矩阵的查准率与查全率，再宏平均<br>微：直接在计算P和R之前将TP等值计算出之后计算TP等的平均值，再直接算出micro-P,micro-R  </p>
+<p>预测结果对样例进行排序：根据模型为每个测试样例输出的“预测概率”或“置信度得分”，将所有样例从高到低进行排列的过程。  </p>
+<h3 id="ROC与AUC"><a href="#ROC与AUC" class="headerlink" title="ROC与AUC"></a>ROC与AUC</h3><p>ROC曲线：受试者工作特征曲线，纵轴是“真正例率”$TPR = \frac{TP}{TP+FN}$（在所有真实的正样本中，模型挑出了多少），纵轴是“假正例率” $FPR = \frac{FP}{FP+TN}$（在所有真实的负样本中，模型错认了多少）<br>主要受当前分类阈值（Threshold）的逐渐变化影响。</p>
+<p>AUC（Area Under ROC Curve）：即在ROC曲线下的面积。<br>PS:<script type="math/tex">\mathbb{I}( \cdot )</script><br>符号含义为：如果括号里的条件成立（即正例得分 大于 负例得分），它就输出 $1$。如果条件不成立（即正例得分 小于等于 负例得分），它就输出 $0$。</p>
+<script type="math/tex; mode=display">AUC = \frac{1}{|P| \cdot |N|} \sum_{x_i \in P} \sum_{x_j \in N} \mathbb{I}(f(x_i) > f(x_j))</script><!-- ![ROC](/uploads/ROC示意.png) -->
+<h3 id="期望总体代价与代价曲线"><a href="#期望总体代价与代价曲线" class="headerlink" title="期望总体代价与代价曲线"></a>期望总体代价与代价曲线</h3><!-- ![代价](/uploads/期望总体代价曲线.png) -->
+<p>所围成的面积即为在所有条件（不同阈值）下学习器的期望总体代价。</p>
+<h3 id="PR曲线"><a href="#PR曲线" class="headerlink" title="PR曲线"></a>PR曲线</h3><p>PR曲线（Precision-Recall Curve）是机器学习中用于评估二分类模型性能的重要工具。它以召回率（Recall）为横轴，精确率（Precision）为纵坐标，直观展示了模型在不同分类阈值下的精确率与召回率的平衡关系。<br>与 ROC 曲线下的面积（AUC-ROC）类似，PR 曲线下的面积被称为 AUC-PR（或 Average Precision, AP）。AUC-PR 值越接近 1，代表模型综合性能越好。</p>
+<h2 id="比较检验"><a href="#比较检验" class="headerlink" title="比较检验"></a>比较检验</h2><h3 id="假设检验"><a href="#假设检验" class="headerlink" title="假设检验"></a>假设检验</h3><p>原假设 $H_0$： 认为算法 A 和算法 B 的真实性能完全一样，它们跑分出来的差异纯粹是因为测试集抽样产生的随机波动。<br>目标： 通过收集数据（跑实验），计算出一个概率（$p$ 值）。如果 $p$ 值极小（比如 $&lt; 0.05$），说明在二者真的一样的情况下，出现这么大差距的概率比中彩票还低。此时，我们就可以拒绝原假设，宣布 A 和 B 确实存在显著差异。</p>
+<blockquote>
+<p>$P$ 值（P-value）是假设检验的最终宣判结果。它的全称是 Probability Value。<br>它的严格统计学定义是：在原假设（$H_0$）成立的前提下，观察到当前数据，甚至比当前数据更极端情况的概率。<br>$P$ 值并不是凭空捏造的，它就是利用刚刚算出来的 $t$ 值，在理论分布曲线上“切”出来的面积。具体计算步骤如下:</p>
+<ul>
+<li>确立基准（原假设 $H_0$）： 假设算法 A 和 B 完全一样（即它们真实的错误率差值为 $0$）。</li>
+<li>获取统计量（$t$ 值）： 把你跑实验得到的数据代入上面提到的公式，算出一个具体的 $t$ 值（比如 $t = 2.5$）。</li>
+<li>映射到概率分布： 统计学家早就证明了，如果 A 和 B 真的完全一样（原假设成立），那么在无数次重复抽样中，算出来的 $t$ 值会完美服从一个中间高、两边低的钟形曲线——$t$ 分布（t-distribution）。</li>
+<li>计算尾部面积（算积分）： 我们把刚才算出的 $t = 2.5$ 放在这根坐标轴上。因为 $t$ 分布是对称的，我们在右边找 $2.5$，在左边找 $-2.5$。这两根线往外侧一直延伸到无穷远，所覆盖的曲线下方面积之和，就是 $P$ 值。  </li>
+</ul>
+<p>判定规则：如果算出来的面积（$P$ 值）很小（通常设定阈值 $\alpha = 0.05$）：说明如果 A 和 B 真的一样，那么出现当前差距的概率不到 $5\%$,那这就太反常了。</p>
+</blockquote>
+<h3 id="交叉验证t检验"><a href="#交叉验证t检验" class="headerlink" title="交叉验证t检验"></a>交叉验证t检验</h3><p>痛点： 如果你只做一次划分（比如 70% 训练，30% 测试），偶然性太大。如果你做标准的 10 折交叉验证，由于每一折的训练集都有大量重叠，算出来的方差会被严重低估，导致你更容易“冤枉”原假设。<br>改进（$5 \times 2$ 交叉验证）： 专门为了机器学习设计的改进版。做 5 次 $2$ 折交叉验证。每次把数据劈成两半，轮流做训练和测试。这样既保证了数据的充分利用，又把训练集的重叠度降到了合理范围。最后套用标准的 $t$ 分布公式来计算显著性。</p>
+<blockquote>
+<p>为什么是 2 折？ 把数据拦腰砍断（A半，B半）。第一次用 A 训练、B 测试；第二次用 B 训练、A 测试。这两次实验的训练集和测试集是 100% 毫无交集的。 这完美保证了独立性！为什么要做 5 次？ 因为只做 1 次 2 折，数据太少，评估不稳定。所以我们要把数据重新打乱，重复 5 次，总共得到 10 个测试结果。Dietterich 在推导公式时，非常巧妙地只利用第一次 2 折的方差来作为代表，配合 10 次结果的均值，推导出了一个修正版的 $t$ 统计量。</p>
+</blockquote>
+<h3 id="McNemar-检验"><a href="#McNemar-检验" class="headerlink" title="McNemar 检验"></a>McNemar 检验</h3><p>McNemar 检验的视角非常清奇，它根本不看两个模型同时对或者同时错的样本，它只盯着发生分歧的样本。<br>假设 A 错了 10 个，B 错了 15 个。<br>McNemar 会画出一个 $2 \times 2$ 的列联表，专门考察：“A 预测对了但 B 预测错的样本数（记为 $e_{01}$）” 和 “A 预测错了但 B 预测对的样本数（记为 $e_{10}$）”。<br>如果这两个算法真的差不多，那么 $e_{01}$ 和 $e_{10}$ 的数量应该极其接近。如果 A 疯狂打脸 B，而 B 几乎无法反击，公式算出来的 $\chi^2$（卡方值）就会飙升，从而判定两者存在显著差异。</p>
+<h3 id="Friedman-检验"><a href="#Friedman-检验" class="headerlink" title="Friedman 检验"></a>Friedman 检验</h3><p>当你提出一个新算法，想要发顶会论文时，你不可能只在 1 个数据集上测，你通常要在 10 个不同的公开数据集上，和另外 4 个经典算法进行对比。这时候 $t$ 检验就失效了。<br>核心逻辑（非参数检验）： 不同数据集的难度天差地别（在数据集 A 上错误率是 10%，在数据集 B 上可能是 40%），直接把错误率加起来毫无意义。<br>Friedman 的做法： 在每一个数据集上，根据错误率给算法排座次（排名 1, 2, 3…）。最后统计每个算法在所有数据集上的平均排名。如果大家都差不多，平均排名应该都挤在中间；如果有个算法极其优秀，它的平均排名会非常接近 1。  </p>
+<blockquote>
+<p>t检验(比较两组数据的“平均值”，判断它们到底是真的有差异，还是仅仅因为抽样导致的随机波动。)：  </p>
+<script type="math/tex; mode=display">t = \frac{\text{信号（Signal）}}{\text{噪声（Noise）}} = \frac{\bar{d}}{S_d / \sqrt{n}}= \frac{Z}{\sqrt{\chi^2 / df}}</script><p>分子（信号）： $\bar{d}$ 是算法 A 和 B 在 $n$ 次测试中，错误率差值的平均数。如果 A 一直比 B 错得少，这个均值差就会很大。</p>
+</blockquote>
+<h3 id="Nemenyi-后续检验"><a href="#Nemenyi-后续检验" class="headerlink" title="Nemenyi 后续检验"></a>Nemenyi 后续检验</h3><p>Nemenyi 检验会计算出一个极其关键的指标：临界值距离 (Critical Difference, CD)。<br>拿着这个 CD 值，我们去对比任意两个算法的平均排名差距。<br>如果 $|平均排名_A - 平均排名_B| &gt; CD$，就说明它俩的差距大到无法用“运气”来解释，认定它俩有显著差异。<br>如果差距 $\le CD$，就算跑分不一样，在统计学上也只能当做它俩打成了平手。</p>
+<h2 id="偏差与方差"><a href="#偏差与方差" class="headerlink" title="偏差与方差"></a>偏差与方差</h2><p>泛化误差：E(f;D)=$bias^{2}(x)+var(x)+\varepsilon^{2}$<br>噪声：</p>
+<script type="math/tex; mode=display">\varepsilon^2 = \mathbb{E}_D[(y_D - y)^2]</script><p>偏差：</p>
+<script type="math/tex; mode=display">bias^2(x) = (\bar{f}(x) - y)^2</script><p>方差：</p>
+<script type="math/tex; mode=display">var(x) = \mathbb{E}_D[(f(x; D) - \bar{f}(x))^2]</script><h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><script type="math/tex; mode=display">二项分布 \xrightarrow{n\rightarrow \infty } 正态分布 \xrightarrow{标准化变量平方求和} 卡方分布</script><p>二项分布：</p>
+<script type="math/tex; mode=display">P(X = k) = \binom{n}{k} p^k (1-p)^{n-k}, \quad k = 0, 1, 2, \ldots, n</script>]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>神经网络</title>
+    <url>/2026/07/10/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</url>
+    <content><![CDATA[<p>神经网络相关学习笔记<br><span id="more"></span></p>
+<h2 id="M-P神经元模型"><a href="#M-P神经元模型" class="headerlink" title="M-P神经元模型"></a>M-P神经元模型</h2><p>最经典的，在这个模型中，神经元接收到来自n哥其他神经元传过来的输入信号，这些输入信号通过带权重的连接进行传递，神经元接收到的总数入值将与神经元的阈值进行比较，然后通过激活函数处理以产生神经元的输出。</p>
+<p>把许多个这样的神经元按照一定的层次结构连接起来，就得到了神经网络。</p>
+<h2 id="误差逆传播算法"><a href="#误差逆传播算法" class="headerlink" title="误差逆传播算法"></a>误差逆传播算法</h2><h3 id="误差逆传播算法（Backpropagation，简称-BP-算法）是深度学习中用于训练神经网络的核心算法"><a href="#误差逆传播算法（Backpropagation，简称-BP-算法）是深度学习中用于训练神经网络的核心算法" class="headerlink" title="误差逆传播算法（Backpropagation，简称 BP 算法）是深度学习中用于训练神经网络的核心算法"></a>误差逆传播算法（Backpropagation，简称 BP 算法）是深度学习中用于训练神经网络的核心算法</h3><p>它的本质是微积分中链式法则（Chain Rule）在多层复合函数梯度计算中的工程实现。  </p>
+<p>在神经网络中，我们通过前向传播计算出模型的预测值，并计算其与真实标签之间的差距（损失值 $E$）。BP 算法的核心任务，就是高效地将这个全局损失误差分配到网络中的每一个权重参数 $w$ 和偏置 $b$ 上，计算出梯度 $\frac{\partial E}{\partial w}$，从而利用梯度下降法更新参数。</p>
+<h3 id="核心数学机制"><a href="#核心数学机制" class="headerlink" title="核心数学机制"></a>核心数学机制</h3><p>为了在计算图（Computational Graph）中实现最高效的计算，BP 算法引入了一个关键的中间变量——误差项（Error Term，通常用 $\delta$ 表示）。它定义为损失函数对某一层净输入（未激活的加权和 $z$）的偏导数。</p>
+<p>假设一个多层网络中，某神经元当前的净输入为 $z = \sum w_i a_i + b$，激活后的输出为 $a = f(z)$。</p>
+<p>1.输出层的误差项 $\delta^L$</p>
+<p>对于最终的输出层 $L$，其误差信号直接来源于损失函数 $E$。</p>
+<p>根据链式法则：</p>
+<script type="math/tex; mode=display">\delta^L = \frac{\partial E}{\partial z^L} = \frac{\partial E}{\partial a^L} \cdot \frac{\partial E}{\partial z^L} = \frac{\partial E}{\partial a^L} \cdot f'(z^L)</script><p>$\frac{\partial E}{\partial a^L}$ 取决于你选择的损失函数（如均方误差或交叉熵）。$f’(z^L)$ 是输出层激活函数的导数。</p>
+<p>2.隐藏层的误差项 $\delta^l$（逆传播的核心）</p>
+<p>对于任意一个隐藏层 $l$，它并没有直接连接损失函数，它的误差是从它后面的那一层（$l+1$ 层）传回来的。<br>通过链式法则展开：</p>
+<script type="math/tex; mode=display">\delta^l = \frac{\partial E}{\partial z^l} = \sum \left( \frac{\partial E}{\partial z^{l+1}} \cdot \frac{\partial z^{l+1}}{\partial a^l} \right) \cdot \frac{\partial a^l}{\partial z^l}</script><p>因为 $z^{l+1} = W^{l+1} a^l + b^{l+1}$，所以 $\frac{\partial z^{l+1}}{\partial a^l} = W^{l+1}$。带入后得到 BP 算法的经典递推公式：</p>
+<script type="math/tex; mode=display">\delta^l = \left( (W^{l+1})^T \delta^{l+1} \right) \odot f'(z^l)</script><p>含义：后一层的误差项 $\delta^{l+1}$ 通过权重矩阵 $W^{l+1}$ 进行反向投影，然后与当前层激活函数的导数 $f’(z^l)$ 进行按元素相乘（$\odot$）。这是误差“逆传播”的几何与代数图景。</p>
+<p>3.计算最终的参数梯度</p>
+<p>一旦计算出了每一层的误差项 $\delta^l$，任意一层参数的梯度就可以通过极其简单的局部乘法得到：</p>
+<p>权重的梯度：$\frac{\partial E}{\partial W^l} = \delta^l (a^{l-1})^T$ （当前层的误差项 $\times$ 前一层的输入信号）</p>
+<p>偏置的梯度：$\frac{\partial E}{\partial b^l} = \delta^l$</p>
+<blockquote>
+<ol>
+<li>梯度的计算：严格逐层向后推导根据多元微积分的链式法则，参数梯度 $\frac{\partial E}{\partial W}$ 的计算过程必须是逐层反向的。你必须先求出第 $L$ 层的误差项 $\delta^L$，才能利用当前的权重矩阵反向投影出第 $L-1$ 层的误差项 $\delta^{l-1}$。在这个阶段，计算图的数据流向是逐层递进的，但网络中的任何权重参数都没有发生改变。计算出的每一层梯度都会被暂时保存在内存（或寄存器/显存）中。  </li>
+<li>参数的更新：全局同步执行当反向传播计算完成，网络中所有层的所有参数梯度都已计算完毕并被缓存后，优化算法（如随机梯度下降 SGD）才会读取这些缓存的梯度，统一对所有层执行更新计算：<script type="math/tex; mode=display">W^{l}_{new} = W^{l}_{old} - \eta \cdot \frac{\partial E}{\partial W^{l}_{old}}</script></li>
+</ol>
+</blockquote>
+<h2 id="深度学习"><a href="#深度学习" class="headerlink" title="深度学习"></a>深度学习</h2><h3 id="端到端的表征学习-Representation-Learning"><a href="#端到端的表征学习-Representation-Learning" class="headerlink" title="端到端的表征学习 (Representation Learning)"></a>端到端的表征学习 (Representation Learning)</h3><blockquote>
+<p>端到端学习(End-to-End Learning)，也称端到端训练，是指在学习过程中不进行分模块或分阶段训练，直接优化任务的总体目标。 在端到端学习中，一般不需要明确地给出不同模块或阶段的功能，中间过程不需要人为干预。 端到端学习的训练数据为“输入-输出”对的形式，无须提供其他额外信息。</p>
+</blockquote>
+<p>在深度学习中，网络的多个隐藏层充当了自动特征提取器的角色。它们将原始输入进行逐层、非线性的空间变换：</p>
+<p>浅层：提取底层的局部特征（例如图像中的边缘轮廓，或音频中的基础频段）。</p>
+<p>中层：将局部特征组合成更高维的模式（例如几何形状）。</p>
+<p>深层：抽象出具有高度语义信息的特征（例如识别出具体的物体概念）。</p>
+<p>网络中的每一步 $y = \sigma(Wx + b)$（其中 $\sigma$ 为非线性激活函数），都在将数据从一个纠缠不清的特征空间，映射折叠到一个更容易被线性分类的全新空间中。层数越“深”，网络能够表达的非线性拓扑变换就越复杂。</p>
+<h3 id="CNN（卷积神经网络）"><a href="#CNN（卷积神经网络）" class="headerlink" title="CNN（卷积神经网络）"></a>CNN（卷积神经网络）</h3><p>卷积神经网络 (CNN, Convolutional Neural Network) 是一种专门用来处理具有已知网格状拓扑结构数据的前馈神经网络。最典型的例子就是时间序列数据（1D 网格）和图像数据（2D 像素网格）。</p>
+<p>底层的数学运算就是二维互相关（通常称为卷积）。我们定义一个很小的权重矩阵（比如 3x3），称为卷积核 (Filter / Kernel)。让这个小矩阵像一个放大镜一样，在整张图片上从左到右、从上到下滑动。每滑动到一个位置，就将卷积核的值与图片对应像素的值进行逐元素相乘并求和（点积运算），得出一个新的数值。</p>
+<p>CNN 不再让隐藏层的神经元与上一层的所有节点相连（全连接），而是强制要求它们只连接到一个局部的空间区域，这个区域被称为感受野 (Receptive Field)。</p>
+<p>权值共享：滑动的过程中，同一个卷积核在滑动扫过整张图片时，它的权重参数是不变的。</p>
+<p>CNN 的核心机制就是局部感受野（Local Receptive Fields）和权值共享（Weight Sharing），主要处理具有空间拓扑结构的数据（如图像）。</p>
+<p>典型的 CNN 架构流水线结合这三个机制，一个标准的 CNN 就像一条流水线：</p>
+<blockquote>
+<p>输入图像 $\to$[卷积层 $\to$ ReLU 激活 $\to$ 池化层] (这一组操作可能会堆叠和重复很多次，特征图变得越来越小，但通道数/厚度越来越深) $\to$展平 (Flatten)：将三维的特征图压平为一维向量 $\to$全连接层 (Dense)：利用提取出的高度抽象特征进行最终的逻辑判断 $\to$输出层：输出分类概率。</p>
+</blockquote>
+<p>在现代深度学习中，CNN 几乎不再使用逐层无监督预训练了，原因在于工程底层架构和数学工具的突破：</p>
+<ul>
+<li>ReLU 激活函数：数学上极其简单的 $f(x) = \max(0, x)$ 直接让正半轴的梯度恒为 1，从根本上缓解了 Sigmoid 带来的梯度消失。</li>
+<li>Batch Normalization (批归一化)：强制将每一层的输入数据分布拉回标准正态分布，让网络极其容易收敛。</li>
+<li>残差连接 (ResNet)：引入了跳跃连接（Skip Connection），让梯度可以直接跨层反向流动。</li>
 </ul>
 <blockquote>
-<p>EM算法的精髓是”以退为进”：不直接优化复杂的边际似然，而是构造一个辅助Q函数逐步逼近。可以严格证明每次迭代边际似然不降——但不能保证收敛到全局最优。K-means也可以用EM视角来理解：E步分配簇，M步更新中心。</p>
+<p>PS:<br>卷积神经网络的理解仍不透彻，将持续更新。</p>
 </blockquote>
 ]]></content>
       <categories>
@@ -937,6 +712,33 @@
       </tags>
   </entry>
   <entry>
+    <title>欧拉筛！</title>
+    <url>/2026/02/26/%E6%AC%A7%E6%8B%89%E7%AD%9B/</url>
+    <content><![CDATA[<h2 id="欧拉筛"><a href="#欧拉筛" class="headerlink" title="欧拉筛"></a><a href="https://codeforces.com/contest/2200/problem/E">欧拉筛</a></h2><p>于CF1080_E题遇到对欧拉筛的活用，从新总结用法及原理</p>
+<span id="more"></span>
+<h2 id="欧拉筛-1"><a href="#欧拉筛-1" class="headerlink" title="欧拉筛"></a>欧拉筛</h2><h3 id="欧拉筛-线性筛：核心是利用一个质数筛掉其他合数"><a href="#欧拉筛-线性筛：核心是利用一个质数筛掉其他合数" class="headerlink" title="欧拉筛/线性筛：核心是利用一个质数筛掉其他合数"></a>欧拉筛/线性筛：核心是利用一个质数筛掉其他合数</h3><p>动态规划的思想</p>
+<p>任何一个合数C，能且只能被分解为唯一的 $C=i \cdot p_{min}$ ,其中 $p_{min}$ 是C的最小质因数，i是某个确定的整数。</p>
+<p>算法外层循环遍历所有整数i，内层循环从小到大遍历已知质数集合p。我们把 $i \cdot p_{min}$ 当作已知的合数，把他标记为被筛出。</p>
+<p>外层遍历i的过程中，若i是合数，那么其一定可以被分解为比自己小的倍数$i_{last}$与比他小的素数的积(比他小保证了在遍历到他之前已经被处理过)，其会在处理i之前被处理为is_prime[$p_{min}*i_{last}$]=1；反之则说明其不是合数，我们直接将其添加到is_prime中即可</p>
+<h3 id="最关键的逻辑：-if-i-p-0-break"><a href="#最关键的逻辑：-if-i-p-0-break" class="headerlink" title="最关键的逻辑： if(i%p==0) break"></a>最关键的逻辑： if(i%p==0) break</h3><p>当i%p==0成立时，意味着质数p已经是整数i的质因数之一，且由于我们从小到大遍历质数，p就是i的最小质因数。此时我们不难考虑到，此时如果再进行合数的计算，就使得 $p_{next} \cdot i$ 的最小质因数不再是 $p_{next}$ 而是p，不满足我们在前面设定的最小质因数的合数条件，故break，等待后面的遍历来计算，防止重复。</p>
+<h3 id="欧拉筛模板代码"><a href="#欧拉筛模板代码" class="headerlink" title="欧拉筛模板代码"></a>欧拉筛模板代码</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vector&lt;int&gt; primes;</span><br><span class="line">bool is_prime[1000005];</span><br><span class="line"></span><br><span class="line">void <span class="function"><span class="title">count_primes</span></span>()&#123;</span><br><span class="line">    <span class="keyword">for</span>(int i=2;i&lt;=1000005;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!is_prime[i]) </span><br><span class="line">        primes.push_back(i);</span><br><span class="line">        <span class="keyword">for</span>(auto p:primes)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i*p&gt;1000005) <span class="built_in">break</span>;</span><br><span class="line">            is_prime[i*p]=1;</span><br><span class="line">            <span class="keyword">if</span>(i%p==0) <span class="built_in">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">primes存所有质数，is_prime用位置的值反应是否是素数，0是素数，1是合数。</span><br></pre></td></tr></table></figure>
+<h2 id="E-Divisive-Battle"><a href="#E-Divisive-Battle" class="headerlink" title="E. Divisive Battle"></a>E. Divisive Battle</h2><p>对本题而言，题目核心及解出数列内的数的最小素因数和最大素因数，关键在于理解，若当前数的不同的素因数个数大于1，则Alice必定胜利(分解后内部有序，故需判断两个相邻的数分解后是否保持有序)</p>
+<p>对上述计量方法插入对最大最小素因数的统计，及统计其个数。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int max_p[1000005];</span><br><span class="line">vector&lt;int&gt; primes;</span><br><span class="line">bool is_prime[1000005];</span><br><span class="line">int min_p[1000005];</span><br><span class="line"></span><br><span class="line">inline int gcd(int x,int y)&#123;</span><br><span class="line">    <span class="keyword">while</span>(y)&#123;int t=x%y;x=y;y=t;&#125;<span class="built_in">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int cnt[1000005];//某个数的质数个数</span><br><span class="line">void <span class="function"><span class="title">count_primes</span></span>()&#123;</span><br><span class="line">    min_p[1]=1;</span><br><span class="line">    max_p[1]=1;</span><br><span class="line">    cnt[1]=0;</span><br><span class="line">    <span class="keyword">for</span>(int i=2;i&lt;=1000000;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!is_prime[i])&#123;</span><br><span class="line">            primes.push_back(i);</span><br><span class="line">            min_p[i]=i;</span><br><span class="line">            max_p[i]=i;</span><br><span class="line">            cnt[i]=1;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(auto p:primes)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i*p&gt;1000000) <span class="built_in">break</span>;</span><br><span class="line">            is_prime[i*p]=1;</span><br><span class="line">            min_p[i*p]=p;</span><br><span class="line">            max_p[i*p]=max(max_p[i],p);</span><br><span class="line">            <span class="keyword">if</span>(i%p==0)&#123;</span><br><span class="line">                cnt[i*p]=cnt[i];//可以不写，未来还会来处理</span><br><span class="line">                <span class="built_in">break</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                cnt[i*p]=cnt[i]+1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>cnt[i]的计算是两种状态转移<br>A.当i%p==0,可以不做处理，当前产生的合数无法增加素因数个数<br>B.当i%p!=0，此时合数在i的素因数基础上再+p，及素因数个数+1</p>
+<p>当我们先手一次性处理完之后，即可直接判断</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(cnt[a[i]]&gt;1)&#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;Alice&quot;</span>&lt;&lt;<span class="string">endl;</span></span><br><span class="line"><span class="string">    return;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">//若某个数素因数个数多于1，直接判定Alice胜利</span></span><br><span class="line"><span class="string">if(i&lt;n &amp;&amp; max_p[a[i]]&gt;min_p[a[i+1]])&#123;</span></span><br><span class="line"><span class="string">    cout&lt;&lt;&quot;Alice&quot;&lt;&lt;endl</span>;</span><br><span class="line">    <span class="built_in">return</span>;</span><br><span class="line">&#125;</span><br><span class="line">//若在拆分过程中发现相邻两个数不满足拆分后素数last_max&lt;=next_min,即不满足非递减，则Alice胜利</span><br><span class="line">//除此之外，Bob胜利</span><br></pre></td></tr></table></figure>
+<p><img src="/uploads/重庆.jpg" alt="重庆"></p>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>筛</tag>
+        <tag>动态规划</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>背包问题</title>
     <url>/2026/03/08/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<p>搁置已久，今天来简单讨论下背包的基础性问题<br><span id="more"></span></p>
@@ -967,6 +769,100 @@
       </tags>
   </entry>
   <entry>
+    <title>聚类</title>
+    <url>/2026/07/02/%E8%81%9A%E7%B1%BB%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<p>聚类是无监督学习的核心任务，目标是将数据集中的样本划分为若干个通常不相交的子集（簇），使得同一簇内样本尽可能相似、不同簇间样本尽可能不同。本章从距离度量出发，逐步讨论原型聚类、密度聚类和层次聚类三大范式。</p>
+<span id="more"></span>
+<h1 id="第九章-聚类"><a href="#第九章-聚类" class="headerlink" title="第九章 聚类"></a>第九章 聚类</h1><h2 id="聚类任务与性能度量"><a href="#聚类任务与性能度量" class="headerlink" title="聚类任务与性能度量"></a>聚类任务与性能度量</h2><p>聚类属于无监督学习——训练样本没有标记信息，算法依靠数据的内在结构自动分组。</p>
+<p><strong>聚类性能度量</strong>分两大类：</p>
+<ul>
+<li><strong>外部指标</strong>（有参考模型）：Jaccard系数、FM指数、Rand指数 → 越高越好</li>
+<li><strong>内部指标</strong>（无参考模型）：DB指数（越小越好）、Dunn指数（越大越好）</li>
+</ul>
+<p><strong>轮廓系数 (Silhouette Coefficient)</strong>：综合衡量凝聚度和分离度，$s(i) = \frac{b(i) - a(i)}{\max\{a(i), b(i)\}}$，其中 $a(i)$ 为样本 $i$ 到同簇其他样本的平均距离，$b(i)$ 为到最近异簇的平均距离。$s(i)$ 接近1表示聚类效果好。</p>
+<h2 id="距离度量"><a href="#距离度量" class="headerlink" title="距离度量"></a>距离度量</h2><p>闵可夫斯基距离族统一了三种常用距离：</p>
+<script type="math/tex; mode=display">D(X,Y) = \left( \sum_{i=1}^n |x_i - y_i|^p \right)^{\frac{1}{p}}</script><ul>
+<li>$p=1$：曼哈顿距离（城市街区距离）$D = \sum |x_i - y_i|$</li>
+<li>$p=2$：欧几里得距离（直线距离）$D = \sqrt{\sum (x_i - y_i)^2}$</li>
+<li>$p \to \infty$：切比雪夫距离 $D = \max_i |x_i - y_i|$</li>
+</ul>
+<blockquote>
+<p>切比雪夫距离在多维异常检测中尤其有用——它只关注变化最大的那个维度，相当于用”最短板”衡量距离。</p>
+</blockquote>
+<p><strong>有序属性 vs 无序属性</strong>：有序属性（如”高&gt;中&gt;低”）可用闵氏距离；无序属性（如”红、蓝、绿”）需用VDM。</p>
+<h2 id="原型聚类：K-means"><a href="#原型聚类：K-means" class="headerlink" title="原型聚类：K-means"></a>原型聚类：K-means</h2><p>K-means是原型聚类的最经典代表——每个簇用一个<strong>均值向量</strong>（原型）来代表。核心是<strong>最小化平方误差</strong>：</p>
+<script type="math/tex; mode=display">E = \sum_{i=1}^k \sum_{\mathbf{x} \in C_i} \|\mathbf{x} - \boldsymbol{\mu}_i\|_2^2</script><p>算法流程：</p>
+<ol>
+<li>随机选 $k$ 个样本作为初始均值向量</li>
+<li>将每个样本分配到最近均值向量的簇</li>
+<li>重新计算每个簇的均值向量</li>
+<li>重复2-3直到收敛（均值向量不再变化）</li>
+</ol>
+<blockquote>
+<p>K-means的三大局限性：<strong>k需预设</strong>、<strong>对初始值敏感</strong>（不同初始化可能收敛到不同局部最优）、<strong>仅发现球形簇</strong>。实践中常用K-means++初始化来缓解初始值敏感问题——让初始中心点尽可能分散。</p>
+</blockquote>
+<h3 id="LVQ（学习向量量化）"><a href="#LVQ（学习向量量化）" class="headerlink" title="LVQ（学习向量量化）"></a>LVQ（学习向量量化）</h3><p>LVQ是K-means的有监督变体：利用样本的类别标签辅助聚类，使原型向量向同类样本靠近、远离异类样本。适合有部分标记信息的场景。</p>
+<h3 id="高斯混合聚类-GMM"><a href="#高斯混合聚类-GMM" class="headerlink" title="高斯混合聚类 (GMM)"></a>高斯混合聚类 (GMM)</h3><p>用多个高斯分布的线性组合拟合数据，每个样本以概率归属于各高斯分量——属于<strong>软聚类</strong>。</p>
+<script type="math/tex; mode=display">P(\mathbf{x}) = \sum_{i=1}^k \alpha_i \cdot \mathcal{N}(\mathbf{x} | \boldsymbol{\mu}_i, \boldsymbol{\Sigma}_i)</script><p>参数估计使用EM算法：E步计算样本属于各分量的后验概率，M步更新 $\alpha_i, \boldsymbol{\mu}_i, \boldsymbol{\Sigma}_i$。</p>
+<h2 id="密度聚类：DBSCAN"><a href="#密度聚类：DBSCAN" class="headerlink" title="密度聚类：DBSCAN"></a>密度聚类：DBSCAN</h2><p>DBSCAN基于密度的空间聚类，不预设簇的数量、能发现任意形状的簇、自动识别噪声。</p>
+<p><strong>核心概念</strong>：</p>
+<ul>
+<li><strong>$\varepsilon$-邻域</strong>：以样本为中心、$\varepsilon$ 为半径的超球体区域</li>
+<li><strong>核心点</strong>：$\varepsilon$-邻域内包含至少 MinPts 个样本</li>
+<li><strong>边界点</strong>：在核心点的邻域内，但自身不满足核心点条件</li>
+<li><strong>噪声点</strong>：既非核心也非边界</li>
+<li><strong>密度直达 / 密度可达 / 密度相连</strong>：递进式的点间关系，用于定义簇</li>
+</ul>
+<blockquote>
+<p>DBSCAN的一个簇 = 所有密度相连的核心点及其边界点。参数选择：$\varepsilon$ 可用k-距离图确定拐点，MinPts通常取 $\geq$ 维度+1。</p>
+</blockquote>
+<p><strong>优缺点</strong>：自动识别噪声、发现任意形状 → 但高维数据效果差（维度灾难导致密度概念退化）、$\varepsilon$ 和 MinPts 敏感。</p>
+<h2 id="层次聚类"><a href="#层次聚类" class="headerlink" title="层次聚类"></a>层次聚类</h2><p>层次聚类构建树状簇结构（Dendrogram），无需预设 $k$。</p>
+<ul>
+<li><strong>自底向上 (AGNES)</strong>：初始每个样本各为一簇，每次合并距离最近的两簇</li>
+<li><strong>自顶向下 (DIANA)</strong>：初始所有样本为一簇，每次分裂</li>
+</ul>
+<p>簇间距离度量决定了合并/分裂策略：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">策略</th>
+<th style="text-align:left">定义</th>
+<th style="text-align:left">特点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">最小距离（单链接）</td>
+<td style="text-align:left">$d_{\min}(C_i, C_j)=\min_{\mathbf{x}\in C_i,\mathbf{y}\in C_j}\Vert\mathbf{x}-\mathbf{y}\Vert$</td>
+<td style="text-align:left">对噪声敏感</td>
+</tr>
+<tr>
+<td style="text-align:left">最大距离（全链接）</td>
+<td style="text-align:left">$d_{\max}(C_i, C_j)=\max_{\mathbf{x}\in C_i,\mathbf{y}\in C_j}\Vert\mathbf{x}-\mathbf{y}\Vert$</td>
+<td style="text-align:left">倾向发现紧凑簇</td>
+</tr>
+<tr>
+<td style="text-align:left">平均距离（均链接）</td>
+<td style="text-align:left">$d_{\text{avg}}(C_i, C_j)=\frac{1}{\lvert C_i\rvert\lvert C_j\rvert}\sum_{\mathbf{x}\in C_i}\sum_{\mathbf{y}\in C_j}\Vert\mathbf{x}-\mathbf{y}\Vert$</td>
+<td style="text-align:left">折中方案</td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<p>层次聚类的计算复杂度为 $O(n^3)$（朴素实现）或 $O(n^2 \log n)$（优化实现），不适用于超大规模数据。但Dendrogram可视化在探索性数据分析中极具价值。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>蓝桥十日</title>
     <url>/2026/04/03/%E8%93%9D%E6%A1%A5%E5%8D%81%E6%97%A5/</url>
     <content><![CDATA[<p>在于队友的聊天中偶然发现很多人并不了解OI赛制是什么，故有此文。  </p>
@@ -994,29 +890,6 @@
 ]]></content>
       <categories>
         <category>算法</category>
-      </categories>
-      <tags>
-        <tag>随笔</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>首次团队赛回顾</title>
-    <url>/2026/03/22/%E9%A6%96%E6%AC%A1%E5%9B%A2%E9%98%9F%E8%B5%9B%E5%9B%9E%E9%A1%BE/</url>
-    <content><![CDATA[<p>浪潮完赛，杜神太强了最后20min成功冲出全场唯二的D题（<font color=orange>%%%</font>),最后rank8极限一等奖，这次总归没有遗憾离场。</p>
-<span id="more"></span>
-<h2 id="黄金"><a href="#黄金" class="headerlink" title="黄金"></a>黄金</h2><blockquote>
-<p>题面<br>题目描述<br>Laz 在寒假领了一大笔压岁钱，因为最近黄金价格的疯涨，现在她想利用这笔压岁钱去购买黄金，现在给定一个n天的时间周期，并给出黄金在这 n天内的价格变化，Laz 的压岁钱十分充足，可以支持她进行任意次交易。<br>Laz 选择在黑市购买黄金，但是想在黑市购买黄金需要遵循以下规则：<br>同一时间最多持有1份黄金，不然会引起其他人的关注；<br>卖出后必须冷却1天才能再次买入；<br>每次卖出需要支付固定手续费k。<br>现在Laz想让你规划，该采取怎样的方案购置黄金才能获得最大利润</p>
-</blockquote>
-<p>dp这一块实在是短板，这题主要是我在看，想到了记录买入和卖出的两种状态记录，没想到第三维保持当前状态的维度。  </p>
-<p>我们定义每天有三种状态<br>hold:手中持有黄金，且当天没有卖出操作。<br>sold:当天卖出黄金。<br>rest:手中没有黄金，且没有其他操作，继承上一天的状态。</p>
-<p>new_hold:新持有黄金或者说黄金没有卖出，故存在自rest转移过来新买黄金或自hold继续持有继承而来。<br>new_sold:欲卖出定持有，故只能由hold转移而来。<br>new_rest:手中无黄金的休整冷却期，可以由sold卖出后转移而来或原rest继承而来。  </p>
-<blockquote>
-<p>new_hold=max(rest-a[i],hold)<br>new_sold=hold+a[i]-k<br>new_rest=max(rest,sold)</p>
-</blockquote>
-<p>状态转移方程确定之后剩下的就简单了</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//初始化</span><br><span class="line">hold=-INF;</span><br><span class="line">sold=0;</span><br><span class="line">rest=0;</span><br><span class="line"><span class="keyword">for</span>()//遍历一遍，每次用new记录之后整体更新</span><br><span class="line">cout&lt;&lt;<span class="string">max(sold,rest)</span></span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>体悟</category>
       </categories>
       <tags>
         <tag>随笔</tag>
@@ -1109,6 +982,133 @@
 <li><strong>$\kappa$ 统计量</strong>：去除随机一致后的分类一致性</li>
 </ul>
 <p>增强多样性的常用手段：数据样本扰动、输入属性扰动、输出表示扰动、算法参数扰动。</p>
+]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>首次团队赛回顾</title>
+    <url>/2026/03/22/%E9%A6%96%E6%AC%A1%E5%9B%A2%E9%98%9F%E8%B5%9B%E5%9B%9E%E9%A1%BE/</url>
+    <content><![CDATA[<p>浪潮完赛，杜神太强了最后20min成功冲出全场唯二的D题（<font color=orange>%%%</font>),最后rank8极限一等奖，这次总归没有遗憾离场。</p>
+<span id="more"></span>
+<h2 id="黄金"><a href="#黄金" class="headerlink" title="黄金"></a>黄金</h2><blockquote>
+<p>题面<br>题目描述<br>Laz 在寒假领了一大笔压岁钱，因为最近黄金价格的疯涨，现在她想利用这笔压岁钱去购买黄金，现在给定一个n天的时间周期，并给出黄金在这 n天内的价格变化，Laz 的压岁钱十分充足，可以支持她进行任意次交易。<br>Laz 选择在黑市购买黄金，但是想在黑市购买黄金需要遵循以下规则：<br>同一时间最多持有1份黄金，不然会引起其他人的关注；<br>卖出后必须冷却1天才能再次买入；<br>每次卖出需要支付固定手续费k。<br>现在Laz想让你规划，该采取怎样的方案购置黄金才能获得最大利润</p>
+</blockquote>
+<p>dp这一块实在是短板，这题主要是我在看，想到了记录买入和卖出的两种状态记录，没想到第三维保持当前状态的维度。  </p>
+<p>我们定义每天有三种状态<br>hold:手中持有黄金，且当天没有卖出操作。<br>sold:当天卖出黄金。<br>rest:手中没有黄金，且没有其他操作，继承上一天的状态。</p>
+<p>new_hold:新持有黄金或者说黄金没有卖出，故存在自rest转移过来新买黄金或自hold继续持有继承而来。<br>new_sold:欲卖出定持有，故只能由hold转移而来。<br>new_rest:手中无黄金的休整冷却期，可以由sold卖出后转移而来或原rest继承而来。  </p>
+<blockquote>
+<p>new_hold=max(rest-a[i],hold)<br>new_sold=hold+a[i]-k<br>new_rest=max(rest,sold)</p>
+</blockquote>
+<p>状态转移方程确定之后剩下的就简单了</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//初始化</span><br><span class="line">hold=-INF;</span><br><span class="line">sold=0;</span><br><span class="line">rest=0;</span><br><span class="line"><span class="keyword">for</span>()//遍历一遍，每次用new记录之后整体更新</span><br><span class="line">cout&lt;&lt;<span class="string">max(sold,rest)</span></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>体悟</category>
+      </categories>
+      <tags>
+        <tag>随笔</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>贝叶斯分类器</title>
+    <url>/2026/07/15/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/</url>
+    <content><![CDATA[<p>贝叶斯分类器是一类基于贝叶斯定理的概率分类方法。它从概率视角出发，通过先验知识和观测数据推断后验概率，进而做出最优分类决策。本章从贝叶斯决策论出发，逐步引出朴素贝叶斯、半朴素贝叶斯、贝叶斯网和EM算法。</p>
+<span id="more"></span>
+<h1 id="贝叶斯分类器"><a href="#贝叶斯分类器" class="headerlink" title="贝叶斯分类器"></a>贝叶斯分类器</h1><h2 id="贝叶斯决策论"><a href="#贝叶斯决策论" class="headerlink" title="贝叶斯决策论"></a>贝叶斯决策论</h2><p>贝叶斯决策论是概率框架下实施决策的基本方法。在所有相关概率都已知的理想情况下，它考虑如何基于这些概率和误判损失来选择最优的类别标记。</p>
+<p>假设有N种可能的类别标记 $c_1, c_2, \dots, c_N$，$\lambda_{ij}$ 是将真实标记为 $c_j$ 的样本误分类为 $c_i$ 所产生的损失。则样本 $\mathbf{x}$ 分类为 $c_i$ 的条件风险为：</p>
+<script type="math/tex; mode=display">R(c_i | \mathbf{x}) = \sum_{j=1}^N \lambda_{ij} P(c_j | \mathbf{x})</script><p>贝叶斯判定准则：最小化总体风险等价于对每个样本选择条件风险最小的类别：</p>
+<script type="math/tex; mode=display">h^*(\mathbf{x}) = \arg \min_{c \in \mathcal{Y}} R(c | \mathbf{x})</script><p>$h^<em>$ 称为贝叶斯最优分类器，对应的 $R(h^</em>)$ 为贝叶斯风险——这是分类器性能的理论上限。</p>
+<blockquote>
+<p>若目标是<strong>最小化分类错误率</strong>，则 $\lambda_{ij} = 0\ (i=j)$，否则 $\lambda_{ij} = 1$。此时 $R(c|\mathbf{x}) = 1-P(c|\mathbf{x})$，贝叶斯最优分类器简化为：$h^*(\mathbf{x}) = \arg \max_c P(c | \mathbf{x})$ —— 选择后验概率最大的类别。</p>
+</blockquote>
+<h3 id="贝叶斯公式与两种模型范式"><a href="#贝叶斯公式与两种模型范式" class="headerlink" title="贝叶斯公式与两种模型范式"></a>贝叶斯公式与两种模型范式</h3><p>后验概率由贝叶斯定理给出：</p>
+<script type="math/tex; mode=display">P(c | \mathbf{x}) = \frac{P(c) P(\mathbf{x} | c)}{P(\mathbf{x})}</script><ul>
+<li><strong>先验概率 $P(c)$</strong>：各类样本在空间中的比例，直接通过频率估算</li>
+<li><strong>似然 $P(\mathbf{x} | c)$</strong>：类条件概率——真正的难点。假设d个二值属性，样本空间大小为 $2^d$，直接估计不可行</li>
+</ul>
+<p>由此引出两种建模路线：</p>
+<ul>
+<li><strong>判别式模型</strong>：直接建模后验 $P(c|\mathbf{x})$（逻辑回归、SVM、决策树）</li>
+<li><strong>生成式模型</strong>：先建模联合分布 $P(\mathbf{x},c)$，再推出 $P(c|\mathbf{x})$（朴素贝叶斯）</li>
+</ul>
+<h2 id="极大似然估计-MLE"><a href="#极大似然估计-MLE" class="headerlink" title="极大似然估计 (MLE)"></a>极大似然估计 (MLE)</h2><p>估计 $P(\mathbf{x}|c)$ 的常用策略：先假定概率分布形式（如正态分布），再估计参数 $\boldsymbol{\theta}_c$。令 $D_c$ 为第c类样本集，对数似然为：</p>
+<script type="math/tex; mode=display">\ell(\boldsymbol{\theta}_c) = \sum_{\mathbf{x} \in D_c} \log P(\mathbf{x} | \boldsymbol{\theta}_c)</script><p>极大似然估计：$\hat{\boldsymbol{\theta}}_c = \arg \max \ell(\boldsymbol{\theta}_c)$ —— 选择使观测数据”最可能发生”的参数。</p>
+<blockquote>
+<p>频率主义 vs 贝叶斯主义：频率主义认为参数是未知常量，通过优化似然估计；贝叶斯主义认为参数是随机变量，有自己的先验分布，需要计算参数的后验。MLE是频率主义的代表方法。</p>
+</blockquote>
+<h2 id="朴素贝叶斯分类器"><a href="#朴素贝叶斯分类器" class="headerlink" title="朴素贝叶斯分类器"></a>朴素贝叶斯分类器</h2><p><strong>属性条件独立性假设</strong>（最核心、最大胆的假设）：</p>
+<script type="math/tex; mode=display">P(\mathbf{x} | c) = \prod_{i=1}^d P(x_i | c)</script><p>代入贝叶斯公式得到朴素贝叶斯分类器：</p>
+<script type="math/tex; mode=display">h_{nb}(\mathbf{x}) = \arg \max_c P(c) \prod_{i=1}^d P(x_i | c)</script><h3 id="概率估计"><a href="#概率估计" class="headerlink" title="概率估计"></a>概率估计</h3><ul>
+<li>先验：$P(c) = |D_c| / |D|$</li>
+<li>离散属性：$P(x_i | c) = |D_{c, x_i}| / |D_c|$</li>
+<li>连续属性（假设正态）：$P(x_i|c) \sim \mathcal{N}(\mu_{c,i}, \sigma_{c,i}^2)$</li>
+</ul>
+<h3 id="拉普拉斯修正"><a href="#拉普拉斯修正" class="headerlink" title="拉普拉斯修正"></a>拉普拉斯修正</h3><p>若某属性值从未在训练集中出现 → 概率估为0 → 连乘归零。拉普拉斯修正为每个取值”预置”一个虚拟样本，从根本上解决零概率问题：</p>
+<script type="math/tex; mode=display">\hat{P}(c) = \frac{|D_c| + 1}{|D| + N}, \quad \hat{P}(x_i | c) = \frac{|D_{c, x_i}| + 1}{|D_c| + N_i}</script><blockquote>
+<p><strong>朴素却有效的原因</strong>：分类决策只关心后验概率的<strong>相对排序</strong>，而非绝对值。即使 $P(\mathbf{x}|c)$ 不精确，只要各类别的相对排序正确，分类结果就不受影响。在高维场景（如文本分类）中，独立性假设的偏差会被”高维稀释”。</p>
+</blockquote>
+<h2 id="半朴素贝叶斯分类器"><a href="#半朴素贝叶斯分类器" class="headerlink" title="半朴素贝叶斯分类器"></a>半朴素贝叶斯分类器</h2><p>适当放松独立性假设——独依赖估计 (ODE)：每个属性最多依赖一个父属性 $pa_i$：</p>
+<script type="math/tex; mode=display">P(c | \mathbf{x}) \propto P(c) \prod_{i=1}^d P(x_i | c, pa_i)</script><p>三种典型策略：</p>
+<ul>
+<li><strong>SPODE</strong>：所有属性依赖同一个”超父”属性，通过交叉验证选择</li>
+<li><strong>TAN</strong>：基于条件互信息 $I(x_i, x_j | y)$ 构建最大带权生成树作为依赖结构</li>
+<li><strong>AODE</strong>：尝试所有可能的超父，对多个SPODE取平均（集成思路）</li>
+</ul>
+<h2 id="贝叶斯网"><a href="#贝叶斯网" class="headerlink" title="贝叶斯网"></a>贝叶斯网</h2><p>贝叶斯网用有向无环图 (DAG) 刻画属性依赖关系。结构 $G$ + 条件概率表 $\Theta$ 共同定义联合分布：</p>
+<script type="math/tex; mode=display">P_B(x_1, \dots, x_d) = \prod_{i=1}^d P_B(x_i | \pi_i)</script><p>其中 $\pi_i$ 为节点 $x_i$ 的父节点集合。</p>
+<p><strong>三种典型依赖结构</strong>（理解推断的关键）：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">结构</th>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">条件独立关系</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">$x_1 \leftarrow c \rightarrow x_2$</td>
+<td style="text-align:left">同父结构</td>
+<td style="text-align:left">c已知 → $x_1 \perp x_2 \mid c$</td>
+</tr>
+<tr>
+<td style="text-align:left">$x_1 \rightarrow c \leftarrow x_2$</td>
+<td style="text-align:left">V型结构</td>
+<td style="text-align:left">c已知 → $x_1 \not\perp x_2 \mid c$（解释消除）</td>
+</tr>
+<tr>
+<td style="text-align:left">$x_1 \rightarrow m \rightarrow x_2$</td>
+<td style="text-align:left">顺序结构</td>
+<td style="text-align:left">m已知 → $x_1 \perp x_2 \mid m$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>符号解释：</p>
+<p>$\perp \quad$:垂直，正交符号</p>
+<p>$X \perp Y$</p>
+<p>读作”X 与 Y 独立”——X 和 Y 没有统计依赖关系。</p>
+<p>$X \perp Y \mid Z$</p>
+<p>读作”给定 Z 的条件下，X 与 Y 条件独立”——一旦知道了 Z，X 和 Y 之间就没有额外的关联了。</p>
+<p>带否定：$X \not\perp Y \mid Z$</p>
+<p>读作”给定 Z 时，X 与 Y 不条件独立”——知道了 Z 反而让 X 和 Y 产生了关联。</p>
+<blockquote>
+<p>V型结构最反直觉：两个独立原因，一旦知道了共同结果，反而变得相关。例如：堵车（c）可能由交通事故（x1）或暴雨（x2）引起。如果已知”堵车了”，而你又听说”没有交通事故”，那么暴雨的可能性就急剧上升——这就是”解释消除”效应。</p>
+</blockquote>
+<p>贝叶斯网学习：结构已知时参数学习简单；结构未知（NP难）需评分搜索（BIC/AIC）或约束方法（独立性检验）。</p>
+<h2 id="EM算法"><a href="#EM算法" class="headerlink" title="EM算法"></a>EM算法</h2><p>处理含有隐变量 $Z$ 的不完整数据，迭代执行：</p>
+<ul>
+<li><strong>E步 (Expectation)</strong>：基于当前参数 $\Theta^t$，计算隐变量的期望 $Q(\Theta | \Theta^t) = \mathbb{E}_{Z|X,\Theta^t}[\log P(X,Z|\Theta)]$</li>
+<li><strong>M步 (Maximization)</strong>：最大化Q函数更新参数 $\Theta^{t+1} = \arg \max Q(\Theta | \Theta^t)$</li>
+</ul>
+<blockquote>
+<p>EM算法的精髓是”以退为进”：不直接优化复杂的边际似然，而是构造一个辅助Q函数逐步逼近。可以严格证明每次迭代边际似然不降——但不能保证收敛到全局最优。K-means也可以用EM视角来理解：E步分配簇，M步更新中心。</p>
+</blockquote>
 ]]></content>
       <categories>
         <category>机器学习</category>
