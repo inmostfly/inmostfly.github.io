@@ -1283,7 +1283,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #c90dc9;
+  background: #6a99ff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2571,7 +2571,10 @@ body::before {
    ========================================================================= */
 /* 单篇文章卡片的样式 */
 .post-block {
-  background: rgba(255,255,255,0.88); /* 半透明白色背景 */
+  background: rgba(245,250,251,0.9); /* 与侧栏统一的浅蓝灰磨砂底色 */
+  border: 1px solid rgba(72,119,137,0.2);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
   opacity: 1;
   color: #080707;
   border-radius: 10px; /* 圆角 */
@@ -2580,9 +2583,9 @@ body::before {
   margin: 40px auto 20px !important; /* 强制覆盖主题外边距，实现居中 */
   padding: 40px;
 /* 阴影效果，增加立体感 */
-  -webkit-box-shadow: 0 0 5px rgba(202,203,203,0.5);
-  -moz-box-shadow: 0 0 5px rgba(202,203,204,0.5);
-  box-shadow: 0 0 5px rgba(202,203,204,0.5);
+  -webkit-box-shadow: 0 16px 42px rgba(24,55,68,0.15);
+  -moz-box-shadow: 0 16px 42px rgba(24,55,68,0.15);
+  box-shadow: 0 16px 42px rgba(24,55,68,0.15);
 /* 平板端响应式适配 */
 /* 移动端响应式适配 */
 }
@@ -2745,9 +2748,9 @@ body::before {
   font-weight: 600;
 }
 @media (max-width: 1500px) {
-  .page-post .main-inner,
-  .page-post .content-wrap,
-  .page-post .content {
+  .main-inner,
+  .content-wrap,
+  .content {
     max-width: 900px !important;
   }
 }
@@ -2772,6 +2775,7 @@ body::before {
   border-radius: 16px;
   background: rgba(245,250,251,0.9) !important;
   box-shadow: 0 12px 32px rgba(24,55,68,0.2);
+  -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   overflow: hidden !important;
   transform: translateY(-50%) !important;
@@ -3126,7 +3130,7 @@ body,
 .content,
 .footer-inner {
   width: 100% !important;
-  max-width: 800px !important; /* 你的文章阅读区域最大宽度 */
+  max-width: 980px !important; /* 所有页面与文章详情使用统一正文宽度 */
   margin: 0 auto !important; /* 核心居中机制 */
   float: none !important; /* 强行清除 Pisces/Gemini 布局自带的侧边浮动 */
   box-sizing: border-box !important;
@@ -3891,9 +3895,9 @@ body,
   }
 }
 @media (min-width: 1280px) and (max-width: 1550px) {
-  .page-post .main-inner,
-  .page-post .content-wrap,
-  .page-post .content {
+  .main-inner,
+  .content-wrap,
+  .content {
     max-width: 800px !important;
   }
   .page-post .post-block {
