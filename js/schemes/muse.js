@@ -101,6 +101,21 @@ document.addEventListener('DOMContentLoaded', () => {
   };
   sidebarToggleMotion.init();
 
+  // Keep the sidebar state in sync when the browser crosses the point where
+  // the fixed TOC becomes a compact drawer. This also covers desktop browsers
+  // being resized to a phone-sized window.
+  var isCompactSidebar = window.innerWidth < 1100;
+  window.addEventListener('resize', () => {
+    var compactSidebar = window.innerWidth < 1100;
+    if (compactSidebar === isCompactSidebar) return;
+    isCompactSidebar = compactSidebar;
+    if (compactSidebar) {
+      sidebarToggleMotion.hideSidebar();
+    } else {
+      NexT.utils.updateSidebarPosition();
+    }
+  });
+
   function updateFooterPosition() {
     var footer = document.querySelector('.footer');
     var containerHeight = document.querySelector('.header').offsetHeight + document.querySelector('.main').offsetHeight + footer.offsetHeight;

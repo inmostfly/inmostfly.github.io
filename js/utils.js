@@ -368,7 +368,10 @@ NexT.utils = {
       document.querySelector('.sidebar-nav-overview').click();
     }
     NexT.utils.initSidebarDimension();
-    if (!this.isDesktop() || CONFIG.scheme === 'Pisces' || CONFIG.scheme === 'Gemini') return;
+    // The layout switches to a drawer below 1100px even on a desktop browser.
+    // Use the viewport width here instead of the user agent so resizing the
+    // browser does not leave the TOC covering the article.
+    if (window.innerWidth < 1100 || !this.isDesktop() || CONFIG.scheme === 'Pisces' || CONFIG.scheme === 'Gemini') return;
     // Expand sidebar on post detail page by default, when post has a toc.
     var display = CONFIG.page.sidebar;
     if (typeof display !== 'boolean') {
