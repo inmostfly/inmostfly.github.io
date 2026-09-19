@@ -1283,7 +1283,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #1d9f4a;
+  background: #59ffff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -4336,12 +4336,13 @@ body {
 @media (min-width: 1100px) {
   body.page-post {
     --toc-panel-width: clamp(220px, 18vw, 340px);
+    --waifu-clearance: 330px;
   }
   .page-post .main-inner {
-    width: calc(100vw - var(--toc-panel-width) - var(--layout-edge) - var(--layout-edge) - var(--layout-gap)) !important;
+    width: calc(100vw - max(calc(var(--toc-panel-width) + var(--layout-edge) + var(--layout-gap)), calc((100vw - 1080px) / 2)) - var(--waifu-clearance)) !important;
     max-width: 1080px !important;
     margin-left: max(calc(var(--toc-panel-width) + var(--layout-edge) + var(--layout-gap)), calc((100vw - 1080px) / 2)) !important;
-    margin-right: auto !important;
+    margin-right: var(--waifu-clearance) !important;
   }
   .page-post .content-wrap,
   .page-post .content {
@@ -4368,6 +4369,64 @@ body {
   }
   .page-post .sidebar-inner {
     width: 100%;
+  }
+}
+/* 看板娘始终保留，文章在右侧为她的固定画布与提示气泡让出空间。 */
+@media (min-width: 1100px) and (max-width: 1399px) {
+  body.page-post {
+    --waifu-clearance: 250px;
+  }
+  body.page-post #waifu {
+    width: 220px !important;
+    height: 220px !important;
+  }
+  body.page-post #live2d {
+    width: 220px !important;
+    height: 220px !important;
+  }
+  body.page-post #waifu-tips {
+    right: 20px !important;
+    width: 180px;
+  }
+}
+@media (min-width: 769px) and (max-width: 1099px) {
+  .page-post .main-inner {
+    width: calc(100vw - 230px) !important;
+    max-width: none !important;
+    margin-left: 20px !important;
+    margin-right: 210px !important;
+  }
+  .page-post .sidebar-toggle {
+    bottom: 195px !important;
+  }
+  body.page-post #waifu {
+    width: 180px !important;
+    height: 180px !important;
+  }
+  body.page-post #live2d {
+    width: 180px !important;
+    height: 180px !important;
+  }
+  body.page-post #waifu-tips {
+    right: 10px !important;
+    width: 150px;
+  }
+}
+/* 从桌面缩到手机宽度时，已加载的看板娘收成小尺寸，正文仍留出独立空间。 */
+@media (max-width: 768px) {
+  body.page-post:has(#waifu) .main-inner {
+    width: calc(100vw - 106px) !important;
+    max-width: none !important;
+    margin-left: 8px !important;
+    margin-right: 98px !important;
+  }
+  body.page-post #waifu,
+  body.page-post #live2d {
+    width: 72px !important;
+    height: 72px !important;
+  }
+  body.page-post #waifu-tips {
+    display: none;
   }
 }
 @-moz-keyframes typedjsBlink {
