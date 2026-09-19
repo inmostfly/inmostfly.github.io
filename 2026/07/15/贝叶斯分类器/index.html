@@ -10,7 +10,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/uploads/sui.jpg">
   <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-<link rel="stylesheet" href="/css/main.css?v=mu0x8tvk">
+<link rel="stylesheet" href="/css/main.css?v=mu7tr0np">
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
@@ -832,7 +832,7 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
   // 仅在非手机端且页面完全加载后执行
   window.addEventListener('load', function() {
     if (window.innerWidth > 768) {
-      const type = "cherry";
+      const type = "explosion";
       
       // 动态创建并加载脚本
       function loadScript(src, callback) {
@@ -845,10 +845,8 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
       if (type === "explosion") {
         // 先插入 Canvas 节点
         document.body.insertAdjacentHTML('beforeend', '<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 9999; pointer-events: none;"></canvas>');
-        // 依次加载 anime.js 和 特效脚本
-        loadScript("//cdn.bootcss.com/animejs/2.2.0/anime.min.js", function() {
-          loadScript("/js/cursor/explosion.min.js");
-        });
+        // NexT 已从本地加载 anime.js；点击特效也直接使用现有本地脚本。
+        loadScript("/js/cursor/explosion.js");
       } else if (type === "cherry") {
         loadScript("/js/cursor/cherry.js");
         loadScript("/js/cursor/text.js");
@@ -871,3 +869,4 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
     }
   });
 </script>
+

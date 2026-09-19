@@ -1283,7 +1283,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #a8b3b0;
+  background: #38a3c9;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2562,7 +2562,7 @@ body::before {
   z-index: -1; /* 置于最底层 */
   background: url("/uploads/background2.jpg");
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-attachment: scroll;
   background-size: cover; /* 背景图片等比例缩放铺满全屏 */
   background-position: 50% 50%; /* 背景图片居中 */
 }
@@ -2571,10 +2571,8 @@ body::before {
    ========================================================================= */
 /* 单篇文章卡片的样式 */
 .post-block {
-  background: rgba(245,250,251,0.9); /* 与侧栏统一的浅蓝灰磨砂底色 */
+  background: rgba(245,250,251,0.94); /* 长正文用半透明底色，避免整页毛玻璃重绘 */
   border: 1px solid rgba(72,119,137,0.2);
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
   opacity: 1;
   color: #080707;
   border-radius: 10px; /* 圆角 */
