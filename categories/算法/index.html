@@ -10,7 +10,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/uploads/sui.jpg">
   <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-<link rel="stylesheet" href="/css/main.css?v=mu7tr0np">
+<link rel="stylesheet" href="/css/main.css?v=mu7ul9y2">
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
@@ -723,11 +723,14 @@ setInterval("createtime()",250);
         loadScript("/js/cursor/explosion.js");
       } else if (type === "cherry") {
         loadScript("/js/cursor/cherry.js");
-        loadScript("/js/cursor/text.js");
       }
+
+      // 点击文字是独立效果，不随鼠标拖尾类型切换而消失。
+      loadScript("/js/cursor/text.js");
     }
   });
 </script>
+
 
 
 
@@ -743,4 +746,5 @@ setInterval("createtime()",250);
     }
   });
 </script>
+
 

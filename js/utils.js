@@ -138,22 +138,50 @@ NexT.utils = {
     var THRESHOLD = 50;
     var backToTop = document.querySelector('.back-to-top');
     var readingProgressBar = document.querySelector('.reading-progress-bar');
-    // For init back to top in sidebar if page was scrolled after page refresh.
-    window.addEventListener('scroll', () => {
-      if (backToTop || readingProgressBar) {
-        var docHeight = document.querySelector('.container').offsetHeight;
-        var winHeight = window.innerHeight;
-        var contentVisibilityHeight = docHeight > winHeight ? docHeight - winHeight : document.body.scrollHeight - winHeight;
-        var scrollPercent = Math.min(100 * window.scrollY / contentVisibilityHeight, 100);
-        if (backToTop) {
-          backToTop.classList.toggle('back-to-top-on', window.scrollY > THRESHOLD);
-          backToTop.querySelector('span').innerText = Math.round(scrollPercent) + '%';
+    if (!backToTop && !readingProgressBar) return;
+
+    var backToTopLabel = backToTop && backToTop.querySelector('span');
+    var scrollableHeight = 1;
+    var updatePending = false;
+    var lastPercent = -1;
+    var lastVisible = false;
+
+    function update() {
+      updatePending = false;
+      var progress = Math.max(0, Math.min(window.scrollY / scrollableHeight, 1));
+      var percent = Math.round(progress * 100);
+      if (backToTop) {
+        var visible = window.scrollY > THRESHOLD;
+        if (visible !== lastVisible) {
+          backToTop.classList.toggle('back-to-top-on', visible);
+          lastVisible = visible;
         }
-        if (readingProgressBar) {
-          readingProgressBar.style.width = scrollPercent.toFixed(2) + '%';
-        }
+        if (percent !== lastPercent) backToTopLabel.textContent = percent + '%';
       }
-    });
+      if (readingProgressBar) readingProgressBar.style.transform = 'scaleX(' + progress + ')';
+      lastPercent = percent;
+    }
+
+    function scheduleUpdate() {
+      if (updatePending) return;
+      updatePending = true;
+      requestAnimationFrame(update);
+    }
+
+    function measureHeight() {
+      scrollableHeight = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
+      scheduleUpdate();
+    }
+
+    // A passive scroll handler only reads scrollY once per animation frame.
+    // Height is refreshed when layout changes, never on every wheel event.
+    window.addEventListener('scroll', scheduleUpdate, { passive: true });
+    window.addEventListener('resize', measureHeight, { passive: true });
+    if (window.ResizeObserver) {
+      var container = document.querySelector('.container');
+      if (container) new ResizeObserver(measureHeight).observe(container);
+    }
+    measureHeight();
 
     backToTop && backToTop.addEventListener('click', () => {
       window.anime({

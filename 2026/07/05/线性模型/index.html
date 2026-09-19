@@ -10,7 +10,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/uploads/sui.jpg">
   <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-<link rel="stylesheet" href="/css/main.css?v=mu7tr0np">
+<link rel="stylesheet" href="/css/main.css?v=mu7ul9y2">
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
@@ -445,57 +445,6 @@
   
 
 
-  <!--noindex-->
-  <aside class="article-site-menu" aria-label="站点概览">
-    <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="inmost"
-      src="/uploads/avatar.jpg">
-  <p class="site-author-name" itemprop="name">inmost</p>
-  <div class="site-description" itemprop="description">技术分享与随笔</div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">20</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-          
-        <span class="site-state-item-count">6</span>
-        <span class="site-state-item-name">分类</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-          
-        <span class="site-state-item-count">22</span>
-        <span class="site-state-item-name">标签</span></a>
-      </div>
-  </nav>
-</div>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-        <a href="https://github.com/inmostfly" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;inmostfly" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="mailto:inmostflyyy@gmail.com" title="E-Mail → mailto:inmostflyyy@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="https://twitter.com/@zihan_ning68254" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;@zihan_ning68254" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
-      </span>
-  </div>
-  <div class="cc-license motion-element" itemprop="license">
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
-  </div>
-
-
-
-  </aside>
-  <!--/noindex-->
-
 
           </div>
           
@@ -872,11 +821,14 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
         loadScript("/js/cursor/explosion.js");
       } else if (type === "cherry") {
         loadScript("/js/cursor/cherry.js");
-        loadScript("/js/cursor/text.js");
       }
+
+      // 点击文字是独立效果，不随鼠标拖尾类型切换而消失。
+      loadScript("/js/cursor/text.js");
     }
   });
 </script>
+
 
 
 
@@ -892,4 +844,5 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
     }
   });
 </script>
+
 

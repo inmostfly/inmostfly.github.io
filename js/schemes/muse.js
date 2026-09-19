@@ -122,7 +122,24 @@ document.addEventListener('DOMContentLoaded', () => {
     footer.classList.toggle('footer-fixed', containerHeight <= window.innerHeight);
   }
 
-  updateFooterPosition();
-  window.addEventListener('resize', updateFooterPosition);
-  window.addEventListener('scroll', updateFooterPosition);
+  // Footer placement depends on element sizes, not on scroll position. Reading
+  // three offsetHeights on every scroll event forced synchronous layout work.
+  var footerUpdatePending = false;
+  function scheduleFooterUpdate() {
+    if (footerUpdatePending) return;
+    footerUpdatePending = true;
+    requestAnimationFrame(() => {
+      footerUpdatePending = false;
+      updateFooterPosition();
+    });
+  }
+
+  scheduleFooterUpdate();
+  window.addEventListener('resize', scheduleFooterUpdate, { passive: true });
+  if (window.ResizeObserver) {
+    var footerObserver = new ResizeObserver(scheduleFooterUpdate);
+    ['.header', '.main', '.footer'].forEach(selector => {
+      footerObserver.observe(document.querySelector(selector));
+    });
+  }
 });

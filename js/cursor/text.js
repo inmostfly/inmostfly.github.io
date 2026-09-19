@@ -1,24 +1,26 @@
-var a_idx = 0;
-jQuery(document).ready(function($) {
-  $("body").click(function(e) {
-    var a = new Array("AC", "TLE","WA","RE","Peace","Love","Joy","Happiness","Wealth","Health","Success","Fate","Destiny");
-    var $i = $("<span/>").text(a[a_idx]);
-    var x = e.pageX,
-    y = e.pageY;
-    $i.css({
-      "z-index": 99999,
-      "top": y - 28,
-      "left": x - a[a_idx].length * 8,
-      "position": "absolute",
-      "color": "#c7ff45"
-    });
-    $("body").append($i);
-    $i.animate({
-      "top": y - 180,
-      "opacity": 0
-    }, 1500, function() {
-      $i.remove();
-    });
-    a_idx = (a_idx + 1) % a.length;
-  });
-});
+/* Lightweight click words: animation uses the compositor, not jQuery layout updates. */
+(() => {
+  const words = [
+    'AC', 'TLE', 'WA', 'RE', 'Peace', 'Love', 'Joy', 'Happiness',
+    'Wealth', 'Health', 'Success', 'Fate', 'Destiny'
+  ];
+  let nextWord = 0;
+
+  document.addEventListener('click', event => {
+    if (event.button !== 0) return;
+
+    const word = words[nextWord];
+    nextWord = (nextWord + 1) % words.length;
+
+    const label = document.createElement('span');
+    label.className = 'click-word';
+    label.textContent = word;
+    label.style.left = `${event.clientX}px`;
+    label.style.top = `${event.clientY - 28}px`;
+    document.body.appendChild(label);
+
+    label.addEventListener('animationend', () => label.remove(), { once: true });
+    // Also remove it when reduced motion disables the CSS animation.
+    setTimeout(() => label.remove(), 1600);
+  }, { passive: true });
+})();
